@@ -1,0 +1,121 @@
+{
+    "productos":[
+    {
+        "id": 1,
+        "nombreProducto": "Chikin",
+        "precioProducto": "2.500",
+        "precioReal": 2500,
+        "ingredientesProducto": "Pollo, Queso crema, Palta y Cebollín.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/chikin"
+    },
+    {
+        "id": 2,
+        "nombreProducto": "Ebi",
+        "precioProducto": "2.800",
+        "precioReal": 2800,
+        "ingredientesProducto": "Camarón, Queso crema, Palta y Cebollín.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/ebi"
+    },
+    {
+        "id": 3,
+        "nombreProducto": "Samon",
+        "precioProducto": "2.800",
+        "precioReal": 2800,
+        "ingredientesProducto": "Salmón, Queso crema, Palta y Cebollín.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/samon"
+    },
+    {
+        "id": 4,
+        "nombreProducto": "Kani",
+        "precioProducto": "2.300",
+        "precioReal": 2300,
+        "ingredientesProducto": "Kanikama, Queso crema, Palta y Cebollín.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/kami"
+    },
+    {
+        "id": 5,
+        "nombreProducto": "Daburu",
+        "precioProducto": "3.000",
+        "precioReal": 3000,
+        "ingredientesProducto": "Salmón y Camarón, Queso crema y Palta.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/daburu"
+    },
+    {
+        "id": 6,
+        "nombreProducto": "Niku",
+        "precioProducto": "2.800",
+        "precioReal": 2800,
+        "ingredientesProducto": "Carne de res, Queso crema, Palta y Cebollín.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/niku"
+    },
+    {
+        "id": 7,
+        "nombreProducto": "Veggie",
+        "precioProducto": "2.500",
+        "precioReal": 2500,
+        "ingredientesProducto": "Verduras saltadeadas, Queso crema y Palta.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/veggie"
+    },
+    {
+        "id": 8,
+        "nombreProducto": "Kinoko",
+        "precioProducto": "2.500",
+        "precioReal": 2500,
+        "ingredientesProducto": "Champiñon, Queso crema, Palta y Cebollín.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/kinoko"
+    },
+    {
+        "id": 9,
+        "nombreProducto": "Kon",
+        "precioProducto": "2.500",
+        "precioReal": 2500,
+        "ingredientesProducto": "Choclito, Queso crema, Palta y Cebollín.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/kon"
+    },
+    {
+        "id": 10,
+        "nombreProducto": "Oribu",
+        "precioProducto": "2.500",
+        "precioReal": 2500,
+        "ingredientesProducto": "Aceitunas, Queso crema y Palta.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/oribu"
+    },
+    {
+        "id": 11,
+        "nombreProducto": "Hot Chikin",
+        "precioProducto": "3.000",
+        "precioReal": 3000,
+        "ingredientesProducto": "Pollo apanado, Queso crema, Palta y Cebollín.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/hot-chikin"
+    },
+    {
+        "id": 12,
+        "nombreProducto": "Hot Samon",
+        "precioProducto": "3.000",
+        "precioReal": 3000,
+        "ingredientesProducto": "Salmón apanado, Queso crema, Palta y Cebollín.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/hot-samon"
+    },
+    {
+        "id": 13,
+        "nombreProducto": "Hot Ebi",
+        "precioProducto": "3.500",
+        "precioReal": 3500,
+        "ingredientesProducto": "Camarón apanado, Queso crema, Palta y Cebollín.",
+        "categoria": "California Rolls",
+        "url": "/california-rolls/hot-ebi"
+    }
+    ]
+}

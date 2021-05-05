@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+}
+.producto-container{
+    display: flex;
+    align-items: flex-start;
+    width: 786px;
+    margin: 24px 15px 0 15px;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content:space-between;
+    
+}
+
+.producto-pic{
+    display: flex;
+    width: 320px;
+    height: 320px;
+    flex-direction: column;
+    margin: 15px 15px 0 15px;
+    min-height: 320px;
+    min-width: 320px;
+    background-image: url("../../img/sushi320x320.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: local;
+    border-radius: 1rem;
+}
+
+.info-producto{
+    display: flex;
+    width: 406px;
+    flex-direction: column;
+    margin: 15px 15px 0 15px;
+}
+
+.producto-titulo{
+    text-align: start;
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.producto-precio{
+    text-align: start;
+    color: black;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.producto-envoltura{
+    text-align: start;
+    color: grey;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.ing{
+    text-align: start;
+    color: color;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.producto-ingredientes .ing-desc{
+    text-align: start;
+    font-style: italic;
+    font-weight: 500;
+    color: grey;
+}

@@ -1,0 +1,41 @@
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.main-container{
+  display: flex;
+  width: 1136px;
+  flex-flow: row wrap;
+  margin: 0 auto;
+}
+
+body{
+  background-color: #ffffff;
+}
+
+nav{
+  position:sticky; 
+  top: 0px;   
+  left: 0px; 
+  right: 0px;
+}
+
+.centered{
+  text-align: center;
+}
+
+a{
+  color:black;
+  text-decoration: none;
+  display:inline;
+  margin-right: 20px;
+}
+
+
+
+
+

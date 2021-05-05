@@ -1,0 +1,21 @@
+.cabecera-pic{
+    min-height: 200px;
+    background-image: url("../../img/sushi3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+.cabecera-pic .centro-pic{
+    min-height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cabecera-pic .centro-pic h1{
+    font-size: 5vh;
+    font-family: 'Permanent Marker', cursive;
+}
