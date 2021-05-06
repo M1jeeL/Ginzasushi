@@ -4,7 +4,7 @@ import './Card.css'
 
 
 
-function Card ( { nombreProducto, ingredientesProducto, precioProducto } ){
+function Card ( { nombreProducto, ingredientesProducto, precioProducto} ){
 
         return(
             <>
@@ -26,7 +26,7 @@ function Card ( { nombreProducto, ingredientesProducto, precioProducto } ){
                     </div>
                 </div>
                 <div>
-                    <img src = {logopng} className = "card-pic" />
+                    <img src = {logopng} alt = "sushito" className = "card-pic" />
                 </div>
             </div>
             </>

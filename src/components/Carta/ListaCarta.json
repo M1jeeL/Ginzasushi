@@ -41,7 +41,7 @@
         "nombreProducto": "Daburu",
         "precioProducto": "3.000",
         "precioReal": 3000,
-        "ingredientesProducto": "Salmón y Camarón, Queso crema y Palta.",
+        "ingredientesProducto": "Salmón, Camarón, Queso crema y Palta.",
         "categoria": "California Rolls",
         "url": "/california-rolls/daburu"
     },
@@ -116,6 +116,294 @@
         "ingredientesProducto": "Camarón apanado, Queso crema, Palta y Cebollín.",
         "categoria": "California Rolls",
         "url": "/california-rolls/hot-ebi"
+    },
+    {
+        "id": 14,
+        "nombreProducto": "Chikin",
+        "precioProducto": "3.000",
+        "precioReal": 3000,
+        "ingredientesProducto": "Pollo, Queso crema y Pimentón",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/chikin"
+    },
+    {
+        "id": 15,
+        "nombreProducto": "Ebi",
+        "precioProducto": "3.200",
+        "precioReal": 3200,
+        "ingredientesProducto": "Camarón y Queso crema.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/ebi"
+    },
+    {
+        "id": 16,
+        "nombreProducto": "Samon",
+        "precioProducto": "3.700",
+        "precioReal": 3700,
+        "ingredientesProducto": "Salmón y Queso crema.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/samon"
+    },
+    {
+        "id": 17,
+        "nombreProducto": "Kani",
+        "precioProducto": "3.000",
+        "precioReal": 3000,
+        "ingredientesProducto": "Kanikama y Queso crema.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/kami"
+    },
+    {
+        "id": 18,
+        "nombreProducto": "Daburu",
+        "precioProducto": "3.700",
+        "precioReal": 3700,
+        "ingredientesProducto": "Salmón, Camarón y Queso crema.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/daburu"
+    },
+    {
+        "id": 19,
+        "nombreProducto": "Niku",
+        "precioProducto": "3.800",
+        "precioReal": 3800,
+        "ingredientesProducto": "Carne de res, Queso crema y Cebollín.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/niku"
+    },
+    {
+        "id": 20,
+        "nombreProducto": "Veggie",
+        "precioProducto": "3.000",
+        "precioReal": 3000,
+        "ingredientesProducto": "Verduras saltadeadas y Queso crema",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/veggie"
+    },
+    {
+        "id": 21,
+        "nombreProducto": "Kinoko",
+        "precioProducto": "3.000",
+        "precioReal": 3000,
+        "ingredientesProducto": "Champiñon, Queso crema y Cebollín.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/kinoko"
+    },
+    {
+        "id": 22,
+        "nombreProducto": "Kon",
+        "precioProducto": "3.000",
+        "precioReal": 3000,
+        "ingredientesProducto": "Choclito, Queso crema y Cebollín.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/kon"
+    },
+    {
+        "id": 23,
+        "nombreProducto": "Oribu",
+        "precioProducto": "2.800",
+        "precioReal": 2800,
+        "ingredientesProducto": "Aceitunas y Queso crema.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/oribu"
+    },
+    {
+        "id": 24,
+        "nombreProducto": "Hot Chikin",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Pollo apanado, Queso crema y Cebollín.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/hot-chikin"
+    },
+    {
+        "id": 25,
+        "nombreProducto": "Hot Samon",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Salmón apanado, Queso crema y Cebollín.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/hot-samon"
+    },
+    {
+        "id": 26,
+        "nombreProducto": "Hot Ebi",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Camarón apanado, Queso crema y Cebollín.",
+        "categoria": "Avocado Rolls",
+        "url": "/avocado-rolls/hot-ebi"
+    },
+    {
+        "id": 27,
+        "nombreProducto": "Chikin",
+        "precioProducto": "3.700",
+        "precioReal": 3700,
+        "ingredientesProducto": "Pollo, Queso crema y Palta",
+        "categoria": "Samon Rolls",
+        "url": "/samon-rolls/chikin"
+    },
+    {
+        "id": 28,
+        "nombreProducto": "Ebi",
+        "precioProducto": "3.900",
+        "precioReal": 3900,
+        "ingredientesProducto": "Camarón, Queso crema y Palta.",
+        "categoria": "Samon Rolls",
+        "url": "/samon-rolls/ebi"
+    },
+    {
+        "id": 29,
+        "nombreProducto": "Samon",
+        "precioProducto": "3.700",
+        "precioReal": 3700,
+        "ingredientesProducto": "Salmón, Queso crema y Palta.",
+        "categoria": "Samon Rolls",
+        "url": "/samon-rolls/samon"
+    },
+    {
+        "id": 30,
+        "nombreProducto": "Kani",
+        "precioProducto": "3.400",
+        "precioReal": 3400,
+        "ingredientesProducto": "Kanikama, Queso crema y Palta.",
+        "categoria": "Samon Rolls",
+        "url": "/samon-rolls/kami"
+    },
+    {
+        "id": 31,
+        "nombreProducto": "Daburu",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Salmón, Camarón y Queso crema.",
+        "categoria": "Samon Rolls",
+        "url": "/samon-rolls/daburu"
+    },
+    {
+        "id": 32,
+        "nombreProducto": "Hot Chikin",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Pollo apanado, Queso crema, Cebollín y Palta.",
+        "categoria": "Samon Rolls",
+        "url": "/samon-rolls/hot-chikin"
+    },
+    {
+        "id": 33,
+        "nombreProducto": "Hot Samon",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Salmón apanado, Queso crema, Cebollín y Palta.",
+        "categoria": "Samon Rolls",
+        "url": "/samon-rolls/hot-samon"
+    },
+    {
+        "id": 34,
+        "nombreProducto": "Hot Ebi",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Camarón apanado, Queso crema, Cebollín y Palta.",
+        "categoria": "Samon Rolls",
+        "url": "/samon-rolls/hot-ebi"
+    },
+    {
+        "id": 35,
+        "nombreProducto": "Chikin",
+        "precioProducto": "3.900",
+        "precioReal":3900,
+        "ingredientesProducto": "Pollo, Queso crema, Palta y Cebollín.",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/chikin"
+    },
+    {
+        "id": 36,
+        "nombreProducto": "Ebi",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Camarón, Queso crema, Palta y Cebollín.",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/ebi"
+    },
+    {
+        "id": 37,
+        "nombreProducto": "Samon",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Salmón, Queso crema, Palta y Cebollín.",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/samon"
+    },
+    {
+        "id": 38,
+        "nombreProducto": "Kani",
+        "precioProducto": "3.500",
+        "precioReal": 3500,
+        "ingredientesProducto": "Kanikama, Queso crema, Palta y Cebollín.",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/kami"
+    },
+    {
+        "id": 39,
+        "nombreProducto": "Daburu",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Salmón, Camarón, Queso crema y Palta.",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/daburu"
+    },
+    {
+        "id": 40,
+        "nombreProducto": "Barros Luco",
+        "precioProducto": "4.000",
+        "precioReal": 4000,
+        "ingredientesProducto": "Carne, Queso chanco y Orégano.",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/niku"
+    },
+    {
+        "id": 41,
+        "nombreProducto": "Veggie",
+        "precioProducto": "3.400",
+        "precioReal": 3400,
+        "ingredientesProducto": "Espárragos, Queso crema y Palta.",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/veggie"
+    },
+    {
+        "id": 42,
+        "nombreProducto": "Kinoko",
+        "precioProducto": "3.400",
+        "precioReal": 3400,
+        "ingredientesProducto": "Champiñon, Queso crema y Palta",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/kinoko"
+    },
+    {
+        "id": 43,
+        "nombreProducto": "Kon",
+        "precioProducto": "3.400",
+        "precioReal": 3400,
+        "ingredientesProducto": "Choclito, Queso crema y Palta.",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/kon"
+    },
+    {
+        "id": 44,
+        "nombreProducto": "Natura",
+        "precioProducto": "3.400",
+        "precioReal": 3400,
+        "ingredientesProducto": "Palmito, Queso crema y Palta.",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/kon"
+    },
+    {
+        "id": 45,
+        "nombreProducto": "Chizu",
+        "precioProducto": "3.400",
+        "precioReal": 3400,
+        "ingredientesProducto": "Almendras, Queso crema y Palta.",
+        "categoria": "Panko Rolls",
+        "url": "/panko-rolls/kon"
     }
     ]
 }

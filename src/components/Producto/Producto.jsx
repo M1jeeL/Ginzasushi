@@ -25,7 +25,7 @@ function Producto ( {nombreProducto, precioProducto, envolturaProducto, ingredie
                         <span className = "ing-desc">{ingredientesProducto}</span>
                     </div>
                     <div className = "añadir-al-carro">
-
+                                
                     </div>
                 </div>
             </div>
