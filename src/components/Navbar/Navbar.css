@@ -42,13 +42,14 @@
     color:#fff;
 }
 
-.separacion-navbar{
-    width: 20rem;
-}
+
 
 .item-nav-links a{
     color: #fff;
     margin: 0 8px;
+    font-size: 1.5rem;
+    font-family: 'Permanent Marker', cursive;
+    padding: 1rem;
 }
 
 

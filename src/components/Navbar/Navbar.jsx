@@ -20,7 +20,6 @@ export default function Navbar() {
                             <li className = "item-nav-links"><Link to = "/contacto">Contacto</Link></li>
                         </ul>
                     </div>
-                    <div className = "separacion-navbar"></div>
                     <div>
                         <ul  className = "nav-icons">
                             <li className = "item-nav-icons"><Link to = "/mi-cuenta"><i className = "fas fa-user"></i></Link></li>
