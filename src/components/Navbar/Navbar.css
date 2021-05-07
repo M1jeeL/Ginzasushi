@@ -6,7 +6,7 @@
 
 .navbar{
     
-    color:#fff;
+    background-color: #000;
 }
 
 .nav-container{
@@ -16,7 +16,9 @@
     margin:auto;
     flex-flow: row wrap;
     justify-content: space-between;
+    align-items: center;
     color: #fff;
+    height: 7.5rem;
 }
 
 .nav-links{
@@ -29,15 +31,22 @@
 .nav-icons{
     display: flex;
     align-items: center;
-    color: #fff;
 
+}
+
+.fa-user{
+    color: #fff;
+}
+
+.fa-shopping-cart{
+    color:#fff;
 }
 
 .separacion-navbar{
     width: 20rem;
 }
 
-.item-nav-links{
+.item-nav-links a{
     color: #fff;
     margin: 0 8px;
 }
@@ -47,5 +56,4 @@
 
 li{
     list-style: none;
-    color: #fff;
 }
