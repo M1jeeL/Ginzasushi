@@ -4,20 +4,22 @@ import {
   BrowserRouter as Router,
   Switch,
   Route
-}from 'react-router-dom';
+} from 'react-router-dom';
 import Inicio from './pages/Inicio';
 import Carta from './pages/Carta';
 import Productos from './pages/Productos';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
     <div className = "App"> 
       <Router>
-      <Switch>
-        <Route exact path = "/" component = {Inicio}/>
-        <Route exact path = "/carta" component = {Carta}/>
-        <Route exact path = "/productos" component = {Productos}/>
-      </Switch>
+        <Navbar/>
+        <Switch>
+          <Route exact path = "/" component = {Inicio}/>
+          <Route exact path = "/carta" component = {Carta}/>
+          <Route exact path = "/productos" component = {Productos}/>
+        </Switch>
     </Router>
     </div>
   );
