@@ -4,7 +4,7 @@ import './Card.css'
 
 
 
-function Card ( { nombreProducto, ingredientesProducto, precioProducto} ){
+function Card ( { nombreProducto, ingredientesProducto, precioProducto } ){
 
         return(
             <>

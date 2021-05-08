@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState} from 'react';
 import Card from './Card';
 import ListaCarta from './ListaCarta.json';
 import { Link } from 'react-router-dom';
 
 
 export default function Cards (){
-    
+    const [producto, setProducto] = useState(null);
+
+    console.log(producto);
+
     return(
         <>
             <div className = "cards-container" >
@@ -14,7 +17,7 @@ export default function Cards (){
                         <div key = {item.id}>
                             <ul>
                                 <li className = "cards-links" >
-                                    <Link to = "/productos">
+                                    <Link to = "/productos" onClick = {() => setProducto(item)}>
                                         <Card 
                                         nombreProducto = {item.nombreProducto} 
                                         ingredientesProducto = {item.ingredientesProducto} 

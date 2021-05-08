@@ -24,14 +24,17 @@
 .nav-links{
     display: flex;
     align-items: center;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
 
 }
 
 .nav-icons{
     display: flex;
     align-items: center;
-
+    justify-content: space-between;
+    flex-flow: row wrap;
+    width: 60px;
+    padding: 0px;
 }
 
 .fa-user{
