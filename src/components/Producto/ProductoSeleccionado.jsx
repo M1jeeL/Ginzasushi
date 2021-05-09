@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Producto from './Producto';
 
-function ProductoSeleccionado (props) {
-   
+function ProductoSeleccionado () {
+    const [producto, setproducto] = useState(
+        {
+            nombreProducto: 'Chikin',
+            precioProducto: '2.500',
+            envolturaProducto: 'Panko / 8 Bocados',
+            ingredientesProducto: 'Pollo, Queso crema y Cebollín'
+        }
+        )
 
     return(
         <Producto 
-        nombreProducto = {props.nombreProducto} 
-        precioProducto = {props.precioProducto} 
-        envolturaProducto = {props.envolturaProducto} 
-        ingredientesProducto = {props.ingredientesProducto}
+        nombreProducto = {producto.nombreProducto} 
+        precioProducto = {producto.precioProducto} 
+        envolturaProducto = {producto.envolturaProducto} 
+        ingredientesProducto = {producto.ingredientesProducto}
         />
     )
 }

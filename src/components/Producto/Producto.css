@@ -9,22 +9,22 @@
     flex-flow: row wrap;
     justify-content: space-evenly;
     align-content:space-between;
-    
 }
 
 .producto-pic{
     display: flex;
     width: 320px;
     height: 320px;
-    flex-direction: column;
     margin: 15px 15px 0 15px;
-    min-height: 320px;
-    min-width: 320px;
-    background-image: url("../../img/sushi320x320.png");
+    background-image: url("../../img/sushi2.png");
     background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: local;
     border-radius: 1rem;
+}
+
+.linea-producto hr{
+    margin: 0.6rem 0;
+    height: 2px;
+    color: #000;
 }
 
 .info-producto{
@@ -32,6 +32,9 @@
     width: 406px;
     flex-direction: column;
     margin: 15px 15px 0 15px;
+    border: solid 1px #000;
+    padding: 1rem;
+    border-radius: 10px;
 }
 
 .producto-titulo{
@@ -39,7 +42,6 @@
     color: black;
     font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 1rem;
 }
 
 .producto-precio{
@@ -47,20 +49,22 @@
     color: black;
     font-size: 1.6rem;
     font-weight: bold;
-    margin-bottom: 1rem;
 }
 
 .producto-envoltura{
     text-align: start;
-    color: grey;
+    color: #000;
+    padding: 0.5rem 0;
+}
+
+.envoltura{
     font-style: italic;
     font-weight: 500;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
 .ing{
     text-align: start;
-    color: color;
     font-weight: 600;
     font-size: 1.5rem;
 }
@@ -69,5 +73,47 @@
     text-align: start;
     font-style: italic;
     font-weight: 500;
-    color: grey;
+    color: #000;
+}
+
+.añadir-al-carro{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.cantidad{
+    width: 138px;
+    padding: 0 15px;
+}
+
+.boton{
+    display: flex;
+    width: 204px;
+    margin: 0 15px;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    border-radius: 12px;
+}
+
+.cantidad{
+    border: solid 1px;
+    border-radius: 12px;
+}
+
+.boton span{
+    color: #fff;
+}
+
+.fa-plus-square{
+    color: #000;
+}
+
+.fa-minus-square{
+    color: #000;
+}
+
+.cantidad-productos{
+    margin: 1rem;
+    font-size: 2rem;
 }
