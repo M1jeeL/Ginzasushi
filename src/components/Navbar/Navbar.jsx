@@ -8,9 +8,7 @@ export default function Navbar() {
         <>
             <div className = "navbar">
                 <nav className = "nav-container">
-                    <div className = "nav-logo">
-                        <Link to = "/"><img src={logo} alt="ginzasushi" /></Link>
-                    </div>
+                    <Link to = "/"><div className = "nav-logo"/></Link>
                     <div>
                         <ul className = "nav-links">
                             <li className = "item-nav-links"><Link to = "/carta">Carta</Link></li>

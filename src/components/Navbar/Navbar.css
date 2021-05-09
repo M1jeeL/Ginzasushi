@@ -5,8 +5,15 @@
 }
 
 .navbar{
-    
     background-color: #000;
+}
+
+.nav-logo{
+    background-image: url("../../img/logo1.png");
+    background-size: cover;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
 }
 
 .nav-container{

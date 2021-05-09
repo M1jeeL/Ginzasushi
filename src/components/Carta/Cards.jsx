@@ -19,9 +19,9 @@ export default function Cards (){
                                 <li className = "cards-links" >
                                     <Link to = "/productos" onClick = {() => setProducto(item)}>
                                         <Card 
-                                        nombreProducto = {item.nombreProducto} 
-                                        ingredientesProducto = {item.ingredientesProducto} 
-                                        precioProducto = {item.precioProducto}
+                                            nombreProducto = {item.nombreProducto} 
+                                            ingredientesProducto = {item.ingredientesProducto} 
+                                            precioProducto = {item.precioProducto}
                                         />
                                     </Link>
                                 </li>
