@@ -1,0 +1,89 @@
+.footer{
+    background-color: #000;
+    margin-top: 5rem;
+}
+
+.footer-container{
+    display: flex;
+    width: 1136px;
+    margin: 0 auto;
+    flex-flow: column wrap;
+    justify-content: center;
+    color: #fff;
+}
+
+.footer-info{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 1rem 0;
+}
+
+.footer-contacto{
+    width: 896px;
+    align-content: center;
+    display: flex;
+}
+
+.footer-wsp{
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 1rem;
+}
+
+.footer-wsp span{
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    padding-top: 0.5rem;
+
+}
+
+.footer-wsp i{
+    color:#fff;
+    background: 
+        linear-gradient(#25d366,#25d366) 14% 84%/16% 16% no-repeat, 
+        radial-gradient(#25d366 60%,transparent 0);
+}
+
+.footer-ig{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.footer-ig span{
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}
+
+.footer-ig i{
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px;
+    height: 2.5rem;
+    line-height: 2.6rem;
+    color: #fff;
+    vertical-align: middle;
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+    box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+    margin: auto 0;
+}
+
+.footer-logo{
+    background-image: url("../../img/logo1.png");
+    background-size: cover;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
+
+.footer-contacto{
+    display: flex;
+    flex-flow: column wrap;
+
+}
+
+.footer-firma{
+    text-align  : center;
+    color: #fff;
+    height: 1.5rem;
+}

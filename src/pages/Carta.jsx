@@ -10,6 +10,7 @@ function Carta(){
 
     return(
         <>
+           
             <Imgcab nombrehead = 'Nuestra Carta'/>
             <br></br>
             <div className = "main-container">
