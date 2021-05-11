@@ -1,0 +1,118 @@
+.form-container{
+    display: flex;
+    align-items: flex-start;
+    width: 700px;
+    margin:auto;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-top: 50px;
+    
+}
+
+.perfil-form{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.form-title{
+    display: flex;
+    flex-flow: column wrap;
+    width: 300px;
+    margin: 0 1rem 1rem 1rem;
+}
+
+.perfil-form input{
+    width: 300px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.direccion-despacho-form{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 1rem 0;
+}
+
+.direccion-despacho-form input {
+    width: 300px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.form-numeracion{
+    display: flex;
+    flex-flow: column wrap;
+    margin: 0 3rem;
+}
+
+.form-numeracion input{
+    width: 100px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.form-depto{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.form-depto input{
+    width: 100px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.form-direccion{
+    display:flex;
+    flex-flow: row wrap;
+}
+
+.form-text{
+    color: #ffba00;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.3rem;
+}
+
+#comuna{
+    height: 40px;
+    border-radius: 5px;
+}
+ 
+.perfil-form-register{
+    padding:0;
+    margin:0;
+    width: 700px;
+}
+
+.perfil-form-register p{
+    font-family: 'Indie Flower', cursive;
+    font-size: 2rem;
+    margin:0;
+}
+
+.perfil-form-register hr{
+    margin: 0;
+}
+
+.direccion-form-register{
+    padding:0;
+    margin:0;
+    width: 700px;
+    font-family: 'Indie Flower', cursive;
+}
+
+.direccion-form-register p{
+    font-family: 'Indie Flower', cursive;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.direccion-form-register hr{
+    margin: 0;
+}
