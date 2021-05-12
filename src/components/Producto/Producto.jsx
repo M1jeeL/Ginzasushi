@@ -30,9 +30,9 @@ export default function Producto ( {nombreProducto, precioProducto, envolturaPro
                     <div className = "linea-producto"><hr/></div>
                     <div className = "añadir-al-carro">
                         <div className = "cantidad">
-                            <i class="fas fa-plus-square fa-2x"></i>
+                            <i className="fas fa-plus-square fa-2x"></i>
                             <span className = "cantidad-productos">1</span>
-                            <i class="fas fa-minus-square fa-2x"></i>
+                            <i className="fas fa-minus-square fa-2x"></i>
                         </div>
                         <div className = "boton">
                             <span>Añadir al carrito</span>

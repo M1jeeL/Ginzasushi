@@ -3,7 +3,7 @@ import Categorias from '../components/Carta/Categorias/Categorias';
 import ProductoSeleccionado from '../components/Producto/ProductoSeleccionado';
 import Imgcab from '../components/Imagen cabecera/Imgcab';
 
-function Productos (){
+export default function Productos (){
     return(
         <>
             <Imgcab nombrehead = 'California Rolls'/>
@@ -14,7 +14,5 @@ function Productos (){
             </div>
 
         </>
-    )
+    );
 }
-
-export default Productos;

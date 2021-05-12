@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Inicio(){
+export default function Inicio(){
     return(
         <> 
             
@@ -14,5 +14,3 @@ function Inicio(){
         </>
     );
 }
-
-export default Inicio;

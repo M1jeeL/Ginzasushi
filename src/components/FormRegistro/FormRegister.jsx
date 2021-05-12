@@ -1,20 +1,38 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import BotonForm from '../BotonForm/BotonForm';
 import './FormRegister.css'
 
 export default function FormRegister() {
-    const [form, setForm] = useState({}); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
+    const [formRegister, setFormRegister] = useState({
+        nombre: "",
+        apellido: "",
+        email: "",
+        confirmacion_email: "",
+        password: "",
+        confirmacion_password: "",
+        celular: "",
+        calle: "",
+        numeracion: "",
+        depto: ""
+    }); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
 
     const handleChange = e => { //Capturo el cambio de estado en los input
-        setForm({
-            ...form,
+        setFormRegister({
+            ...formRegister,
             [e.target.name]: e.target.value,
         });
     }
 
+    // const verificarCorreo = e => {
+    //     if (e.target.value.email === e.target.value.confirmacionEmail){
+            
+    //     };
+    // };
+
     const handleSubmit = e => { 
         e.preventDefault();
-        alert("El formulario se ha enviado correctamente")
+        alert("El formulario se ha enviado correctamente");
+
     };
 
     //Estilos con Styled Components
@@ -36,7 +54,7 @@ export default function FormRegister() {
                         type="text" 
                         id = "nombre" 
                         name = "nombre" 
-                        value = {form.nombre}
+                        value = {formRegister.nombre}
                         required
                         onChange = {handleChange}
                         />
@@ -48,7 +66,7 @@ export default function FormRegister() {
                             type="text" 
                             id = "apellido" 
                             name = "apellido" 
-                            value = {form.apellido}
+                            value = {formRegister.apellido}
                             required
                             onChange = {handleChange}
                             />  
@@ -59,7 +77,7 @@ export default function FormRegister() {
                         type="email" 
                         id = "email" 
                         name = "email" 
-                        value = {form.email}
+                        value = {formRegister.email}
                         required
                         onChange = {handleChange}
                         />    
@@ -70,7 +88,7 @@ export default function FormRegister() {
                         type="email" 
                         id = "confirmacion_email" 
                         name = "confirmacion_email" 
-                        value = {form.confirmacionEmail}
+                        value = {formRegister.confirmacionEmail}
                         required
                         onChange = {handleChange}
                         />
@@ -81,7 +99,7 @@ export default function FormRegister() {
                         type="password" 
                         id = "password" 
                         name = "password" 
-                        value = {form.password}
+                        value = {formRegister.password}
                         required
                         onChange = {handleChange}
                         />
@@ -92,7 +110,7 @@ export default function FormRegister() {
                         type="password" 
                         id = "confirmacion_password" 
                         name = "confirmacion_password" 
-                        value = {form.confirmacionPassword}
+                        value = {formRegister.confirmacionPassword}
                         required
                         onChange = {handleChange}
                         />
@@ -103,8 +121,8 @@ export default function FormRegister() {
                         type="tel" 
                         id = "celular" 
                         name = "celular" 
-                        value = {form.celular}
-                        placeholder = "+56912345678"
+                        value = {formRegister.celular}
+                        placeholder = "ej: 987654321"
                         pattern = "[0-9 +]+"
                         required
                         onChange = {handleChange}
@@ -120,7 +138,7 @@ export default function FormRegister() {
                     <div className = "form-comuna">
                         <div className = "form-title">
                             <label className = "form-text" htmlFor="comuna">Comuna</label>
-                            <select name="comuna" id="comuna" defaultValue = "" required onChange = {handleChange}>
+                            <select name="comuna" id="comuna" defaultValue = "" value = {formRegister.comuna} required onChange = {handleChange}>
                                 <option value="" disabled>Seleccione su comuna</option>
                                 <option value="el_bosque">El Bosque</option>
                                 <option value="la_cisterna">La Cisterna</option>
@@ -135,7 +153,7 @@ export default function FormRegister() {
                                 type="text"
                                 id = "calle"
                                 name = "calle"
-                                value = {form.calle}
+                                value = {formRegister.calle}
                                 required
                                 onChange = {handleChange}
                                 />
@@ -143,10 +161,10 @@ export default function FormRegister() {
                             <div className = "form-numeracion">
                                 <label className = "form-text" htmlFor="numeracion">N&uacute;mero</label>
                                 <input 
-                                type="number"
+                                type="text"
                                 id = "numeracion"
                                 name = "numeracion"
-                                value = {form.numeracion}
+                                value = {formRegister.numeracion}
                                 required
                                 onChange = {handleChange}
                                 />
@@ -157,13 +175,13 @@ export default function FormRegister() {
                                 type="text"
                                 id = "depto"
                                 name = "depto"
-                                value = {form.depto}
+                                value = {formRegister.depto}
                                 onChange = {handleChange}
                                 />
                             </div>
                         </div>
                 </div>
-                <input type="submit" value = "Crear cuenta" />
+                <BotonForm type = "submit" value = "Crear cuenta" />
 
             </form>
         </>

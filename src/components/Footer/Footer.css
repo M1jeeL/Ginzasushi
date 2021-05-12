@@ -84,6 +84,8 @@
 
 .footer-firma{
     text-align  : center;
+    font-style: italic;
+    font-size: 0.9rem;
     color: #fff;
     height: 1.5rem;
 }

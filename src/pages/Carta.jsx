@@ -4,7 +4,7 @@ import Categorias from '../components/Carta/Categorias/Categorias';
 import Imgcab from '../components/Imagen cabecera/Imgcab';
 
 
-function Carta(){
+export default function Carta(){
     
 
 
@@ -21,5 +21,3 @@ function Carta(){
         </>
     );
 }
-
-export default Carta;

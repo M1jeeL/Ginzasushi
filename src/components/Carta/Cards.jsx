@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function Cards (){
-    const [producto, setProducto] = useState(null);
+    const [producto, setProducto] = useState({});
 
     console.log(producto);
 

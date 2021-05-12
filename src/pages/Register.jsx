@@ -2,7 +2,7 @@ import React from 'react';
 import FormRegister from '../components/FormRegistro/FormRegister';
 import Imgcab from '../components/Imagen cabecera/Imgcab';
 
-function Register(){
+export default function Register(){
     return(
         <>
             <Imgcab nombrehead = 'Registrarse' />
@@ -10,5 +10,3 @@ function Register(){
         </>
     );
 }
-
-export default Register;

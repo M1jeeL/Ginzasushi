@@ -10,6 +10,7 @@ import Carta from './pages/Carta';
 import Productos from './pages/Productos';
 import Navbar from './components/Navbar/Navbar';
 import Register from './pages/Register';
+import Login from './pages/Login';
 import Footer from './components/Footer/Footer';
 import BotonWsp from './components/BotonWsp/BotonWsp';
 
@@ -24,6 +25,7 @@ function App() {
           <Route exact path = "/carta" component = {Carta}/>
           <Route exact path = "/register" component = {Register}/>
           <Route exact path = "/productos" component = {Productos}/>
+          <Route exact path = "/login" component = {Login}/>
         </Switch>
         <Footer/>
     </Router>

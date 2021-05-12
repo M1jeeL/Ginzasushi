@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Producto from './Producto';
 
 function ProductoSeleccionado () {
-    const [producto, setproducto] = useState(
+    const [producto] = useState(
         {
             nombreProducto: 'Chikin',
             precioProducto: '2.500',

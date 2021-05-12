@@ -1,0 +1,39 @@
+.form-container{
+    display: flex;
+    align-items: flex-start;
+    width: 700px;
+    margin:auto;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-top: 50px;
+    
+}
+
+.form-title{
+    display: flex;
+    flex-flow: column wrap;
+    width: 300px;
+    margin: 0 1rem 1rem 1rem;
+}
+
+.form-title input{
+    width: 300px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.crear-cuenta-login{
+    margin: 0.8rem 0;
+}
+
+.olvido-password{
+    margin: 0.8rem 0;
+}
+
+.crear-cuenta-login a:hover{
+    color:#000;
+}
+.olvido-password a:hover{
+    color: #000;
+}
