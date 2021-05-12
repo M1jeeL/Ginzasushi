@@ -7,14 +7,12 @@ export default function Footer() {
             <div className = "footer-container">
                 <div className = "footer-info">
                     <div className = "footer-logo"></div>
-                    <div className = "footer-contacto">
-                        <div className = "footer-wsp">
-                            <i className="fab fa-whatsapp fa-3x"></i>
-                            <span className = "fa-2x">+56937396320</span>
-                        </div>
+                    <div className = "footer-iconos">
                         <div className = "footer-ig">
-                            <i className="fab fa-instagram  fa-3x"></i>
-                            <span className = "fa-2x">@ginzasushi_delivery</span>
+                            <a href = "https://www.instagram.com/ginzasushi_delivery/?hl=es-la" target = "_blank" rel = "noreferrer"><i className="fab fa-instagram  fa-2x"></i></a>
+                        </div>
+                        <div className = "footer-facebook">
+                            <a href = "https://www.facebook.com/GinzasushiDelivery" target = "_blank" rel = "noreferrer"><i className = "fab fa-facebook-square fa-2x"></i></a>
                         </div>
                     </div>
                 </div>
