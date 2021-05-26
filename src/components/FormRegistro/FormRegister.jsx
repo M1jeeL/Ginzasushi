@@ -34,10 +34,6 @@ export default function FormRegister() {
         alert("El formulario se ha enviado correctamente");
 
     };
-
-    //Estilos con Styled Components
-
-
     
 
     return (

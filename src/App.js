@@ -13,6 +13,8 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Footer from './components/Footer/Footer';
 import BotonWsp from './components/BotonWsp/BotonWsp';
+import CrudApi from './components/Crud/CrudApi';
+// import Ejemplos from './components/Ejemplos/Ejemplos';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route exact path = "/register" component = {Register}/>
           <Route exact path = "/productos" component = {Productos}/>
           <Route exact path = "/login" component = {Login}/>
+          <Route exact path = "/crud" component = {CrudApi} />
+          {/* <Route exact path = "/ejemplos" component = {Ejemplos}/> */}
         </Switch>
         <Footer/>
     </Router>

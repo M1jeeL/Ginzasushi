@@ -59,6 +59,10 @@
     padding: 1rem;
 }
 
-li{
-    list-style: none;
+.icono-barras{
+    display:none;
+}
+
+.icono-x{
+    display:none;
 }
