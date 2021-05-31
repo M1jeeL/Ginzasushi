@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import BotonForm from "../BotonForm/BotonForm";
+import "./CrudForm.css";
 
 const initialFormCrud = {
   nombreProducto: "",
+  categoriaProducto: "",
   precioProducto: 0,
   id: null,
   ingredientesProducto: "",
@@ -25,7 +28,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
     }
   }, [dataToEdit]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     //Datos requeridos
     if (
@@ -52,53 +55,76 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   };
 
   return (
-    <div>
-      <h3>{dataToEdit ? "Editar Producto" : "Agregar Nuevo Producto"}</h3>
+    <div className="crud-form-container">
+      <div className="header-crud-form">
+        <h3>{dataToEdit ? "Editar Producto" : "Agregar Producto"}</h3>
+      </div>
+      <div className="linea-cool"></div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="nombreProducto">Nombre producto</label>
-        <input
-          type="text"
-          name="nombreProducto"
-          placeholder="Ingrese nombre"
-          onChange={handleChange}
-          value={formCrud.nombreProducto}
-        />
-        <label htmlFor="categoriaProducto">Categor&iacute;a</label>
-        <select
-          name="categoriaProducto"
-          defaultValue=""
-          value={formCrud.categoriaProducto}
-          onChange={handleChange}
-        >
-          <option value="" disabled>
-            Seleccione una categor&iacute;a
-          </option>
-          <option value="California Rolls">California Rolls</option>
-          <option value="Avocado Rolls">Avocado Rolls</option>
-        </select>
-        <label htmlFor="precioProducto">Precio</label>
-        <input
-          type="number"
-          name="precioProducto"
-          placeholder="Ingrese precio"
-          onChange={handleChange}
-          value={formCrud.precioProducto}
-        />
-        <label htmlFor="ingredientesProducto">Ingredientes</label>
-        <input
-          type="textarea"
-          name="ingredientesProducto"
-          placeholder="Ingrese ingredientes"
-          onChange={handleChange}
-          value={formCrud.ingredientesProducto}
-        />
-
-        <input
-          type="submit"
-          value={dataToEdit ? "Guardar" : "Agregar"}
-          onClick={handleSubmit}
-        />
-        <input type="reset" value="limpiar" onClick={handleReset} />
+        <div className="body-crud-form">
+          <div className="form-title">
+            <label className="form-text" htmlFor="nombreProducto">
+              Nombre producto
+            </label>
+            <input
+              type="text"
+              name="nombreProducto"
+              placeholder="Ingrese nombre"
+              onChange={handleChange}
+              value={formCrud.nombreProducto}
+            />
+          </div>
+          <div className="form-title">
+            <label className="form-text" htmlFor="categoriaProducto">
+              Categor&iacute;a
+            </label>
+            <select
+              id="categoria"
+              name="categoriaProducto"
+              defaultValue=""
+              value={formCrud.categoriaProducto}
+              onChange={handleChange}
+            >
+              <option value="" disabled>
+                Seleccione una categor&iacute;a
+              </option>
+              <option value="California Rolls">California Rolls</option>
+              <option value="Avocado Rolls">Avocado Rolls</option>
+            </select>
+          </div>
+          <div className="form-title">
+            <label className="form-text" >
+              Precio
+            </label>
+            <input
+              type="number"
+              name="precioProducto"
+              placeholder="Ingrese precio"
+              onChange={handleChange}
+              value={formCrud.precioProducto}
+            />
+          </div>
+          <div className="form-title">
+            <label className="form-text" htmlFor="ingredientesProducto">
+              Ingredientes
+            </label>
+            <input
+              type="textarea"
+              name="ingredientesProducto"
+              placeholder="Ingrese ingredientes"
+              onChange={handleChange}
+              value={formCrud.ingredientesProducto}
+            />
+          </div>
+        </div>
+        <div className="botones-crud-form">
+          <BotonForm type="reset" value="Limpiar" onClick={handleReset} />
+          <BotonForm
+            type="submit"
+            value={dataToEdit ? "Guardar" : "Agregar"}
+            onClick={handleSubmit}
+          />
+        </div>
       </form>
     </div>
   );

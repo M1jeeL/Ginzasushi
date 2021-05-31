@@ -1,6 +1,7 @@
 import React from "react";
+import {Button} from 'reactstrap'
 
-const CrudTableRow = ({ el, setDataToEdit, deleteData }) => {
+const CrudTableRow = ({ el, setDataToEdit, deleteData, openModal }) => {
   let {
     nombreProducto,
     categoriaProducto,
@@ -8,6 +9,9 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData }) => {
     id,
     ingredientesProducto,
   } = el;
+
+
+
   return (
     <tr>
       <td>{nombreProducto}</td>
@@ -16,8 +20,17 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData }) => {
       <td>{id}</td>
       <td>{ingredientesProducto}</td>
       <td>
-        <button onClick={() => setDataToEdit(el)}>Editar</button>
-        <button onClick={() => deleteData(id)}>Eliminar</button>
+        <Button
+        style={{marginRight:"1rem"}}
+        color="success"
+          onClick={() => {
+            setDataToEdit(el);
+            openModal();
+          }}
+        >
+          Editar
+        </Button>
+        <Button color="danger" onClick={() => deleteData(id)}>Eliminar</Button>
       </td>
     </tr>
   );

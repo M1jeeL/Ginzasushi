@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
-import CrudForm from "./CrudForm";
 import CrudTable from "./CrudTable";
 import { helpHttp } from "../../helpers/helpHttp";
 import Loader from "./Loader";
 import Message from "./Message";
+import CrudFormModal from "./CrudFormModal";
+import { Button } from "reactstrap";
 
 export default function Crud() {
   const [db, setDb] = useState(null);
   const [dataToEdit, setDataToEdit] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [openProductModal, setOpenProductModal] = useState(false);
 
   let api = helpHttp();
   let url = "http://localhost:5000/productos";
+
+  const openModal = (e) => setOpenProductModal(!openProductModal);
+
 
   useEffect(() => {
     setLoading(true);
@@ -30,11 +35,11 @@ export default function Crud() {
         setLoading(false);
       });
   }, [url]);
- 
+
   const createData = (data) => {
     data.id = Date.now();
     // console.log(data);
-    
+
     let options = {
       body: data,
       headers: { "content-type": "application/json" },
@@ -91,28 +96,32 @@ export default function Crud() {
   return (
     <div>
       <h2>Inventario de Productos</h2>
-      <article className="grid-1-2">
-        <CrudForm
-          createData={createData}
-          updateData={updateData}
-          dataToEdit={dataToEdit}
-          setDataToEdit={setDataToEdit}
+      <Button color="warning" onClick={openModal}>
+        Agregar Producto
+      </Button>
+      <CrudFormModal
+        createData={createData}
+        updateData={updateData}
+        dataToEdit={dataToEdit}
+        setDataToEdit={setDataToEdit}
+        openProductModal={openProductModal}
+        openModal={openModal}
+      />
+      {loading && <Loader />}
+      {error && (
+        <Message
+          msg={`Error ${error.status}: ${error.statusText}`}
+          bgColor="#dc3545"
         />
-        {loading && <Loader />}
-        {error && (
-          <Message
-            msg={`Error ${error.status}: ${error.statusText}`}
-            bgColor="#dc3545"
-          />
-        )}
-        {db && (
-          <CrudTable
-            data={db}
-            setDataToEdit={setDataToEdit}
-            deleteData={deleteData}
-          />
-        )}
-      </article>
+      )}
+      {db && (
+        <CrudTable
+          data={db}
+          setDataToEdit={setDataToEdit}
+          deleteData={deleteData}
+          openModal={openModal}
+        />
+      )}
     </div>
   );
 }

@@ -1,119 +1,136 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-.producto-container{
-    display: flex;
-    align-items: flex-start;
-    width: 786px;
-    margin: 24px 15px 0 15px;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    align-content:space-between;
-}
-
-.producto-pic{
-    display: flex;
-    width: 320px;
-    height: 320px;
-    margin: 15px 15px 0 15px;
-    background-image: url("../../img/sushi2.png");
-    background-size: cover;
-    border-radius: 1rem;
+.producto-container {
+  display: flex;
+  align-items: flex-start;
+  width: 786px;
+  margin: 24px 15px 0 15px;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-content: space-between;
 }
 
-.linea-producto hr{
-    margin: 0.6rem 0;
-    height: 2px;
-    color: #000;
+.producto-pic {
+  display: flex;
+  width: 320px;
+  height: 320px;
+  margin: 15px 15px 0 15px;
+  background-image: url("../../img/sushi2.png");
+  background-size: cover;
+  border-radius: 1rem;
 }
 
-.info-producto{
-    display: flex;
-    width: 406px;
-    flex-direction: column;
-    margin: 15px 15px 0 15px;
-    border: solid 1px #000;
-    padding: 1rem;
-    border-radius: 10px;
+.linea-producto hr {
+  margin: 0.6rem 0;
+  height: 2px;
+  color: #000;
 }
 
-.producto-titulo{
-    text-align: start;
-    color: black;
-    font-size: 2rem;
-    font-weight: bold;
+.info-producto {
+  display: flex;
+  width: 406px;
+  flex-direction: column;
+  margin: 15px 15px 0 15px;
+  border: solid 1px #000;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
-.producto-precio{
-    text-align: start;
-    color: black;
-    font-size: 1.6rem;
-    font-weight: bold;
+.producto-titulo {
+  text-align: start;
+  color: black;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-.producto-envoltura{
-    text-align: start;
-    color: #000;
-    padding: 0.5rem 0;
+.producto-precio {
+  text-align: start;
+  color: black;
+  font-size: 1.6rem;
+  font-weight: bold;
 }
 
-.envoltura{
-    font-style: italic;
-    font-weight: 500;
-    font-size: 1.2rem;
+.producto-envoltura {
+  text-align: start;
+  color: #000;
+  padding: 0.5rem 0;
 }
 
-.ing{
-    text-align: start;
-    font-weight: 600;
-    font-size: 1.5rem;
+.envoltura {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.2rem;
 }
 
-.producto-ingredientes .ing-desc{
-    text-align: start;
-    font-style: italic;
-    font-weight: 500;
-    color: #000;
+.ing {
+  text-align: start;
+  font-weight: 600;
+  font-size: 1.5rem;
 }
 
-.añadir-al-carro{
-    display: flex;
-    flex-flow: row wrap;
+.producto-ingredientes .ing-desc {
+  text-align: start;
+  font-style: italic;
+  font-weight: 500;
+  color: #000;
+  font-size: 1.2rem;
 }
 
-.cantidad{
-    width: 138px;
-    padding: 0 15px;
+.añadir-al-carro {
+  display: flex;
+  flex-flow: row wrap;
 }
 
-.boton{
-    display: flex;
-    width: 204px;
-    margin: 0 15px;
-    justify-content: center;
-    align-items: center;
-    background-color: #000;
-    border-radius: 12px;
+.cantidad {
+  width: 152px;
+  padding: 0 15px;
 }
 
-.cantidad{
-    border: solid 1px;
-    border-radius: 12px;
+.boton {
+  margin: 0 15px;
 }
 
-.boton span{
-    color: #fff;
+.boton input{
+  width: 190px;
+  height: 45px;
+  background-color: #ffba00;
+  border: none;
+  border-radius: .8rem;
+  font-size: 1.3rem;
+  font-family: 'Roboto Slab', serif;
 }
 
-.fa-plus-square{
-    color: #000;
+.boton input:focus{
+  outline: none
 }
 
-.fa-minus-square{
-    color: #000;
+
+.cantidad {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  border: solid 1px;
+  border-radius: 12px;
 }
 
-.cantidad-productos{
-    margin: 1rem;
-    font-size: 2rem;
+.boton span {
+  color: #fff;
+}
+
+.fa-plus-square {
+  color: #000;
+}
+
+.fa-minus-square {
+  color: #000;
+}
+
+.cantidad-productos {
+  font-size: 1.5rem;
+}
+
+.btn-cantidad-producto{
+  border:none
 }

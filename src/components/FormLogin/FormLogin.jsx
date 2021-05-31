@@ -1,52 +1,74 @@
-import React, { useState } from 'react'
-import BotonForm from '../BotonForm/BotonForm';
-import { Link } from 'react-router-dom'
-import './FormLogin.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./FormLogin.css";
+import { Button } from "reactstrap";
 
 export default function FormLogin() {
-    const [formLogin, setFormLogin] = useState({
-        email: "",
-        password: ""
+  const [formLogin, setFormLogin] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormLogin({
+      ...formLogin,
+      [e.target.name]: e.target.value,
     });
-
-    const handleChange = e => {
-        setFormLogin({
-            ...formLogin,
-            [e.target.name]: e.target.value,
-        })
-    };
-
-    return (
-        <>
-        <form className = "form-container">
-
-            <div className = "form-title" >
-                <label className = "form-text" htmlFor="email">Correo</label>
-                <input 
-                type="email" 
-                id = "email" 
-                name = "email" 
-                value = {formLogin.email}
-                required
-                onChange = {handleChange}
-                />
-            </div>
-            <div className = "form-title" >
-                <label className = "form-text" htmlFor="password">Contrase&ntilde;a</label>
-                <input 
-                type="email" 
-                id = "password" 
-                name = "password" 
-                value = {formLogin.password}
-                required
-                onChange = {handleChange}
-                />
-            </div>
-            <div className = "olvido-password"><span><a href = "/forgot-password">¿Olvidaste tu contrase&ntilde;a?</a></span></div>
-            <BotonForm type = "submit" value = "Ingresar"/>
-            <div className = "crear-cuenta-login"><Link to = "/register"><span>¿No tienes cuenta? ¡Crea la tuya ahora!</span></Link></div>
-           
-        </form>
-        </>
-    )
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      !formLogin.email||
+      !formLogin.password 
+    ){
+      alert("Datos incompletos");
+      return;
+    }
+    alert("El formulario se ha enviado correctamente");
+  };
+  return (
+    <>
+      <form className="form-container" onSubmit={handleSubmit}>
+        <div className="form-title">
+          <label className="form-text" htmlFor="email">
+            Correo
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formLogin.email}
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-title">
+          <label className="form-text" htmlFor="password">
+            Contrase&ntilde;a
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formLogin.password}
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <div className="olvido-password">
+          <span>
+            <Link to="/forgot-password">¿Olvidaste tu contrase&ntilde;a?</Link>
+          </span>
+        </div>
+        <Button type="submit" color="warning" size="lg" onClick={handleSubmit}>
+          Ingresar
+        </Button>
+        <div className="crear-cuenta-login">
+          <Link to="/register">
+            <span>¿No tienes cuenta? ¡Crea la tuya ahora!</span>
+          </Link>
+        </div>
+      </form>
+    </>
+  );
 }

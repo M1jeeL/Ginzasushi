@@ -1,11 +1,12 @@
 import React from "react";
 import CrudTableRow from "./CrudTableRow";
+import { Table } from "reactstrap";
 
-const CrudTable = ({ data, setDataToEdit, deleteData }) => {
+const CrudTable = ({ data, setDataToEdit, deleteData, openModal }) => {
   return (
     <div>
       <h3>Productos</h3>
-      <table>
+      <Table>
         <thead>
           <tr>
             <th>Nombre</th>
@@ -24,6 +25,7 @@ const CrudTable = ({ data, setDataToEdit, deleteData }) => {
                 el={el}
                 setDataToEdit={setDataToEdit}
                 deleteData={deleteData}
+                openModal={openModal}
               />
             ))
           ) : (
@@ -32,7 +34,7 @@ const CrudTable = ({ data, setDataToEdit, deleteData }) => {
             </tr>
           )}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };
