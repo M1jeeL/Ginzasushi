@@ -18,7 +18,6 @@ export default function Crud() {
 
   const openModal = (e) => setOpenProductModal(!openProductModal);
 
-
   useEffect(() => {
     setLoading(true);
     helpHttp()

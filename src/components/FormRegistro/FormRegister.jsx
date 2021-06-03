@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import BotonForm from "../BotonForm/BotonForm";
 import "./FormRegister.css";
 import {Button} from 'reactstrap'
 

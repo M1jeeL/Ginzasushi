@@ -1,24 +1,19 @@
-import React, { useState } from 'react';
-import Producto from './Producto';
+import React from "react";
+import Producto from "./Producto";
 
-function ProductoSeleccionado () {
-    const [producto] = useState(
-        {
-            nombreProducto: 'Chikin',
-            precioProducto: '2.500',
-            envolturaProducto: 'Panko / 8 Bocados',
-            ingredientesProducto: 'Pollo, Queso crema y Cebollín'
-        }
-        )
+const ProductoSeleccionado = ({ db, selectProduct }) =>{
 
-    return(
-        <Producto 
-        nombreProducto = {producto.nombreProducto} 
-        precioProducto = {producto.precioProducto} 
-        envolturaProducto = {producto.envolturaProducto} 
-        ingredientesProducto = {producto.ingredientesProducto}
-        />
-    )
+  let [showProduct] = db.filter((producto) => producto.id === selectProduct )
+
+  console.log(showProduct.id)
+
+  return (
+    <Producto
+    nombreProducto={showProduct.nombreProducto}
+    precioProducto={showProduct.precioProducto}
+    ingredientesProducto={showProduct.ingredientesProducto}
+    />
+  );
 }
 
 export default ProductoSeleccionado;

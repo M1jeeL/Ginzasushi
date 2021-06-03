@@ -4,7 +4,6 @@ import "./Producto.css";
 export default function Producto({
   nombreProducto,
   precioProducto,
-  envolturaProducto,
   ingredientesProducto,
 }) {
   const [cantidad, setCantidad] = useState(1);
@@ -39,7 +38,7 @@ export default function Producto({
             <hr />
           </div>
           <div className="producto-envoltura">
-            <span className="envoltura">{envolturaProducto}</span>
+            <span className="envoltura">sushito</span>
           </div>
           <div className="linea-producto">
             <hr />
