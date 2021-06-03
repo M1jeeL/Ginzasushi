@@ -29,17 +29,24 @@ export default function Producto({ db, producto, cart, setCart }) {
 
   const addCart = () => {
     const producto = db.filter((product) => product.id === id);
+    //Con estos auxiliares puedo aumentar la cantidad del producto sumandolo a lo que ya tenia, resolviendo el problema
+    //de que se añadiera el mismo objeto en el arreglo del carrito.
     let aux = cart.findIndex((product) => product.id === id);
-
     let cartAux = [...cart];
     let productAux = { ...cartAux[aux] };
     productAux.cantidadProducto = productAux.cantidadProducto + cantidadProducto;
     cartAux[aux] = productAux;
-    console.log(productAux);
+    // console.log(productAux);
 
     aux >= 0 ? setCart([...cartAux]) : setCart([...cart, ...producto]);
   };
-  console.table(cart);
+  // console.table(cart);
+
+  const styleBtnProduct = {
+    backgroundColor:"#000",
+    color: "#fff",
+    fontWeight:"bold"
+  }
 
   return (
     <>
@@ -88,7 +95,7 @@ export default function Producto({ db, producto, cart, setCart }) {
               </button>
             </div>
             <div className="boton">
-              <Button color="warning" onClick={addCart}>
+              <Button style={styleBtnProduct} onClick={addCart}>
                 Añadir al carrito
               </Button>
             </div>

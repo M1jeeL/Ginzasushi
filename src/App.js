@@ -31,7 +31,7 @@ const App = () => {
     <div className = "App"> 
       <Router>
         <BotonWsp/>
-        <Navbar/>
+        <Navbar cart={cart}/>
         <Switch>
           <Route exact path = "/">
             <Inicio/>

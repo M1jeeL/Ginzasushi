@@ -38,8 +38,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-flow: row wrap;
-    width: 60px;
+    flex-flow: row;
+    width: 80px;
     padding: 0px;
 }
 
@@ -49,6 +49,7 @@
 
 .fa-shopping-cart{
     color:#fff;
+    z-index: -1 ;
 }
 
 .item-nav-links a{
@@ -65,4 +66,23 @@
 
 .icono-x{
     display:none;
+}
+
+.contador-carrito-compras{
+  background-color: #ffb922;
+  color:#fff;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #000;
+  height: 1.5rem;
+  width: 1.5rem;
+  z-index: 1000;
+  margin: 0 -0.8rem -0.5rem 0;
+}
+
+.carrito-compras-container{
+  display:flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+  margin-top: -0.9rem;
 }
