@@ -15,7 +15,7 @@ import Login from './pages/Login';
 import Footer from './components/Footer/Footer';
 import BotonWsp from './components/BotonWsp/BotonWsp';
 import CrudApi from './components/Crud/CrudApi';
-import ListaCarta from './components/ListaCarta.json'
+import db from './components/ListaCarta.json'
 // import Ejemplos from './components/Ejemplos/Ejemplos';
 
 const App = () => {
@@ -23,6 +23,8 @@ const App = () => {
   const [selectProduct, setSelectProduct] = useState({
     id: 1
   })
+
+  const [cart, setCart] = useState([])
 
   return (
     <div className = "App"> 
@@ -34,13 +36,13 @@ const App = () => {
             <Inicio/>
           </Route>
           <Route exact path = "/carta">
-            <Carta  db={ListaCarta.productos} selectProduct={selectProduct} setSelectProduct={setSelectProduct}/>
+            <Carta  db={db.productos} categorias={db.categorias} selectProduct={selectProduct} setSelectProduct={setSelectProduct}/>
           </Route>
           <Route exact path = "/register">
             <Register/>
           </Route>
-          <Route exact path = "/productos">
-            <Productos  db={ListaCarta.productos} selectProduct={selectProduct}/>
+          <Route path = "/productos/">
+            <Productos  db={db.productos} selectProduct={selectProduct}/>
           </Route>
           <Route exact path = "/login">
             <Login/>

@@ -11,7 +11,7 @@ export default function Cards({ db, selectProduct, setSelectProduct }) {
             <div key={item.id}>
               <ul>
                 <li className="cards-links">
-                  <Link to="/productos" onClick={() => setSelectProduct(item.id)}>
+                  <Link to={item.url} onClick={() => setSelectProduct(item.id)}>
                     <Card
                       nombreProducto={item.nombreProducto}
                       ingredientesProducto={item.ingredientesProducto}

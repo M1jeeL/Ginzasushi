@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./Producto.css";
 
-export default function Producto({
-  nombreProducto,
-  precioProducto,
-  ingredientesProducto,
-  envolturaProducto,
-}) {
+export default function Producto({ producto }) {
+  const {
+    nombreProducto,
+    precioProducto,
+    envolturaProducto,
+    ingredientesProducto,
+  } = producto;
+  
   const [cantidad, setCantidad] = useState(1);
   const addCantidad = () => {
     setCantidad(cantidad + 1);
