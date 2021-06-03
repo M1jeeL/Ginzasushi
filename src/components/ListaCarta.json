@@ -7,6 +7,7 @@
         "precioReal": 2500,
         "ingredientesProducto": "Pollo, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/chikin"
     },
     {
@@ -16,6 +17,7 @@
         "precioReal": 2800,
         "ingredientesProducto": "Camarón, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/ebi"
     },
     {
@@ -25,6 +27,7 @@
         "precioReal": 2800,
         "ingredientesProducto": "Salmón, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/samon"
     },
     {
@@ -34,6 +37,7 @@
         "precioReal": 2300,
         "ingredientesProducto": "Kanikama, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/kami"
     },
     {
@@ -43,6 +47,7 @@
         "precioReal": 3000,
         "ingredientesProducto": "Salmón, Camarón, Queso crema y Palta.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/daburu"
     },
     {
@@ -52,6 +57,7 @@
         "precioReal": 2800,
         "ingredientesProducto": "Carne de res, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/niku"
     },
     {
@@ -61,6 +67,7 @@
         "precioReal": 2500,
         "ingredientesProducto": "Verduras saltadeadas, Queso crema y Palta.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/veggie"
     },
     {
@@ -70,6 +77,7 @@
         "precioReal": 2500,
         "ingredientesProducto": "Champiñon, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/kinoko"
     },
     {
@@ -79,6 +87,7 @@
         "precioReal": 2500,
         "ingredientesProducto": "Choclito, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/kon"
     },
     {
@@ -88,6 +97,7 @@
         "precioReal": 2500,
         "ingredientesProducto": "Aceitunas, Queso crema y Palta.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/oribu"
     },
     {
@@ -97,6 +107,7 @@
         "precioReal": 3000,
         "ingredientesProducto": "Pollo apanado, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/hot-chikin"
     },
     {
@@ -106,6 +117,7 @@
         "precioReal": 3000,
         "ingredientesProducto": "Salmón apanado, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/hot-samon"
     },
     {
@@ -115,6 +127,7 @@
         "precioReal": 3500,
         "ingredientesProducto": "Camarón apanado, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
+        "envolturaProducto": "Panko / 8 Bocados",
         "url": "/california-rolls/hot-ebi"
     },
     {
@@ -124,6 +137,7 @@
         "precioReal": 3000,
         "ingredientesProducto": "Pollo, Queso crema y Pimentón",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/chikin"
     },
     {
@@ -133,6 +147,7 @@
         "precioReal": 3200,
         "ingredientesProducto": "Camarón y Queso crema.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/ebi"
     },
     {
@@ -142,6 +157,7 @@
         "precioReal": 3700,
         "ingredientesProducto": "Salmón y Queso crema.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/samon"
     },
     {
@@ -151,6 +167,7 @@
         "precioReal": 3000,
         "ingredientesProducto": "Kanikama y Queso crema.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/kami"
     },
     {
@@ -160,6 +177,7 @@
         "precioReal": 3700,
         "ingredientesProducto": "Salmón, Camarón y Queso crema.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/daburu"
     },
     {
@@ -169,6 +187,7 @@
         "precioReal": 3800,
         "ingredientesProducto": "Carne de res, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/niku"
     },
     {
@@ -178,6 +197,7 @@
         "precioReal": 3000,
         "ingredientesProducto": "Verduras saltadeadas y Queso crema",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/veggie"
     },
     {
@@ -187,6 +207,7 @@
         "precioReal": 3000,
         "ingredientesProducto": "Champiñon, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/kinoko"
     },
     {
@@ -196,6 +217,7 @@
         "precioReal": 3000,
         "ingredientesProducto": "Choclito, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/kon"
     },
     {
@@ -205,6 +227,7 @@
         "precioReal": 2800,
         "ingredientesProducto": "Aceitunas y Queso crema.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/oribu"
     },
     {
@@ -214,6 +237,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Pollo apanado, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/hot-chikin"
     },
     {
@@ -223,6 +247,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Salmón apanado, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/hot-samon"
     },
     {
@@ -232,6 +257,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Camarón apanado, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/avocado-rolls/hot-ebi"
     },
     {
@@ -241,6 +267,7 @@
         "precioReal": 3700,
         "ingredientesProducto": "Pollo, Queso crema y Palta",
         "categoriaProducto": "Samon Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/samon-rolls/chikin"
     },
     {
@@ -250,6 +277,7 @@
         "precioReal": 3900,
         "ingredientesProducto": "Camarón, Queso crema y Palta.",
         "categoriaProducto": "Samon Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/samon-rolls/ebi"
     },
     {
@@ -259,6 +287,7 @@
         "precioReal": 3700,
         "ingredientesProducto": "Salmón, Queso crema y Palta.",
         "categoriaProducto": "Samon Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/samon-rolls/samon"
     },
     {
@@ -268,6 +297,7 @@
         "precioReal": 3400,
         "ingredientesProducto": "Kanikama, Queso crema y Palta.",
         "categoriaProducto": "Samon Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/samon-rolls/kami"
     },
     {
@@ -277,6 +307,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Salmón, Camarón y Queso crema.",
         "categoriaProducto": "Samon Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/samon-rolls/daburu"
     },
     {
@@ -286,6 +317,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Pollo apanado, Queso crema, Cebollín y Palta.",
         "categoriaProducto": "Samon Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/samon-rolls/hot-chikin"
     },
     {
@@ -295,6 +327,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Salmón apanado, Queso crema, Cebollín y Palta.",
         "categoriaProducto": "Samon Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/samon-rolls/hot-samon"
     },
     {
@@ -304,6 +337,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Camarón apanado, Queso crema, Cebollín y Palta.",
         "categoriaProducto": "Samon Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/samon-rolls/hot-ebi"
     },
     {
@@ -313,6 +347,7 @@
         "precioReal":3900,
         "ingredientesProducto": "Pollo, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/chikin"
     },
     {
@@ -322,6 +357,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Camarón, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/ebi"
     },
     {
@@ -331,6 +367,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Salmón, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/samon"
     },
     {
@@ -340,6 +377,7 @@
         "precioReal": 3500,
         "ingredientesProducto": "Kanikama, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/kami"
     },
     {
@@ -349,6 +387,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Salmón, Camarón, Queso crema y Palta.",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/daburu"
     },
     {
@@ -358,6 +397,7 @@
         "precioReal": 4000,
         "ingredientesProducto": "Carne, Queso chanco y Orégano.",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/niku"
     },
     {
@@ -367,6 +407,7 @@
         "precioReal": 3400,
         "ingredientesProducto": "Espárragos, Queso crema y Palta.",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/veggie"
     },
     {
@@ -376,6 +417,7 @@
         "precioReal": 3400,
         "ingredientesProducto": "Champiñon, Queso crema y Palta",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/kinoko"
     },
     {
@@ -385,6 +427,7 @@
         "precioReal": 3400,
         "ingredientesProducto": "Choclito, Queso crema y Palta.",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/kon"
     },
     {
@@ -394,6 +437,7 @@
         "precioReal": 3400,
         "ingredientesProducto": "Palmito, Queso crema y Palta.",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/kon"
     },
     {
@@ -403,6 +447,7 @@
         "precioReal": 3400,
         "ingredientesProducto": "Almendras, Queso crema y Palta.",
         "categoriaProducto": "Panko Rolls",
+        "envolturaProducto": "Palta / 8 Bocados",
         "url": "/panko-rolls/kon"
     }
     ]

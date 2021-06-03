@@ -5,9 +5,9 @@ export default function Producto({
   nombreProducto,
   precioProducto,
   ingredientesProducto,
+  envolturaProducto,
 }) {
   const [cantidad, setCantidad] = useState(1);
-
   const addCantidad = () => {
     setCantidad(cantidad + 1);
   };
@@ -38,14 +38,16 @@ export default function Producto({
             <hr />
           </div>
           <div className="producto-envoltura">
-            <span className="envoltura">sushito</span>
+            <span className="ing">Envuelto en:</span>
+            <br />
+            <span className="envoltura">{envolturaProducto}</span>
           </div>
           <div className="linea-producto">
             <hr />
           </div>
           <div className="producto-ingredientes">
             <span className="ing">Ingredientes: </span>
-            <br></br>
+            <br />
             <span className="ing-desc">{ingredientesProducto}</span>
           </div>
           <div className="linea-producto">

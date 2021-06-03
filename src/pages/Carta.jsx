@@ -10,7 +10,11 @@ export default function Carta({ db, selectProduct, setSelectProduct }) {
       <br></br>
       <div className="main-container">
         <Categorias />
-        <Cards db={db} selectProduct={selectProduct} setSelectProduct={setSelectProduct}/>
+        <Cards
+          db={db}
+          selectProduct={selectProduct}
+          setSelectProduct={setSelectProduct}
+        />
       </div>
     </>
   );
