@@ -16,6 +16,7 @@ import Footer from './components/Footer/Footer';
 import BotonWsp from './components/BotonWsp/BotonWsp';
 import CrudApi from './components/Crud/CrudApi';
 import db from './components/ListaCarta.json'
+import Cart from './components/Carrito/Cart';
 // import Ejemplos from './components/Ejemplos/Ejemplos';
 
 const App = () => {
@@ -42,13 +43,16 @@ const App = () => {
             <Register/>
           </Route>
           <Route path = "/productos/">
-            <Productos  db={db.productos} selectProduct={selectProduct}/>
+            <Productos  db={db.productos} selectProduct={selectProduct} cart={cart} setCart={setCart}/>
           </Route>
           <Route exact path = "/login">
             <Login/>
           </Route>
           <Route exact path = "/crud">
             <CrudApi/>
+          </Route>
+          <Route exact path = "/carro-de-compras">
+            <Cart cart={cart} setCart={setCart}/>
           </Route>
           {/* <Route exact path = "/ejemplos" component = {Ejemplos}/> */}
         </Switch>

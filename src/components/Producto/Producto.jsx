@@ -1,26 +1,45 @@
 import React, { useState } from "react";
 import "./Producto.css";
+import { Button } from "reactstrap";
 
-export default function Producto({ producto }) {
+export default function Producto({ db, producto, cart, setCart }) {
   const {
     nombreProducto,
     precioProducto,
     envolturaProducto,
     ingredientesProducto,
+    id,
   } = producto;
-  
-  const [cantidad, setCantidad] = useState(1);
+
+  const [cantidadProducto, setCantidadProducto] = useState(1);
+
   const addCantidad = () => {
-    setCantidad(cantidad + 1);
+    setCantidadProducto(cantidadProducto + 1);
   };
 
   const quitarCantidad = () => {
-    if (cantidad === 1) {
+    if (cantidadProducto === 1) {
       return;
     } else {
-      setCantidad(cantidad - 1);
+      setCantidadProducto(cantidadProducto - 1);
     }
   };
+
+  producto.cantidadProducto = cantidadProducto;
+
+  const addCart = () => {
+    const producto = db.filter((product) => product.id === id);
+    let aux = cart.findIndex((product) => product.id === id);
+
+    let cartAux = [...cart];
+    let productAux = { ...cartAux[aux] };
+    productAux.cantidadProducto = productAux.cantidadProducto + cantidadProducto;
+    cartAux[aux] = productAux;
+    console.log(productAux);
+
+    aux >= 0 ? setCart([...cartAux]) : setCart([...cart, ...producto]);
+  };
+  console.table(cart);
 
   return (
     <>
@@ -60,7 +79,7 @@ export default function Producto({ producto }) {
               <button className="btn-cantidad-producto" onClick={addCantidad}>
                 <i className="fas fa-plus-square fa-2x"></i>
               </button>
-              <span className="cantidad-productos">{cantidad}</span>
+              <span className="cantidad-productos">{cantidadProducto}</span>
               <button
                 className="btn-cantidad-producto"
                 onClick={quitarCantidad}
@@ -69,7 +88,9 @@ export default function Producto({ producto }) {
               </button>
             </div>
             <div className="boton">
-              <input value="Añadir al carrito" type="submit" />
+              <Button color="warning" onClick={addCart}>
+                Añadir al carrito
+              </Button>
             </div>
           </div>
         </div>
