@@ -84,5 +84,9 @@
   display:flex;
   flex-flow: column nowrap;
   align-items: flex-end;
-  margin-top: -0.9rem;
+  margin-top: -1rem;
+  outline: none;
+  background: none;
+  border:none;
 }
+

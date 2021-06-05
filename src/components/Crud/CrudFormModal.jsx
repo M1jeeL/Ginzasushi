@@ -74,8 +74,8 @@ const CrudForm = ({
     outline: "none",
     backgroundColor: "#ffba00",
     border: "none",
+    boxShadow: "none",
   };
-
 
   return (
     <Modal isOpen={openProductModal === true}>

@@ -11,14 +11,18 @@
   align-content: space-between;
 }
 
-.producto-pic {
-  display: flex;
+
+.producto-pic-container{
   width: 320px;
   height: 320px;
+  
+}
+
+.producto-pic {
+  width: 100%;
+  height: 320px;
   margin: 15px 15px 0 15px;
-  background-image: url("../../img/sushi2.png");
-  background-size: cover;
-  border-radius: 1rem;
+
 }
 
 .linea-producto hr {

@@ -2,8 +2,7 @@ import React from "react";
 import { Table } from "reactstrap";
 import CartTableRow from "./CartTableRow";
 
-
-const CartTable = ({cart}) => {
+const CartTable = ({ cart }) => {
   return (
     <div>
       <Table>
@@ -17,10 +16,7 @@ const CartTable = ({cart}) => {
         <tbody>
           {cart.length > 0 ? (
             cart.map((producto) => (
-              <CartTableRow
-                key={producto.id}
-                el={producto}
-              />
+              <CartTableRow key={producto.id} el={producto} />
             ))
           ) : (
             <tr>

@@ -37,7 +37,7 @@ const App = () => {
             <Inicio/>
           </Route>
           <Route exact path = "/carta">
-            <Carta  db={db.productos} categorias={db.categorias} selectProduct={selectProduct} setSelectProduct={setSelectProduct}/>
+            <Carta  db={db.productos} selectProduct={selectProduct} setSelectProduct={setSelectProduct}/>
           </Route>
           <Route exact path = "/register">
             <Register/>

@@ -34,7 +34,8 @@ export default function Producto({ db, producto, cart, setCart }) {
     let aux = cart.findIndex((product) => product.id === id);
     let cartAux = [...cart];
     let productAux = { ...cartAux[aux] };
-    productAux.cantidadProducto = productAux.cantidadProducto + cantidadProducto;
+    productAux.cantidadProducto =
+      productAux.cantidadProducto + cantidadProducto;
     cartAux[aux] = productAux;
     // console.log(productAux);
 
@@ -43,15 +44,21 @@ export default function Producto({ db, producto, cart, setCart }) {
   // console.table(cart);
 
   const styleBtnProduct = {
-    backgroundColor:"#000",
+    backgroundColor: "#000",
     color: "#fff",
-    fontWeight:"bold"
-  }
+    fontWeight: "bold",
+  };
 
   return (
     <>
       <div className="producto-container">
-        <div className="producto-pic"></div>
+        <div className="producto-pic-container">
+          <img
+            src="http://pngimg.com/uploads/sushi/sushi_PNG98863.png"
+            alt="ginzasushi sushi barros luco"
+            className="producto-pic"
+          />
+        </div>
         <div className="info-producto">
           <div className="producto-titulo">
             <span>{nombreProducto}</span>

@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "reactstrap";
+import CartModal from "../Carrito/CartModal";
 import "./Navbar.css";
 
-export default function Navbar({cart}) {
+export default function Navbar({ cart }) {
   //const [menuDisplay, setMenuDisplay] = useState(false);
-  
+  const [openCartModal, setCartModal] = useState(false);
+  const openModal = (e) => setCartModal(!openCartModal);
+
+  const btnCartForm = {
+    outline: "none",
+    background: "none",
+    border: "none",
+    boxShadow: "none",
+  };
+
   return (
     <>
       <div className="navbar">
@@ -33,10 +44,23 @@ export default function Navbar({cart}) {
                 </Link>
               </li>
               <li className="item-nav-icons">
-                <Link to="/carro-de-compras" className="carrito-compras-container">
-                  <div><div className="contador-carrito-compras">{cart.length}</div></div>
+                <Button
+                style={btnCartForm}
+                  onClick={openModal}
+                  className="carrito-compras-container"
+                >
+                  <div>
+                    <div className="contador-carrito-compras">
+                      {cart.length}
+                    </div>
+                  </div>
                   <i className="fas fa-shopping-cart fa-2x"></i>
-                </Link>
+                </Button>
+                <CartModal
+                  openModal={openModal}
+                  openCartModal={openCartModal}
+                  cart={cart}
+                />
               </li>
             </ul>
           </div>
