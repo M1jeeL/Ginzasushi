@@ -20,7 +20,7 @@ const CartTable = ({ cart }) => {
             ))
           ) : (
             <tr>
-              <td colSpan="3">Sin datos</td>
+              <td colSpan="3">No hay productos en el carrito</td>
             </tr>
           )}
         </tbody>

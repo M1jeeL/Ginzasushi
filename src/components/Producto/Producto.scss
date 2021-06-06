@@ -1,27 +1,14 @@
-@charset "UTF-8";
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 .producto-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: flex-start;
   width: 786px;
   margin: 24px 15px 0 15px;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -ms-flex-line-pack: justify;
-      align-content: space-between;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-content: space-between;
 }
 
 .producto-pic-container {
@@ -42,14 +29,9 @@
 }
 
 .info-producto {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 406px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin: 15px 15px 0 15px;
   border: solid 1px #000;
   padding: 1rem;
@@ -97,13 +79,8 @@
 }
 
 .añadir-al-carro {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
+  flex-flow: row wrap;
 }
 
 .cantidad {
@@ -126,19 +103,10 @@
 }
 
 .cantidad {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
   border: solid 1px;
   border-radius: 12px;
 }
@@ -162,4 +130,3 @@
 .btn-cantidad-producto {
   border: none;
 }
-/*# sourceMappingURL=Producto.css.map */

@@ -1,14 +1,16 @@
 import React from "react";
-import { Modal, Button } from "reactstrap";
+import { Modal, ModalHeader } from "reactstrap";
 import CartTable from "./CartTable";
+import './CartModal.css';
 
-const CartModal = ({ cart, openCartModal, openModal }) => {
+const CartModal = ({ cart, openCartModal, handleCartModal }) => {
   return (
     <div>
-      <Modal isOpen={openCartModal === true} backdrop={false}>
-        <div>
-          <Button close onClick={openModal} />
-        </div>
+      <Modal isOpen={openCartModal} toggle={handleCartModal}>
+        <ModalHeader toggle={handleCartModal}>
+          Carrito de compras
+        </ModalHeader>
+
         <CartTable cart={cart} />
       </Modal>
     </div>

@@ -30,7 +30,7 @@ const App = () => {
   return (
     <div className = "App"> 
       <Router>
-        <BotonWsp/>
+        {/* <BotonWsp/> */}
         <Navbar cart={cart}/>
         <Switch>
           <Route exact path = "/">

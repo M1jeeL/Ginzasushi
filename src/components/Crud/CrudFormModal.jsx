@@ -78,9 +78,9 @@ const CrudForm = ({
   };
 
   return (
-    <Modal isOpen={openProductModal === true}>
+    <Modal isOpen={openProductModal} toggle={openModal}>
       <ModalHeader className="header-crud-form">
-        <div className="titulo-form-crud">
+        <div className="titulo-form-crud ">
           {dataToEdit ? "Editar Producto" : "Agregar Producto"}
         </div>
         <div className="btn-cerrar-form-modal">

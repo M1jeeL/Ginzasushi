@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Button } from "reactstrap";
 import CartModal from "../Carrito/CartModal";
 import "./Navbar.css";
 
 export default function Navbar({ cart }) {
-  //const [menuDisplay, setMenuDisplay] = useState(false);
+  const [navLinkOpen, setNavLinkOpen] = useState(false);
   const [openCartModal, setCartModal] = useState(false);
-  const openModal = (e) => setCartModal(!openCartModal);
+  const handleCartModal = (e) => setCartModal(!openCartModal);
 
-  const btnCartForm = {
+  const handleNavLinksToggle= () => {
+    setNavLinkOpen(!navLinkOpen)
+  }
+
+  const btnNonStyle = {
     outline: "none",
     background: "none",
     border: "none",
@@ -18,60 +22,59 @@ export default function Navbar({ cart }) {
 
   return (
     <>
-      <div className="navbar">
-        <nav className="nav-container">
-          <Link to="/">
+      <nav>
+
+          <NavLink exact to="/">
             <div className="nav-logo" />
-          </Link>
-          <div>
-            <ul className="nav-links">
-              <li className="item-nav-links">
-                <Link to="/carta">Carta</Link>
-              </li>
-              <li className="item-nav-links">
-                <Link to="/login">Login</Link>
-              </li>
-              <li className="item-nav-links">
-                <Link to="/register">Registro</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <ul className="nav-icons">
-              <li className="item-nav-icons">
-                <Link to="/mi-cuenta">
-                  <i className="fas fa-user fa-2x"></i>
-                </Link>
-              </li>
-              <li className="item-nav-icons">
-                <Button
-                style={btnCartForm}
-                  onClick={openModal}
-                  className="carrito-compras-container"
-                >
-                  <div>
-                    <div className="contador-carrito-compras">
-                      {cart.length}
-                    </div>
-                  </div>
-                  <i className="fas fa-shopping-cart fa-2x"></i>
-                </Button>
-                <CartModal
-                  openModal={openModal}
-                  openCartModal={openCartModal}
-                  cart={cart}
-                />
-              </li>
-            </ul>
-          </div>
-          <div className="icono-barras">
-            <i className="fas fa-bars"></i>
-          </div>
-          <div className="icono-x">
+          </NavLink>
+          <ul className={navLinkOpen ? "nav-links active":"nav-links"}>
+            <li className="item-nav-links">
+              <NavLink to="/carta" exact>
+                Carta
+              </NavLink>
+            </li>
+            <li className="item-nav-links">
+              <NavLink to="/login" exact>
+                Login
+              </NavLink>
+            </li>
+            <li className="item-nav-links">
+              <NavLink to="/register" exact>
+                Registro
+              </NavLink>
+            </li>
+          </ul>
+
+          <ul className="nav-icons">
+            <li className="item-nav-icons">
+              <NavLink to="/mi-cuenta" exact>
+                <i className="fas fa-user fa-2x"></i>
+              </NavLink>
+            </li>
+            <li className="item-nav-icons icon-cart">
+              <Button
+                style={btnNonStyle}
+                onClick={handleCartModal}
+                className="carrito-compras-container"
+              >
+                <div>{cart.length}</div>
+                <i className="fas fa-shopping-cart fa-2x"></i>
+              </Button>
+              <CartModal
+                handleCartModal={handleCartModal}
+                openCartModal={openCartModal}
+                cart={cart}
+              />
+            </li>
+          </ul>
+          <Button  style={btnNonStyle} className="icono-barras" onClick={handleNavLinksToggle}>
+            <i className="fas fa-bars fa-2x"></i>
+          </Button>
+          {/* <div className="icono-x">
             <i className="fas fa-times"></i>
-          </div>
-        </nav>
-      </div>
+          </div> */}
+
+      </nav>
     </>
   );
 }

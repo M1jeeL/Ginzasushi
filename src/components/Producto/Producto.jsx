@@ -90,15 +90,15 @@ export default function Producto({ db, producto, cart, setCart }) {
           </div>
           <div className="añadir-al-carro">
             <div className="cantidad">
-              <button className="btn-cantidad-producto" onClick={addCantidad}>
-                <i className="fas fa-plus-square fa-2x"></i>
-              </button>
-              <span className="cantidad-productos">{cantidadProducto}</span>
               <button
                 className="btn-cantidad-producto"
                 onClick={quitarCantidad}
               >
                 <i className="fas fa-minus-square fa-2x"></i>
+              </button>
+              <span className="cantidad-productos">{cantidadProducto}</span>
+              <button className="btn-cantidad-producto" onClick={addCantidad}>
+                <i className="fas fa-plus-square fa-2x"></i>
               </button>
             </div>
             <div className="boton">

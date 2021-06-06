@@ -8,25 +8,11 @@
 
 .main-container{
   display: flex;
-  width: 1136px;
+  width: 71em;
   flex-flow: row wrap;
   margin: 0 auto;
 }
 
-body{
-  background-color: #ffffff;
-}
-
-nav{
-  position:sticky; 
-  top: 0px;   
-  left: 0px; 
-  right: 0px;
-}
-
-.centered{
-  text-align: center;
-}
 
 a, a:hover,a:visited, a:focus {
   color:inherit;

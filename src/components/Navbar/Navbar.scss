@@ -1,0 +1,130 @@
+nav {
+  display: flex;
+  background-color: #000;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 12vh;
+  width: 100%;
+  z-index: 1000000;
+}
+
+.nav-logo {
+  background-image: url("../../img/logo1.png");
+  background-size: cover;
+  height: 7em;
+  width: 7em;
+  border-radius: 50%;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  width: 50%;
+}
+
+.item-nav-links {
+  letter-spacing: 2px;
+  font-weight: bold;
+  a {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.5em;
+    font-family: "Permanent Marker", cursive;
+  }
+  a:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+.nav-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 10%;
+}
+
+.item-nav-icons {
+  .fa-user {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .fa-user:hover {
+    color: #fff;
+  }
+  .fa-shopping-cart {
+    color: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+  }
+  .fa-shopping-cart:hover {
+    color: #fff;
+  }
+  Button {
+    display: flex;
+    :nth-child(1) {
+      z-index: 10;
+      background-color: #ffb922;
+      border-radius: 50%;
+      border: 1px solid #000;
+      height: 1.5em;
+      width: 1.5em;
+      margin: 0 -0.8em -0.5em 0;
+    }
+  }
+}
+
+.icono-barras {
+  cursor: pointer;
+  color: #fff;
+  display: none;
+}
+
+.icono-x {
+  display: none;
+}
+
+.carrito-compras-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+  margin-top: -1rem;
+  outline: none;
+  background: none;
+  border: none;
+}
+
+@media screen and (max-width: 719px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-logo {
+    height: 5em;
+    width: 5em;
+    order: 0;
+  }
+  .icono-barras {
+    display: block;
+    order: -1;
+  }
+  .nav-icons {
+    order: 1;
+  }
+  .nav-links {
+    position: absolute;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 92vh;
+    align-items: center;
+    width: 100%;
+    top: 11.9vh;
+    background-color: #000;
+    font-size: 2rem;
+    transform: translateX(100%);
+    transition:transform 0.5s ease-in;
+  }
+  .active{
+    transform: translateX(0%);
+  }
+}

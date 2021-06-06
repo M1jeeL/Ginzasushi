@@ -4,9 +4,8 @@ import './Footer.css'
 export default function Footer() {
     return (
         <div className = "footer">
-            <div className = "footer-container">
                 <div className = "footer-info">
-                    <div className = "footer-logo"></div>
+                    <div className = "footer-logo"/>
                     <div className = "footer-iconos">
                         <div className = "footer-ig">
                             <a href = "https://www.instagram.com/ginzasushi_delivery/?hl=es-la" target = "_blank" rel = "noreferrer"><i className="fab fa-instagram  fa-2x"></i></a>
@@ -19,7 +18,6 @@ export default function Footer() {
                 <div className = "footer-firma">
                     <p>© Ginzasushi delivery - Desarrollado por mijel</p>
                 </div>
-            </div>
         </div>
         
     )
