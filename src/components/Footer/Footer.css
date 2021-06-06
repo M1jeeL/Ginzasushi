@@ -110,11 +110,12 @@
   color: #3b5998;
 }
 
-.footer-firma {
+.footer-firma p {
   text-align: center;
   font-style: italic;
-  font-size: 0.87rem;
+  font-size: 0.8em;
   color: #fff;
   height: 1.5rem;
+  margin: 0;
 }
 /*# sourceMappingURL=Footer.css.map */

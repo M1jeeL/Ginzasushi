@@ -1,42 +1,58 @@
-*{
-  box-sizing: border-box;
-}
-
-.cards-container{
+.cards-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   width: 786px;
   margin: 24px 15px 0 15px;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  align-content:space-between;
-  }
-  
-  .cards-container ul{
-    list-style-type: none;
-  }
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
 
-.card-container{
+.cards-container ul {
+  list-style-type: none;
+}
+
+.card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 22.3rem;
   height: 10em;
-  flex: 0 0 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
   margin: 0.5rem 0;
   background-color: #efe7cd;
   border-radius: 1rem;
-  box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.2);
-  flex-shrink: 1;
+  -webkit-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
-.card-descripcion{
+.card-descripcion {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-content: space-between;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
   height: 70%;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin: 0.5rem 0.5rem;
 }
 
-.card-titulo{
+.card-titulo {
   text-align: center;
   color: black;
   font-size: 1.5rem;
@@ -44,26 +60,29 @@
   height: 20%;
 }
 
-.card-ingredientes{
-  justify-content: center;
+.card-ingredientes {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-style: italic;
   font-size: 0.8rem;
   height: 100%;
-  
 }
 
-.card-precio{
+.card-precio {
   font-weight: bold;
   font-style: italic;
   font-size: 1.2rem;
 }
 
-.card-pic{
+.card-pic {
   border-radius: 0rem 1rem 1rem 0rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
-.cards-links a:hover{
-  color:black;
+.cards-links a:hover {
+  color: black;
 }
-  
+/*# sourceMappingURL=Card.css.map */

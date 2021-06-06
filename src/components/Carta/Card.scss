@@ -1,0 +1,62 @@
+.cards-container {
+  display: flex;
+  align-items: flex-start;
+  width: 786px;
+  margin: 24px 15px 0 15px;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-content: space-between;
+}
+
+.cards-container ul {
+  list-style-type: none;
+}
+
+.card-container {
+  display: flex;
+  width: 22.3rem;
+  height: 10em;
+  flex: 0 0 100%;
+  margin: 0.5rem 0;
+  background-color: #efe7cd;
+  border-radius: 1rem;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+.card-descripcion {
+  display: flex;
+  align-content: space-between;
+  height: 70%;
+  flex-direction: column;
+  margin: 0.5rem 0.5rem;
+}
+
+.card-titulo {
+  text-align: center;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  height: 20%;
+}
+
+.card-ingredientes {
+  justify-content: center;
+  font-style: italic;
+  font-size: 0.8rem;
+  height: 100%;
+}
+
+.card-precio {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.card-pic {
+  border-radius: 0rem 1rem 1rem 0rem;
+  display: flex;
+}
+
+.cards-links a:hover {
+  color: black;
+}

@@ -1,0 +1,59 @@
+.form-container {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin: auto;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.form-title {
+  display: flex;
+  flex-flow: column wrap;
+  width: 18.75em;
+  margin: 0;
+}
+
+.form-title input {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.crear-cuenta-login {
+  margin: 0.8rem 0;
+  text-align: center;
+  margin: 1em auto;
+}
+
+.olvido-password {
+  margin: 0.8rem 0;
+  margin: 1em auto;
+}
+
+.crear-cuenta-login a:hover {
+  color: #000;
+}
+.olvido-password a:hover {
+  color: #000;
+}
+
+@media (max-width: 380px) {
+
+}
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+}
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+}

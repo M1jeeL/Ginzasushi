@@ -12,7 +12,9 @@ export default function Navbar({ cart }) {
   const handleNavLinksToggle= () => {
     setNavLinkOpen(!navLinkOpen)
   }
-
+  const resetNavLink = (e) =>{
+    setNavLinkOpen(!navLinkOpen)
+  }
   const btnNonStyle = {
     outline: "none",
     background: "none",
@@ -29,17 +31,17 @@ export default function Navbar({ cart }) {
           </NavLink>
           <ul className={navLinkOpen ? "nav-links active":"nav-links"}>
             <li className="item-nav-links">
-              <NavLink to="/carta" exact>
+              <NavLink to="/carta" exact onClick={resetNavLink}>
                 Carta
               </NavLink>
             </li>
             <li className="item-nav-links">
-              <NavLink to="/login" exact>
+              <NavLink to="/login" exact onClick={resetNavLink}>
                 Login
               </NavLink>
             </li>
             <li className="item-nav-links">
-              <NavLink to="/register" exact>
+              <NavLink to="/register" exact onClick={resetNavLink}>
                 Registro
               </NavLink>
             </li>

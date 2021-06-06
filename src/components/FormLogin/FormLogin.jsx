@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./FormLogin.css";
-import { Button } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  FormFeedback,
+  Label,
+  Input,
+} from "reactstrap";
 
 export default function FormLogin() {
   const [formLogin, setFormLogin] = useState({
@@ -17,10 +24,7 @@ export default function FormLogin() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      !formLogin.email||
-      !formLogin.password 
-    ){
+    if (!formLogin.email || !formLogin.password) {
       alert("Datos incompletos");
       return;
     }
@@ -28,47 +32,57 @@ export default function FormLogin() {
   };
   return (
     <>
-      <form className="form-container" onSubmit={handleSubmit}>
-        <div className="form-title">
-          <label className="form-text" htmlFor="email">
-            Correo
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formLogin.email}
-            required
-            onChange={handleChange}
-          />
+      <Form className="container" onSubmit={handleSubmit}>
+        <div className="form-container">
+          <FormGroup className="form-title">
+            <Label className="form-text" htmlFor="email">
+              Correo
+            </Label>
+            <Input
+              type="email"
+              id="email"
+              name="email"
+              value={formLogin.email}
+              required
+              valid={false}
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <FormGroup className="form-title">
+            <Label className="form-text" htmlFor="password">
+              Contrase&ntilde;a
+            </Label>
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              value={formLogin.password}
+              required
+              onChange={handleChange}
+            />
+          </FormGroup>
+          <div className="olvido-password">
+            <span>
+              <Link to="/forgot-password">
+                ¿Olvidaste tu contrase&ntilde;a?
+              </Link>
+            </span>
+          </div>
+          <Button
+            type="submit"
+            color="warning"
+            size="lg"
+            onClick={handleSubmit}
+          >
+            Ingresar
+          </Button>
+          <div className="crear-cuenta-login">
+            <Link to="/register">
+              <span>¿No tienes cuenta? ¡Crea la tuya ahora!</span>
+            </Link>
+          </div>
         </div>
-        <div className="form-title">
-          <label className="form-text" htmlFor="password">
-            Contrase&ntilde;a
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formLogin.password}
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div className="olvido-password">
-          <span>
-            <Link to="/forgot-password">¿Olvidaste tu contrase&ntilde;a?</Link>
-          </span>
-        </div>
-        <Button type="submit" color="warning" size="lg" onClick={handleSubmit}>
-          Ingresar
-        </Button>
-        <div className="crear-cuenta-login">
-          <Link to="/register">
-            <span>¿No tienes cuenta? ¡Crea la tuya ahora!</span>
-          </Link>
-        </div>
-      </form>
+      </Form>
     </>
   );
 }

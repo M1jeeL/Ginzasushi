@@ -153,6 +153,8 @@ nav {
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
             order: 1;
+    margin-top: 1em;
+    margin-right: 1em;
   }
   .nav-links {
     position: absolute;
@@ -170,6 +172,7 @@ nav {
             align-items: center;
     width: 100%;
     top: 11.9vh;
+    margin: 0;
     background-color: #000;
     font-size: 2rem;
     -webkit-transform: translateX(100%);
