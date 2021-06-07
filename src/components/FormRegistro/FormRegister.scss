@@ -1,0 +1,24 @@
+.form-title {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-text {
+  color: #ffba00;
+  font-family: "Roboto Slab", serif;
+  font-size: 1.3rem;
+}
+
+Form h4 {
+  font-family: "Indie Flower", cursive;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+Form {
+  button {
+    margin-top: 1rem;
+  }
+}

@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./FormLogin.css";
-import {
-  Button,
-  Form,
-  FormGroup,
-  FormFeedback,
-  Label,
-  Input,
-} from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 export default function FormLogin() {
   const [formLogin, setFormLogin] = useState({
@@ -33,8 +26,8 @@ export default function FormLogin() {
   return (
     <>
       <Form className="container" onSubmit={handleSubmit}>
-        <div className="form-container">
-          <FormGroup className="form-title">
+        <div className="login-form-container">
+          <FormGroup className="form-text-login">
             <Label className="form-text" htmlFor="email">
               Correo
             </Label>
@@ -48,7 +41,7 @@ export default function FormLogin() {
               onChange={handleChange}
             />
           </FormGroup>
-          <FormGroup className="form-title">
+          <FormGroup className="form-text-login">
             <Label className="form-text" htmlFor="password">
               Contrase&ntilde;a
             </Label>
@@ -61,13 +54,9 @@ export default function FormLogin() {
               onChange={handleChange}
             />
           </FormGroup>
-          <div className="olvido-password">
-            <span>
-              <Link to="/forgot-password">
-                ¿Olvidaste tu contrase&ntilde;a?
-              </Link>
-            </span>
-          </div>
+          <Link to="/forgot-password" className="olvido-password">
+            ¿Olvidaste tu contrase&ntilde;a?
+          </Link>
           <Button
             type="submit"
             color="warning"
@@ -76,11 +65,9 @@ export default function FormLogin() {
           >
             Ingresar
           </Button>
-          <div className="crear-cuenta-login">
-            <Link to="/register">
-              <span>¿No tienes cuenta? ¡Crea la tuya ahora!</span>
-            </Link>
-          </div>
+          <Link to="/register" className="crear-cuenta-login">
+            ¿No tienes cuenta? ¡Crea la tuya ahora!
+          </Link>
         </div>
       </Form>
     </>
