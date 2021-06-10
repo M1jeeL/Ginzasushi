@@ -1,0 +1,10 @@
+.modal-cart {
+  position: absolute;
+  max-height: 100vh;
+  min-width: 30vw;
+  top: 0;
+  right: 0;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+/*# sourceMappingURL=CartModal.css.map */

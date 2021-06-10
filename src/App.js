@@ -13,7 +13,7 @@ import Navbar from './components/Navbar/Navbar';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Footer from './components/Footer/Footer';
-// import BotonWsp from './components/BotonWsp/BotonWsp';
+import BotonWsp from './components/BotonWsp/BotonWsp';
 import CrudApi from './components/Crud/CrudApi';
 import db from './components/ListaCarta.json'
 import Cart from './components/Carrito/Cart';
@@ -30,7 +30,7 @@ const App = () => {
   return (
     <div className = "App"> 
       <Router>
-        {/* <BotonWsp/> */}
+        <BotonWsp/>
         <Navbar cart={cart}/>
         <Switch>
           <Route exact path = "/">

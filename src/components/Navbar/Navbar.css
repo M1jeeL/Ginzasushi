@@ -90,6 +90,20 @@ nav {
   color: #fff;
 }
 
+.icon-user .dropdown-icon-user .dropdown-menu-icon-user {
+  left: -3rem !important;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+}
+
+.icon-user .dropdown-icon-user .dropdown-item {
+  font-size: 600;
+}
+
+.icon-user .dropdown-icon-user .dropdown-item:active, .icon-user .dropdown-icon-user .dropdown-item:hover, .icon-user .dropdown-icon-user .dropdown-item:visited {
+  background-color: #ffb922;
+}
+
 .icon-cart Button {
   display: -webkit-box;
   display: -ms-flexbox;

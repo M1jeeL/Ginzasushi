@@ -32,9 +32,9 @@ nav {
     color: rgba(255, 255, 255, 0.85);
     font-size: 1.5em;
     font-family: "Permanent Marker", cursive;
-  }
-  a:hover {
-    color: rgba(255, 255, 255, 1);
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+    }
   }
 }
 
@@ -49,20 +49,39 @@ nav {
 .item-nav-icons {
   .fa-user {
     color: rgba(255, 255, 255, 0.85);
+    &:hover {
+      color: #fff;
+    }
   }
-  .fa-user:hover {
-    color: #fff;
-  }
+
   .fa-shopping-cart {
     color: rgba(255, 255, 255, 0.85);
     z-index: 1;
-  }
-  .fa-shopping-cart:hover {
-    color: #fff;
+    &:hover {
+      color: #fff;
+    }
   }
 }
- 
-.icon-cart{
+
+.icon-user {
+  .dropdown-icon-user {
+    .dropdown-menu-icon-user {
+      left: -3rem !important;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: #fff;
+    }
+    .dropdown-item {
+      font-size: 600;
+      &:active,
+      &:hover,
+      &:visited {
+        background-color: #ffb922;
+      }
+    }
+  }
+}
+
+.icon-cart {
   Button {
     display: flex;
     :nth-child(1) {
@@ -101,7 +120,7 @@ nav {
   body {
     overflow-x: hidden;
   }
- 
+
   .nav-logo {
     order: 0;
   }
@@ -111,7 +130,7 @@ nav {
   }
   .nav-icons {
     order: 1;
-    margin-top: 1em; 
+    margin-top: 1em;
     margin-right: 1em;
   }
   .nav-links {
@@ -122,7 +141,7 @@ nav {
     align-items: center;
     width: 100%;
     top: 140px;
-    margin:0;
+    margin: 0;
     background-color: #000;
     font-size: 2rem;
     transform: translateX(100%);

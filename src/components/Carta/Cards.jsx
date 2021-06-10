@@ -1,29 +1,19 @@
 import React from "react";
 import Card from "./Card";
-import { Link } from "react-router-dom";
+import { Col, Row } from "reactstrap";
 
-export default function Cards({ db, selectProduct, setSelectProduct }) {
+export default function Cards({ db, setSelectProduct }) {
   return (
-    <>
-      <div className="cards-container">
+    <div className="container container-carta">
+      <Row>
         {db.map((item) => {
           return (
-            <div key={item.id}>
-              <ul>
-                <li className="cards-links">
-                  <Link to={item.url} onClick={() => setSelectProduct(item.id)}>
-                    <Card
-                      nombreProducto={item.nombreProducto}
-                      ingredientesProducto={item.ingredientesProducto}
-                      precioProducto={item.precioProducto}
-                    />
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            <Col key={item.id} xl="4" md="6" sm="12" xs="12">
+              <Card item={item} setSelectProduct={setSelectProduct} />
+            </Col>
           );
         })}
-      </div>
-    </>
+      </Row>
+    </div>
   );
 }

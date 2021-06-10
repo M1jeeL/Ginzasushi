@@ -1,88 +1,55 @@
-.cards-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  width: 786px;
-  margin: 24px 15px 0 15px;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -ms-flex-line-pack: justify;
-      align-content: space-between;
-}
-
-.cards-container ul {
-  list-style-type: none;
-}
-
 .card-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 22.3rem;
+  width: 20rem;
   height: 10em;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
-  margin: 0.5rem 0;
+  margin: 0.8rem 0;
   background-color: #efe7cd;
   border-radius: 1rem;
   -webkit-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
           box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
 }
 
-.card-descripcion {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-line-pack: justify;
-      align-content: space-between;
-  height: 70%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 0.5rem 0.5rem;
-}
-
 .card-titulo {
   text-align: center;
-  color: black;
-  font-size: 1.5rem;
+  color: #000;
+  font-size: 1.3em;
   font-weight: bold;
-  height: 20%;
+  height: 25%;
 }
 
 .card-ingredientes {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  text-align: center;
   font-style: italic;
-  font-size: 0.8rem;
-  height: 100%;
+  font-size: 0.9rem;
+  height: 55%;
 }
 
 .card-precio {
+  text-align: center;
   font-weight: bold;
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  height: 20%;
 }
 
-.card-pic {
+.card-pic img {
   border-radius: 0rem 1rem 1rem 0rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
-.cards-links a:hover {
-  color: black;
+@media only screen and (max-width: 1199.9px) and (min-width: 992.1px) {
+  .card-container {
+    width: 28rem;
+  }
+}
+
+@media only screen and (max-width: 767.9px) and (min-width: 300px) {
+  .card-container {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=Card.css.map */

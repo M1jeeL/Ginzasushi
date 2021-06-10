@@ -1,16 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logopng from "../../img/prueba/logo.png";
 import "./Card.css";
 
-function Card({ nombreProducto, ingredientesProducto, precioProducto}) {
+function Card({ item, setSelectProduct }) {
+  const { nombreProducto, ingredientesProducto, precioProducto, id, url } =
+    item;
+
   return (
     <>
-      <div className="card-container">
+      <Link
+        to={url}
+        onClick={() => setSelectProduct(id)}
+        className="card-container"
+      >
         <div className="card-info">
           <div className="card-titulo">
             <span>{nombreProducto}</span>
           </div>
-          <div className="card-descripcion">
             <div className="card-ingredientes">
               <span>{ingredientesProducto}</span>
             </div>
@@ -20,12 +27,11 @@ function Card({ nombreProducto, ingredientesProducto, precioProducto}) {
                 <span>$ {precioProducto}</span>
               </footer>
             </div>
-          </div>
         </div>
-        <div>
-          <img src={logopng} alt="sushito" className="card-pic" />
+        <div className="card-pic">
+          <img src={logopng} alt="sushito"/>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

@@ -6,7 +6,7 @@ import './CartModal.css';
 const CartModal = ({ cart, openCartModal, handleCartModal }) => {
   return (
     <div>
-      <Modal isOpen={openCartModal} toggle={handleCartModal}>
+      <Modal isOpen={openCartModal} toggle={handleCartModal} className="modal-cart">
         <ModalHeader toggle={handleCartModal}>
           Carrito de compras
         </ModalHeader>

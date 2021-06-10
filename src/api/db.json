@@ -359,6 +359,13 @@
       "ingredientesProducto": "Almendras, Queso crema y Palta.",
       "categoriaProducto": "Panko Rolls",
       "url": "/panko-rolls/kon"
+    },
+    {
+      "nombreProducto": "perro",
+      "categoriaProducto": "California Rolls",
+      "precioProducto": "666",
+      "id": 1623116328179,
+      "ingredientesProducto": "hecho de perrito"
     }
   ]
 }
