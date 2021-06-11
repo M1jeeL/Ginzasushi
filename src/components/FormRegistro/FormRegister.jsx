@@ -57,7 +57,6 @@ export default function FormRegister() {
   };
 
   return (
-    <>
       <Form className="container" onSubmit={handleSubmit}>
         <h4>Perfil</h4>
         <Row form>
@@ -245,6 +244,5 @@ export default function FormRegister() {
           Crear Cuenta
         </Button>
       </Form>
-    </>
   );
 }

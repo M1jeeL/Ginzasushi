@@ -93,7 +93,11 @@ nav {
 .icon-user .dropdown-icon-user .dropdown-menu-icon-user {
   left: -3rem !important;
   background-color: rgba(0, 0, 0, 0.9);
+}
+
+.icon-user .dropdown-icon-user a {
   color: #fff;
+  font-weight: bold;
 }
 
 .icon-user .dropdown-icon-user .dropdown-item {
@@ -147,7 +151,7 @@ nav {
   border: none;
 }
 
-@media screen and (max-width: 719px) {
+@media screen and (max-width: 850px) {
   body {
     overflow-x: hidden;
   }
@@ -181,21 +185,21 @@ nav {
         -ms-flex-align: center;
             align-items: center;
     width: 100%;
-    top: 140px;
+    top: 139px;
     margin: 0;
     background-color: #000;
     font-size: 2rem;
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
-    -webkit-transition: -webkit-transform 0.5s ease-in;
-    transition: -webkit-transform 0.5s ease-in;
-    transition: transform 0.5s ease-in;
-    transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+    -webkit-transform: translateY(-120%);
+            transform: translateY(-120%);
+    -webkit-transition: -webkit-transform 0.5s ease-in-out;
+    transition: -webkit-transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
     z-index: 100;
   }
   .active {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
   }
 }
 /*# sourceMappingURL=Navbar.css.map */

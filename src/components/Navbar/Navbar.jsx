@@ -9,10 +9,10 @@ export default function Navbar({ cart }) {
   const [openCartModal, setCartModal] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const handleCartModal = (e) => setCartModal(!openCartModal);
-  const handleNavLinksToggle = (e) => setNavLinkOpen(!navLinkOpen);
-  const resetNavLink = (e) => setNavLinkOpen(!navLinkOpen);
-  const handleDropdown = (e) => setDropdownOpen(!dropdownOpen);
+  const handleCartModal = () => setCartModal(!openCartModal);
+  const handleNavLinksToggle = () => setNavLinkOpen(!navLinkOpen);
+  const resetNavLink = () => setNavLinkOpen(!navLinkOpen);
+  const handleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const btnNonStyle = {
     outline: "none",
