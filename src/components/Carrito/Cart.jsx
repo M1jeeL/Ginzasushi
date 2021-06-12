@@ -5,7 +5,8 @@ const Cart = ({ cart, setCart }) => {
   return (
     <div className="cart">
       <h3>Carrito</h3>
-        <CartTable cart={cart} setCart={setCart} />
+      <CartTable cart={cart} setCart={setCart} />
+      
     </div>
   );
 };

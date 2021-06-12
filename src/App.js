@@ -37,13 +37,13 @@ const App = () => {
             <Inicio/>
           </Route>
           <Route exact path = "/carta">
-            <Carta  db={db.productos} selectProduct={selectProduct} setSelectProduct={setSelectProduct}/>
+            <Carta  productos={db.productos} categorias={db.categorias} selectProduct={selectProduct} setSelectProduct={setSelectProduct}/>
           </Route>
           <Route exact path = "/register">
             <Register/>
           </Route>
           <Route path = "/productos/">
-            <Productos  db={db.productos} selectProduct={selectProduct} cart={cart} setCart={setCart}/>
+            <Productos  productos={db.productos} selectProduct={selectProduct} cart={cart} setCart={setCart}/>
           </Route>
           <Route exact path = "/login">
             <Login/>

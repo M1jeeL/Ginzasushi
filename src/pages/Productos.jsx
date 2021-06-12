@@ -3,7 +3,8 @@ import Categorias from "../components/Carta/Categorias/Categorias";
 import ProductoSeleccionado from "../components/Producto/ProductoSeleccionado";
 import Imgcab from "../components/Imagen cabecera/Imgcab";
 
-const Productos = ({ db, selectProduct, cart, setCart }) => {
+const Productos = ({ productos, selectProduct, cart, setCart }) => {
+  
   return (
     <>
       <Imgcab nombrehead="California Rolls" />
@@ -11,7 +12,7 @@ const Productos = ({ db, selectProduct, cart, setCart }) => {
       <div className="main-container">
         <Categorias />
         <ProductoSeleccionado
-          db={db}
+          productos={productos}
           selectProduct={selectProduct}
           cart={cart}
           setCart={setCart}

@@ -5,18 +5,19 @@ import CartTableRow from "./CartTableRow";
 const CartTable = ({ cart }) => {
   return (
     <div>
-      <Table>
+      <Table striped>
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Precio</th>
             <th>Cantidad</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           {cart.length > 0 ? (
             cart.map((producto) => (
-              <CartTableRow key={producto.id} el={producto} />
+              <CartTableRow key={producto.id} producto={producto} />
             ))
           ) : (
             <tr>

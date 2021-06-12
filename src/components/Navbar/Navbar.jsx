@@ -21,6 +21,10 @@ export default function Navbar({ cart }) {
     boxShadow: "none",
   };
 
+  //Sumo la cantidad de productos totales que tiene el carrito
+  let ContadorProductosCarrito = 0;
+  cart.forEach( producto => ContadorProductosCarrito += producto.cantidadProducto)
+
   return (
     <nav>
       <NavLink exact to="/">
@@ -42,6 +46,7 @@ export default function Navbar({ cart }) {
             Contacto
           </NavLink>
         </li>
+        w
       </ul>
 
       <ul className="nav-icons">
@@ -80,7 +85,7 @@ export default function Navbar({ cart }) {
             onClick={handleCartModal}
             className="carrito-compras-container"
           >
-            <div>{cart.length}</div>
+            <div>{ContadorProductosCarrito}</div>
             <i className="fas fa-shopping-cart fa-2x"></i>
           </Button>
           <CartModal

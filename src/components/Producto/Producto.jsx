@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Producto.css";
 import { Button } from "reactstrap";
 
-export default function Producto({ db, producto, cart, setCart }) {
+export default function Producto({ productos, producto, cart, setCart }) {
   const {
     nombreProducto,
     precioProducto,
@@ -26,9 +26,9 @@ export default function Producto({ db, producto, cart, setCart }) {
   };
 
   producto.cantidadProducto = cantidadProducto;
-
+  
   const addCart = () => {
-    const producto = db.filter((product) => product.id === id);
+    const producto = productos.filter((product) => product.id === id);
     //Con estos auxiliares puedo aumentar la cantidad del producto sumandolo a lo que ya tenia, resolviendo el problema
     //de que se añadiera el mismo objeto en el arreglo del carrito.
     let aux = cart.findIndex((product) => product.id === id);
@@ -40,6 +40,7 @@ export default function Producto({ db, producto, cart, setCart }) {
     // console.log(productAux);
 
     aux >= 0 ? setCart([...cartAux]) : setCart([...cart, ...producto]);
+  
   };
   // console.table(cart);
 
