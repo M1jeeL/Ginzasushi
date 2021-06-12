@@ -26,7 +26,7 @@ export default function Producto({ productos, producto, cart, setCart }) {
   };
 
   producto.cantidadProducto = cantidadProducto;
-  
+
   const addCart = () => {
     const producto = productos.filter((product) => product.id === id);
     //Con estos auxiliares puedo aumentar la cantidad del producto sumandolo a lo que ya tenia, resolviendo el problema
@@ -34,8 +34,7 @@ export default function Producto({ productos, producto, cart, setCart }) {
     let aux = cart.findIndex((product) => product.id === id);
     let cartAux = [...cart];
     let productAux = { ...cartAux[aux] };
-    productAux.cantidadProducto =
-      productAux.cantidadProducto + cantidadProducto;
+    productAux.cantidadProducto += cantidadProducto;
     cartAux[aux] = productAux;
     // console.log(productAux);
 
