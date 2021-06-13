@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logopng from "../../img/prueba/logo.png";
 import "./Card.css";
 
 function Card({ item, setSelectProduct }) {
