@@ -7,6 +7,7 @@
         "ingredientesProducto": "Pollo, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "https://tolivmarket-production.s3.sa-east-1.amazonaws.com/products/e371ac7ef6f5ee86f5b50fa9021d0689588662c81e8dc0948dc03eb3db4dd55b.jpg",
         "url": "/productos/california-rolls/chikin"
     },
     {
@@ -16,6 +17,7 @@
         "ingredientesProducto": "Camarón, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "https://ishinsushi.cl/wp-content/uploads/2020/11/Camaron-y-cebollin.png",
         "url": "/productos/california-rolls/ebi"
     },
     {
@@ -25,6 +27,7 @@
         "ingredientesProducto": "Salmón, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "https://www.sushirolls.cl/categorias/images/hotroll/sakefuray.jpg",
         "url": "/productos/california-rolls/samon"
     },
     {
@@ -34,6 +37,7 @@
         "ingredientesProducto": "Kanikama, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "https://ishinsushi.cl/wp-content/uploads/2020/11/banco-rolls.png",
         "url": "/productos/california-rolls/kami"
     },
     {
@@ -43,6 +47,7 @@
         "ingredientesProducto": "Salmón, Camarón, Queso crema y Palta.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "https://www.sushirolls.cl/categorias/images/hotroll/crunch.jpg",
         "url": "/productos/california-rolls/daburu"
     },
     {
@@ -52,6 +57,7 @@
         "ingredientesProducto": "Carne de res, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "https://www.sushirolls.cl/categorias/images/hotroll/nararoll.jpg",
         "url": "/productos/california-rolls/niku"
     },
     {
@@ -61,6 +67,7 @@
         "ingredientesProducto": "Verduras saltadeadas, Queso crema y Palta.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "https://www.cucinare.tv/wp-content/uploads/2020/11/Sushi-vegetal.jpg",
         "url": "/productos/california-rolls/veggie"
     },
     {
@@ -70,6 +77,7 @@
         "ingredientesProducto": "Champiñon, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "",
         "url": "/productos/california-rolls/kinoko"
     },
     {
@@ -79,6 +87,7 @@
         "ingredientesProducto": "Choclito, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "",
         "url": "/productos/california-rolls/kon"
     },
     {
@@ -88,6 +97,7 @@
         "ingredientesProducto": "Aceitunas, Queso crema y Palta.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "",
         "url": "/productos/california-rolls/oribu"
     },
     {
@@ -97,6 +107,7 @@
         "ingredientesProducto": "Pollo apanado, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "",
         "url": "/productos/california-rolls/hot-chikin"
     },
     {
@@ -106,6 +117,7 @@
         "ingredientesProducto": "Salmón apanado, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "",
         "url": "/productos/california-rolls/hot-samon"
     },
     {
@@ -115,6 +127,7 @@
         "ingredientesProducto": "Camarón apanado, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "California Rolls",
         "envolturaProducto": "Panko / 8 Bocados",
+        "src": "",
         "url": "/productos/california-rolls/hot-ebi"
     },
     {
@@ -124,6 +137,7 @@
         "ingredientesProducto": "Pollo, Queso crema y Pimentón",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/chikin"
     },
     {
@@ -133,6 +147,7 @@
         "ingredientesProducto": "Camarón y Queso crema.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/ebi"
     },
     {
@@ -142,6 +157,7 @@
         "ingredientesProducto": "Salmón y Queso crema.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/samon"
     },
     {
@@ -151,6 +167,7 @@
         "ingredientesProducto": "Kanikama y Queso crema.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/kami"
     },
     {
@@ -160,6 +177,7 @@
         "ingredientesProducto": "Salmón, Camarón y Queso crema.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/daburu"
     },
     {
@@ -169,6 +187,7 @@
         "ingredientesProducto": "Carne de res, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/niku"
     },
     {
@@ -178,6 +197,7 @@
         "ingredientesProducto": "Verduras saltadeadas y Queso crema",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/veggie"
     },
     {
@@ -187,6 +207,7 @@
         "ingredientesProducto": "Champiñon, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/kinoko"
     },
     {
@@ -196,6 +217,7 @@
         "ingredientesProducto": "Choclito, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/kon"
     },
     {
@@ -205,6 +227,7 @@
         "ingredientesProducto": "Aceitunas y Queso crema.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/oribu"
     },
     {
@@ -214,6 +237,7 @@
         "ingredientesProducto": "Pollo apanado, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/hot-chikin"
     },
     {
@@ -223,6 +247,7 @@
         "ingredientesProducto": "Salmón apanado, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/hot-samon"
     },
     {
@@ -232,6 +257,7 @@
         "ingredientesProducto": "Camarón apanado, Queso crema y Cebollín.",
         "categoriaProducto": "Avocado Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/avocado-rolls/hot-ebi"
     },
     {
@@ -241,6 +267,7 @@
         "ingredientesProducto": "Pollo, Queso crema y Palta",
         "categoriaProducto": "Samon Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/samon-rolls/chikin"
     },
     {
@@ -250,6 +277,7 @@
         "ingredientesProducto": "Camarón, Queso crema y Palta.",
         "categoriaProducto": "Samon Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/samon-rolls/ebi"
     },
     {
@@ -259,6 +287,7 @@
         "ingredientesProducto": "Salmón, Queso crema y Palta.",
         "categoriaProducto": "Samon Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/samon-rolls/samon"
     },
     {
@@ -268,6 +297,7 @@
         "ingredientesProducto": "Kanikama, Queso crema y Palta.",
         "categoriaProducto": "Samon Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/samon-rolls/kami"
     },
     {
@@ -277,6 +307,7 @@
         "ingredientesProducto": "Salmón, Camarón y Queso crema.",
         "categoriaProducto": "Samon Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/samon-rolls/daburu"
     },
     {
@@ -286,6 +317,7 @@
         "ingredientesProducto": "Pollo apanado, Queso crema, Cebollín y Palta.",
         "categoriaProducto": "Samon Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/samon-rolls/hot-chikin"
     },
     {
@@ -295,6 +327,7 @@
         "ingredientesProducto": "Salmón apanado, Queso crema, Cebollín y Palta.",
         "categoriaProducto": "Samon Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/samon-rolls/hot-samon"
     },
     {
@@ -304,6 +337,7 @@
         "ingredientesProducto": "Camarón apanado, Queso crema, Cebollín y Palta.",
         "categoriaProducto": "Samon Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/samon-rolls/hot-ebi"
     },
     {
@@ -312,6 +346,7 @@
         "precioProducto": "3.900",        "ingredientesProducto": "Pollo, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/chikin"
     },
     {
@@ -321,6 +356,7 @@
         "ingredientesProducto": "Camarón, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/ebi"
     },
     {
@@ -330,6 +366,7 @@
         "ingredientesProducto": "Salmón, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/samon"
     },
     {
@@ -339,6 +376,7 @@
         "ingredientesProducto": "Kanikama, Queso crema, Palta y Cebollín.",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/kami"
     },
     {
@@ -348,6 +386,7 @@
         "ingredientesProducto": "Salmón, Camarón, Queso crema y Palta.",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/daburu"
     },
     {
@@ -357,6 +396,7 @@
         "ingredientesProducto": "Carne, Queso chanco y Orégano.",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/niku"
     },
     {
@@ -366,6 +406,7 @@
         "ingredientesProducto": "Espárragos, Queso crema y Palta.",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/veggie"
     },
     {
@@ -375,6 +416,7 @@
         "ingredientesProducto": "Champiñon, Queso crema y Palta",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/kinoko"
     },
     {
@@ -384,6 +426,7 @@
         "ingredientesProducto": "Choclito, Queso crema y Palta.",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/kon"
     },
     {
@@ -393,6 +436,7 @@
         "ingredientesProducto": "Palmito, Queso crema y Palta.",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/kon"
     },
     {
@@ -402,6 +446,7 @@
         "ingredientesProducto": "Almendras, Queso crema y Palta.",
         "categoriaProducto": "Panko Rolls",
         "envolturaProducto": "Palta / 8 Bocados",
+        "src": "",
         "url": "/productos/panko-rolls/kon"
     }
     ],

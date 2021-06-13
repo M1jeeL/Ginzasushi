@@ -37,7 +37,7 @@ const App = () => {
             <Inicio/>
           </Route>
           <Route exact path = "/carta">
-            <Carta  productos={db.productos} categorias={db.categorias} selectProduct={selectProduct} setSelectProduct={setSelectProduct}/>
+            <Carta  productos={db.productos} categorias={db.categorias} selectProduct={selectProduct} setSelectProduct={setSelectProduct} cart={cart} setCart={setCart}/>
           </Route>
           <Route exact path = "/register">
             <Register/>
@@ -52,7 +52,7 @@ const App = () => {
             <CrudApi/>
           </Route>
           <Route exact path = "/carro-de-compras">
-            <Cart cart={cart} setCart={setCart}/>
+            <Cart cart={cart} setCart={setCart} />
           </Route>
           {/* <Route exact path = "/ejemplos" component = {Ejemplos}/> */}
         </Switch>

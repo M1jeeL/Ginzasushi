@@ -8,6 +8,7 @@ export default function Producto({ productos, producto, cart, setCart }) {
     precioProducto,
     envolturaProducto,
     ingredientesProducto,
+    src,
     id,
   } = producto;
 
@@ -28,7 +29,7 @@ export default function Producto({ productos, producto, cart, setCart }) {
   producto.cantidadProducto = cantidadProducto;
 
   const addCart = () => {
-    const producto = productos.filter((product) => product.id === id);
+    const newCart = productos.filter((product) => product.id === id);
     //Con estos auxiliares puedo aumentar la cantidad del producto sumandolo a lo que ya tenia, resolviendo el problema
     //de que se añadiera el mismo objeto en el arreglo del carrito.
     let aux = cart.findIndex((product) => product.id === id);
@@ -38,8 +39,7 @@ export default function Producto({ productos, producto, cart, setCart }) {
     cartAux[aux] = productAux;
     // console.log(productAux);
 
-    aux >= 0 ? setCart([...cartAux]) : setCart([...cart, ...producto]);
-  
+    aux >= 0 ? setCart([...cartAux]) : setCart([...cart, ...newCart]);
   };
   // console.table(cart);
 
@@ -54,8 +54,8 @@ export default function Producto({ productos, producto, cart, setCart }) {
       <div className="producto-container">
         <div className="producto-pic-container">
           <img
-            src="http://pngimg.com/uploads/sushi/sushi_PNG98863.png"
-            alt="ginzasushi sushi barros luco"
+            src={src}
+            alt="sushito ginzasushi"
             className="producto-pic"
           />
         </div>

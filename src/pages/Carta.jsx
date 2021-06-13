@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Cards from "../components/Carta/Cards";
 // import Categorias from "../components/Carta/Categorias/Categorias";
 import Imgcab from "../components/Imagen cabecera/Imgcab";
+import FiltroCarta from "../components/Carta/FiltroCarta/FiltroCarta";
 
-export default function Carta({ productos, categorias, selectProduct, setSelectProduct }) {
+export default function Carta({
+  productos,
+  categorias,
+  selectProduct,
+  setSelectProduct,
+}) {
+  const [categoria, setCategoria] = useState("");
 
+  let showProducts = productos.filter(
+    (producto) => producto.categoriaProducto === categoria
+  );
 
-  
-
-  let showProducts = productos.filter((producto) => producto.categoriaProducto === categorias[3].categoria)
-  
-  console.log(categorias[3].categoria)
+  console.log(categorias[3].categoria);
   return (
     <>
       <Imgcab nombrehead="Nuestra Carta" />
-      <Cards
-        productos={showProducts.length ? showProducts : productos}
-        selectProduct={selectProduct}
-        setSelectProduct={setSelectProduct}
-      />
+      <div className="container">
+        <FiltroCarta setCategoria={setCategoria}></FiltroCarta>
+        <Cards
+          productos={showProducts.length ? showProducts : productos}
+          selectProduct={selectProduct}
+          setSelectProduct={setSelectProduct}
+        />
+      </div>
     </>
   );
 }

@@ -4,7 +4,7 @@ import logopng from "../../img/prueba/logo.png";
 import "./Card.css";
 
 function Card({ item, setSelectProduct }) {
-  const { nombreProducto, ingredientesProducto, precioProducto, id, url } =
+  const { nombreProducto, ingredientesProducto, precioProducto, id, src, url } =
     item;
 
   return (
@@ -28,9 +28,14 @@ function Card({ item, setSelectProduct }) {
               </footer>
             </div>
         </div>
-        <div className="card-pic">
-          <img src={logopng} alt="sushito"/>
-        </div>
+        {(src !== "") ? (<div className="producto-pic-container-card">
+          <img
+            src={src}
+            alt="ginzasushi sushi barros luco"
+            className="producto-pic-card"
+          />
+        </div>) : ("")}
+        
       </Link>
     </>
   );
