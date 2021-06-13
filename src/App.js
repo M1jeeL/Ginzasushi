@@ -27,11 +27,19 @@ const App = () => {
 
   const [cart, setCart] = useState([])
 
+  const eliminarProducto = (id) => {
+    let newCart = cart.filter((producto) => producto.id !== id);
+    console.log(newCart);
+    // console.log(cart);
+     setCart(newCart);
+  };
+
+
   return (
     <div className = "App"> 
       <Router>
         <BotonWsp/>
-        <Navbar cart={cart}/>
+        <Navbar cart={cart} eliminarProducto={eliminarProducto}/>
         <Switch>
           <Route exact path = "/">
             <Inicio/>
@@ -52,7 +60,7 @@ const App = () => {
             <CrudApi/>
           </Route>
           <Route exact path = "/carro-de-compras">
-            <Cart cart={cart} setCart={setCart} />
+            <Cart cart={cart} setCart={setCart} eliminarProducto={eliminarProducto} />
           </Route>
           {/* <Route exact path = "/ejemplos" component = {Ejemplos}/> */}
         </Switch>

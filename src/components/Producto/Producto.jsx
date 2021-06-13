@@ -50,8 +50,7 @@ export default function Producto({ productos, producto, cart, setCart }) {
   };
 
   return (
-    <>
-      <div className="producto-container">
+      <div className="container producto-container">
         <div className="producto-pic-container">
           <img
             src={src}
@@ -109,6 +108,5 @@ export default function Producto({ productos, producto, cart, setCart }) {
           </div>
         </div>
       </div>
-    </>
   );
 }

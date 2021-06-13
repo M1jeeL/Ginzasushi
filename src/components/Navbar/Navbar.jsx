@@ -4,7 +4,7 @@ import { Button, Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 import CartModal from "../Carrito/CartModal";
 import "./Navbar.css";
 
-export default function Navbar({ cart }) {
+export default function Navbar({ cart, eliminarProducto }) {
   const [navLinkOpen, setNavLinkOpen] = useState(false);
   const [openCartModal, setCartModal] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -92,6 +92,7 @@ export default function Navbar({ cart }) {
             handleCartModal={handleCartModal}
             openCartModal={openCartModal}
             cart={cart}
+            eliminarProducto={eliminarProducto}
           />
         </li>
       </ul>

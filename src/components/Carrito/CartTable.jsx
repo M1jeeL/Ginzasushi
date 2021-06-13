@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "reactstrap";
 import CartTableRow from "./CartTableRow";
 
-const CartTable = ({ cart }) => {
+const CartTable = ({ cart, setCart,eliminarProducto }) => {
   return (
     <div>
       <Table striped>
@@ -17,11 +17,11 @@ const CartTable = ({ cart }) => {
         <tbody>
           {cart.length > 0 ? (
             cart.map((producto) => (
-              <CartTableRow key={producto.id} producto={producto} />
+              <CartTableRow key={producto.id} producto={producto} cart={cart} setCart={setCart} eliminarProducto={eliminarProducto}/>
             ))
           ) : (
             <tr>
-              <td colSpan="3">No hay productos en el carrito</td>
+              <td colSpan="4">No hay productos en el carrito</td>
             </tr>
           )}
         </tbody>

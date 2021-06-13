@@ -4,7 +4,7 @@ import { Modal, ModalHeader, ModalFooter, Button } from "reactstrap";
 import CartTable from "./CartTable";
 import "./CartModal.css";
 
-const CartModal = ({ cart, openCartModal, handleCartModal }) => {
+const CartModal = ({ cart, openCartModal, handleCartModal,eliminarProducto }) => {
   return (
     <div>
       <Modal
@@ -13,7 +13,7 @@ const CartModal = ({ cart, openCartModal, handleCartModal }) => {
         className="modal-cart"
       >
         <ModalHeader toggle={handleCartModal}>Carrito de compras</ModalHeader>
-        <CartTable cart={cart} />
+        <CartTable cart={cart} eliminarProducto={eliminarProducto}/>
         <ModalFooter>
           <Link to="/carro-de-compras">
             <Button type="button" color="warning" onClick={handleCartModal}>
