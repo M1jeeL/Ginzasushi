@@ -487,5 +487,31 @@
           "categoria": "Bebidas",
           "url": "/bebidas"
       }
-  ]
+    ],
+    "usuarios":[
+      {
+        "id":"1",
+        "nombre": "Miguel",
+        "apellido": "Loza",
+        "email": "miguelloza1@hotmail.com",
+        "password": "12345",
+        "direcciones":{
+          "calle":"mamina",
+          "numeracion":"161",
+          "depto":""
+        }
+      },
+      {
+        "id":"2",
+        "nombre": "Paulo",
+        "apellido": "Loza",
+        "email": "pauloco@pulento.cl",
+        "password": "12345",
+        "direcciones":{
+          "calle":"nonato coo",
+          "numeracion":"3287",
+          "depto":""
+        }
+      }
+    ]
 }

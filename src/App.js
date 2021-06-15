@@ -15,8 +15,11 @@ import Login from './pages/Login';
 import Footer from './components/Footer/Footer';
 import BotonWsp from './components/BotonWsp/BotonWsp';
 import CrudApi from './components/Crud/CrudApi';
-import db from './components/ListaCarta.json'
+import db from './components/data.json'
 import Cart from './components/Carrito/Cart';
+import PanelUsuario from './components/PanelUsuario/PanelUsuario';
+import Pedidos from './components/PanelUsuario/Pedidos';
+import Direccion from './components/PanelUsuario/Direccion';
 // import Ejemplos from './components/Ejemplos/Ejemplos';
 
 const App = () => {
@@ -61,6 +64,15 @@ const App = () => {
           </Route>
           <Route exact path = "/carro-de-compras">
             <Cart cart={cart} setCart={setCart} eliminarProducto={eliminarProducto} />
+          </Route>
+          <Route exact path="/mi-cuenta">
+            <PanelUsuario/>
+          </Route>
+          <Route exact path="/mis-pedidos">
+            <Pedidos/>
+          </Route>
+          <Route exact path="/mis-direcciones">
+            <Direccion/>
           </Route>
           {/* <Route exact path = "/ejemplos" component = {Ejemplos}/> */}
         </Switch>

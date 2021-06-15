@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Cards from "../components/Carta/Cards";
-// import Categorias from "../components/Carta/Categorias/Categorias";
 import Imgcab from "../components/Imagen cabecera/Imgcab";
 import FiltroCarta from "../components/Carta/FiltroCarta/FiltroCarta";
 
 export default function Carta({
   productos,
-  categorias,
   selectProduct,
   setSelectProduct,
 }) {
@@ -16,7 +14,6 @@ export default function Carta({
     (producto) => producto.categoriaProducto === categoria
   );
 
-  console.log(categorias[3].categoria);
   return (
     <>
       <Imgcab nombrehead="Nuestra Carta" />

@@ -9,7 +9,10 @@ import {
   Col,
   Row,
 } from "reactstrap";
+
+
 export default function FormRegister() {
+
   const [formRegister, setFormRegister] = useState({
     nombre: "",
     apellido: "",
@@ -23,7 +26,7 @@ export default function FormRegister() {
     depto: "",
   }); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     //Capturo el cambio de estado en los Input
     setFormRegister({
       ...formRegister,

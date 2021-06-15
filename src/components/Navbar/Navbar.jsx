@@ -70,7 +70,7 @@ export default function Navbar({ cart, eliminarProducto }) {
               <NavLink exact to="/mis-pedidos" className="dropdown-item">
                 Mis pedidos
               </NavLink>
-              <NavLink exact to="/editar-direccion" className="dropdown-item">
+              <NavLink exact to="/mis-direcciones" className="dropdown-item">
                 Editar direcci&oacute;n
               </NavLink>
               <NavLink exact to="/carro-de-compras" className="dropdown-item">

@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./FormLogin.css";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import axios from "axios";
+import Cookies from 'universal-cookie';
+
+const baseUrl = "http://localhost:5000/usuarios";
+const cookies = new Cookies();
 
 export default function FormLogin() {
   const [formLogin, setFormLogin] = useState({
@@ -9,20 +14,55 @@ export default function FormLogin() {
     password: "",
   });
 
-  const handleChange = (e) => {
-    setFormLogin({
+useEffect(() => {
+  if(cookies.get('email')){
+    window.location.href='./mi-cuenta'
+  }
+},[])
+
+  const handleChange = async (e) => {
+    await setFormLogin({
       ...formLogin,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formLogin.email || !formLogin.password) {
       alert("Datos incompletos");
       return;
     }
-    alert("El formulario se ha enviado correctamente");
   };
+
+  const iniciarSesion = async () => {
+    await axios
+      .get(baseUrl, {
+        params: { email: formLogin.email, password: formLogin.password },
+      })
+      .then((response) => {
+        return response.data;
+      })
+      .then((response) => {
+        if(response.length>0){
+          let respuesta=response[0];
+
+          cookies.set('id', respuesta.id, {path: "/"});
+          cookies.set('nombre', respuesta.nombre, {path: "/"});
+          cookies.set('apellido', respuesta.apellido, {path: "/"});
+          cookies.set('email', respuesta.email, {path: "/"});
+
+          alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido}`)
+          window.location.href="./mi-cuenta";
+        }else{
+          alert('El usuario o la contraseña no son correctos');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <Form className="container" onSubmit={handleSubmit}>
@@ -61,7 +101,7 @@ export default function FormLogin() {
             type="submit"
             color="warning"
             size="lg"
-            onClick={handleSubmit}
+            onClick={iniciarSesion}
           >
             Ingresar
           </Button>
