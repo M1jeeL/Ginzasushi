@@ -11,7 +11,7 @@ export default function Navbar({ cart, eliminarProducto }) {
 
   const handleCartModal = () => setCartModal(!openCartModal);
   const handleNavLinksToggle = () => setNavLinkOpen(!navLinkOpen);
-  const resetNavLink = () => setNavLinkOpen(!navLinkOpen);
+  const resetNavLink = () => setNavLinkOpen(false);
   const handleDropdown = () => setDropdownOpen(!dropdownOpen);
 
   const btnNonStyle = {
@@ -23,7 +23,9 @@ export default function Navbar({ cart, eliminarProducto }) {
 
   //Sumo la cantidad de productos totales que tiene el carrito
   let ContadorProductosCarrito = 0;
-  cart.forEach( producto => ContadorProductosCarrito += producto.cantidadProducto)
+  cart.forEach(
+    (producto) => (ContadorProductosCarrito += producto.cantidadProducto)
+  );
 
   return (
     <nav>
@@ -46,7 +48,6 @@ export default function Navbar({ cart, eliminarProducto }) {
             Contacto
           </NavLink>
         </li>
-        w
       </ul>
 
       <ul className="nav-icons">
@@ -60,20 +61,20 @@ export default function Navbar({ cart, eliminarProducto }) {
               <i className="fas fa-user fa-2x"></i>
             </DropdownToggle>
             <DropdownMenu className="dropdown-menu-icon-user">
-              <NavLink exact to="mi-cuenta" className="dropdown-item">
+              <NavLink exact to="/login" className="dropdown-item">
                 Mi cuenta
               </NavLink>
-
-              <NavLink exact to="mis-pedidos" className="dropdown-item">
-                Mis pedidos
-              </NavLink>
-
-              <NavLink exact to="/login" className="dropdown-item">
-                Iniciar Sesi&oacute;n
-              </NavLink>
-
               <NavLink exact to="/register" className="dropdown-item">
                 Registrarse
+              </NavLink>
+              <NavLink exact to="/mis-pedidos" className="dropdown-item">
+                Mis pedidos
+              </NavLink>
+              <NavLink exact to="/editar-direccion" className="dropdown-item">
+                Editar direcci&oacute;n
+              </NavLink>
+              <NavLink exact to="/carro-de-compras" className="dropdown-item">
+                Mi carrito
               </NavLink>
             </DropdownMenu>
           </Dropdown>
