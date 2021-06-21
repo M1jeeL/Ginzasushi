@@ -21,8 +21,9 @@ export default function FormRegister() {
     password: "",
     confirmacion_password: "",
     celular: "",
+    comuna:"",
     calle: "",
-    numeracion: "",
+    numeracion: undefined,
     depto: "",
   }); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
 
@@ -34,7 +35,78 @@ export default function FormRegister() {
     });
   };
 
-  // const verificarCorreo = e => {
+  const validarDatos = e => {
+    if(e.target.value.length > 0 && e.target.type !== 'email'){
+      e.target.classList.remove('is-invalid')
+      e.target.classList.add('is-valid')
+    } else{
+      e.target.classList.remove('is-valid')
+      e.target.classList.add('is-invalid')
+    }
+  }
+
+  const validarEmail = e => {
+     if(e.target.type === 'email'){
+      const er = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+      if( er.test(e.target.value)){
+        e.target.classList.remove('is-invalid')
+        e.target.classList.add('is-valid')
+      } else {
+         e.target.classList.remove('is-valid')
+        e.target.classList.add('is-invalid')
+      }
+    }
+  }
+  
+  const confirmarEmail = e => {
+    if (e.target.value === formRegister.email){
+      e.target.classList.remove('is-invalid')
+        e.target.classList.add('is-valid')
+    } else {
+         e.target.classList.remove('is-valid')
+        e.target.classList.add('is-invalid')
+      }
+  }
+
+  const validarPassword = e => {
+    if(e.target.type === 'password'){
+      const er = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+      if( er.test(e.target.value)){
+        e.target.classList.remove('is-invalid')
+        e.target.classList.add('is-valid')
+      } else {
+         e.target.classList.remove('is-valid')
+        e.target.classList.add('is-invalid')
+      }
+    }
+  }
+
+  const confirmarPassword = e => {
+    if (e.target.value === formRegister.password){
+      e.target.classList.remove('is-invalid')
+        e.target.classList.add('is-valid')
+    } else {
+         e.target.classList.remove('is-valid')
+        e.target.classList.add('is-invalid')
+      }
+  }
+
+  const validarCelular = e => {
+    if (e.target.type === "tel"){
+    const er = /^(\+?56)?(\s?)(0?9)(\s?)[9876543]\d{7}$/
+
+    if( er.test(e.target.value)){
+        e.target.classList.remove('is-invalid')
+        e.target.classList.add('is-valid')
+      } else {
+         e.target.classList.remove('is-valid')
+        e.target.classList.add('is-invalid')
+      }
+    
+  }
+  }
+    // const verificarCorreo = e => {
   //     if (e.target.value.email === e.target.value.confirmacionEmail){
 
   //     };
@@ -74,7 +146,10 @@ export default function FormRegister() {
                 name="nombre"
                 value={formRegister.nombre}
                 required
-                onChange={handleChange}
+                onChange={(e) => {
+                  handleChange(e);
+                  validarDatos(e)}
+                }
               />
             </FormGroup>
           </Col>
@@ -89,7 +164,10 @@ export default function FormRegister() {
                 name="apellido"
                 value={formRegister.apellido}
                 required
-                onChange={handleChange}
+                onChange={(e) => {
+                  handleChange(e);
+                  validarDatos(e)}
+                }
               />
             </FormGroup>
           </Col>
@@ -104,7 +182,10 @@ export default function FormRegister() {
                 name="email"
                 value={formRegister.email}
                 required
-                onChange={handleChange}
+                onChange={(e) => {
+                  handleChange(e);
+                  validarEmail(e)}
+                }
               />
             </FormGroup>
           </Col>
@@ -119,7 +200,10 @@ export default function FormRegister() {
                 name="confirmacion_email"
                 value={formRegister.confirmacionEmail}
                 required
-                onChange={handleChange}
+                onChange={(e) => {
+                  handleChange(e);
+                  confirmarEmail(e)}
+                }
               />
             </FormGroup>
           </Col>
@@ -134,7 +218,10 @@ export default function FormRegister() {
                 name="password"
                 value={formRegister.password}
                 required
-                onChange={handleChange}
+                onChange={(e) => {
+                  handleChange(e);
+                  validarPassword(e)}
+                }
               />
             </FormGroup>
           </Col>
@@ -149,7 +236,10 @@ export default function FormRegister() {
                 name="confirmacion_password"
                 value={formRegister.confirmacionPassword}
                 required
-                onChange={handleChange}
+                onChange={(e) => {
+                  handleChange(e);
+                  confirmarPassword(e)}
+                }
               />
             </FormGroup>
           </Col>
@@ -166,7 +256,10 @@ export default function FormRegister() {
                 placeholder="ej: 987654321"
                 pattern="[0-9 +]+"
                 required
-                onChange={handleChange}
+                onChange={(e) => {
+                  handleChange(e);
+                  validarCelular(e)}
+                }
               />
             </FormGroup>
           </Col>
@@ -183,7 +276,6 @@ export default function FormRegister() {
               <Input
                 name="comuna"
                 id="comuna"
-                defaultValue=""
                 type="select"
                 value={formRegister.comuna}
                 required
@@ -192,9 +284,9 @@ export default function FormRegister() {
                 <option value="" disabled>
                   Seleccione su comuna
                 </option>
-                <option value="el_bosque">El Bosque</option>
-                <option value="la_cisterna">La Cisterna</option>
-                <option value="la_pintana">La Pintana</option>
+                <option value="El bosque">El Bosque</option>
+                <option value="La cisterna">La Cisterna</option>
+                <option value="San ramon">San Ram&oacute;n</option>
               </Input>
             </FormGroup>
           </Col>

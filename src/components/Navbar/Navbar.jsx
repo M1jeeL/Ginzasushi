@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { NavLink } from "react-router-dom";
 import { Button, Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 import CartModal from "../Carrito/CartModal";
@@ -8,6 +8,7 @@ export default function Navbar({ cart, eliminarProducto }) {
   const [navLinkOpen, setNavLinkOpen] = useState(false);
   const [openCartModal, setCartModal] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
 
   const handleCartModal = () => setCartModal(!openCartModal);
   const handleNavLinksToggle = () => setNavLinkOpen(!navLinkOpen);

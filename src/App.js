@@ -24,15 +24,31 @@ import Direccion from './components/PanelUsuario/Direccion';
 
 const App = () => {
   
+
+    // const [productosFlask, setProductosFlask] = useState([])
+
+
+    // useEffect(() => {
+    //     fetch("http://localhost:5000/productos")
+    //     .then(response =>
+    //         response.json().then(data => {
+    //             setProductosFlask(data)
+    //     }))
+    // }, [])
+
+  // console.log(productosFlask)
+  // console.log(db.productos)
+
+
   const [selectProduct, setSelectProduct] = useState({
     id: 1
   })
 
   const [cart, setCart] = useState([])
-
+  
   const eliminarProducto = (id) => {
     let newCart = cart.filter((producto) => producto.id !== id);
-    console.log(newCart);
+    // console.log(newCart);
     // console.log(cart);
      setCart(newCart);
   };

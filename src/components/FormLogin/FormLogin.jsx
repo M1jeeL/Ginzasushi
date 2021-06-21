@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./FormLogin.css";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 const baseUrl = "http://localhost:5000/usuarios";
 const cookies = new Cookies();
@@ -14,11 +14,11 @@ export default function FormLogin() {
     password: "",
   });
 
-useEffect(() => {
-  if(cookies.get('email')){
-    window.location.href='./mi-cuenta'
-  }
-},[])
+  useEffect(() => {
+    if (cookies.get("email")) {
+      window.location.href = "./mi-cuenta";
+    }
+  }, []);
 
   const handleChange = async (e) => {
     await setFormLogin({
@@ -44,18 +44,18 @@ useEffect(() => {
         return response.data;
       })
       .then((response) => {
-        if(response.length>0){
-          let respuesta=response[0];
+        if (response.length > 0) {
+          let respuesta = response[0];
 
-          cookies.set('id', respuesta.id, {path: "/"});
-          cookies.set('nombre', respuesta.nombre, {path: "/"});
-          cookies.set('apellido', respuesta.apellido, {path: "/"});
-          cookies.set('email', respuesta.email, {path: "/"});
+          cookies.set("id", respuesta.id, { path: "/" });
+          cookies.set("nombre", respuesta.nombre, { path: "/" });
+          cookies.set("apellido", respuesta.apellido, { path: "/" });
+          cookies.set("email", respuesta.email, { path: "/" });
 
-          alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido}`)
-          window.location.href="./mi-cuenta";
-        }else{
-          alert('El usuario o la contraseña no son correctos');
+          alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido}`);
+          window.location.href = "./mi-cuenta";
+        } else {
+          alert("El usuario o la contraseña no son correctos");
         }
       })
       .catch((error) => {

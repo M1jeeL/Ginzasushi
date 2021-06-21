@@ -3,22 +3,22 @@ import {Button} from 'reactstrap'
 
 const CrudTableRow = ({ el, setDataToEdit, deleteData, openModal }) => {
   let {
-    nombreProducto,
-    categoriaProducto,
-    precioProducto,
+    nombre,
+    categoria,
+    precio,
     id,
-    ingredientesProducto,
+    ingredientes,
   } = el;
 
 
 
   return (
     <tr>
-      <td>{nombreProducto}</td>
-      <td>{categoriaProducto}</td>
-      <td>{precioProducto}</td>
+      <td>{nombre}</td>
+      <td>{categoria}</td>
+      <td>{precio}</td>
       <td>{id}</td>
-      <td>{ingredientesProducto}</td>
+      <td>{ingredientes}</td>
       <td>
         <Button
         style={{marginRight:"1rem"}}

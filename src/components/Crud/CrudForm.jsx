@@ -3,11 +3,11 @@ import BotonForm from "../BotonForm/BotonForm";
 import "./CrudForm.css";
 
 const initialFormCrud = {
-  nombreProducto: "",
-  categoriaProducto: "",
-  precioProducto: 0,
+  nombre: "",
+  categoria: "",
+  precio: 0,
   id: null,
-  ingredientesProducto: "",
+  ingredientes: "",
 };
 
 const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
@@ -28,14 +28,14 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
     }
   }, [dataToEdit]);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     //Datos requeridos
     if (
-      !formCrud.nombreProducto ||
-      !formCrud.precioProducto ||
-      !formCrud.categoriaProducto ||
-      !formCrud.ingredientesProducto
+      !formCrud.nombre ||
+      !formCrud.precio ||
+      !formCrud.categoria ||
+      !formCrud.ingredientes
     ) {
       alert("Datos incompletos");
       return;
@@ -53,7 +53,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
     setFormCrud(initialFormCrud);
     setDataToEdit(null);
   };
-
+  
   return (
     <div className="crud-form-container">
       <div className="header-crud-form">
@@ -63,26 +63,26 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
       <form onSubmit={handleSubmit}>
         <div className="body-crud-form">
           <div className="form-title">
-            <label className="form-text" htmlFor="nombreProducto">
+            <label className="form-text" htmlFor="nombre">
               Nombre producto
             </label>
             <input
               type="text"
-              name="nombreProducto"
+              name="nombre"
               placeholder="Ingrese nombre"
               onChange={handleChange}
-              value={formCrud.nombreProducto}
+              value={formCrud.nombre}
             />
           </div>
           <div className="form-title">
-            <label className="form-text" htmlFor="categoriaProducto">
+            <label className="form-text" htmlFor="categoria">
               Categor&iacute;a
             </label>
             <select
               id="categoria"
-              name="categoriaProducto"
+              name="categoria"
               defaultValue=""
-              value={formCrud.categoriaProducto}
+              value={formCrud.categoria}
               onChange={handleChange}
             >
               <option value="" disabled>
@@ -93,27 +93,25 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
             </select>
           </div>
           <div className="form-title">
-            <label className="form-text" >
-              Precio
-            </label>
+            <label className="form-text">Precio</label>
             <input
               type="number"
-              name="precioProducto"
+              name="precio"
               placeholder="Ingrese precio"
               onChange={handleChange}
-              value={formCrud.precioProducto}
+              value={formCrud.precio}
             />
           </div>
           <div className="form-title">
-            <label className="form-text" htmlFor="ingredientesProducto">
+            <label className="form-text" htmlFor="ingredientes">
               Ingredientes
             </label>
             <input
               type="textarea"
-              name="ingredientesProducto"
+              name="ingredientes"
               placeholder="Ingrese ingredientes"
               onChange={handleChange}
-              value={formCrud.ingredientesProducto}
+              value={formCrud.ingredientes}
             />
           </div>
         </div>

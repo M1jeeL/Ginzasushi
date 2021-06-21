@@ -12,11 +12,11 @@ import {
 import "./CrudFormModal.css";
 
 const initialFormCrud = {
-  nombreProducto: "",
-  categoriaProducto: "",
-  precioProducto: undefined,
+  nombre: "",
+  categoria: "",
+  precio: undefined,
   id: null,
-  ingredientesProducto: "",
+  ingredientes: "",
 };
 
 const CrudForm = ({
@@ -48,10 +48,10 @@ const CrudForm = ({
     e.preventDefault();
     //Datos requeridos
     if (
-      !formCrud.nombreProducto ||
-      !formCrud.precioProducto ||
-      !formCrud.categoriaProducto ||
-      !formCrud.ingredientesProducto
+      !formCrud.nombre ||
+      !formCrud.precio ||
+      !formCrud.categoria ||
+      !formCrud.ingredientes
     ) {
       alert("Datos incompletos");
       return;
@@ -91,20 +91,20 @@ const CrudForm = ({
       </ModalHeader>
       <ModalBody>
         <FormGroup onSubmit={handleSubmit}>
-          <Label htmlFor="nombreProducto">Nombre Producto</Label>
+          <Label htmlFor="nombre">Nombre Producto</Label>
           <Input
             type="text"
-            name="nombreProducto"
+            name="nombre"
             placeholder="Ingrese nombre"
             onChange={handleChange}
-            value={formCrud.nombreProducto}
+            value={formCrud.nombre}
           />
-          <Label htmlFor="categoriaProducto">Categor&iacute;a</Label>
+          <Label htmlFor="categoria">Categor&iacute;a</Label>
           <Input
             type="select"
-            name="categoriaProducto"
+            name="categoria"
             defaultValue=""
-            value={formCrud.categoriaProducto}
+            value={formCrud.categoria}
             onChange={handleChange}
           >
             {" "}
@@ -114,21 +114,21 @@ const CrudForm = ({
             <option value="California Rolls">California Rolls</option>
             <option value="Avocado Rolls">Avocado Rolls</option>
           </Input>
-          <Label htmlFor="precioProducto">Precio</Label>
+          <Label htmlFor="precio">Precio</Label>
           <Input
             type="number"
-            name="precioProducto"
+            name="precio"
             placeholder="Ingrese precio"
             onChange={handleChange}
-            value={formCrud.precioProducto}
+            value={formCrud.precio}
           />
-          <Label htmlFor="ingredientesProducto">Ingredientes</Label>
+          <Label htmlFor="ingredientes">Ingredientes</Label>
           <Input
             type="textarea"
-            name="ingredientesProducto"
+            name="ingredientes"
             placeholder="Ingrese ingredientes"
             onChange={handleChange}
-            value={formCrud.ingredientesProducto}
+            value={formCrud.ingredientes}
           />
         </FormGroup>
       </ModalBody>

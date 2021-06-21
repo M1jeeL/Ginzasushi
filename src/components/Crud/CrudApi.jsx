@@ -5,6 +5,8 @@ import Loader from "./Loader";
 import Message from "./Message";
 import CrudFormModal from "./CrudFormModal";
 import { Button } from "reactstrap";
+import axios from "axios";
+
 
 export default function Crud() {
   const [db, setDb] = useState(null);
@@ -16,7 +18,9 @@ export default function Crud() {
   let api = helpHttp();
   let url = "http://localhost:5000/productos";
 
-  const openModal = (e) => setOpenProductModal(!openProductModal);
+  const openModal = (e) => {
+    setOpenProductModal(!openProductModal);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -34,23 +38,30 @@ export default function Crud() {
         setLoading(false);
       });
   }, [url]);
+// console.log(db)
+  const createData = async (data) => {
+    delete data.id
+    // // console.log(data);
 
-  const createData = (data) => {
-    data.id = Date.now();
-    // console.log(data);
+    // let options = {
+    //   body: data,
+    //   headers: { "content-type": "application/json" },
+    // };
+    // api.post(url, options).then((res) => {
+    //   // console.log(res);
+    //   if (!res.err) {
+    //     setDb([...db, res]);
+    //   } else {
+    //     setError(res);
+    //   }
+    // });
 
-    let options = {
-      body: data,
-      headers: { "content-type": "application/json" },
-    };
-    api.post(url, options).then((res) => {
-      // console.log(res);
-      if (!res.err) {
-        setDb([...db, res]);
-      } else {
-        setError(res);
-      }
-    });
+    //////////////////////////////////////////////////
+
+    await axios({
+      
+    })
+   
   };
 
   const updateData = (data) => {
@@ -95,7 +106,10 @@ export default function Crud() {
   return (
     <div>
       <h2>Inventario de Productos</h2>
-      <Button color="warning" onClick={openModal}>
+      <Button color="warning" onClick={() => {  
+        openModal()  
+        setDataToEdit(null);
+        }}>
         Agregar Producto
       </Button>
       <CrudFormModal
