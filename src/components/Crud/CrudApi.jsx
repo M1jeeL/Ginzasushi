@@ -16,7 +16,7 @@ export default function Crud() {
   const [openProductModal, setOpenProductModal] = useState(false);
 
   let api = helpHttp();
-  let url = "http://localhost:5000/productos";
+  let url = "http://localhost:5002/productos";
 
   const openModal = (e) => {
     setOpenProductModal(!openProductModal);

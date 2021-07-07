@@ -37,7 +37,7 @@ const initialRegisterForm = {
 const FormRegister = () => {
   const [formRegister, setFormRegister] = useState(initialRegisterForm); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
 
-  const url = "http://localhost:5000/register";
+  const url = "http://3.233.87.147:5000/register";
   const history = useHistory();
 
   const handleChange = (e) => {
@@ -158,7 +158,7 @@ const FormRegister = () => {
       })
       .then((datos) => console.log(datos));
 
-    alert("El formulario se ha enviado correctamente");
+    alert("Cuenta creada exitosamente");
   };
 
   return (

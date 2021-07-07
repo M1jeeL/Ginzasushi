@@ -5,7 +5,7 @@ import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 
 const FormLogin = () => {
-  const baseUrl = "http://localhost:5000/login";
+  const baseUrl = "http://3.233.87.147:5000/login";
   const history = useHistory();
   useEffect(() => {
     localStorage.getItem("token") && history.push("mi-cuenta");

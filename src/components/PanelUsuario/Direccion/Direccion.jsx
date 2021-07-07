@@ -9,7 +9,7 @@ const Direccion = () => {
   const history = useHistory();
   const [usuario, setUsuario] = useState({});
 
-  const url = `http://localhost:5000/usuario_actual`;
+  const url = `http://3.233.87.147:5000/usuario_actual`;
 
   useEffect(() => {
     const token = localStorage.getItem("token");

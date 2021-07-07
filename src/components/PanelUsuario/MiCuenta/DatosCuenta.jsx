@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
 
 const DatosCuenta = ({ usuario }) => {
-  const { nombre, apellido, email } = usuario;
+  const { id, nombre, apellido, email } = usuario;
 
   const inicialState = {
     nombre: "",
@@ -21,7 +21,22 @@ const DatosCuenta = ({ usuario }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
+    const url = `http://3.233.87.147:5000/usuarios/${id}`
 
+    fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(usuarioState),
+    })
+      .then((response) => (response.json()))
+      .catch((error) => {
+        alert(error);
+      });
+      
     console.log('enviando datos...', usuarioState)
   };
 

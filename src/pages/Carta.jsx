@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cards from "../components/Carta/Cards";
 import Imgcab from "../components/Imagen cabecera/Imgcab";
 import FiltroCarta from "../components/Carta/FiltroCarta/FiltroCarta";
@@ -13,6 +13,26 @@ export default function Carta({
   let showProducts = productos.filter(
     (producto) => producto.categoriaProducto === categoria
   );
+
+  const url = "http://localhost:5002/productos";
+
+  useEffect(() => {
+    
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then(data => console.log(data))
+
+
+
+    return () => {
+      return true;
+    }
+  }, [])
 
   return (
     <>

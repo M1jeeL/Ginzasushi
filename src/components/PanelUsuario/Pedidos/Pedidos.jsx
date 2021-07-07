@@ -10,7 +10,7 @@ const Pedidos = () => {
 
   const [pedidos, setPedidos] = useState([]);
 
-  const url = "http://localhost:5001/pedidos";
+  const url = "http://3.233.87.147:5001/pedidos";
   
   useEffect(() => {
     const token = localStorage.getItem("token");
