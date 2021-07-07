@@ -17,27 +17,14 @@ import BotonWsp from './components/BotonWsp/BotonWsp';
 import CrudApi from './components/Crud/CrudApi';
 import db from './components/data.json'
 import Cart from './components/Carrito/Cart';
-import PanelUsuario from './components/PanelUsuario/PanelUsuario';
-import Pedidos from './components/PanelUsuario/Pedidos';
-import Direccion from './components/PanelUsuario/Direccion';
-// import Ejemplos from './components/Ejemplos/Ejemplos';
+import Pedidos from './components/PanelUsuario/Pedidos/Pedidos';
+import PedidoInfo from './components/PanelUsuario/Pedidos/PedidoInfo';
+import Direccion from './components/PanelUsuario/Direccion/Direccion';
+import MiCuenta from './components/PanelUsuario/MiCuenta/MiCuenta';
+
 
 const App = () => {
   
-
-    // const [productosFlask, setProductosFlask] = useState([])
-
-
-    // useEffect(() => {
-    //     fetch("http://localhost:5000/productos")
-    //     .then(response =>
-    //         response.json().then(data => {
-    //             setProductosFlask(data)
-    //     }))
-    // }, [])
-
-  // console.log(productosFlask)
-  // console.log(db.productos)
 
 
   const [selectProduct, setSelectProduct] = useState({
@@ -48,8 +35,6 @@ const App = () => {
   
   const eliminarProducto = (id) => {
     let newCart = cart.filter((producto) => producto.id !== id);
-    // console.log(newCart);
-    // console.log(cart);
      setCart(newCart);
   };
 
@@ -60,37 +45,23 @@ const App = () => {
         <BotonWsp/>
         <Navbar cart={cart} eliminarProducto={eliminarProducto}/>
         <Switch>
-          <Route exact path = "/">
-            <Inicio/>
-          </Route>
+          <Route exact path = "/" component={Inicio} />
           <Route exact path = "/carta">
             <Carta  productos={db.productos} categorias={db.categorias} selectProduct={selectProduct} setSelectProduct={setSelectProduct} cart={cart} setCart={setCart}/>
           </Route>
-          <Route exact path = "/register">
-            <Register/>
-          </Route>
+          <Route exact path = "/register" component={Register} />
           <Route path = "/productos/">
             <Productos  productos={db.productos} selectProduct={selectProduct} cart={cart} setCart={setCart}/>
           </Route>
-          <Route exact path = "/login">
-            <Login/>
-          </Route>
-          <Route exact path = "/crud">
-            <CrudApi/>
-          </Route>
+          <Route exact path = "/login" component={Login} />
+          <Route exact path = "/crud" component={CrudApi}/>
           <Route exact path = "/carro-de-compras">
             <Cart cart={cart} setCart={setCart} eliminarProducto={eliminarProducto} />
           </Route>
-          <Route exact path="/mi-cuenta">
-            <PanelUsuario/>
-          </Route>
-          <Route exact path="/mis-pedidos">
-            <Pedidos/>
-          </Route>
-          <Route exact path="/mis-direcciones">
-            <Direccion/>
-          </Route>
-          {/* <Route exact path = "/ejemplos" component = {Ejemplos}/> */}
+          <Route exact path="/mi-cuenta" component={MiCuenta} />
+          <Route exact path="/mis-pedidos" component={Pedidos} />
+          <Route exact path="/mis-direcciones" component={Direccion} />
+          <Route path= "/pedidos/:uuid" component={PedidoInfo}/>
         </Switch>
         <Footer/>
     </Router>

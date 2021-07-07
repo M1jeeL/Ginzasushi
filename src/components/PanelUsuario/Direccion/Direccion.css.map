@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,oBAAoB,CAAC;EACnB,UAAU,EAAE,IAAI;EAChB,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,QAAQ;EACnB,eAAe,EAAE,aAAa;CAC/B;;AAED,AAAA,gBAAgB,CAAA;EACd,KAAK,EAAE,GAAG;CACX",
+    "sources": [
+        "Direccion.scss"
+    ],
+    "names": [],
+    "file": "Direccion.css"
+}

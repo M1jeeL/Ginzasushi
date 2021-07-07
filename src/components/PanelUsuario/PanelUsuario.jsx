@@ -1,34 +1,26 @@
-import React, { useEffect } from "react";
-import { Button } from "reactstrap";
-import Cookies from "universal-cookie";
-
-const cookies = new Cookies();
+import React from "react";
+import PanelNavRow from "./PanelNavRow";
+import { NavLink, useHistory } from "react-router-dom";
+import "./PanelUsuario.css";
 
 const PanelUsuario = () => {
-  useEffect(() => {
-    if (!cookies.get("email")) {
-      window.location.href = "./login";
-    }
-  }, []);
+  const history = useHistory();
 
   const cerrarSesion = () => {
-    cookies.remove("id", { path: "/" });
-    cookies.remove("nombre", { path: "/" });
-    cookies.remove("apellido", { path: "/" });
-    cookies.remove("email", { path: "/" });
-
-    window.location.href = "./login";
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    history.push("/");
   };
 
-  console.log("id: " + cookies.get("id"));
-  console.log("nombre: " + cookies.get("nombre"));
-  console.log("apellido: " + cookies.get("apellido"));
-  console.log("email: " + cookies.get("email"));
-
   return (
-    <div>
-      <Button onClick={cerrarSesion}>Cerrar sesi&oacute;n</Button>
-    </div>
+    <nav className="panel-nav">
+      <PanelNavRow url="/mi-cuenta" title="Mi cuenta" />
+      <PanelNavRow url="/mis-direcciones" title="Mi dirección" />
+      <PanelNavRow url="/mis-pedidos" title="Mis pedidos" />
+      <NavLink exact to="/" className="panel-nav-item" onClick={cerrarSesion}>
+        <span>Salir</span>
+      </NavLink>
+    </nav>
   );
 };
 

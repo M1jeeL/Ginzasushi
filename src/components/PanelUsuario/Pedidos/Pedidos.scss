@@ -1,0 +1,27 @@
+.pedidos-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.pedidos-table {
+  width: 75%;
+}
+
+.en-camino {
+  color: #ffee00;
+  font-weight: bold;
+
+}
+
+.recibida {
+  color: #2DAE15;
+  font-weight: bold;
+}
+
+.cancelada {
+  color: red;
+  font-weight: bold;
+}
+

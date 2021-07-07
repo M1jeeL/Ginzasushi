@@ -65,9 +65,6 @@ export default function Navbar({ cart, eliminarProducto }) {
               <NavLink exact to="/login" className="dropdown-item">
                 Mi cuenta
               </NavLink>
-              <NavLink exact to="/register" className="dropdown-item">
-                Registrarse
-              </NavLink>
               <NavLink exact to="/mis-pedidos" className="dropdown-item">
                 Mis pedidos
               </NavLink>

@@ -1,0 +1,32 @@
+.panel-nav {
+  display: flex;
+  flex-flow: column wrap;
+  margin:0;
+  width: 20%;
+  height: 16rem;
+  background-color: #000;
+}
+
+.panel-nav-item {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  height: 3rem;
+  background-color: black;
+
+  span {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    align-self: center;
+    padding-left: 1rem;
+  }
+
+  &:active,
+  &:hover {
+    background-color: #ffb922;
+    span {
+      color: #000;
+    }
+  }
+}

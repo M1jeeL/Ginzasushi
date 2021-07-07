@@ -36,18 +36,25 @@
 
 .footer-info .footer-iconos {
   width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-line-pack: center;
       align-content: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+  margin-right: 6rem;
+}
+
+@media screen and (max-width: 520px) {
+  .footer-info .footer-iconos {
+    margin-left: 6rem;
+  }
 }
 
 .footer-ig a {

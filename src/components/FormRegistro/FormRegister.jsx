@@ -1,14 +1,26 @@
 import React, { useState } from "react";
 import "./FormRegister.css";
-import { Button, Form, FormGroup, FormFeedback, Label, Input, Col, Row } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  FormFeedback,
+  Label,
+  Input,
+  Col,
+  Row,
+} from "reactstrap";
+import { Link, useHistory } from "react-router-dom";
 
-const erEmail = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const erEmail =
+  /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const erPassword = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
 const erCelular = /^(\+?56)?(\s?)(0?9)(\s?)[98765432]\d{7}$/;
 
 const initialRegisterForm = {
+  username: "",
   nombre: "",
   apellido: "",
   email: "",
@@ -18,12 +30,15 @@ const initialRegisterForm = {
   celular: "",
   comuna: "",
   calle: "",
-  numeracion: undefined,
+  numeracion: "",
   depto: "",
-}
+};
 
-export default function FormRegister() {
+const FormRegister = () => {
   const [formRegister, setFormRegister] = useState(initialRegisterForm); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
+
+  const url = "http://localhost:5000/register";
+  const history = useHistory();
 
   const handleChange = (e) => {
     //Capturo el cambio de estado en los Input
@@ -104,9 +119,9 @@ export default function FormRegister() {
     if (
       !formRegister.nombre ||
       !formRegister.apellido ||
-      !erEmail.test(e.target.value) ||
+      !erEmail.test(formRegister.email) ||
       formRegister.confirmacion_email !== formRegister.email ||
-      !erPassword.test(e.target.value) ||
+      !erPassword.test(formRegister.password) ||
       formRegister.confirmacion_password !== formRegister.password ||
       !formRegister.celular ||
       !formRegister.calle ||
@@ -115,6 +130,34 @@ export default function FormRegister() {
       alert("Datos incompletos");
       return;
     }
+
+    const nuevoUsuario = {
+      username: formRegister.username,
+      nombre: formRegister.nombre,
+      apellido: formRegister.apellido,
+      email: formRegister.email,
+      password: formRegister.password,
+      celular: formRegister.celular,
+      calle: formRegister.calle,
+      numeracion: formRegister.numeracion,
+      comuna: formRegister.comuna,
+      depto: formRegister.depto,
+      isAdmin: false,
+    };
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(nuevoUsuario),
+    })
+      .then((response) => {
+        response.json();
+        history.push("/login");
+      })
+      .then((datos) => console.log(datos));
+
     alert("El formulario se ha enviado correctamente");
   };
 
@@ -124,8 +167,26 @@ export default function FormRegister() {
       <Row form>
         <Col lg={4} md={6} sm={12}>
           <FormGroup className="form-title" row>
+            <Label className="form-text" htmlFor="username">
+              Nombre de usuario
+            </Label>
+            <Input
+              type="text"
+              id="username"
+              name="username"
+              value={formRegister.username}
+              required
+              onChange={(e) => {
+                handleChange(e);
+                validarDatos(e);
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col lg={4} md={6} sm={12}>
+          <FormGroup className="form-title" row>
             <Label className="form-text" htmlFor="nombre">
-              Nombre *
+              Nombre
             </Label>
             <Input
               type="text"
@@ -143,7 +204,7 @@ export default function FormRegister() {
         <Col lg={4} md={6} sm={12}>
           <FormGroup className="form-title">
             <Label className="form-text" htmlFor="apellido">
-              Apellido *
+              Apellido
             </Label>
             <Input
               type="text"
@@ -161,7 +222,7 @@ export default function FormRegister() {
         <Col lg={4} md={6} sm={12}>
           <FormGroup className="form-title">
             <Label className="form-text" htmlFor="email">
-              Correo *
+              Correo
             </Label>
             <Input
               type="email"
@@ -179,7 +240,7 @@ export default function FormRegister() {
         <Col lg={4} md={6} sm={12}>
           <FormGroup className="form-title">
             <Label className="form-text" htmlFor="confirmacion_email">
-              Confirmaci&oacute;n de correo *
+              Confirmaci&oacute;n de correo
             </Label>
             <Input
               type="email"
@@ -198,7 +259,7 @@ export default function FormRegister() {
         <Col lg={4} md={6} sm={12}>
           <FormGroup className="form-title">
             <Label className="form-text" htmlFor="password">
-              Contrase&ntilde;a *
+              Contrase&ntilde;a
             </Label>
             <Input
               type="password"
@@ -211,13 +272,16 @@ export default function FormRegister() {
                 validarPassword(e);
               }}
             />
-            <FormFeedback tooltip>La contrase&ntilde;a debe tener m&iacute;nimo 6 c&aacute;racteres y m&aacute;ximo 16, adem&aacute;s, debe poseer un n&uacute;mero.</FormFeedback>
+            <FormFeedback tooltip>
+              La contrase&ntilde;a debe tener m&iacute;nimo 6 c&aacute;racteres
+              y m&aacute;ximo 16, adem&aacute;s, debe poseer un n&uacute;mero.
+            </FormFeedback>
           </FormGroup>
         </Col>
         <Col lg={4} md={6} sm={12}>
           <FormGroup className="form-title">
             <Label className="form-text" htmlFor="confirmacion_password">
-              Confirmaci&oacute;n de contrase&ntilde;a *
+              Confirmaci&oacute;n de contrase&ntilde;a
             </Label>
             <Input
               type="password"
@@ -230,13 +294,15 @@ export default function FormRegister() {
                 confirmarPassword(e);
               }}
             />
-            <FormFeedback tooltip>Las contrase&ntilde;as deben coincidir.</FormFeedback>
+            <FormFeedback tooltip>
+              Las contrase&ntilde;as deben coincidir.
+            </FormFeedback>
           </FormGroup>
         </Col>
         <Col lg={4} md={6} sm={12}>
           <FormGroup className="form-title">
             <Label className="form-text" htmlFor="celular">
-              Celular *
+              Celular
             </Label>
             <Input
               type="tel"
@@ -260,7 +326,7 @@ export default function FormRegister() {
         <Col lg={4} md={6} sm={12}>
           <FormGroup className="form-title form-comuna">
             <Label className="form-text" htmlFor="comuna">
-              Comuna *
+              Comuna
             </Label>
             <Input
               name="comuna"
@@ -282,7 +348,7 @@ export default function FormRegister() {
         <Col lg={4} md={6} sm={12}>
           <FormGroup className="form-title">
             <Label className="form-text" htmlFor="calle">
-              Calle *
+              Calle
             </Label>
             <Input
               type="text"
@@ -300,7 +366,7 @@ export default function FormRegister() {
         <Col lg={2} md={6} sm={12}>
           <FormGroup className="form-title">
             <Label className="form-text" htmlFor="numeracion">
-              N&uacute;mero *
+              N&uacute;mero
             </Label>
             <Input
               type="text"
@@ -330,9 +396,16 @@ export default function FormRegister() {
           </FormGroup>
         </Col>
       </Row>
-      <Button type="submit" color="warning" size="lg">
-        Crear Cuenta
-      </Button>
+      <div className="d-flex justify-content-between">
+        <Button type="submit" color="warning" size="lg">
+          Crear Cuenta
+        </Button>
+        <Link to="/login" className="align-self-end">
+          ¿Tienes cuenta? <strong>Inicia sesión</strong>
+        </Link>
+      </div>
     </Form>
   );
-}
+};
+
+export default FormRegister;

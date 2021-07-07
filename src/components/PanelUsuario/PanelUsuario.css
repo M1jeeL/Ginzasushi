@@ -1,0 +1,45 @@
+.panel-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  margin: 0;
+  width: 20%;
+  height: 16rem;
+  background-color: #000;
+}
+
+.panel-nav-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  width: 100%;
+  height: 3rem;
+  background-color: black;
+}
+
+.panel-nav-item span {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  padding-left: 1rem;
+}
+
+.panel-nav-item:active, .panel-nav-item:hover {
+  background-color: #ffb922;
+}
+
+.panel-nav-item:active span, .panel-nav-item:hover span {
+  color: #000;
+}
+/*# sourceMappingURL=PanelUsuario.css.map */

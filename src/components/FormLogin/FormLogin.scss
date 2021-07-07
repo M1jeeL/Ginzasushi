@@ -1,3 +1,8 @@
+#form-login {
+  margin-top: 6.92rem;
+  margin-bottom: 6.92rem;
+}
+
 .login-form-container {
   display: flex;
   align-items: flex-start;
@@ -5,8 +10,8 @@
   margin: auto;
   flex-flow: column wrap;
   align-items: center;
-  Button{
-    margin:0.5em 0;
+  Button {
+    margin: 0.5em 0;
     width: 10em;
   }
 }
