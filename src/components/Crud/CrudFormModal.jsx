@@ -13,10 +13,12 @@ import "./CrudFormModal.css";
 
 const initialFormCrud = {
   nombre: "",
+  precio: 0,
   categoria: "",
-  precio: undefined,
-  id: null,
   ingredientes: "",
+  envoltura: "",
+  bocados: 0,
+  id: 0,
 };
 
 const CrudForm = ({
@@ -51,16 +53,27 @@ const CrudForm = ({
       !formCrud.nombre ||
       !formCrud.precio ||
       !formCrud.categoria ||
-      !formCrud.ingredientes
+      !formCrud.ingredientes ||
+      !formCrud.envoltura ||
+      !formCrud.bocados
     ) {
       alert("Datos incompletos");
       return;
     }
 
-    if (formCrud.id === null) {
-      createData(formCrud);
+    const formAEnviar = {
+      nombre: formCrud.nombre,
+      precio: formCrud.precio,
+      categoria: formCrud.categoria,
+      ingredientes: formCrud.ingredientes,
+      envoltura: formCrud.envoltura,
+      bocados: formCrud.bocados
+    }
+
+    if (formCrud.id === 0) {
+      createData(formAEnviar);
     } else {
-      updateData(formCrud);
+      updateData(formAEnviar, formCrud.id);
     }
     handleReset();
   };
@@ -103,7 +116,6 @@ const CrudForm = ({
           <Input
             type="select"
             name="categoria"
-            defaultValue=""
             value={formCrud.categoria}
             onChange={handleChange}
           >
@@ -114,6 +126,22 @@ const CrudForm = ({
             <option value="California Rolls">California Rolls</option>
             <option value="Avocado Rolls">Avocado Rolls</option>
           </Input>
+          <Label htmlFor="nombre">Envoltura</Label>
+          <Input
+            type="text"
+            name="envoltura"
+            placeholder="Ingrese envoltura"
+            onChange={handleChange}
+            value={formCrud.envoltura}
+          />
+          <Label htmlFor="nombre">Cantidad de bocados</Label>
+          <Input
+            type="text"
+            name="bocados"
+            placeholder="Ingrese bocados"
+            onChange={handleChange}
+            value={formCrud.bocados}
+          />
           <Label htmlFor="precio">Precio</Label>
           <Input
             type="number"

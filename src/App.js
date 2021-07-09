@@ -47,7 +47,7 @@ const App = () => {
         <Switch>
           <Route exact path = "/" component={Inicio} />
           <Route exact path = "/carta">
-            <Carta  productos={db.productos} categorias={db.categorias} selectProduct={selectProduct} setSelectProduct={setSelectProduct} cart={cart} setCart={setCart}/>
+            <Carta categorias={db.categorias} selectProduct={selectProduct} setSelectProduct={setSelectProduct} cart={cart} setCart={setCart}/>
           </Route>
           <Route exact path = "/register" component={Register} />
           <Route path = "/productos/">

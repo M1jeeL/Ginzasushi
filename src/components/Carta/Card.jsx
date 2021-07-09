@@ -2,39 +2,46 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Card.css";
 
-function Card({ item, setSelectProduct }) {
-  const { nombreProducto, ingredientesProducto, precioProducto, id, src, url } =
-    item;
+function Card({ item}) {
+  const { nombre, categoria, ingredientes, precio } = item;
+  const src = ""
+
+  let name = nombre.toLowerCase()
+  
+  let category = categoria.toLowerCase()
+  category = category.replace(/ /g, "-")
 
   return (
     <>
       <Link
-        to={url}
-        onClick={() => setSelectProduct(id)}
+        to={`/${category}/${name}`}
         className="card-container"
       >
         <div className="card-info">
           <div className="card-titulo">
-            <span>{nombreProducto}</span>
+            <span>{nombre}</span>
           </div>
-            <div className="card-ingredientes">
-              <span>{ingredientesProducto}</span>
-            </div>
+          <div className="card-ingredientes">
+            <span>{ingredientes}</span>
+          </div>
 
-            <div className="card-precio">
-              <footer>
-                <span>$ {precioProducto}</span>
-              </footer>
-            </div>
+          <div className="card-precio">
+            <footer>
+              <span>$ {precio}</span>
+            </footer>
+          </div>
         </div>
-        {(src !== "") ? (<div className="producto-pic-container-card">
-          <img
-            src={src}
-            alt="ginzasushi sushi barros luco"
-            className="producto-pic-card"
-          />
-        </div>) : ("")}
-        
+        {src !== "" ? (
+          <div className="producto-pic-container-card">
+            <img
+              src={src}
+              alt="ginzasushi sushi barros luco"
+              className="producto-pic-card"
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </Link>
     </>
   );

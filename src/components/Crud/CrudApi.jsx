@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
 import CrudTable from "./CrudTable";
-import { helpHttp } from "../../helpers/helpHttp";
 import Loader from "./Loader";
-import Message from "./Message";
 import CrudFormModal from "./CrudFormModal";
 import { Button } from "reactstrap";
-import axios from "axios";
-
 
 export default function Crud() {
   const [db, setDb] = useState(null);
   const [dataToEdit, setDataToEdit] = useState(null);
-  const [error, setError] = useState(null);
+
   const [loading, setLoading] = useState(false);
   const [openProductModal, setOpenProductModal] = useState(false);
 
-  let api = helpHttp();
   let url = "http://localhost:5002/productos";
 
   const openModal = (e) => {
@@ -24,92 +19,56 @@ export default function Crud() {
 
   useEffect(() => {
     setLoading(true);
-    helpHttp()
-      .get(url)
-      .then((res) => {
-        // console.log(res);
-        if (!res.err) {
-          setDb(res);
-          setError(null);
-        } else {
-          setDb(null);
-          setError(res);
-        }
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((productos) => {
         setLoading(false);
-      });
+        setDb(productos);
+      })
   }, [url]);
-// console.log(db)
+
   const createData = async (data) => {
-    delete data.id
-    // // console.log(data);
-
-    // let options = {
-    //   body: data,
-    //   headers: { "content-type": "application/json" },
-    // };
-    // api.post(url, options).then((res) => {
-    //   // console.log(res);
-    //   if (!res.err) {
-    //     setDb([...db, res]);
-    //   } else {
-    //     setError(res);
-    //   }
-    // });
-
-    //////////////////////////////////////////////////
-
-    await axios({
-      
-    })
-   
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((response) => setOpenProductModal(false));
   };
 
-  const updateData = (data) => {
-    let endpoint = `${url}/${data.id}`;
-    let options = {
-      body: data,
-      headers: { "content-type": "application/json" },
-    };
-    api.put(endpoint, options).then((res) => {
-      // console.log(res);
-      if (!res.err) {
-        let newData = db.map((el) => (el.id === data.id ? data : el));
-        setDb(newData);
-      } else {
-        setError(res);
-      }
-    });
+  const updateData = async (data, id) => {
+    await fetch(`${url}/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((response) => setOpenProductModal(false));
   };
 
-  const deleteData = (id) => {
-    let isDelete = window.confirm(
-      `¿Estás seguro de eliminar el producto con la id: ${id}?`
-    );
+  const deleteData = async (id) => {
+    const confirmacion = window.confirm('¿Está seguro que desea eliminar este producto?')
 
-    if (isDelete) {
-      let endpoint = `${url}/${id}`;
-      let options = {
-        headers: { "content-type": "application/json" },
-      };
-      api.del(endpoint, options).then((res) => {
-        if (!res.err) {
-          let newData = db.filter((el) => el.id !== id);
-          setDb(newData);
-        } else {
-          setError(res);
-        }
-      });
-    } else {
+    if (confirmacion === true) {
+      await fetch(`${url}/${id}`, {
+        method: "DELETE"
+      })
       return;
-    }
+    } 
+
   };
   return (
     <div>
       <h2>Inventario de Productos</h2>
-      <Button color="warning" onClick={() => {  
-        openModal()  
-        setDataToEdit(null);
-        }}>
+      <Button
+        color="warning"
+        onClick={() => {
+          openModal();
+          setDataToEdit(null);
+        }}
+      >
         Agregar Producto
       </Button>
       <CrudFormModal
@@ -121,12 +80,6 @@ export default function Crud() {
         openModal={openModal}
       />
       {loading && <Loader />}
-      {error && (
-        <Message
-          msg={`Error ${error.status}: ${error.statusText}`}
-          bgColor="#dc3545"
-        />
-      )}
       {db && (
         <CrudTable
           data={db}

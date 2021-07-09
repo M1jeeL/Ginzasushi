@@ -7,7 +7,7 @@ import "./MiCuenta.css";
 
 const MiCuenta = () => {
   const history = useHistory();
-  const [usuario, setUsuario] = useState({});
+  const [usuario, setUsuario] = useState({}); 
 
   const url = `http://3.233.87.147:5000/usuario_actual`;
 

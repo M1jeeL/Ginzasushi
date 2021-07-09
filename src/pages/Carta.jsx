@@ -3,21 +3,10 @@ import Cards from "../components/Carta/Cards";
 import Imgcab from "../components/Imagen cabecera/Imgcab";
 import FiltroCarta from "../components/Carta/FiltroCarta/FiltroCarta";
 
-export default function Carta({
-  productos,
-  selectProduct,
-  setSelectProduct,
-}) {
+export default function Carta({ selectProduct, setSelectProduct }) {
   const [categoria, setCategoria] = useState("");
-
-  let showProducts = productos.filter(
-    (producto) => producto.categoriaProducto === categoria
-  );
-
-  const url = "http://localhost:5002/productos";
-
+  const [productos, setProductos] = useState([])
   useEffect(() => {
-    
     fetch(url, {
       method: "GET",
       headers: {
@@ -25,14 +14,19 @@ export default function Carta({
       },
     })
       .then((response) => response.json())
-      .then(data => console.log(data))
-
-
+      .then((data) => setProductos(data));
 
     return () => {
       return true;
-    }
-  }, [])
+    };
+  }, []);
+
+  let showProducts = productos.filter(
+    (producto) => producto.categoriaProducto === categoria
+  );
+
+  const url = "http://localhost:5002/productos";
+
 
   return (
     <>
