@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 const PedidoInfo = () => {
   const { uuid } = useParams();
   const [pedido, setPedido] = useState({});
-  const url = `http://localhost:5001/pedidos/${uuid}`;
+  const url = `http://3.233.87.147:5001/pedidos/${uuid}`;
 
   useEffect(() => {
     const token = localStorage.getItem("token");

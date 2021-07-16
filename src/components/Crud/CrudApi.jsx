@@ -11,7 +11,8 @@ export default function Crud() {
   const [loading, setLoading] = useState(false);
   const [openProductModal, setOpenProductModal] = useState(false);
 
-  let url = "http://localhost:5002/productos";
+  let url = "http://3.233.87.147:5002/productos";
+  const token = localStorage.getItem("token");
 
   const openModal = (e) => {
     setOpenProductModal(!openProductModal);
@@ -19,23 +20,39 @@ export default function Crud() {
 
   useEffect(() => {
     setLoading(true);
-
     fetch(url)
       .then((response) => response.json())
       .then((productos) => {
         setLoading(false);
         setDb(productos);
-      })
+      });
   }, [url]);
+
+  const cargarProductos = async () => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((productos) => {
+        setLoading(false);
+        setDb(productos);
+      });
+  };
 
   const createData = async (data) => {
     await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
-    }).then((response) => setOpenProductModal(false));
+    }).then((response) => {
+      setOpenProductModal(false)
+      if (response.ok) {
+        return cargarProductos();
+      }
+      throw new Error("No esta autorizado para realizar esta acción");
+    })
+    .catch((err) => alert(err));
   };
 
   const updateData = async (data, id) => {
@@ -43,21 +60,41 @@ export default function Crud() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
-    }).then((response) => setOpenProductModal(false));
+    })
+      .then((response) => {
+        setOpenProductModal(false)
+        if (response.ok) {
+          return cargarProductos();
+        }
+        throw new Error("No esta autorizado para realizar esta acción");
+      })
+      .catch((err) => alert(err));
   };
 
   const deleteData = async (id) => {
-    const confirmacion = window.confirm('¿Está seguro que desea eliminar este producto?')
+    const confirmacion = window.confirm(
+      "¿Está seguro que desea eliminar este producto?"
+    );
 
     if (confirmacion === true) {
       await fetch(`${url}/${id}`, {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
+        .then((response) => {
+          if (response.ok) {
+            return cargarProductos();
+          }
+          throw new Error("No esta autorizado para realizar esta acción");
+        })
+        .catch((err) => alert(err));
       return;
-    } 
-
+    }
   };
   return (
     <div>

@@ -54,7 +54,7 @@ const App = () => {
             <Productos  productos={db.productos} selectProduct={selectProduct} cart={cart} setCart={setCart}/>
           </Route>
           <Route exact path = "/login" component={Login} />
-          <Route exact path = "/crud" component={CrudApi}/>
+          <Route exact path="/crud" component={CrudApi}/>
           <Route exact path = "/carro-de-compras">
             <Cart cart={cart} setCart={setCart} eliminarProducto={eliminarProducto} />
           </Route>

@@ -4,6 +4,7 @@ import Imgcab from "../components/Imagen cabecera/Imgcab";
 import FiltroCarta from "../components/Carta/FiltroCarta/FiltroCarta";
 
 export default function Carta({ selectProduct, setSelectProduct }) {
+  const url = "http://3.233.87.147:5002/productos";
   const [categoria, setCategoria] = useState("");
   const [productos, setProductos] = useState([])
   useEffect(() => {
@@ -25,7 +26,6 @@ export default function Carta({ selectProduct, setSelectProduct }) {
     (producto) => producto.categoriaProducto === categoria
   );
 
-  const url = "http://localhost:5002/productos";
 
 
   return (

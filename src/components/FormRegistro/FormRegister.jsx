@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./FormRegister.css";
 import {
   Button,
@@ -12,33 +12,42 @@ import {
 } from "reactstrap";
 import { Link, useHistory } from "react-router-dom";
 
-const erEmail =
-  /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-const erPassword = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-
-const erCelular = /^(\+?56)?(\s?)(0?9)(\s?)[98765432]\d{7}$/;
-
-const initialRegisterForm = {
-  username: "",
-  nombre: "",
-  apellido: "",
-  email: "",
-  confirmacion_email: "",
-  password: "",
-  confirmacion_password: "",
-  celular: "",
-  comuna: "",
-  calle: "",
-  numeracion: "",
-  depto: "",
-};
-
 const FormRegister = () => {
+  const erEmail =
+    /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const erPassword = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+  const erCelular = /^(\+?56)?(\s?)(0?9)(\s?)[98765432]\d{7}$/;
+
+  const initialRegisterForm = {
+    username: "",
+    nombre: "",
+    apellido: "",
+    email: "",
+    confirmacion_email: "",
+    password: "",
+    confirmacion_password: "",
+    celular: "",
+    comuna: "",
+    calle: "",
+    numeracion: "",
+    depto: "",
+  };
+
   const [formRegister, setFormRegister] = useState(initialRegisterForm); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
+  const [comunas, setComunas] = useState([]);
 
   const url = "http://3.233.87.147:5000/register";
   const history = useHistory();
+
+  useEffect(() => {
+    fetch("https://apis.digital.gob.cl/dpa/regiones/13/comunas")
+      .then((response) => response.json())
+      .then((comunas) => setComunas(comunas));
+
+    return () => {
+      return true;
+    };
+  }, []);
 
   const handleChange = (e) => {
     //Capturo el cambio de estado en los Input
@@ -141,8 +150,7 @@ const FormRegister = () => {
       calle: formRegister.calle,
       numeracion: formRegister.numeracion,
       comuna: formRegister.comuna,
-      depto: formRegister.depto,
-      isAdmin: false,
+      depto: formRegister.depto
     };
 
     fetch(url, {
@@ -153,12 +161,15 @@ const FormRegister = () => {
       body: JSON.stringify(nuevoUsuario),
     })
       .then((response) => {
-        response.json();
-        history.push("/login");
+        if (response.ok){
+          alert("Cuenta creada exitosamente");
+          history.push("/login");
+          return;
+        }
+        throw new Error("El nombre de usuario y/o el email ingresado ya existe");
       })
-      .then((datos) => console.log(datos));
+      .catch(err => alert(err))
 
-    alert("Cuenta creada exitosamente");
   };
 
   return (
@@ -339,9 +350,11 @@ const FormRegister = () => {
               <option value="" disabled>
                 Seleccione su comuna
               </option>
-              <option value="El bosque">El Bosque</option>
-              <option value="La cisterna">La Cisterna</option>
-              <option value="San ramon">San Ram&oacute;n</option>
+              {comunas.map((comuna) => (
+                <option key={comuna.codigo} value={comuna.nombre}>
+                  {comuna.nombre}
+                </option>
+              ))}
             </Input>
           </FormGroup>
         </Col>
