@@ -45,14 +45,15 @@ export default function Crud() {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
-    }).then((response) => {
-      setOpenProductModal(false)
-      if (response.ok) {
-        return cargarProductos();
-      }
-      throw new Error("No esta autorizado para realizar esta acción");
     })
-    .catch((err) => alert(err));
+      .then((response) => {
+        setOpenProductModal(false);
+        if (response.ok) {
+          return cargarProductos();
+        }
+        throw new Error("No esta autorizado para realizar esta acción");
+      })
+      .catch((err) => alert(err));
   };
 
   const updateData = async (data, id) => {
@@ -65,7 +66,7 @@ export default function Crud() {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        setOpenProductModal(false)
+        setOpenProductModal(false);
         if (response.ok) {
           return cargarProductos();
         }

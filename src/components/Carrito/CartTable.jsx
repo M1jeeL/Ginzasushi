@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Table } from "reactstrap";
+import CartContext from "../../context/CartContext";
 import CartTableRow from "./CartTableRow";
 
-const CartTable = ({ cart, setCart,eliminarProducto }) => {
+const CartTable = () => {
+  const { cart, removeFromCart} = useContext(CartContext)
   return (
     <div>
       <Table striped>
@@ -17,7 +19,11 @@ const CartTable = ({ cart, setCart,eliminarProducto }) => {
         <tbody>
           {cart.length > 0 ? (
             cart.map((producto) => (
-              <CartTableRow key={producto.id} producto={producto} cart={cart} setCart={setCart} eliminarProducto={eliminarProducto}/>
+              <CartTableRow
+                key={producto.id}
+                producto={producto}
+                removeFromCart={removeFromCart}
+              />
             ))
           ) : (
             <tr>

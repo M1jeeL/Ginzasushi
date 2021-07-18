@@ -1,22 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import "./Card.css";
 
 function Card({ item}) {
-  const { nombre, categoria, ingredientes, precio } = item;
-  const src = ""
-
-  let name = nombre.toLowerCase()
-  
-  let category = categoria.toLowerCase()
-  category = category.replace(/ /g, "-")
+  const { nombre, ingredientes, precio } = item;
+  const src = "https://images.vexels.com/media/users/3/230800/isolated/preview/6fae7b492e567aae76ab5220a894087c-cute-dibujos-animados-de-sushi.png"
 
   return (
     <>
-      <Link
-        to={`/${category}/${name}`}
-        className="card-container"
-      >
+      
         <div className="card-info">
           <div className="card-titulo">
             <span>{nombre}</span>
@@ -42,7 +32,7 @@ function Card({ item}) {
         ) : (
           ""
         )}
-      </Link>
+      
     </>
   );
 }

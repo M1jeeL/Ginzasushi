@@ -1,10 +1,12 @@
-import React, { useState} from "react";
+import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
+import CartContext from "../../context/CartContext";
 import { Button, Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 import CartModal from "../Carrito/CartModal";
 import "./Navbar.css";
 
-export default function Navbar({ cart, eliminarProducto }) {
+export default function Navbar() {
+  const { cart } = useContext(CartContext)
   const [navLinkOpen, setNavLinkOpen] = useState(false);
   const [openCartModal, setCartModal] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -25,7 +27,7 @@ export default function Navbar({ cart, eliminarProducto }) {
   //Sumo la cantidad de productos totales que tiene el carrito
   let ContadorProductosCarrito = 0;
   cart.forEach(
-    (producto) => (ContadorProductosCarrito += producto.cantidadProducto)
+    (producto) => (ContadorProductosCarrito += producto.cantidad)
   );
 
   return (
@@ -90,8 +92,6 @@ export default function Navbar({ cart, eliminarProducto }) {
           <CartModal
             handleCartModal={handleCartModal}
             openCartModal={openCartModal}
-            cart={cart}
-            eliminarProducto={eliminarProducto}
           />
         </li>
       </ul>
@@ -102,9 +102,6 @@ export default function Navbar({ cart, eliminarProducto }) {
       >
         <i className="fas fa-bars fa-2x"></i>
       </Button>
-      {/* <div className="icono-x">
-            <i className="fas fa-times"></i>
-          </div> */}
     </nav>
   );
 }

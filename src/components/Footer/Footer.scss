@@ -4,7 +4,6 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-
 }
 
 .footer-info {
@@ -12,14 +11,13 @@
   flex-flow: row wrap;
   justify-content: center;
   min-height: 12vh;
-  
 
   .footer-logo {
     background-image: url("../../img/logo1.png");
     background-size: cover;
     height: 7em;
     width: 7em;
-    margin: 0.2em 0 0 0;  
+    margin: 0.2em 0 0 0;
     border-radius: 50%;
   }
   .footer-iconos {
@@ -29,11 +27,10 @@
     justify-content: center;
     flex-flow: row wrap;
     margin-right: 6rem;
-    
-    @media screen and (max-width: 520px){
+
+    @media screen and (max-width: 520px) {
       margin-left: 6rem;
     }
-
   }
 }
 
@@ -97,5 +94,5 @@
   font-size: 0.8em;
   color: #fff;
   height: 1.5rem;
-  margin:0;
+  margin: 0;
 }
