@@ -6,13 +6,6 @@
 }
 
 
-.main-container{
-  display: flex;
-  width: 71em;
-  flex-flow: row wrap;
-  margin: 0 auto;
-}
-
 
 a, a:hover,a:visited, a:focus {
   color:inherit;

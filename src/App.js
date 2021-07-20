@@ -6,7 +6,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import Inicio from './pages/Inicio';
+import Inicio from './pages/Home/Inicio';
 import Carta from './pages/Carta';
 import Productos from './pages/Productos';
 import Navbar from './components/Navbar/Navbar';

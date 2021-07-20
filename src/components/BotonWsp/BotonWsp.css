@@ -1,18 +1,18 @@
-.boton-wsp{
-        position:fixed;
-        width:60px;
-        height:60px;
-        bottom:2vh;
-        right:2vh;
-        background-color:#25d366;
-        color:#FFF;
-        border-radius:50px;
-        text-align:center;
-        font-size:30px;
-        z-index:100;
+.boton-wsp {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 2vh;
+  right: 2vh;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  z-index: 1001;
 }
 
-.wsp-icono{
-    margin-top: 13px;
-    color: #fff;
+.wsp-icono {
+  margin-top: 13px;
+  color: #fff;
 }

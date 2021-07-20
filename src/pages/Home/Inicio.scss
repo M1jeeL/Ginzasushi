@@ -1,0 +1,476 @@
+.jumbo-home {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  background: url("../../img/banner-sushi.jpg");
+  background-size: cover;
+  height: 45rem;
+
+  .column-link-home {
+    margin-right: 8rem;
+    color: #fff;
+    h1 {
+      font-size: 3rem;
+      font-weight: bolder;
+      &:hover {
+        transform: scale(1.1);
+        transition: transform 0.3 ease-in;
+        color: #ffb922;
+      }
+    }
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+    }
+  }
+}
+
+.seccion {
+  background-color: #000;
+  height: 5rem;
+}
+
+.seccion-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  font-weight: bolder;
+  height: 5rem;
+  text-align: center;
+  color: #fff;
+}
+
+.encuentranos {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 1rem auto;
+
+  .box-1-wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #000;
+    color: #fff;
+    max-width: 50%;
+    height: 26.5rem;
+    padding: 1rem 4rem;
+    h3 {
+      margin-top: 2rem;
+      font-size: 2rem;
+      font-weight: bolder;
+    }
+    h4 {
+      padding: 0 0 1rem 0;
+      a {
+        font-weight: bold;
+        color: #ffb922;
+        &:hover {
+          color: #ffdf10;
+        }
+      }
+    }
+    p {
+      font-size: 1.5rem;
+    }
+    button {
+      a {
+        font-weight: bolder;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .box-2-wrap {
+    background: url("../../img/promo1.jpg");
+    background-size: cover;
+    width: 50%;
+    height: 26.5rem;
+  }
+  .box-3-wrap {
+    background: url("../../img/ceviche.jpeg");
+    background-size: cover;
+    background-position: 40%;
+    width: 50%;
+    height: 25rem;
+  }
+  .box-4-wrap {
+    width: 50%;
+    height: 25rem;
+    background-color: #000;
+    color: #fff;
+    padding: 1rem 4rem;
+    h3 {
+      margin-top: 2rem;
+      font-size: 2rem;
+      font-weight: bolder;
+    }
+    .social-network {
+      display: flex;
+      justify-content: center;
+      flex-flow: row nowrap;
+      .footer-ig {
+        margin: 20% 10%;
+        transform: scale(2.5);
+      }
+      .footer-facebook {
+        margin: 20% 10%;
+        transform: scale(2.5);
+      }
+    }
+    h4 {
+      padding: 1.5rem 0 0 0;
+    }
+  }
+}
+.map {
+  width: 80%;
+  height: 30em;
+  z-index: 1 !important;
+  
+}
+
+.map-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  :first-child{
+    z-index: 1;
+  }
+}
+
+.horarios {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  .horario-item {
+    border: #000 solid 4px;
+    text-align: center;
+    border-style: solid none solid none;
+    padding: 0.5rem 0;
+    margin: 1rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .encuentranos {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1444px) {
+  .encuentranos {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .encuentranos {
+    width: 85%;
+  }
+  .map {
+    width: 85%;
+    height: 30em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .encuentranos {
+    flex-flow: column nowrap;
+    width: 100%;
+    .box-1-wrap {
+      max-width: 68.1%;
+      h3 {
+        margin-top: 2rem;
+        font-size: 2rem;
+      }
+      h4 {
+        font-size: 1.3rem;
+      }
+      button {
+        a {
+          font-weight: bolder;
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .box-2-wrap {
+      width: 68.1%;
+      height: 26.5rem;
+    }
+    .box-3-wrap {
+      background-position: 40%;
+      width: 68.1%;
+      height: 25rem;
+    }
+    .box-4-wrap {
+      width: 68.1%;
+      height: 25rem;
+      background-color: #000;
+    }
+  }
+  .map {
+    width: 85%;
+    height: 30em;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .jumbo-home {
+    .column-link-home {
+      h1 {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .jumbo-home {
+    justify-content: center;
+    align-items: flex-end;
+    height: 30rem;
+    .column-link-home {
+      margin-right: 1rem;
+      margin-bottom: 2rem;
+      color: #fff;
+      h1 {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .map {
+    width: 90%;
+    height: 25em;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .jumbo-home {
+    justify-content: flex-end;
+    align-items: center;
+    height: 25rem;
+    .column-link-home {
+      margin-right: 0;
+      margin-bottom: 2rem;
+      color: #fff;
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .encuentranos {
+    flex-flow: column nowrap;
+    width: 100%;
+    .box-1-wrap {
+      max-width: 78.8%;
+      padding: 1rem 2rem;
+      h3 {
+        margin-top: 2rem;
+        font-size: 2rem;
+      }
+      h4 {
+        padding: 1rem 0 0 0;
+        font-size: 1.2rem;
+      }
+      button {
+        a {
+          font-weight: bolder;
+          font-size: 1.5rem;
+        }
+      }
+      p {
+        padding: 2rem 0 0 0;
+        font-size: 1.2rem;
+      }
+    }
+    .box-2-wrap {
+      width: 78.8%;
+      height: 18rem;
+    }
+    .box-3-wrap {
+      background-position: 40%;
+      width: 78.8%;
+      height: 18rem;
+    }
+    .box-4-wrap {
+      width: 78.8%;
+      height: 25rem;
+      background-color: #000;
+    }
+  }
+}
+
+@media screen and (max-width: 627px) {
+  .encuentranos {
+    flex-flow: column nowrap;
+    width: 100%;
+    .box-1-wrap {
+      max-width: 83%;
+      padding: 1rem 2rem;
+      h3 {
+        margin-top: 1rem;
+        font-size: 2rem;
+      }
+      h4 {
+        padding: 1rem 0 0 0;
+        font-size: 1.2rem;
+      }
+      button {
+        a {
+          font-weight: bolder;
+          font-size: 1.5rem;
+        }
+      }
+      p {
+        padding: 2rem 0 0 0;
+        font-size: 1.2rem;
+      }
+    }
+    .box-2-wrap {
+      width: 83%;
+      height: 18rem;
+    }
+    .box-3-wrap {
+      background-position: 40%;
+      width: 83%;
+      height: 18rem;
+    }
+    .box-4-wrap {
+      width: 83%;
+      height: 25rem;
+      background-color: #000;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .jumbo-home {
+    height: 25rem;
+    .column-link-home {
+      h1 {
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-size: 1rem;
+      }
+    }
+  }
+  .encuentranos {
+    flex-flow: column nowrap;
+    width: 100%;
+    .box-1-wrap {
+      max-width: 85%;
+      padding: 0 2rem;
+      h3 {
+        margin-top: 2rem;
+        font-size: 2rem;
+      }
+      h4 {
+        padding: 1rem 0 0 0;
+        font-size: 1.2rem;
+      }
+      button {
+        a {
+          font-weight: bolder;
+          font-size: 1.5rem;
+        }
+      }
+      p {
+        padding: 1rem 0 0 0;
+        font-size: 1.2rem;
+      }
+    }
+    .box-2-wrap {
+      width: 85%;
+      height: 14rem;
+    }
+    .box-3-wrap {
+      background-position: 40%;
+      width: 85%;
+      height: 14rem;
+    }
+    .box-4-wrap {
+      width: 85%;
+      height: 25rem;
+      .social-network {
+        display: flex;
+        justify-content: center;
+        flex-flow: row nowrap;
+        .footer-ig {
+          margin: 5% 10%;
+          transform: scale(2);
+        }
+        .footer-facebook {
+          margin: 5% 10%;
+          transform: scale(2);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 362px) {
+  .jumbo-home {
+    height: 25rem;
+    .column-link-home {
+      h1 {
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-size: 1rem;
+      }
+    }
+  }
+  .encuentranos {
+    flex-flow: column nowrap;
+    width: 100%;
+    .box-1-wrap {
+      max-width: 90%;
+      padding: 0 1rem;
+      h3 {
+        margin-top: 1rem;
+        font-size: 2rem;
+      }
+      h4 {
+        padding: 0 0 0 0;
+        font-size: 1.2rem;
+      }
+      button {
+        a {
+          font-weight: bolder;
+          font-size: 1.5rem;
+        }
+      }
+      p {
+        padding: 0.5rem 0 0 0;
+        font-size: 1.2rem;
+      }
+    }
+    .box-2-wrap {
+      width: 90%;
+      height: 12rem;
+    }
+    .box-3-wrap {
+      background-position: 40%;
+      width: 90%;
+      height: 12rem;
+    }
+    .box-4-wrap {
+      width: 90%;
+      height: 25rem;
+      background-color: #000;
+    }
+  }
+}

@@ -18,7 +18,6 @@ const MiCuenta = () => {
       return;
     }
     
-
     fetch(url, {
       method: "GET",
       headers: {
