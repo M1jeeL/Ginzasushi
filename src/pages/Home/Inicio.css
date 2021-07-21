@@ -27,6 +27,10 @@
   font-weight: bolder;
 }
 
+.jumbo-home .column-link-home h1 a {
+  font-family: "Permanent Marker", cursive;
+}
+
 .jumbo-home .column-link-home h1:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
@@ -40,6 +44,7 @@
 .jumbo-home .column-link-home h2 {
   text-align: center;
   font-size: 2rem;
+  font-family: "Permanent Marker", cursive;
 }
 
 .seccion {
@@ -62,6 +67,13 @@
   height: 5rem;
   text-align: center;
   color: #fff;
+  font-family: "Permanent Marker", cursive;
+  text-transform: uppercase;
+}
+
+.redes {
+  background: url("https://www.crushpixel.com/big-static12/preview4/black-wall-texture-rough-background-1086203.jpg");
+  padding: 1rem 0;
 }
 
 .encuentranos {
@@ -79,7 +91,7 @@
       -ms-flex-align: center;
           align-items: center;
   width: 70%;
-  margin: 1rem auto;
+  margin: 0 auto;
 }
 
 .encuentranos .box-1-wrap {
@@ -99,12 +111,15 @@
 
 .encuentranos .box-1-wrap h3 {
   margin-top: 2rem;
+  text-transform: uppercase;
   font-size: 2rem;
   font-weight: bolder;
+  font-family: "Permanent Marker", cursive;
 }
 
 .encuentranos .box-1-wrap h4 {
   padding: 0 0 1rem 0;
+  font-family: "Permanent Marker", cursive;
 }
 
 .encuentranos .box-1-wrap h4 a {
@@ -118,11 +133,17 @@
 
 .encuentranos .box-1-wrap p {
   font-size: 1.5rem;
+  font-family: "Permanent Marker", cursive;
 }
 
 .encuentranos .box-1-wrap button a {
   font-weight: bolder;
   font-size: 1.5rem;
+  font-family: "Permanent Marker", cursive;
+}
+
+.encuentranos .box-1-wrap button a:hover {
+  color: #000;
 }
 
 .encuentranos .box-2-wrap {
@@ -130,6 +151,8 @@
   background-size: cover;
   width: 50%;
   height: 26.5rem;
+  -webkit-box-shadow: 2px 2px 0 0 #00000033;
+          box-shadow: 2px 2px 0 0 #00000033;
 }
 
 .encuentranos .box-3-wrap {
@@ -138,6 +161,8 @@
   background-position: 40%;
   width: 50%;
   height: 25rem;
+  -webkit-box-shadow: 0 2px 2px 0 #00000033;
+          box-shadow: 0 2px 2px 0 #00000033;
 }
 
 .encuentranos .box-4-wrap {
@@ -146,12 +171,16 @@
   background-color: #000;
   color: #fff;
   padding: 1rem 4rem;
+  -webkit-box-shadow: 0 0 2px 0 #00000033;
+          box-shadow: 0 0 2px 0 #00000033;
 }
 
 .encuentranos .box-4-wrap h3 {
   margin-top: 2rem;
   font-size: 2rem;
   font-weight: bolder;
+  font-family: "Permanent Marker", cursive;
+  text-transform: uppercase;
 }
 
 .encuentranos .box-4-wrap .social-network {
@@ -181,11 +210,12 @@
 
 .encuentranos .box-4-wrap h4 {
   padding: 1.5rem 0 0 0;
+  font-family: "Permanent Marker", cursive;
 }
 
 .map {
   width: 80%;
-  height: 30em;
+  height: 50em;
   z-index: 1 !important;
 }
 
@@ -227,6 +257,14 @@
   margin: 1rem 1.5rem;
 }
 
+.horarios .horario-item h3 {
+  font-family: "Permanent Marker", cursive;
+}
+
+.horarios .horario-item h4 {
+  font-family: "Permanent Marker", cursive;
+}
+
 @media screen and (max-width: 1600px) {
   .encuentranos {
     width: 80%;
@@ -245,7 +283,7 @@
   }
   .map {
     width: 85%;
-    height: 30em;
+    height: 45em;
   }
 }
 
@@ -259,6 +297,8 @@
   }
   .encuentranos .box-1-wrap {
     max-width: 68.1%;
+    -webkit-box-shadow: 2px 2px 0 0 #00000033;
+            box-shadow: 2px 2px 0 0 #00000033;
   }
   .encuentranos .box-1-wrap h3 {
     margin-top: 2rem;
@@ -274,20 +314,26 @@
   .encuentranos .box-2-wrap {
     width: 68.1%;
     height: 26.5rem;
+    -webkit-box-shadow: 0 0 2px 0 #00000033;
+            box-shadow: 0 0 2px 0 #00000033;
   }
   .encuentranos .box-3-wrap {
     background-position: 40%;
     width: 68.1%;
     height: 25rem;
+    -webkit-box-shadow: 0 0 2px 0 #00000033;
+            box-shadow: 0 0 2px 0 #00000033;
   }
   .encuentranos .box-4-wrap {
     width: 68.1%;
     height: 25rem;
     background-color: #000;
+    -webkit-box-shadow: 0 2px 2px 2px #00000033;
+            box-shadow: 0 2px 2px 2px #00000033;
   }
   .map {
     width: 85%;
-    height: 30em;
+    height: 40em;
   }
 }
 
@@ -323,7 +369,7 @@
   }
   .map {
     width: 90%;
-    height: 25em;
+    height: 35em;
   }
 }
 

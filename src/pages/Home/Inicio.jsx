@@ -16,45 +16,47 @@ export default function Inicio() {
         </div>
       </div>
       <div className="seccion"></div>
-      <div className="encuentranos">
-        <div className="box-1-wrap">
-          <h3>Pedidos y Delivery</h3>
-          <br />
-          <h4>
-            Llamanos al:{" "}
-            <span>
-              <a href="tel:+56937396320">+56 9 3739 6320</a>
-            </span>
-          </h4>
-          <p>Tambi&eacute;n puedes agregar productos a tu carrito </p>
-          <p>No esperes m&aacute;s!</p>
-          <Button color="warning">
-            <Link to="/carta">Ver carta</Link>
-          </Button>
-        </div>
-        <div className="box-2-wrap"></div>
-        <div className="box-3-wrap"></div>
-        <div className="box-4-wrap">
-          <h3>S&iacute;guenos en nuestras redes!</h3>
-          <h4>Etiquetanos en tus historias!</h4>
-          <div className="social-network">
-            <div className="footer-ig">
-              <a
-                href="https://www.instagram.com/ginzasushi_delivery/?hl=es-la"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="fab fa-instagram  fa-2x"></i>
-              </a>
-            </div>
-            <div className="footer-facebook">
-              <a
-                href="https://www.facebook.com/GinzasushiDelivery"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i className="fab fa-facebook-square fa-2x"></i>
-              </a>
+      <div className="redes">
+        <div className="encuentranos">
+          <div className="box-1-wrap">
+            <h3>Pedidos y Delivery</h3>
+            <br />
+            <h4>
+              Llamanos al:{" "}
+              <span>
+                <a href="tel:+56937396320">+56 9 3739 6320</a>
+              </span>
+            </h4>
+            <p>Tambi&eacute;n puedes agregar productos a tu carrito </p>
+            <p>No esperes m&aacute;s!</p>
+            <Button color="warning">
+              <Link to="/carta">Ver carta</Link>
+            </Button>
+          </div>
+          <div className="box-2-wrap"></div>
+          <div className="box-3-wrap"></div>
+          <div className="box-4-wrap">
+            <h3>S&iacute;guenos en nuestras redes!</h3>
+            <h4>Etiquetanos en tus historias!</h4>
+            <div className="social-network">
+              <div className="footer-ig">
+                <a
+                  href="https://www.instagram.com/ginzasushi_delivery/?hl=es-la"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-instagram  fa-2x"></i>
+                </a>
+              </div>
+              <div className="footer-facebook">
+                <a
+                  href="https://www.facebook.com/GinzasushiDelivery"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-facebook-square fa-2x"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>

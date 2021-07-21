@@ -13,6 +13,10 @@
     h1 {
       font-size: 3rem;
       font-weight: bolder;
+      a {
+        font-family: "Permanent Marker", cursive;
+      }
+
       &:hover {
         transform: scale(1.1);
         transition: transform 0.3 ease-in;
@@ -22,6 +26,7 @@
     h2 {
       text-align: center;
       font-size: 2rem;
+      font-family: "Permanent Marker", cursive;
     }
   }
 }
@@ -40,15 +45,20 @@
   height: 5rem;
   text-align: center;
   color: #fff;
+  font-family: "Permanent Marker", cursive;
+  text-transform: uppercase;
 }
-
+.redes {
+  background: url("https://www.crushpixel.com/big-static12/preview4/black-wall-texture-rough-background-1086203.jpg");
+  padding: 1rem 0;
+}
 .encuentranos {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   width: 70%;
-  margin: 1rem auto;
+  margin: 0 auto;
 
   .box-1-wrap {
     display: flex;
@@ -58,16 +68,21 @@
     max-width: 50%;
     height: 26.5rem;
     padding: 1rem 4rem;
+
     h3 {
       margin-top: 2rem;
+      text-transform: uppercase;
       font-size: 2rem;
       font-weight: bolder;
+      font-family: "Permanent Marker", cursive;
     }
     h4 {
       padding: 0 0 1rem 0;
+      font-family: "Permanent Marker", cursive;
       a {
         font-weight: bold;
         color: #ffb922;
+
         &:hover {
           color: #ffdf10;
         }
@@ -75,11 +90,16 @@
     }
     p {
       font-size: 1.5rem;
+      font-family: "Permanent Marker", cursive;
     }
     button {
       a {
         font-weight: bolder;
         font-size: 1.5rem;
+        font-family: "Permanent Marker", cursive;
+        &:hover {
+          color: #000;
+        }
       }
     }
   }
@@ -88,6 +108,7 @@
     background-size: cover;
     width: 50%;
     height: 26.5rem;
+    box-shadow: 2px 2px 0 0 #00000033;
   }
   .box-3-wrap {
     background: url("../../img/ceviche.jpeg");
@@ -95,6 +116,7 @@
     background-position: 40%;
     width: 50%;
     height: 25rem;
+    box-shadow: 0 2px 2px 0 #00000033;
   }
   .box-4-wrap {
     width: 50%;
@@ -102,10 +124,13 @@
     background-color: #000;
     color: #fff;
     padding: 1rem 4rem;
+    box-shadow: 0 0 2px 0 #00000033;
     h3 {
       margin-top: 2rem;
       font-size: 2rem;
       font-weight: bolder;
+      font-family: "Permanent Marker", cursive;
+      text-transform: uppercase;
     }
     .social-network {
       display: flex;
@@ -122,21 +147,21 @@
     }
     h4 {
       padding: 1.5rem 0 0 0;
+      font-family: "Permanent Marker", cursive;
     }
   }
 }
 .map {
   width: 80%;
-  height: 30em;
+  height: 50em;
   z-index: 1 !important;
-  
 }
 
 .map-container {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  :first-child{
+  :first-child {
     z-index: 1;
   }
 }
@@ -151,6 +176,12 @@
     border-style: solid none solid none;
     padding: 0.5rem 0;
     margin: 1rem 1.5rem;
+    h3 {
+      font-family: "Permanent Marker", cursive;
+    }
+    h4 {
+      font-family: "Permanent Marker", cursive;
+    }
   }
 }
 
@@ -172,7 +203,7 @@
   }
   .map {
     width: 85%;
-    height: 30em;
+    height: 45em;
   }
 }
 
@@ -182,6 +213,7 @@
     width: 100%;
     .box-1-wrap {
       max-width: 68.1%;
+      box-shadow: 2px 2px 0 0 #00000033;
       h3 {
         margin-top: 2rem;
         font-size: 2rem;
@@ -199,21 +231,24 @@
     .box-2-wrap {
       width: 68.1%;
       height: 26.5rem;
+      box-shadow: 0 0 2px 0 #00000033;
     }
     .box-3-wrap {
       background-position: 40%;
       width: 68.1%;
       height: 25rem;
+      box-shadow: 0 0 2px 0 #00000033;
     }
     .box-4-wrap {
       width: 68.1%;
       height: 25rem;
       background-color: #000;
+      box-shadow: 0 2px 2px 2px #00000033;
     }
   }
   .map {
     width: 85%;
-    height: 30em;
+    height: 40em;
   }
 }
 
@@ -249,7 +284,7 @@
   }
   .map {
     width: 90%;
-    height: 25em;
+    height: 35em;
   }
 }
 
