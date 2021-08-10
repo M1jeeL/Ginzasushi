@@ -5,6 +5,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+body{
+  width: 100%;
+  position: absolute;
+}
 
 
 a, a:hover,a:visited, a:focus {
@@ -15,7 +19,4 @@ a, a:hover,a:visited, a:focus {
 li{
   list-style: none;
 }
-
-
-
 

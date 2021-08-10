@@ -6,7 +6,6 @@ import CartTableRow from "./CartTableRow";
 const CartTable = () => {
   const { cart, removeFromCart} = useContext(CartContext)
   return (
-    <div>
       <Table striped>
         <thead>
           <tr>
@@ -32,7 +31,6 @@ const CartTable = () => {
           )}
         </tbody>
       </Table>
-    </div>
   );
 };
 

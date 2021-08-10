@@ -3,7 +3,7 @@ import "./Footer.css";
 
 export default function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="footer-info">
         <div className="footer-logo" />
         <div className="footer-iconos">
@@ -30,6 +30,6 @@ export default function Footer() {
       <div className="footer-firma">
         <p>© Ginzasushi delivery - Desarrollado por mijel</p>
       </div>
-    </div>
+    </footer>
   );
 }

@@ -25,17 +25,17 @@ export default function Producto({ producto }) {
     }
   };
 
-  const [showMessage, setShowMessage] = useState(false)
+  const [showMessage, setShowMessage] = useState(false);
 
   const mostrarMensaje = () => {
-    if (showMessage === false){
-      setShowMessage(true)
+    if (showMessage === false) {
+      setShowMessage(true);
       setTimeout(() => {
-        setShowMessage(false)
+        setShowMessage(false);
       }, 3000);
       return;
     }
-  }
+  };
 
   const styleBtnProduct = {
     backgroundColor: "#000",
@@ -46,7 +46,6 @@ export default function Producto({ producto }) {
   return (
     <>
       <div className="container">
-        {showMessage && <span className="message">Su producto fue agregado al carrito con &eacute;xito</span>}
         <Link
           to={"/carta"}
           className="d-flex justify-content-end align-items-end"
@@ -100,7 +99,7 @@ export default function Producto({ producto }) {
                   <i className="fas fa-plus-square fa-2x"></i>
                 </button>
               </div>
-              <div className="boton">
+              <div className="boton-add-cart">
                 <Button
                   style={styleBtnProduct}
                   onClick={() => {
@@ -114,6 +113,11 @@ export default function Producto({ producto }) {
             </div>
           </div>
         </div>
+        {showMessage && (
+          <span className="message">
+            Su producto fue agregado al carrito con &eacute;xito
+          </span>
+        )}
       </div>
     </>
   );

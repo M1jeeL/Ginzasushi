@@ -2,7 +2,7 @@
   margin-top: 2rem;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  height: calc(100vh - 12vh - 140px - 8rem);
 }
 
 .pedidos-table {

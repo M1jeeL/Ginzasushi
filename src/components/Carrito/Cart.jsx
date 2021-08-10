@@ -1,13 +1,17 @@
 import React from "react";
+import Imgcab from "../Imagen cabecera/Imgcab";
+import "./Cart.css";
 import CartTable from "./CartTable";
 
-const Cart = ({ cart, setCart, eliminarProducto }) => {
+const Cart = () => {
   return (
-    <div className="cart">
-      <h3>Carrito</h3>
-      <CartTable cart={cart} setCart={setCart} eliminarProducto={eliminarProducto} />
-      
-    </div>
+    <>
+      <Imgcab nombrehead="Carrito de compras" />
+      <div className="cart">
+        <CartTable
+        />
+      </div>
+    </>
   );
 };
 

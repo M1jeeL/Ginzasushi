@@ -7,7 +7,7 @@ import "./MiCuenta.css";
 
 const MiCuenta = () => {
   const history = useHistory();
-  const [usuario, setUsuario] = useState({}); 
+  const [usuario, setUsuario] = useState({});
 
   const url = `http://3.233.87.147:5000/usuario_actual`;
 
@@ -17,7 +17,7 @@ const MiCuenta = () => {
       history.push("/login");
       return;
     }
-    
+
     fetch(url, {
       method: "GET",
       headers: {
@@ -28,6 +28,10 @@ const MiCuenta = () => {
       .then((response) => response.json())
       .then((usuario) => {
         setUsuario(usuario);
+      })
+      .catch((error) => {
+        console.log(error);
+        localStorage.removeItem("token");
       });
 
     return () => {
@@ -40,7 +44,7 @@ const MiCuenta = () => {
       <Imgcab nombrehead="Mi cuenta" />
       <div className="container micuenta-container">
         <PanelUsuario />
-        <DatosCuenta usuario={usuario}/>
+        <DatosCuenta usuario={usuario} />
       </div>
     </>
   );

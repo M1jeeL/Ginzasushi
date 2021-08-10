@@ -28,6 +28,10 @@ const Direccion = () => {
       .then((response) => response.json())
       .then((usuario) => {
         setUsuario(usuario);
+      })
+      .catch((error) => {
+        console.log(error);
+        localStorage.removeItem("token");
       });
 
     return () => {
@@ -40,7 +44,7 @@ const Direccion = () => {
       <Imgcab nombrehead="Mis direcciones" />
       <div className="container direccion-container">
         <PanelUsuario />
-        <DireccionInfo usuario={usuario}/>
+        <DireccionInfo usuario={usuario} />
       </div>
     </>
   );

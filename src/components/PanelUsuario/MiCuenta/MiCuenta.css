@@ -10,6 +10,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  height: calc(100vh - 12vh - 140px - 8rem);
 }
 
 .datos-mi-cuenta {

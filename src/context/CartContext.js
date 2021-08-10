@@ -2,8 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
-const CartProvider = ({children}) => {
-
+const CartProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const url = "http://3.233.87.147:5002/productos";
@@ -27,14 +26,13 @@ const CartProvider = ({children}) => {
 
   // Add to cart.
   const addToCart = (product, cantidad) => {
-
     // Check if product is already in the cart.
-    let exists = cart.filter(item => item.id === product.id);
+    let exists = cart.filter((item) => item.id === product.id);
 
     // If exists update quantity
-    if ( exists.length > 0 ) {
+    if (exists.length > 0) {
       // Identificar la posición del producto añadido dentro del carrito
-      let aux = cart.findIndex(item => item.id === product.id);
+      let aux = cart.findIndex((item) => item.id === product.id);
       // Crear un carrito auxiliar con los mismos datos del anterior
       let cartAux = [...cart];
       // Crear Producto auxiliar
@@ -44,37 +42,46 @@ const CartProvider = ({children}) => {
       // Se reemplaza el producto del carrito original por el producto auxiliar para actualizar el valor de la cantidad
       cartAux[aux] = productAux;
       // Reemplazar carrito anterior por el auxiliar.
-      setCart(cartAux)
+      setCart(cartAux);
       return;
     }
 
-    // If product is NOT in the cart, add it.
+    // Si el producto no está en el carrito, agregarlo.
     const formattedProduct = {
       id: product.id,
       nombre: product.nombre,
       precio: parseInt(product.precio),
       categoria: product.categoria,
       ingredientes: product.ingredientes,
-      cantidad: cantidad
+      cantidad: cantidad,
     };
 
-    setCart([...cart, formattedProduct])
-  }
-
-  
-  const removeFromCart = (id) => {
-    let newCart = cart.filter((producto) => producto.id !== id);
-     setCart(newCart);
+    setCart([...cart, formattedProduct]);
   };
 
+  const removeFromCart = (id) => {
+    let newCart = cart.filter((producto) => producto.id !== id);
+    setCart(newCart);
+  };
 
+  const subTotalForEach = (id) => {
+    const [item] = cart.filter((item) => item.id === id);
+    const subTotal = item.cantidad * item.precio;
+    return subTotal;
+  };
 
-  const data = { products, cart, addToCart, removeFromCart, selectProduct, setSelectProduct }
+  const data = {
+    products,
+    cart,
+    addToCart,
+    removeFromCart,
+    selectProduct,
+    setSelectProduct,
+    subTotalForEach,
+  };
 
-  return(
-    <CartContext.Provider value={data}>{children}</CartContext.Provider>
-  )
-}
+  return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
+};
 
-export {CartProvider};
+export { CartProvider };
 export default CartContext;
