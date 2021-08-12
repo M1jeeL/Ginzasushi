@@ -8,6 +8,9 @@
   border-radius: 0.5rem;
   .active {
     background-color: #ffb922;
+    span {
+      color: #000;
+    }
   }
 }
 

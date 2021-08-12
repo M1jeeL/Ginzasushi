@@ -9,6 +9,9 @@
 .datos-mi-cuenta{
   max-width: 80%;
   flex: 1 1;
+  h4 {
+    font-family: "Roboto Slab", serif;
+  }
 }
 
 @media screen and (max-width: 800px) {

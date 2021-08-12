@@ -173,7 +173,7 @@ const FormRegister = () => {
   };
 
   return (
-    <Form className="container" onSubmit={handleSubmit}>
+    <Form className="container form-register" onSubmit={handleSubmit}>
       <h4>Perfil</h4>
       <Row form>
         <Col lg={4} md={6} sm={12}>

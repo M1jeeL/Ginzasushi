@@ -20,6 +20,10 @@
           flex: 1 1;
 }
 
+.datos-direccion h4 {
+  font-family: "Roboto Slab", serif;
+}
+
 @media screen and (max-width: 800px) {
   .direccion-container {
     -webkit-box-orient: vertical;

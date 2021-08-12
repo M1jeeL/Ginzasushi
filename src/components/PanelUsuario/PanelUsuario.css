@@ -17,6 +17,10 @@
   background-color: #ffb922;
 }
 
+.panel-nav .active span {
+  color: #000;
+}
+
 .panel-nav-item {
   display: -webkit-box;
   display: -ms-flexbox;

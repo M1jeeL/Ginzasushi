@@ -9,15 +9,18 @@
 .datos-direccion {
   max-width: 80%;
   flex: 1 1;
+  h4 {
+    font-family: "Roboto Slab", serif;
+  }
 }
 
 @media screen and (max-width: 800px) {
-    .direccion-container {
-      flex-flow: column nowrap;
-      height: auto;
-      .datos-direccion {
-        max-width: 100%;
-        margin: 2rem 0;
-      }
+  .direccion-container {
+    flex-flow: column nowrap;
+    height: auto;
+    .datos-direccion {
+      max-width: 100%;
+      margin: 2rem 0;
     }
   }
+}

@@ -53,7 +53,7 @@ const DireccionInfo = ({ usuario }) => {
   return (
     <>
       <Form className="container datos-direccion" onSubmit={handleSubmit}>
-        <h4>Direcci&oacute;n de despacho</h4>
+        <h4 className="title-panel-user" >Direcci&oacute;n de despacho</h4>
         <Row form>
           <Col lg={6} md={6} sm={12}>
             <FormGroup className="form-title form-comuna">
