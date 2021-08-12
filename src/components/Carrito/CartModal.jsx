@@ -52,22 +52,23 @@ const CartModal = ({ openCartModal, handleCartModal }) => {
               <strong className="subtotal-modal-cart">
                 Subtotal: ${subTotal}
               </strong>
-              <Link to="/carro-de-compras" className="btn-modal-cart">
-                <Button
-                  type="button"
-                  style={styleBtnProduct}
-                  onClick={removeAllFromCart}
-                >
-                  Vaciar Carrito
-                </Button>
-              </Link>
               <Button
                 type="button"
                 style={styleBtnProduct}
-                onClick={handleCartModal}
+                onClick={removeAllFromCart}
               >
-                Finalizar Compra
+                Vaciar Carrito
               </Button>
+
+              <Link to="/checkout" className="btn-modal-cart">
+                <Button
+                  type="button"
+                  style={styleBtnProduct}
+                  onClick={handleCartModal}
+                >
+                  Finalizar Compra
+                </Button>
+              </Link>
             </ModalFooter>
           </>
         ) : (
