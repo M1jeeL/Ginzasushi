@@ -68,10 +68,14 @@ const CartProvider = ({ children }) => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Quitar del carrito",
-        cancelButtonText:"Cancelar",
+      cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Eliminado!", "Tu producto fue eliminado del carrito", "success");
+        Swal.fire(
+          "Listo!",
+          "Tu producto fue eliminado del carrito",
+          "success",
+        );
         let newCart = cart.filter((producto) => producto.id !== id);
         setCart(newCart);
       }
@@ -107,7 +111,20 @@ const CartProvider = ({ children }) => {
   };
 
   const removeAllFromCart = () => {
-    setCart([]);
+    Swal.fire({
+      title: "¿Estás seguro de vaciar el carrito?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Vaciar carrito",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Listo!", "El carrito fue vaciado", "success");
+        setCart([]);
+      }
+    });
   };
 
   const data = {

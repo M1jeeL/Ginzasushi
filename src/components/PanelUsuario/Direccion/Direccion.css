@@ -14,6 +14,23 @@
 }
 
 .datos-direccion {
-  width: 75%;
+  max-width: 80%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+}
+
+@media screen and (max-width: 800px) {
+  .direccion-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    height: auto;
+  }
+  .direccion-container .datos-direccion {
+    max-width: 100%;
+    margin: 2rem 0;
+  }
 }
 /*# sourceMappingURL=Direccion.css.map */

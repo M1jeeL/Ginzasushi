@@ -6,17 +6,17 @@
 }
 
 .pedidos-table {
-  width: 75%;
+  max-width: 80%;
+  flex: 1 1;
 }
 
 .en-camino {
   color: #ffee00;
   font-weight: bold;
-
 }
 
 .recibida {
-  color: #2DAE15;
+  color: #2dae15;
   font-weight: bold;
 }
 
@@ -25,3 +25,13 @@
   font-weight: bold;
 }
 
+@media screen and (max-width: 800px) {
+    .pedidos-container {
+      flex-flow: column nowrap;
+      height: auto;
+      .pedidos-table {
+        max-width: 100%;
+        margin: 2rem 0;
+      }
+    }
+  }

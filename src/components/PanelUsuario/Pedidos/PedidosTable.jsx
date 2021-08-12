@@ -45,7 +45,7 @@ const PedidosTable = ({ pedidos }) => {
           ))
         ) : (
           <tr>
-            <td colSpan="3">Sin datos</td>
+            <td colSpan="4">No haz realizado ning&uacute;n pedido</td>
           </tr>
         )}
       </tbody>

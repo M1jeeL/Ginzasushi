@@ -4,9 +4,21 @@
   flex-flow: row wrap;
   justify-content: space-between;
   height: calc(100vh - 12vh - 140px - 8rem);
-
 }
 
 .datos-mi-cuenta{
-  width: 75%;
+  max-width: 80%;
+  flex: 1 1;
 }
+
+@media screen and (max-width: 800px) {
+    .micuenta-container {
+      flex-flow: column nowrap;
+      height: auto;
+      .datos-mi-cuenta {
+        max-width: 100%;
+        margin: 2rem 0;
+      }
+    }
+  }
+  

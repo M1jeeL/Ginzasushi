@@ -1,17 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
 
 const DireccionInfo = ({ usuario }) => {
-  const { id, calle, numeracion, depto } = usuario;
+  const { id, comuna, calle, numeracion, depto } = usuario;
 
   const inicialState = {
-    comuna: "",
-    calle: "",
-    numeracion: "",
-    depto: "",
+    comuna,
+    calle,
+    numeracion,
+    depto,
   };
 
   const [usuarioState, setUsuarioState] = useState(inicialState);
+
+  const [comunas, setComunas] = useState([]);
+
+  useEffect(() => {
+    fetch("https://apis.digital.gob.cl/dpa/regiones/13/comunas")
+      .then((response) => response.json())
+      .then((comunas) => setComunas(comunas));
+
+    return () => {
+      return true;
+    };
+  }, []);
 
   const handleChange = (e) => {
     setUsuarioState({
@@ -23,7 +35,7 @@ const DireccionInfo = ({ usuario }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
-    const url = `http://3.233.87.147:5000/usuarios/${id}`
+    const url = `http://3.233.87.147:5000/usuarios/${id}`;
     fetch(url, {
       method: "PATCH",
       headers: {
@@ -32,9 +44,9 @@ const DireccionInfo = ({ usuario }) => {
       },
       body: JSON.stringify(usuarioState),
     })
-      .then((response) => (response.json()))
+      .then((response) => response.json())
       .catch((error) => {
-        alert(error);
+        console.log(error);
       });
   };
 
@@ -59,9 +71,11 @@ const DireccionInfo = ({ usuario }) => {
                 <option value="" disabled>
                   Seleccione su comuna
                 </option>
-                <option value="El bosque">El Bosque</option>
-                <option value="La Cisterna">La Cisterna</option>
-                <option value="San ramon">San Ram&oacute;n</option>
+                {comunas.map((comuna) => (
+                  <option key={comuna.codigo} value={comuna.nombre}>
+                    {comuna.nombre}
+                  </option>
+                ))}
               </Input>
             </FormGroup>
           </Col>
@@ -77,7 +91,6 @@ const DireccionInfo = ({ usuario }) => {
                 id="calle"
                 name="calle"
                 value={usuarioState.calle}
-                placeholder={`${calle}`}
                 required
                 onChange={handleChange}
               />
@@ -93,7 +106,6 @@ const DireccionInfo = ({ usuario }) => {
                 id="numeracion"
                 name="numeracion"
                 value={usuarioState.numeracion}
-                placeholder={`${numeracion}`}
                 required
                 onChange={handleChange}
               />
@@ -109,7 +121,6 @@ const DireccionInfo = ({ usuario }) => {
                 id="depto"
                 name="depto"
                 value={usuarioState.depto}
-                placeholder={depto === undefined || "null" ? "" : `${depto}`}
                 onChange={handleChange}
               />
             </FormGroup>

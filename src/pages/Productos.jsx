@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Loader from "../components/Producto/Loader";
+import Loader from "../components/Loader/Loader";
 import Imgcab from "../components/Imagen cabecera/Imgcab";
 import Producto from "../components/Producto/Producto";
 import CartContext from "../context/CartContext";

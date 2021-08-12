@@ -4,6 +4,7 @@ import PanelUsuario from "../PanelUsuario";
 import Imgcab from "../../Imagen cabecera/Imgcab";
 import DatosCuenta from "./DatosCuenta";
 import "./MiCuenta.css";
+import Loader from "../../Loader/Loader";
 
 const MiCuenta = () => {
   const history = useHistory();
@@ -32,6 +33,7 @@ const MiCuenta = () => {
       .catch((error) => {
         console.log(error);
         localStorage.removeItem("token");
+        history.push("/login");
       });
 
     return () => {
@@ -42,10 +44,17 @@ const MiCuenta = () => {
   return (
     <>
       <Imgcab nombrehead="Mi cuenta" />
-      <div className="container micuenta-container">
+      {Object.entries(usuario).length > 0 ? (
+        <div className="container micuenta-container">
         <PanelUsuario />
         <DatosCuenta usuario={usuario} />
       </div>
+      ) : (
+        <div className="d-flex micuenta-container justify-content-center align-items-center">
+          <Loader />
+        </div>
+      )}
+      
     </>
   );
 };

@@ -5,9 +5,9 @@ const DatosCuenta = ({ usuario }) => {
   const { id, nombre, apellido, email } = usuario;
 
   const inicialState = {
-    nombre: "",
-    apellido: "",
-    email: "",
+    nombre,
+    apellido,
+    email,
   };
 
   const [usuarioState, setUsuarioState] = useState(inicialState);
@@ -34,15 +34,13 @@ const DatosCuenta = ({ usuario }) => {
     })
       .then((response) => (response.json()))
       .catch((error) => {
-        alert(error);
+        console.log(error);
       });
-      
-    console.log('enviando datos...', usuarioState)
   };
 
   return (
     <Form
-      className="container datos-mi-cuenta"
+      className="datos-mi-cuenta"
       id="form-editar-datos-cuenta"
       onSubmit={handleSubmit}
     >
@@ -58,7 +56,6 @@ const DatosCuenta = ({ usuario }) => {
               id="nombre"
               name="nombre"
               value={usuarioState.nombre}
-              placeholder={`${nombre}`}
               required
               onChange={handleChange}
             />
@@ -74,7 +71,6 @@ const DatosCuenta = ({ usuario }) => {
               id="apellido"
               name="apellido"
               value={usuarioState.apellido}
-              placeholder={`${apellido}`}
               required
               onChange={handleChange}
             />
@@ -90,7 +86,6 @@ const DatosCuenta = ({ usuario }) => {
               id="email"
               name="email"
               value={usuarioState.email}
-              placeholder={`${email}`}
               required
               onChange={handleChange}
             />

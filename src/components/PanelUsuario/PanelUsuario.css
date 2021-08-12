@@ -6,10 +6,15 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
-  margin: 0;
-  width: 20%;
+  margin: 0 2rem 0 0;
+  max-width: 20%;
   height: 16rem;
   background-color: #000;
+  border-radius: 0.5rem;
+}
+
+.panel-nav .active {
+  background-color: #ffb922;
 }
 
 .panel-nav-item {
@@ -41,5 +46,20 @@
 
 .panel-nav-item:active span, .panel-nav-item:hover span {
   color: #000;
+}
+
+@media screen and (max-width: 800px) {
+  .panel-nav {
+    max-width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+  }
+  .panel-nav .panel-nav-item {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 /*# sourceMappingURL=PanelUsuario.css.map */

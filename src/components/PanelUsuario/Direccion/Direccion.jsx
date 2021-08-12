@@ -4,6 +4,7 @@ import PanelUsuario from "../PanelUsuario";
 import Imgcab from "../../Imagen cabecera/Imgcab";
 import DireccionInfo from "./DireccionInfo";
 import "./Direccion.css";
+import Loader from "../../Loader/Loader";
 
 const Direccion = () => {
   const history = useHistory();
@@ -32,6 +33,7 @@ const Direccion = () => {
       .catch((error) => {
         console.log(error);
         localStorage.removeItem("token");
+        history.push("/login");
       });
 
     return () => {
@@ -42,10 +44,16 @@ const Direccion = () => {
   return (
     <>
       <Imgcab nombrehead="Mis direcciones" />
-      <div className="container direccion-container">
-        <PanelUsuario />
-        <DireccionInfo usuario={usuario} />
-      </div>
+      {Object.entries(usuario).length > 0 ? (
+        <div className="container direccion-container">
+          <PanelUsuario />
+          <DireccionInfo usuario={usuario} />
+        </div>
+      ) : (
+        <div className="d-flex direccion-container justify-content-center align-items-center">
+          <Loader />
+        </div>
+      )}
     </>
   );
 };
