@@ -15,12 +15,12 @@ import Login from './pages/Login';
 import Footer from './components/Footer/Footer';
 import BotonWsp from './components/BotonWsp/BotonWsp';
 import CrudApi from './components/Crud/CrudApi';
-import Cart from './components/Carrito/Cart';
 import Pedidos from './components/PanelUsuario/Pedidos/Pedidos';
 import PedidoInfo from './components/PanelUsuario/Pedidos/PedidoInfo';
 import Direccion from './components/PanelUsuario/Direccion/Direccion';
 import MiCuenta from './components/PanelUsuario/MiCuenta/MiCuenta';
 import { CartProvider } from './context/CartContext';
+import Checkout from './pages/Checkout/Checkout';
 
 
 const App = () => {
@@ -39,11 +39,11 @@ const App = () => {
             <Route path = "/productos/:categoria/:nombre" component={Productos} />
             <Route exact path = "/login" component={Login} />
             <Route exact path="/crud" component={CrudApi}/>
-            <Route exact path = "/carro-de-compras" component={Cart} />
             <Route exact path="/mi-cuenta" component={MiCuenta} />
             <Route exact path="/mis-pedidos" component={Pedidos} />
             <Route exact path="/mis-direcciones" component={Direccion} />
             <Route path= "/pedidos/:uuid" component={PedidoInfo}/>
+            <Route path = "/checkout" component={Checkout}/>
           </Switch>
           <Footer/>
         </Router>

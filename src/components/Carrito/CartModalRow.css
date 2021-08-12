@@ -66,20 +66,17 @@
 
 @media screen and (max-width: 395px) {
   .modal-row {
-    max-height: 5rem;
+    max-height: 6rem;
   }
   .modal-row .item-img-modal-row {
     max-height: 5rem;
   }
   .modal-row .info-modal-row {
     margin: 0 1rem;
-    width: 4rem;
+    width: 5rem;
   }
   .modal-row .cantidad {
-    width: 8rem;
-  }
-  .modal-row .cantidad .btn-cantidad-producto {
-    border: none;
+    width: 6rem;
   }
 }
 
@@ -92,13 +89,10 @@
   }
   .modal-row .info-modal-row {
     margin: 0 1rem;
-    width: 4rem;
+    width: 4.5rem;
   }
   .modal-row .cantidad {
-    width: 6rem;
-  }
-  .modal-row .cantidad .btn-cantidad-producto {
-    border: none;
+    width: 5rem;
   }
 }
 /*# sourceMappingURL=CartModalRow.css.map */

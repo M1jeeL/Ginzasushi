@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Modal, ModalHeader, ModalFooter, Button, ModalBody } from "reactstrap";
+import CartContext from "../../context/CartContext";
 import "./CartModal.css";
 import CartModalRow from "./CartModalRow";
 
-const CartModal = ({
-  openCartModal,
-  handleCartModal,
-  cart,
-  subTotalForEach,
-}) => {
+const CartModal = ({ openCartModal, handleCartModal }) => {
+    
+  const { cart, subTotalForEach, removeAllFromCart } = useContext(CartContext);
   let subTotal = 0;
   cart.forEach((item) => {
     subTotal = subTotal + subTotalForEach(item.id);
   });
+
+  subTotal = subTotal
+    .toString()
+    .split("")
+    .reverse()
+    .join("")
+    .replace(/(?=\d*\.?)(\d{3})/g, "$1.");
+  subTotal = subTotal.split("").reverse().join("").replace(/^[.]/, "");
 
   const styleBtnProduct = {
     backgroundColor: "#000",
@@ -29,10 +35,10 @@ const CartModal = ({
         toggle={handleCartModal}
         className="modal-cart"
       >
-        <ModalHeader toggle={handleCartModal}>Carrito de compras</ModalHeader>
+        <ModalHeader toggle={handleCartModal} className="header-modal-cart">Carrito de compras</ModalHeader>
         {cart.length > 0 ? (
           <>
-            <ModalBody >
+            <ModalBody>
               {cart.map((item) => (
                 <CartModalRow
                   key={item.id}
@@ -42,14 +48,24 @@ const CartModal = ({
               ))}
             </ModalBody>
             <ModalFooter className="footer-modal-cart">
-              <strong className="subtotal-modal-cart">Subtotal: ${subTotal}</strong>
+              <strong className="subtotal-modal-cart">
+                Subtotal: ${subTotal}
+              </strong>
               <Link to="/carro-de-compras" className="btn-modal-cart">
-                <Button type="button" style={styleBtnProduct} onClick={handleCartModal}>
-                  Ir al carrito
+                <Button
+                  type="button"
+                  style={styleBtnProduct}
+                  onClick={removeAllFromCart}
+                >
+                  Vaciar Carrito
                 </Button>
               </Link>
               <Link to="/checkout" className="btn-modal-cart">
-                <Button type="button" style={styleBtnProduct} onClick={handleCartModal}>
+                <Button
+                  type="button"
+                  style={styleBtnProduct}
+                  onClick={handleCartModal}
+                >
                   Finalizar Compra
                 </Button>
               </Link>
@@ -60,8 +76,13 @@ const CartModal = ({
             <ModalBody>No hay productos en el carrito</ModalBody>
             <ModalFooter className="footer-modal-cart">
               <Link to="/carta">
-                <Button type="button" color="warning" onClick={handleCartModal} className="btn-modal-cart">
-                    Ver carta
+                <Button
+                  type="button"
+                  style={styleBtnProduct}
+                  onClick={handleCartModal}
+                  className="btn-modal-cart"
+                >
+                  Ver carta
                 </Button>
               </Link>
             </ModalFooter>

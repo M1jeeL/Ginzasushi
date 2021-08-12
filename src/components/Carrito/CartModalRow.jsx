@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import CartContext from "../../context/CartContext";
 import "./CartModalRow.css";
 
-const CartModalRow = ({ item, subTotalForEach }) => {
+const CartModalRow = ({ item }) => {
   //   console.log(item);
-
+  const { subTotalForEach, addQuantityForEach, removeQuantityForEach, removeFromCart } =
+    useContext(CartContext);
   const { id } = item;
-  const subTotal = subTotalForEach(id);
+  let subTotal = subTotalForEach(id);
+  subTotal = subTotal
+    .toString()
+    .split("")
+    .reverse()
+    .join("")
+    .replace(/(?=\d*\.?)(\d{3})/g, "$1.");
+  subTotal = subTotal.split("").reverse().join("").replace(/^[.]/, "");
 
   return (
     <>
@@ -22,18 +31,29 @@ const CartModalRow = ({ item, subTotalForEach }) => {
           </span>
         </div>
 
-          <div className="cantidad">
+        <div className="cantidad">
+          {item.cantidad === 1 ? (
             <button
               className="btn-cantidad-producto"
-              //   onClick={quitarCantidad}
+              onClick={() => removeFromCart(item.id)} 
+            >
+              <i className="fas fa-trash fa-2x"></i>
+            </button>
+          ) : (
+            <button
+              className="btn-cantidad-producto"
+              onClick={() => removeQuantityForEach(item)}
             >
               <i className="fas fa-minus-square fa-2x"></i>
             </button>
-            <span className="cantidad-productos"></span>
-            <button className="btn-cantidad-producto">
-              <i className="fas fa-plus-square fa-2x"></i>
-            </button>
-          </div>
+          )}
+          <button
+            className="btn-cantidad-producto"
+            onClick={() => addQuantityForEach(item)}
+          >
+            <i className="fas fa-plus-square fa-2x"></i>
+          </button>
+        </div>
       </div>
     </>
   );

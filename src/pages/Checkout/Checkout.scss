@@ -1,0 +1,85 @@
+.checkout {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 2rem 0;
+  .left-side-checkout {
+    max-width: 66.6%;
+    flex: 1 1;
+    .info-container-checkout {
+      display: flex;
+      flex-flow: column nowrap;
+      border: 1px solid rgb(133, 132, 132);
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      margin: 0 0 2rem 0;
+      .title-info-checkout {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 1rem 0;
+        font-weight: bold;
+        .btn-editar-checkout {
+          cursor: pointer;
+        }
+      }
+      .row-checkout {
+        display: flex;
+        margin: 0.5rem 0;
+        .logo-row-checkout {
+          width: 24px;
+        }
+        .data-row-checkout {
+          margin-left: 1rem;
+        }
+      }
+      
+    }
+  }
+  .aside-container-checkout {
+    flex: 1 1;
+    max-width: 33.3%;
+    .aside-info-checkout {
+      border: 1px solid grey;
+      border-radius: 16px;
+      padding: 1rem 1.2rem;
+      margin: 0 0 1.5rem 0.5rem;
+      position: sticky;
+      top: 16px;
+      .aside-confirmacion-checkout {
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+      .row-aside-checkout {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 1rem 0;
+        .precio-checkout-label {
+          flex: 1 1;
+        }
+        .precio-checkout-price {
+          font-weight: bold;
+        }
+      }
+      .btn-pagar-pedido {
+        margin: 1rem 0;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+  .btn-confirm-save-data-checkout {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .checkout {
+    flex-flow: column nowrap;
+    .left-side-checkout {
+      max-width: 100%;
+    }
+    .aside-container-checkout {
+      max-width: 100%;
+      margin-top: 1.5rem;
+    }
+  }
+}

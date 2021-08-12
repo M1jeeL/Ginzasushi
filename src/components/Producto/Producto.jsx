@@ -9,6 +9,7 @@ export default function Producto({ producto }) {
 
   const { nombre, precio, envoltura, ingredientes } = producto;
 
+
   const src =
     "https://images.vexels.com/media/users/3/230800/isolated/preview/6fae7b492e567aae76ab5220a894087c-cute-dibujos-animados-de-sushi.png";
   const [cantidadProducto, setCantidadProducto] = useState(1);

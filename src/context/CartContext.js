@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const CartContext = createContext();
 
@@ -60,14 +61,53 @@ const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id) => {
-    let newCart = cart.filter((producto) => producto.id !== id);
-    setCart(newCart);
+    Swal.fire({
+      title: "¿Quieres eliminar el producto del carrito?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Quitar del carrito",
+        cancelButtonText:"Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Eliminado!", "Tu producto fue eliminado del carrito", "success");
+        let newCart = cart.filter((producto) => producto.id !== id);
+        setCart(newCart);
+      }
+    });
   };
 
   const subTotalForEach = (id) => {
     const [item] = cart.filter((item) => item.id === id);
     const subTotal = item.cantidad * item.precio;
     return subTotal;
+  };
+
+  const addQuantityForEach = (product) => {
+    let aux = cart.findIndex((item) => item.id === product.id);
+    let cartAux = [...cart];
+    let productAux = { ...cartAux[aux] };
+    productAux.cantidad += 1;
+    cartAux[aux] = productAux;
+    setCart(cartAux);
+  };
+
+  const removeQuantityForEach = (product) => {
+    let aux = cart.findIndex((item) => item.id === product.id);
+    if (product.cantidad === 1) {
+      return;
+    } else {
+      let cartAux = [...cart];
+      let productAux = { ...cartAux[aux] };
+      productAux.cantidad -= 1;
+      cartAux[aux] = productAux;
+      setCart(cartAux);
+    }
+  };
+
+  const removeAllFromCart = () => {
+    setCart([]);
   };
 
   const data = {
@@ -78,6 +118,9 @@ const CartProvider = ({ children }) => {
     selectProduct,
     setSelectProduct,
     subTotalForEach,
+    addQuantityForEach,
+    removeQuantityForEach,
+    removeAllFromCart,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

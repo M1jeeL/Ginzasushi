@@ -5,17 +5,23 @@
   top: 0;
   right: 0;
   transform: translate(-50%, -50%);
-  .footer-modal-cart{
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: space-around;
-      .subtotal-modal-cart{
-        align-self: flex-start;
-        margin: 0 0 1rem 0;
-      }
-      .btn-modal-cart{
-          align-self: center;
-          margin: 0 0 1rem 0;
-      }
+  .header-modal-cart {
+    align-items: center;
+    .modal-title {
+      font-weight: bold;
+    }
+  }
+  .footer-modal-cart {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    .subtotal-modal-cart {
+      align-self: flex-start;
+      margin: 0 0 1rem 0;
+    }
+    .btn-modal-cart {
+      align-self: center;
+      margin: 0 0 1rem 0;
+    }
   }
 }

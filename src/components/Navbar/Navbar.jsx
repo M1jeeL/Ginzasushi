@@ -6,7 +6,7 @@ import CartModal from "../Carrito/CartModal";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const { cart, subTotalForEach } = useContext(CartContext)
+  const { cart } = useContext(CartContext)
   const [navLinkOpen, setNavLinkOpen] = useState(false);
   const [openCartModal, setCartModal] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -92,8 +92,6 @@ export default function Navbar() {
           <CartModal
             handleCartModal={handleCartModal}
             openCartModal={openCartModal}
-            cart={cart}
-            subTotalForEach={subTotalForEach}
           />
         </li>
       </ul>
