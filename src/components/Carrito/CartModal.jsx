@@ -6,7 +6,6 @@ import "./CartModal.css";
 import CartModalRow from "./CartModalRow";
 
 const CartModal = ({ openCartModal, handleCartModal }) => {
-    
   const { cart, subTotalForEach, removeAllFromCart } = useContext(CartContext);
   let subTotal = 0;
   cart.forEach((item) => {
@@ -35,7 +34,9 @@ const CartModal = ({ openCartModal, handleCartModal }) => {
         toggle={handleCartModal}
         className="modal-cart"
       >
-        <ModalHeader toggle={handleCartModal} className="header-modal-cart">Carrito de compras</ModalHeader>
+        <ModalHeader toggle={handleCartModal} className="header-modal-cart">
+          Carrito de compras
+        </ModalHeader>
         {cart.length > 0 ? (
           <>
             <ModalBody>
@@ -60,15 +61,13 @@ const CartModal = ({ openCartModal, handleCartModal }) => {
                   Vaciar Carrito
                 </Button>
               </Link>
-              <Link to="/checkout" className="btn-modal-cart">
-                <Button
-                  type="button"
-                  style={styleBtnProduct}
-                  onClick={handleCartModal}
-                >
-                  Finalizar Compra
-                </Button>
-              </Link>
+              <Button
+                type="button"
+                style={styleBtnProduct}
+                onClick={handleCartModal}
+              >
+                Finalizar Compra
+              </Button>
             </ModalFooter>
           </>
         ) : (
