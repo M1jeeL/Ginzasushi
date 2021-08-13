@@ -92,7 +92,7 @@ const DatosCuenta = ({ usuario }) => {
           </FormGroup>
         </Col>
       </Row>
-      <Button type="submit" color="warning" size="lg" onClick={handleSubmit}>
+      <Button className="btn-direccion-panel" type="submit" color="warning" size="lg" onClick={handleSubmit}>
         Guardar datos
       </Button>
     </Form>

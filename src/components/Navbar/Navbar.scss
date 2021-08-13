@@ -150,7 +150,7 @@ nav {
     font-size: 2rem;
     transform: translateY(-150%);
     transition: transform 0.5s ease-in-out;
-    z-index: 100;
+    z-index: 10000000;
   }
   .active {
     transform: translateY(0%);

@@ -24,6 +24,10 @@
   font-family: "Roboto Slab", serif;
 }
 
+.datos-mi-cuenta .btn-direccion-panel {
+  margin: 1rem 0;
+}
+
 @media screen and (max-width: 800px) {
   .micuenta-container {
     -webkit-box-orient: vertical;

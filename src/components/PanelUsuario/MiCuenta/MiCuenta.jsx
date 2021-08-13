@@ -46,15 +46,14 @@ const MiCuenta = () => {
       <Imgcab nombrehead="Mi cuenta" />
       {Object.entries(usuario).length > 0 ? (
         <div className="container micuenta-container">
-        <PanelUsuario />
-        <DatosCuenta usuario={usuario} />
-      </div>
+          <PanelUsuario />
+          <DatosCuenta usuario={usuario} />
+        </div>
       ) : (
         <div className="d-flex micuenta-container justify-content-center align-items-center">
           <Loader />
         </div>
       )}
-      
     </>
   );
 };

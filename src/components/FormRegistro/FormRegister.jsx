@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./FormRegister.css";
 import {
   Button,
@@ -10,9 +10,12 @@ import {
   Col,
   Row,
 } from "reactstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import UserContext from "../../context/UserContext";
 
 const FormRegister = () => {
+  const { registrarUsuario } = useContext(UserContext);
+
   const erEmail =
     /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const erPassword = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
@@ -35,9 +38,6 @@ const FormRegister = () => {
 
   const [formRegister, setFormRegister] = useState(initialRegisterForm); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
   const [comunas, setComunas] = useState([]);
-
-  const url = "http://3.233.87.147:5000/register";
-  const history = useHistory();
 
   useEffect(() => {
     fetch("https://apis.digital.gob.cl/dpa/regiones/13/comunas")
@@ -150,26 +150,10 @@ const FormRegister = () => {
       calle: formRegister.calle,
       numeracion: formRegister.numeracion,
       comuna: formRegister.comuna,
-      depto: formRegister.depto
+      depto: formRegister.depto,
     };
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(nuevoUsuario),
-    })
-      .then((response) => {
-        if (response.ok){
-          alert("Cuenta creada exitosamente");
-          history.push("/login");
-          return;
-        }
-        throw new Error("El nombre de usuario y/o el email ingresado ya existe");
-      })
-      .catch(err => alert(err))
-
+    registrarUsuario(nuevoUsuario);
   };
 
   return (

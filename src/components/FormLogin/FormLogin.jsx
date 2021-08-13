@@ -1,19 +1,17 @@
-import React, { useState , useEffect} from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import UserContext from "../../context/UserContext";
+import { Link } from "react-router-dom";
 import "./FormLogin.css";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-
 const FormLogin = () => {
-  const baseUrl = "http://3.233.87.147:5000/login";
-  const history = useHistory();
+  const { iniciarSesion, history } = useContext(UserContext);
   useEffect(() => {
     localStorage.getItem("token") && history.push("mi-cuenta");
-
     return () => {
       return true;
-    }
-  }, [history])
+    };
+  }, [history]);
 
   const [formLogin, setFormLogin] = useState({
     username: "",
@@ -34,31 +32,11 @@ const FormLogin = () => {
       return;
     }
 
-    fetch(baseUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formLogin),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.text();
-        }
-        throw new Error("Usuario y/o contraseña incorrecta");
-      })
-      .then((token) => {
-        localStorage.setItem("token", token);
-        history.push("/mis-pedidos");
-      })
-      .catch((error) => {
-        alert(error);
-      });
+    iniciarSesion(formLogin);
   };
-  
 
   return (
-    <Form className="container" id='form-login' onSubmit={handleSubmit}>
+    <Form className="container" id="form-login" onSubmit={handleSubmit}>
       <div className="login-form-container">
         <FormGroup className="form-text-login">
           <Label className="form-text" htmlFor="username">

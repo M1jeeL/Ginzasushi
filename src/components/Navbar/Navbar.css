@@ -195,7 +195,7 @@ nav {
     transition: -webkit-transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out;
     transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
-    z-index: 100;
+    z-index: 10000000;
   }
   .active {
     -webkit-transform: translateY(0%);

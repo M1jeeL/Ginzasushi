@@ -8,7 +8,6 @@ import Loader from "../../Loader/Loader";
 
 const Pedidos = () => {
   const history = useHistory();
-
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(true);
 

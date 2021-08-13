@@ -24,6 +24,10 @@
   font-family: "Roboto Slab", serif;
 }
 
+.datos-direccion .btn-direccion-panel {
+  margin: 1rem 0;
+}
+
 @media screen and (max-width: 800px) {
   .direccion-container {
     -webkit-box-orient: vertical;
