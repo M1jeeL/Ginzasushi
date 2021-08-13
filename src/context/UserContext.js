@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -6,34 +6,51 @@ const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const history = useHistory();
+  const [usuario, setUsuario] = useState({});
   const urlUsuarios = "http://3.233.87.147:5000";
 
-
-  const iniciarSesion = async (datos) => {
-    await fetch(`${urlUsuarios}/login`, {
-      method: "POST",
+  const obtenerUsuario = async (token) => {
+    await fetch(`${urlUsuarios}/usuario_actual`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(datos),
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.text();
-        }
-      })
-      .then((token) => {
-        localStorage.setItem("token", token);
-        history.push("/mis-pedidos");
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          text: "Usuario y/o contraseña incorrecta",
-          showConfirmButton: false,
-          timer: "1500",
-        });
+      .then((response) => response.json())
+      .then((data) => {
+        setUsuario(data);
+        console.log(usuario);
       });
+  };
+
+  const iniciarSesion = async (datos) => {
+    try {
+      const response = await fetch(`${urlUsuarios}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(datos),
+      });
+      const token = await response.text();
+      localStorage.setItem("token", token);
+      await obtenerUsuario(token);
+      history.push("/mis-pedidos");
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        text: "Usuario y/o contraseña incorrecta",
+        showConfirmButton: false,
+        timer: "1500",
+      });
+    }
+  };
+
+  const cerrarSesion = () => {
+    localStorage.removeItem("token");
+    setUsuario({});
+    history.push("/");
   };
 
   const registrarUsuario = async (nuevoUsuario) => {
@@ -62,10 +79,10 @@ const UserProvider = ({ children }) => {
       .catch((err) => alert(err));
   };
 
-
   const data = {
     registrarUsuario,
     iniciarSesion,
+    cerrarSesion,
     history,
   };
 

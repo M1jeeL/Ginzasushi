@@ -42,4 +42,8 @@
       align-self: center;
   margin: 0 0 1rem 0;
 }
+
+.modal-cart-container {
+  z-index: 1000000;
+}
 /*# sourceMappingURL=CartModal.css.map */

@@ -1,16 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import PanelNavRow from "./PanelNavRow";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./PanelUsuario.css";
+import UserContext from "../../context/UserContext";
 
 const PanelUsuario = () => {
-  const history = useHistory();
-
-  const cerrarSesion = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    history.push("/");
-  };
+  const { cerrarSesion } = useContext(UserContext);
 
   return (
     <nav className="panel-nav">

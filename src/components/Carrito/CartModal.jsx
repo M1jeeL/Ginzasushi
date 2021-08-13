@@ -28,7 +28,7 @@ const CartModal = ({ openCartModal, handleCartModal }) => {
   };
 
   return (
-    <div>
+    <div className="modal-cart-container">
       <Modal
         isOpen={openCartModal}
         toggle={handleCartModal}
