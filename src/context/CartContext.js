@@ -6,9 +6,15 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [firstTime, setFirstTime] = useState(true);
   const url = "http://3.233.87.147:5002/productos";
 
   useEffect(() => {
+    if (firstTime) {
+      setCart(JSON.parse(localStorage.getItem("cart")));
+      setFirstTime(false);
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
     fetch(url, {
       method: "GET",
       headers: {
@@ -17,11 +23,10 @@ const CartProvider = ({ children }) => {
     })
       .then((response) => response.json())
       .then((data) => setProducts(data));
-
     return () => {
       return true;
     };
-  }, []);
+  }, [cart, firstTime]);
 
   const [selectProduct, setSelectProduct] = useState(null);
 
@@ -122,6 +127,13 @@ const CartProvider = ({ children }) => {
       }
     });
   };
+
+  const pagarPedido = async () => {
+    console.log(cart)
+    const pedidoIds = cart.filter(item => item.id)
+    console.log(pedidoIds)
+  }
+
   const formatearNumero = (num) => {
     let formattedNum = num;
     formattedNum = formattedNum
@@ -150,6 +162,7 @@ const CartProvider = ({ children }) => {
     removeQuantityForEach,
     removeAllFromCart,
     formatearNumero,
+    pagarPedido,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

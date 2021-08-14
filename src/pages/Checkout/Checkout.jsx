@@ -9,7 +9,7 @@ import FormDespachoUsuario from "../../components/Checkout/FormDespachoUsuario/F
 import "./Checkout.css";
 
 const Checkout = () => {
-  const { cart, subTotalForEach, formatearNumero } = useContext(CartContext);
+  const { cart, subTotalForEach, formatearNumero, pagarPedido } = useContext(CartContext);
   const { usuario, logged } = useContext(UserContext);
   const {
     nombre,
@@ -92,7 +92,9 @@ const Checkout = () => {
             </div>
             <div className="btn-pagar-pedido">
               <Link to="/checkout">
-                <Button style={styleBtnProduct}>Pagar mi pedido</Button>
+                <Button style={styleBtnProduct} onClick={() => {
+                    pagarPedido();
+                }}>Pagar mi pedido</Button>
               </Link>
             </div>
           </div>
