@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -7,7 +7,32 @@ const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const history = useHistory();
   const [usuario, setUsuario] = useState({});
+  const [logged, setLogged] = useState(false)
   const urlUsuarios = "http://3.233.87.147:5000";
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    const obtenerUsuario = async (token) => {
+      await fetch(`${urlUsuarios}/usuario_actual`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setUsuario(data);
+          setLogged(true);
+        })
+        .catch(error => console.log(error))
+    };
+
+    obtenerUsuario(token);
+
+    return () => {};
+  }, []);
 
   const obtenerUsuario = async (token) => {
     await fetch(`${urlUsuarios}/usuario_actual`, {
@@ -20,7 +45,6 @@ const UserProvider = ({ children }) => {
       .then((response) => response.json())
       .then((data) => {
         setUsuario(data);
-        console.log(usuario);
       });
   };
 
@@ -84,6 +108,8 @@ const UserProvider = ({ children }) => {
     iniciarSesion,
     cerrarSesion,
     history,
+    usuario,
+    logged,
   };
 
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;

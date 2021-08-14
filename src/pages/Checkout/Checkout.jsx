@@ -1,21 +1,63 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import {
+  Button,
+  Col,
+  CustomInput,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  Row,
+} from "reactstrap";
 import "./Checkout.css";
 import Imgcab from "../../components/Imagen cabecera/Imgcab";
 import CartContext from "../../context/CartContext";
+import { useEffect } from "react";
+import UserContext from "../../context/UserContext";
 
 const Checkout = () => {
   const { cart, subTotalForEach } = useContext(CartContext);
-
-  const [formDataCliente, setFormDataCliente] = useState({
-    nombre: "Miguel",
-    apellido: "Loza",
-    email: "miguelloza1@hotmail.com",
-    celular: "979846278",
-  });
-
+  const { usuario, logged } = useContext(UserContext);
   const [activarDataCliente, setActivarDataCliente] = useState(false);
+  const [activarDespachoCliente, setActivarDespachoCliente] = useState(false);
+  const [comunas, setComunas] = useState([]);
+
+  useEffect(() => {
+    fetch("https://apis.digital.gob.cl/dpa/regiones/13/comunas")
+      .then((response) => response.json())
+      .then((comunas) => setComunas(comunas));
+    const {
+      nombre,
+      apellido,
+      email,
+      celular,
+      calle,
+      comuna,
+      depto,
+      numeracion,
+    } = usuario;
+    setFormDataCliente({
+      nombre,
+      apellido,
+      email,
+      celular,
+    });
+    setFormDespachoCliente({
+      calle,
+      comuna,
+      numeracion,
+      depto,
+    });
+  }, [usuario]);
+
+  const initialDataCliente = {
+    nombre: "",
+    apellido: "",
+    email: "",
+    celular: "",
+  };
+  const [formDataCliente, setFormDataCliente] = useState(initialDataCliente);
 
   const handleFormDataCliente = () => {
     setActivarDataCliente(!activarDataCliente);
@@ -24,6 +66,28 @@ const Checkout = () => {
   const handleChangeDataCliente = (e) => {
     setFormDataCliente({
       ...formDataCliente,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const initialDespachoCliente = {
+    calle: "",
+    comuna: "",
+    numeracion: "",
+    depto: "",
+  };
+
+  const [formDespachoCliente, setFormDespachoCliente] = useState(
+    initialDespachoCliente
+  );
+
+  const handleFormDespachoCliente = () => {
+    setActivarDespachoCliente(!activarDespachoCliente);
+  };
+
+  const handleChangeDespachoCliente = (e) => {
+    setFormDespachoCliente({
+      ...formDespachoCliente,
       [e.target.name]: e.target.value,
     });
   };
@@ -87,129 +151,239 @@ const Checkout = () => {
       <Imgcab nombrehead="Checkout" />
       <div className="container checkout">
         <div className="left-side-checkout">
-          <div className="info-container-checkout">
-            <div className="title-info-checkout">
-              <div>Datos Personales</div>
-              <div
-                className="btn-editar-checkout"
-                onClick={() => handleFormDataCliente()}
-              >
-                Editar
-              </div>
-            </div>
-            {activarDataCliente ? (
-              <Form>
-                <Row form>
-                  <Col lg={12} md={12} sm={12}>
-                    <FormGroup>
-                      <Label htmlFor="nombre">Nombre</Label>
-                      <Input
-                        type="text"
-                        id="nombre"
-                        name="nombre"
-                        value={formDataCliente.nombre}
-                        required
-                        onChange={(e) => {
-                          handleChangeDataCliente(e);
-                        }}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col lg={12} md={12} sm={12}>
-                    <FormGroup>
-                      <Label htmlFor="apellido">Apellido</Label>
-                      <Input
-                        type="text"
-                        id="apellido"
-                        name="apellido"
-                        value={formDataCliente.apellido}
-                        required
-                        onChange={(e) => {
-                          handleChangeDataCliente(e);
-                        }}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col lg={12} md={12} sm={12}>
-                    <FormGroup>
-                      <Label htmlFor="celular">Celular</Label>
-                      <Input
-                        type="tel"
-                        id="celular"
-                        name="celular"
-                        value={formDataCliente.celular}
-                        placeholder="ej: 987654321"
-                        required
-                        onChange={(e) => {
-                          handleChangeDataCliente(e);
-                          validarCelular(e);
-                        }}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Button className="btn-confirm-save-data-checkout" style={styleBtnProduct} type="submit" >
-                    Guardar
-                  </Button>
-                </Row>
-              </Form>
-            ) : (
-              <>
-                <div className="row-checkout">
-                  <div className="logo-row-checkout">
-                    <i className="fas fa-user"></i>
-                  </div>
-                  <div className="data-row-checkout">{`${formDataCliente.nombre} ${formDataCliente.apellido}`}</div>
-                </div>
-                <div className="row-checkout">
-                  <div className="logo-row-checkout">
-                    <i className="fas fa-envelope"></i>
-                  </div>
-                  <div className="data-row-checkout">
-                    {formDataCliente.email}
+          {logged ? (
+            <>
+              <div className="info-container-checkout">
+                <div className="title-info-checkout">
+                  <div>Datos Personales</div>
+                  <div
+                    className="btn-editar-checkout"
+                    onClick={() => handleFormDataCliente()}
+                  >
+                    Editar
                   </div>
                 </div>
-                <div className="row-checkout">
-                  <div className="logo-row-checkout">
-                    <i className="fas fa-phone-alt"></i>
+                {activarDataCliente ? (
+                  <Form>
+                    <Row form>
+                      <Col lg={12} md={12} sm={12}>
+                        <FormGroup>
+                          <Label htmlFor="nombre">Nombre</Label>
+                          <Input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            value={formDataCliente.nombre}
+                            required
+                            onChange={(e) => {
+                              handleChangeDataCliente(e);
+                            }}
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg={12} md={12} sm={12}>
+                        <FormGroup>
+                          <Label htmlFor="apellido">Apellido</Label>
+                          <Input
+                            type="text"
+                            id="apellido"
+                            name="apellido"
+                            value={formDataCliente.apellido}
+                            required
+                            onChange={(e) => {
+                              handleChangeDataCliente(e);
+                            }}
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Col lg={12} md={12} sm={12}>
+                        <FormGroup>
+                          <Label htmlFor="celular">Celular</Label>
+                          <Input
+                            type="tel"
+                            id="celular"
+                            name="celular"
+                            value={formDataCliente.celular}
+                            placeholder="ej: 987654321"
+                            required
+                            onChange={(e) => {
+                              handleChangeDataCliente(e);
+                              validarCelular(e);
+                            }}
+                          />
+                        </FormGroup>
+                      </Col>
+                      <Button
+                        className="btn-confirm-save-data-checkout"
+                        style={styleBtnProduct}
+                        type="submit"
+                      >
+                        Guardar
+                      </Button>
+                    </Row>
+                  </Form>
+                ) : (
+                  <>
+                    <div className="row-checkout">
+                      <div className="logo-row-checkout">
+                        <i className="fas fa-user"></i>
+                      </div>
+                      <div className="data-row-checkout">{`${formDataCliente.nombre} ${formDataCliente.apellido}`}</div>
+                    </div>
+                    <div className="row-checkout">
+                      <div className="logo-row-checkout">
+                        <i className="fas fa-envelope"></i>
+                      </div>
+                      <div className="data-row-checkout">
+                        {formDataCliente.email}
+                      </div>
+                    </div>
+                    <div className="row-checkout">
+                      <div className="logo-row-checkout">
+                        <i className="fas fa-phone-alt"></i>
+                      </div>
+                      <div className="data-row-checkout">{`+56${formDataCliente.celular}`}</div>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              <div className="info-container-checkout">
+                <div className="title-info-checkout">
+                  <div>Datos de Despacho</div>
+                  <div
+                    className="btn-editar-checkout"
+                    onClick={handleFormDespachoCliente}
+                  >
+                    Editar
                   </div>
-                  <div className="data-row-checkout">{`+56${formDataCliente.celular}`}</div>
                 </div>
-              </>
-            )}
-          </div>
-          <div className="info-container-checkout">
-            <div className="title-info-checkout">
-              <div>Datos de Despacho</div>
-              <div
-                className="btn-editar-checkout"
-                onClick={() => console.log("ola")}
-              >
-                Editar
+                {activarDespachoCliente ? (
+                  <>
+                    <Form>
+                      <Row form>
+                        <Col lg={6} md={12} sm={12}>
+                          <FormGroup>
+                            <Label htmlFor="calle">Calle</Label>
+                            <Input
+                              type="text"
+                              id="calle"
+                              name="calle"
+                              value={formDespachoCliente.calle}
+                              required
+                              onChange={(e) => {
+                                handleChangeDespachoCliente(e);
+                              }}
+                            />
+                          </FormGroup>
+                        </Col>
+                        <Col lg={6} md={12} sm={12}>
+                          <FormGroup>
+                            <Label htmlFor="numeracion">
+                              Numeraci&oacute;n
+                            </Label>
+                            <Input
+                              type="text"
+                              id="numeracion"
+                              name="numeracion"
+                              value={formDespachoCliente.numeracion}
+                              required
+                              onChange={(e) => {
+                                handleChangeDespachoCliente(e);
+                              }}
+                            />
+                          </FormGroup>
+                        </Col>
+                        <Col lg={12} md={12} sm={12}>
+                          <FormGroup>
+                            <Label htmlFor="comuna">Comuna</Label>
+                            <Input
+                              name="comuna"
+                              id="comuna"
+                              type="select"
+                              value={formDespachoCliente.comuna}
+                              required
+                              onChange={handleChangeDespachoCliente}
+                            >
+                              <option value="" disabled>
+                                Seleccione su comuna
+                              </option>
+                              {comunas.map((comuna) => (
+                                <option
+                                  key={comuna.codigo}
+                                  value={comuna.nombre}
+                                >
+                                  {comuna.nombre}
+                                </option>
+                              ))}
+                            </Input>
+                          </FormGroup>
+                        </Col>
+                        <Col lg={12} md={12} sm={12}>
+                          <FormGroup>
+                            <Label for="exampleCheckbox">Tipo de entrega</Label>
+                            <div>
+                              <CustomInput
+                                type="radio"
+                                id="exampleCustomRadio"
+                                name="customRadio"
+                                label="Dejar pedido en la puerta"
+                              />
+                              <CustomInput
+                                type="radio"
+                                id="exampleCustomRadio2"
+                                name="customRadio"
+                                label="Esperar pedido afuera"
+                              />
+                              
+                            </div>
+                          </FormGroup>
+                        </Col>
+                        <Button
+                          className="btn-confirm-save-data-checkout"
+                          style={styleBtnProduct}
+                          type="submit"
+                        >
+                          Guardar
+                        </Button>
+                      </Row>
+                    </Form>
+                  </>
+                ) : (
+                  <>
+                    <div className="row-checkout">
+                      <div className="logo-row-checkout">
+                        <i className="fas fa-motorcycle"></i>
+                      </div>
+                      <div className="data-row-checkout">Delivery</div>
+                    </div>
+                    <div className="row-checkout">
+                      <div className="logo-row-checkout">
+                        <i className="fas fa-map-marker-alt"></i>
+                      </div>
+                      <div className="data-row-checkout">
+                        Direcci&oacute;n: {formDespachoCliente.calle}{" "}
+                        {formDespachoCliente.numeracion},{" "}
+                        {formDespachoCliente.comuna}
+                      </div>
+                    </div>
+                    <div className="row-checkout">
+                      <div className="logo-row-checkout">
+                        <i className="fas fa-file-alt"></i>
+                      </div>
+                      <div className="data-row-checkout">
+                        Indicaciones: Dejar pedido en la puerta
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
-            </div>
-            <div className="row-checkout">
-              <div className="logo-row-checkout">
-                <i className="fas fa-motorcycle"></i>
-              </div>
-              <div className="data-row-checkout">Delivery</div>
-            </div>
-            <div className="row-checkout">
-              <div className="logo-row-checkout">
-                <i className="fas fa-map-marker-alt"></i>
-              </div>
-              <div className="data-row-checkout">
-                Direcci&oacute;n: Mamiña 161
-              </div>
-            </div>
-            <div className="row-checkout">
-              <div className="logo-row-checkout">
-                <i className="fas fa-file-alt"></i>
-              </div>
-              <div className="data-row-checkout">
-                Indicaciones: Dejar pedido en la puerta
-              </div>
-            </div>
-          </div>
+            </>
+          ) : (
+            <>
+              <h1>ola</h1>
+            </>
+          )}
         </div>
         <div className="aside-container-checkout">
           <div className="aside-info-checkout">
