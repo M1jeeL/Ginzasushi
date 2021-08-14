@@ -6,11 +6,10 @@ import CartModal from "../Carrito/CartModal";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const { cart } = useContext(CartContext)
+  const { cart } = useContext(CartContext);
   const [navLinkOpen, setNavLinkOpen] = useState(false);
   const [openCartModal, setCartModal] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
 
   const handleCartModal = () => setCartModal(!openCartModal);
   const handleNavLinksToggle = () => setNavLinkOpen(!navLinkOpen);
@@ -26,9 +25,7 @@ export default function Navbar() {
 
   //Sumo la cantidad de productos totales que tiene el carrito
   let ContadorProductosCarrito = 0;
-  cart.forEach(
-    (producto) => (ContadorProductosCarrito += producto.cantidad)
-  );
+  cart.forEach((producto) => (ContadorProductosCarrito += producto.cantidad));
 
   return (
     <nav>
@@ -64,17 +61,29 @@ export default function Navbar() {
               <i className="fas fa-user fa-2x"></i>
             </DropdownToggle>
             <DropdownMenu className="dropdown-menu-icon-user">
-              <NavLink exact to="/login" className="dropdown-item">
+              <NavLink
+                exact
+                to="/login"
+                className="dropdown-item"
+                onClick={handleDropdown}
+              >
                 Mi cuenta
               </NavLink>
-              <NavLink exact to="/mis-pedidos" className="dropdown-item">
-                Mis pedidos
-              </NavLink>
-              <NavLink exact to="/mis-direcciones" className="dropdown-item">
+              <NavLink
+                exact
+                to="/mis-direcciones"
+                className="dropdown-item"
+                onClick={handleDropdown}
+              >
                 Editar direcci&oacute;n
               </NavLink>
-              <NavLink exact to="/carro-de-compras" className="dropdown-item">
-                Mi carrito
+              <NavLink
+                exact
+                to="/mis-pedidos"
+                className="dropdown-item"
+                onClick={handleDropdown}
+              >
+                Mis pedidos
               </NavLink>
             </DropdownMenu>
           </Dropdown>

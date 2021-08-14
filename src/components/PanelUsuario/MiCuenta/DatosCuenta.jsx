@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
+import UserContext from "../../../context/UserContext";
 
 const DatosCuenta = ({ usuario }) => {
   const { id, nombre, apellido, email } = usuario;
+  const { obtenerUsuario } = useContext(UserContext);
 
   const inicialState = {
     nombre,
     apellido,
-    email,
   };
 
   const [usuarioState, setUsuarioState] = useState(inicialState);
@@ -22,7 +23,7 @@ const DatosCuenta = ({ usuario }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
-    const url = `http://3.233.87.147:5000/usuarios/${id}`
+    const url = `http://3.233.87.147:5000/usuarios/${id}`;
 
     fetch(url, {
       method: "PATCH",
@@ -32,7 +33,10 @@ const DatosCuenta = ({ usuario }) => {
       },
       body: JSON.stringify(usuarioState),
     })
-      .then((response) => (response.json()))
+      .then((response) => {
+        response.json();
+        obtenerUsuario(token);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -85,14 +89,20 @@ const DatosCuenta = ({ usuario }) => {
               type="email"
               id="email"
               name="email"
-              value={usuarioState.email}
-              required
+              value={email}
+              disabled
               onChange={handleChange}
             />
           </FormGroup>
         </Col>
       </Row>
-      <Button className="btn-direccion-panel" type="submit" color="warning" size="lg" onClick={handleSubmit}>
+      <Button
+        className="btn-direccion-panel"
+        type="submit"
+        color="warning"
+        size="lg"
+        onClick={handleSubmit}
+      >
         Guardar datos
       </Button>
     </Form>

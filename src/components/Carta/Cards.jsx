@@ -4,8 +4,8 @@ import { Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 import CartContext from "../../context/CartContext";
 
-export default function Cards({ productos}) {
-  const { setSelectProduct } = useContext(CartContext)
+export default function Cards({ productos }) {
+  const { setSelectProduct } = useContext(CartContext);
   return (
     <div className="container container-carta">
       <Row>
@@ -20,11 +20,11 @@ export default function Cards({ productos}) {
               <Link
                 to={`/productos/${category}/${name}`}
                 onClick={async () => {
-                  setSelectProduct(item.id)
+                  await setSelectProduct(item.id);
                 }}
                 className="card-container"
               >
-                <Card item={item}/>
+                <Card item={item} />
               </Link>
             </Col>
           );

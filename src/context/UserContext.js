@@ -7,31 +7,13 @@ const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const history = useHistory();
   const [usuario, setUsuario] = useState({});
-  const [logged, setLogged] = useState(false)
+  const [logged, setLogged] = useState(false);
   const urlUsuarios = "http://3.233.87.147:5000";
 
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    const obtenerUsuario = async (token) => {
-      await fetch(`${urlUsuarios}/usuario_actual`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setUsuario(data);
-          setLogged(true);
-        })
-        .catch(error => console.log(error))
-    };
-
     obtenerUsuario(token);
-
-    return () => {};
   }, []);
 
   const obtenerUsuario = async (token) => {
@@ -45,6 +27,7 @@ const UserProvider = ({ children }) => {
       .then((response) => response.json())
       .then((data) => {
         setUsuario(data);
+        setLogged(true);
       });
   };
 
@@ -74,6 +57,7 @@ const UserProvider = ({ children }) => {
   const cerrarSesion = () => {
     localStorage.removeItem("token");
     setUsuario({});
+    setLogged(false);
     history.push("/");
   };
 
@@ -100,13 +84,20 @@ const UserProvider = ({ children }) => {
           "El nombre de usuario y/o el email ingresado ya existe"
         );
       })
-      .catch((err) => alert(err));
+      .catch((err) =>
+        Swal.fire({
+          icon: "error",
+          title: "Ups...",
+          text: "El nombre de usuario y/o el email ingresado ya existe",
+        })
+      );
   };
 
   const data = {
     registrarUsuario,
     iniciarSesion,
     cerrarSesion,
+    obtenerUsuario,
     history,
     usuario,
     logged,

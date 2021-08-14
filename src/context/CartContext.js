@@ -71,11 +71,7 @@ const CartProvider = ({ children }) => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          "Listo!",
-          "Tu producto fue eliminado del carrito",
-          "success",
-        );
+        Swal.fire("Listo!", "Tu producto fue eliminado del carrito", "success");
         let newCart = cart.filter((producto) => producto.id !== id);
         setCart(newCart);
       }
@@ -126,6 +122,21 @@ const CartProvider = ({ children }) => {
       }
     });
   };
+  const formatearNumero = (num) => {
+    let formattedNum = num;
+    formattedNum = formattedNum
+      .toString()
+      .split("")
+      .reverse()
+      .join("")
+      .replace(/(?=\d*\.?)(\d{3})/g, "$1.");
+    formattedNum = formattedNum
+      .split("")
+      .reverse()
+      .join("")
+      .replace(/^[.]/, "");
+    return formattedNum;
+  };
 
   const data = {
     products,
@@ -138,6 +149,7 @@ const CartProvider = ({ children }) => {
     addQuantityForEach,
     removeQuantityForEach,
     removeAllFromCart,
+    formatearNumero,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

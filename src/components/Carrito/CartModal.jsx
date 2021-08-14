@@ -6,19 +6,14 @@ import "./CartModal.css";
 import CartModalRow from "./CartModalRow";
 
 const CartModal = ({ openCartModal, handleCartModal }) => {
-  const { cart, subTotalForEach, removeAllFromCart } = useContext(CartContext);
+  const { cart, subTotalForEach, removeAllFromCart, formatearNumero } =
+    useContext(CartContext);
   let subTotal = 0;
   cart.forEach((item) => {
     subTotal = subTotal + subTotalForEach(item.id);
   });
 
-  subTotal = subTotal
-    .toString()
-    .split("")
-    .reverse()
-    .join("")
-    .replace(/(?=\d*\.?)(\d{3})/g, "$1.");
-  subTotal = subTotal.split("").reverse().join("").replace(/^[.]/, "");
+  let subTotalShow = formatearNumero(subTotal);
 
   const styleBtnProduct = {
     backgroundColor: "#000",
@@ -41,16 +36,12 @@ const CartModal = ({ openCartModal, handleCartModal }) => {
           <>
             <ModalBody>
               {cart.map((item) => (
-                <CartModalRow
-                  key={item.id}
-                  item={item}
-                  subTotalForEach={subTotalForEach}
-                />
+                <CartModalRow key={item.id} item={item} />
               ))}
             </ModalBody>
             <ModalFooter className="footer-modal-cart">
               <strong className="subtotal-modal-cart">
-                Subtotal: ${subTotal}
+                Subtotal: ${subTotalShow}
               </strong>
               <Button
                 type="button"

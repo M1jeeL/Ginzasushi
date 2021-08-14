@@ -79,16 +79,6 @@ const FormRegister = () => {
     }
   };
 
-  const confirmarEmail = (e) => {
-    if (e.target.value === formRegister.email) {
-      e.target.classList.remove("is-invalid");
-      e.target.classList.add("is-valid");
-    } else {
-      e.target.classList.remove("is-valid");
-      e.target.classList.add("is-invalid");
-    }
-  };
-
   const validarPassword = (e) => {
     if (e.target.type === "password") {
       if (erPassword.test(e.target.value)) {
@@ -98,16 +88,6 @@ const FormRegister = () => {
         e.target.classList.remove("is-valid");
         e.target.classList.add("is-invalid");
       }
-    }
-  };
-
-  const confirmarPassword = (e) => {
-    if (e.target.value === formRegister.password) {
-      e.target.classList.remove("is-invalid");
-      e.target.classList.add("is-valid");
-    } else {
-      e.target.classList.remove("is-valid");
-      e.target.classList.add("is-invalid");
     }
   };
 
@@ -129,9 +109,7 @@ const FormRegister = () => {
       !formRegister.nombre ||
       !formRegister.apellido ||
       !erEmail.test(formRegister.email) ||
-      formRegister.confirmacion_email !== formRegister.email ||
       !erPassword.test(formRegister.password) ||
-      formRegister.confirmacion_password !== formRegister.password ||
       !formRegister.celular ||
       !formRegister.calle ||
       !formRegister.numeracion
@@ -234,25 +212,6 @@ const FormRegister = () => {
         </Col>
         <Col lg={4} md={6} sm={12}>
           <FormGroup className="form-title">
-            <Label className="form-text" htmlFor="confirmacion_email">
-              Confirmaci&oacute;n de correo
-            </Label>
-            <Input
-              type="email"
-              id="confirmacion_email"
-              name="confirmacion_email"
-              value={formRegister.confirmacionEmail}
-              required
-              onChange={(e) => {
-                handleChange(e);
-                confirmarEmail(e);
-              }}
-            />
-            <FormFeedback tooltip>Los correos deben coincidir.</FormFeedback>
-          </FormGroup>
-        </Col>
-        <Col lg={4} md={6} sm={12}>
-          <FormGroup className="form-title">
             <Label className="form-text" htmlFor="password">
               Contrase&ntilde;a
             </Label>
@@ -270,27 +229,6 @@ const FormRegister = () => {
             <FormFeedback tooltip>
               La contrase&ntilde;a debe tener m&iacute;nimo 6 c&aacute;racteres
               y m&aacute;ximo 16, adem&aacute;s, debe poseer un n&uacute;mero.
-            </FormFeedback>
-          </FormGroup>
-        </Col>
-        <Col lg={4} md={6} sm={12}>
-          <FormGroup className="form-title">
-            <Label className="form-text" htmlFor="confirmacion_password">
-              Confirmaci&oacute;n de contrase&ntilde;a
-            </Label>
-            <Input
-              type="password"
-              id="confirmacion_password"
-              name="confirmacion_password"
-              value={formRegister.confirmacionPassword}
-              required
-              onChange={(e) => {
-                handleChange(e);
-                confirmarPassword(e);
-              }}
-            />
-            <FormFeedback tooltip>
-              Las contrase&ntilde;as deben coincidir.
             </FormFeedback>
           </FormGroup>
         </Col>

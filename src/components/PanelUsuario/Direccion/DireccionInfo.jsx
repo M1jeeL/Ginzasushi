@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Button, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
+import UserContext from "../../../context/UserContext";
 
 const DireccionInfo = ({ usuario }) => {
   const { id, comuna, calle, numeracion, depto } = usuario;
+  const { obtenerUsuario } = useContext(UserContext);
 
   const inicialState = {
     comuna,
@@ -44,7 +47,10 @@ const DireccionInfo = ({ usuario }) => {
       },
       body: JSON.stringify(usuarioState),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        response.json();
+        obtenerUsuario(token);
+      })
       .catch((error) => {
         console.log(error);
       });

@@ -4,17 +4,16 @@ import "./CartModalRow.css";
 
 const CartModalRow = ({ item }) => {
   //   console.log(item);
-  const { subTotalForEach, addQuantityForEach, removeQuantityForEach, removeFromCart } =
-    useContext(CartContext);
+  const {
+    subTotalForEach,
+    addQuantityForEach,
+    removeQuantityForEach,
+    removeFromCart,
+    formatearNumero,
+  } = useContext(CartContext);
   const { id } = item;
   let subTotal = subTotalForEach(id);
-  subTotal = subTotal
-    .toString()
-    .split("")
-    .reverse()
-    .join("")
-    .replace(/(?=\d*\.?)(\d{3})/g, "$1.");
-  subTotal = subTotal.split("").reverse().join("").replace(/^[.]/, "");
+  let subTotalShow = formatearNumero(subTotal);
 
   return (
     <>
@@ -27,7 +26,7 @@ const CartModalRow = ({ item }) => {
         <div className="info-modal-row">
           <p>{item.nombre}</p>
           <span>
-            {item.cantidad} x {subTotal}
+            {item.cantidad} x {subTotalShow}
           </span>
         </div>
 
@@ -35,7 +34,7 @@ const CartModalRow = ({ item }) => {
           {item.cantidad === 1 ? (
             <button
               className="btn-cantidad-producto"
-              onClick={() => removeFromCart(item.id)} 
+              onClick={() => removeFromCart(item.id)}
             >
               <i className="fas fa-trash fa-2x"></i>
             </button>
