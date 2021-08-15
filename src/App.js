@@ -18,6 +18,7 @@ import MiCuenta from "./components/PanelUsuario/MiCuenta/MiCuenta";
 import { CartProvider } from "./context/CartContext";
 import Checkout from "./pages/Checkout/Checkout";
 import { UserProvider } from "./context/UserContext";
+import Contacto from "./pages/Contacto/Contacto";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
                 path="/productos/:categoria/:nombre"
                 component={Productos}
               />
+              <Route exact path="/contacto" component={Contacto} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/crud" component={CrudApi} />
               <Route exact path="/mi-cuenta" component={MiCuenta} />

@@ -5,23 +5,33 @@
   justify-content: space-between;
   height: calc(100vh - 12vh - 140px - 8rem);
 }
-
-.datos-direccion {
+.container-datos-direccion {
   max-width: 80%;
   flex: 1 1;
-  h4 {
-    font-family: "Roboto Slab", serif;
-  }
-  .btn-direccion-panel {
-    margin: 1rem 0;
+  .datos-direccion {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5.5px);
+    border-radius: 10px;
+    border: 1px solid #00000020;
+    padding: 1rem;
+    h4 {
+      font-family: "Roboto Slab", serif;
+    }
+    .btn-direccion-panel {
+      margin: 1rem 0;
+    }
   }
 }
 
+.title-panel-user{
+    display: flex;
+    justify-content: center;
+}
 @media screen and (max-width: 800px) {
   .direccion-container {
     flex-flow: column nowrap;
     height: auto;
-    .datos-direccion {
+    .container-datos-direccion {
       max-width: 100%;
       margin: 2rem 0;
     }

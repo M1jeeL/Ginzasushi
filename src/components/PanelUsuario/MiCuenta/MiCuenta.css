@@ -13,19 +13,54 @@
   height: calc(100vh - 12vh - 140px - 8rem);
 }
 
-.datos-mi-cuenta {
+.container-datos-mi-cuenta {
   max-width: 80%;
   -webkit-box-flex: 1;
       -ms-flex: 1 1;
           flex: 1 1;
 }
 
-.datos-mi-cuenta h4 {
+.container-datos-mi-cuenta .datos-mi-cuenta {
+  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  -webkit-backdrop-filter: blur(5.5px);
+          backdrop-filter: blur(5.5px);
+  border-radius: 10px;
+  border: 1px solid #00000020;
+  padding: 1rem;
+}
+
+.container-datos-mi-cuenta .datos-mi-cuenta h4 {
   font-family: "Roboto Slab", serif;
 }
 
-.datos-mi-cuenta .btn-direccion-panel {
+.container-datos-mi-cuenta .datos-mi-cuenta .btn-direccion-panel {
   margin: 1rem 0;
+}
+
+.btn-guardar-datos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.title-panel-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.title-panel-user .btn-editar-user {
+  cursor: pointer;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 800px) {
@@ -36,7 +71,7 @@
             flex-flow: column nowrap;
     height: auto;
   }
-  .micuenta-container .datos-mi-cuenta {
+  .micuenta-container .container-datos-mi-cuenta {
     max-width: 100%;
     margin: 2rem 0;
   }

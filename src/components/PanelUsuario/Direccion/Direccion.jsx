@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import PanelUsuario from "../PanelUsuario";
 import Imgcab from "../../Imagen cabecera/Imgcab";
-import DireccionInfo from "./DireccionInfo";
+import FormDireccionInfo from "./FormDireccionInfo";
 import "./Direccion.css";
 import Loader from "../../Loader/Loader";
 
@@ -47,7 +47,9 @@ const Direccion = () => {
       {Object.entries(usuario).length > 0 ? (
         <div className="container direccion-container">
           <PanelUsuario />
-          <DireccionInfo usuario={usuario} />
+          <div className="container-datos-direccion">
+            <FormDireccionInfo usuario={usuario} />
+          </div>
         </div>
       ) : (
         <div className="d-flex direccion-container justify-content-center align-items-center">

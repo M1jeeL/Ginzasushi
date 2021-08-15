@@ -83,6 +83,7 @@ const Checkout = () => {
                 <div className="precio-checkout-label">Despacho</div>
                 <div className="precio-checkout-price">$ {despachoShow}</div>
               </div>
+              <hr />
               <div className="row-aside-checkout">
                 <div className="precio-checkout-label">
                   <strong>Total</strong>

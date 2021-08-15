@@ -8,10 +8,10 @@
       -ms-flex: 0 0 100%;
           flex: 0 0 100%;
   margin: 0.8rem 0;
-  background-color: #efe7cd;
   border-radius: 1rem;
-  -webkit-box-shadow: 1px 1px 3px 1px #00000033;
-          box-shadow: 1px 1px 3px 1px #00000033;
+  background: #efe7cd;
+  -webkit-box-shadow: -12px 12px 24px #999483, 12px -12px 24px #ffffff;
+          box-shadow: -12px 12px 24px #999483, 12px -12px 24px #ffffff;
 }
 
 .producto-pic-container-card {

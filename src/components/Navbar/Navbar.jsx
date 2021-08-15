@@ -38,11 +38,11 @@ export default function Navbar() {
             Carta
           </NavLink>
         </li>
-        <li className="item-nav-links">
+        {/* <li className="item-nav-links">
           <NavLink exact to="/promociones" onClick={resetNavLink}>
             Promociones
           </NavLink>
-        </li>
+        </li> */}
         <li className="item-nav-links">
           <NavLink exact to="/contacto" onClick={resetNavLink}>
             Contacto

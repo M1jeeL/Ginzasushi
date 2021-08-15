@@ -47,7 +47,9 @@ const MiCuenta = () => {
       {Object.entries(usuario).length > 0 ? (
         <div className="container micuenta-container">
           <PanelUsuario />
-          <DatosCuenta usuario={usuario} />
+          <div className="container-datos-mi-cuenta">
+            <DatosCuenta usuario={usuario} />
+          </div>
         </div>
       ) : (
         <div className="d-flex micuenta-container justify-content-center align-items-center">
