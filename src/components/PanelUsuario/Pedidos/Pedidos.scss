@@ -2,14 +2,34 @@
   margin-top: 2rem;
   display: flex;
   flex-flow: row wrap;
-  height: calc(100vh - 12vh - 140px - 8rem);
+  min-height: calc(100vh - 12vh - 140px - 8rem);
 }
 
-.pedidos-table {
+.table-container-pedidos {
   max-width: 80%;
   flex: 1 1;
-  
-  
+}
+
+.nav-pedidos {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  .page-item {
+    cursor: pointer;
+    .page-link {
+      border: 1px solid black;
+      color: #fff;
+      background-color: #000;
+      font-weight: 600;
+    }
+  }
+  .active {
+    .page-link {
+      color: #fff;
+      background-color: #ffb922;
+      border: 1px solid #000;
+    }
+  }
 }
 
 .en-camino {
@@ -28,12 +48,44 @@
 }
 
 @media screen and (max-width: 800px) {
-    .pedidos-container {
-      flex-flow: column nowrap;
-      height: auto;
-      .pedidos-table {
-        max-width: 100%;
-        margin: 2rem 0;
-      }
+  .pedidos-container {
+    flex-flow: column nowrap;
+    height: auto;
+  }
+  .table-container-pedidos {
+    max-width: 100%;
+    margin: 2rem 0;
+
+    .table {
+        border: 0px;
+    }
+    .table caption {
+        font-size: 1.4rem;
+    }
+    .table thead {
+        display: none;
+    }
+    .table tr {
+        border-bottom: 0.5rem solid #fff;
+        display: block;
+    }
+    .table th, .table td {
+        font-size: 0.8rem;
+    }
+    .table td {
+        display: block;
+        border-bottom: 1px solid #fff;
+        text-align: right;
+    }
+    .table td:last-child {
+        border-bottom: 0px;
+    }
+    .table td::before {
+        content: attr(data-label);
+        color:#fff;
+        font-weight: bold;
+        float: left;
+        position: block;
     }
   }
+}

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import CartContext from "../../context/CartContext";
 import { Button, Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 import CartModal from "../Carrito/CartModal";
-import "./Navbar.css";
+import "./Navbar.scss";
 
 export default function Navbar() {
   const { cart } = useContext(CartContext);
@@ -28,7 +28,7 @@ export default function Navbar() {
   cart.forEach((producto) => (ContadorProductosCarrito += producto.cantidad));
 
   return (
-    <nav>
+    <nav className="nav-principal">
       <NavLink exact to="/">
         <div className="nav-logo" />
       </NavLink>

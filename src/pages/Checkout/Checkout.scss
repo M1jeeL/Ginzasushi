@@ -69,12 +69,37 @@
         margin: 1rem 0;
         display: flex;
         justify-content: center;
+        .btn-confirmar-pedido{
+            background-color: #000;
+            color: #fff;
+            font-weight: bold;
+            width: 16rem;
+        }
       }
     }
   }
   .btn-confirm-save-data-checkout {
     margin: 0 auto;
   }
+  .mercadopago-button {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    font-weight: bold;
+    font-size: 1rem;
+    justify-content: center;
+    margin: 1rem auto;
+    width: 16rem;
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+@media screen and (max-width: 992px) and (min-width: 767px ) {
+    .btn-pagar-pedido {
+        .btn-confirmar-pedido{
+            width: 100% !important;
+        }
+      }
 }
 
 @media screen and (max-width: 766px) {

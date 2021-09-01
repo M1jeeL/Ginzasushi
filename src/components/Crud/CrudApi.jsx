@@ -11,7 +11,7 @@ export default function Crud() {
   const [loading, setLoading] = useState(false);
   const [openProductModal, setOpenProductModal] = useState(false);
 
-  let url = "http://3.233.87.147:5002/productos";
+  let url = process.env.REACT_APP_PRODUCTOS_API;
   const token = localStorage.getItem("token");
 
   const openModal = (e) => {
@@ -20,16 +20,20 @@ export default function Crud() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(url)
+    fetch(`${url}/productos`)
       .then((response) => response.json())
       .then((productos) => {
         setLoading(false);
         setDb(productos);
-      });
+      })
+      .catch(error => {
+          setLoading(false)
+          setDb(null)
+      })
   }, [url]);
 
   const cargarProductos = async () => {
-    fetch(url)
+    fetch(`${url}/productos`)
       .then((response) => response.json())
       .then((productos) => {
         setLoading(false);
@@ -38,7 +42,7 @@ export default function Crud() {
   };
 
   const createData = async (data) => {
-    await fetch(url, {
+    await fetch(`${url}/productos`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

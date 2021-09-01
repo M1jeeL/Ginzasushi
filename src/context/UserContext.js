@@ -8,13 +8,29 @@ const UserProvider = ({ children }) => {
   const history = useHistory();
   const [usuario, setUsuario] = useState({});
   const [logged, setLogged] = useState(false);
-  const urlUsuarios = "http://3.233.87.147:5000";
+  const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
+    const obtenerUsuario = async (token) => {
+      await fetch(`${urlUsuarios}/usuario_actual`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setUsuario(data);
+          setLogged(true);
+        })
+        .catch(err => {
+            setLogged(false);
+        })
+    };
     obtenerUsuario(token);
-  }, []);
+  }, [urlUsuarios]);
 
   const obtenerUsuario = async (token) => {
     await fetch(`${urlUsuarios}/usuario_actual`, {
@@ -80,9 +96,6 @@ const UserProvider = ({ children }) => {
           history.push("/login");
           return;
         }
-        throw new Error(
-          "El nombre de usuario y/o el email ingresado ya existe"
-        );
       })
       .catch((err) =>
         Swal.fire({

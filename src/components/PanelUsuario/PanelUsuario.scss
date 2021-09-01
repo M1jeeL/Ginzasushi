@@ -1,11 +1,14 @@
 .panel-nav {
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: #000;
   display: flex;
   flex-flow: column wrap;
+  height: 16rem;
+  justify-content: space-around;
   margin: 0 1rem 0 0;
   max-width: 20%;
-  height: 16rem;
-  background-color: #000;
-  border-radius: 0.5rem;
+  width: 100%;
   z-index: 100;
   .active {
     background-color: #ffb922;
@@ -16,17 +19,17 @@
 }
 
 .panel-nav-item {
+  background-color: black;
   display: flex;
   flex-flow: row wrap;
-  width: 100%;
   height: 3rem;
-  background-color: black;
+  width: 100%;
 
   span {
+    align-self: center;
     color: #fff;
     font-weight: bold;
     font-size: 1.2rem;
-    align-self: center;
     padding-left: 1rem;
   }
 

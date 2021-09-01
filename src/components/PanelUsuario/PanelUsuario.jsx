@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import PanelNavRow from "./PanelNavRow";
 import { NavLink } from "react-router-dom";
-import "./PanelUsuario.css";
+import "./PanelUsuario.scss";
 import UserContext from "../../context/UserContext";
 
 const PanelUsuario = () => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import "./FormRegister.css";
+import "./FormRegister.scss";
 import {
   Button,
   Form,
@@ -331,11 +331,11 @@ const FormRegister = () => {
           </FormGroup>
         </Col>
       </Row>
-      <div className="d-flex justify-content-between">
+      <div className="footer-form-register">
         <Button type="submit" color="warning" size="lg">
           Crear Cuenta
         </Button>
-        <Link to="/login" className="align-self-end">
+        <Link to="/login">
           ¿Tienes cuenta? <strong>Inicia sesión</strong>
         </Link>
       </div>

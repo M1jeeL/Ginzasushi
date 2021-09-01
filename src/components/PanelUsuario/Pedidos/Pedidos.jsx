@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import _ from "lodash";
 import PanelUsuario from "../PanelUsuario";
 import PedidosTable from "./PedidosTable";
-import { useHistory } from "react-router-dom";
 import Imgcab from "../../Imagen cabecera/Imgcab";
-import "./Pedidos.css";
 import Loader from "../../Loader/Loader";
+import "./Pedidos.scss";
 
 const Pedidos = () => {
   const history = useHistory();
+  const url = process.env.REACT_APP_PEDIDOS_API;
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const url = "http://3.233.87.147:5001/pedidos";
+  const [paginatedPedidos, setPaginatedPedidos] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageNumberLimit] = useState(5);
+  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
+  const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
+  const pageSize = 10;
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -20,7 +26,7 @@ const Pedidos = () => {
       return;
     }
 
-    fetch(url, {
+    fetch(`${url}/pedidos`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -31,13 +37,15 @@ const Pedidos = () => {
       .then((pedidos) => {
         setPedidos(pedidos);
         setLoading(false);
+        setPaginatedPedidos(_(pedidos).slice(0).take(pageSize).value());
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
         localStorage.removeItem("token");
         history.push("/login");
       });
-  }, [history]);
+  }, [history, url]);
 
   return (
     <>
@@ -49,7 +57,19 @@ const Pedidos = () => {
       ) : (
         <div className="container pedidos-container">
           <PanelUsuario />
-          <PedidosTable pedidos={pedidos} />
+          <PedidosTable
+            pedidos={pedidos}
+            currentPage={currentPage}
+            pageSize={pageSize}
+            paginatedPedidos={paginatedPedidos}
+            setCurrentPage={setCurrentPage}
+            setPaginatedPedidos={setPaginatedPedidos}
+            pageNumberLimit={pageNumberLimit}
+            maxPageNumberLimit={maxPageNumberLimit}
+            minPageNumberLimit={minPageNumberLimit}
+            setMaxPageNumberLimit={setMaxPageNumberLimit}
+            setMinPageNumberLimit={setMinPageNumberLimit}
+          />
         </div>
       )}
     </>

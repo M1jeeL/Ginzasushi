@@ -4,30 +4,27 @@ import Loader from "../components/Loader/Loader";
 import Imgcab from "../components/Imagen cabecera/Imgcab";
 import Producto from "../components/Producto/Producto";
 import CartContext from "../context/CartContext";
+import useFetchCategories from "../hooks/useFetchCategories";
 const Productos = () => {
   const { products } = useContext(CartContext);
   const [loading, setLoading] = useState(true);
-  const params = useParams();
-
-  const query = {
-    nombre: params.nombre,
-    categoria: params.categoria.split("-"),
-  };
-
-  let [selected] = products.filter(
-    (item) =>
-      item.nombre.toLowerCase() === query.nombre &&
-      item.categoria.toLowerCase().split(" ")[1] === query.categoria[1] &&
-      item.categoria.toLowerCase().split(" ")[2] === query.categoria[2]
-  );
+  const { id } = useParams();
+  const { data: categories } = useFetchCategories();
+  const [producto, setProducto] = useState({});
 
   useEffect(() => {
-    if (products.length > 0) {
-      if (Object.entries(selected).length > 0) {
-        setLoading(false);
-      }
+    if (products.length > 0 && categories.length > 0) {
+      let [product] = products.filter((item) => item.id === Number(id));
+      let [category] = categories.filter(
+        (cat) => product.categoria === cat.id
+      );
+      setProducto({
+          product, category
+      })
+      setLoading(false)
     }
-  }, [selected, products.length]);
+  }, [categories, id, products]);
+
   return (
     <>
       <Imgcab nombrehead="California Rolls" />
@@ -37,7 +34,7 @@ const Productos = () => {
           <Loader />
         </div>
       ) : (
-        <Producto producto={selected} />
+        <Producto producto={producto} />
       )}
     </>
   );

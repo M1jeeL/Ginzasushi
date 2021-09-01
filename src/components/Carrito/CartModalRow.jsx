@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import CartContext from "../../context/CartContext";
-import "./CartModalRow.css";
+import "./CartModalRow.scss";
 
 const CartModalRow = ({ item }) => {
   //   console.log(item);

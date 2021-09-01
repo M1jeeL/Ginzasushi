@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import Imgcab from "../../components/Imagen cabecera/Imgcab";
-import "./Contacto.css";
+import "./Contacto.scss";
 const Contacto = () => {
   const [contactForm, setContactForm] = useState({
     nombre: "",

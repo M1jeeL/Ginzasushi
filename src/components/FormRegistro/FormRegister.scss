@@ -18,7 +18,31 @@
 }
 
 .form-register {
+  min-height: calc(100vh - 12vh - 140px - 12rem);
   button {
     margin-top: 1rem;
   }
+}
+
+.footer-form-register{
+    display: flex;
+    justify-content: space-between;
+    a{
+        align-self: flex-end;
+    } 
+}
+
+@media (max-width: 450px){
+    .footer-form-register{
+        flex-flow: column wrap;
+        justify-content: center;
+        button{
+            margin: 1rem 0;
+        }
+        a{
+            align-self: center;
+            margin: 1rem 0;
+        }
+    }
+
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import MapView from "../../components/Map/MapView";
-import "./Inicio.css";
+import "./Inicio.scss";
 
 export default function Inicio() {
   return (

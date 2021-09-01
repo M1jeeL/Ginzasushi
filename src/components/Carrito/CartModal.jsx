@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Modal, ModalHeader, ModalFooter, Button, ModalBody } from "reactstrap";
 import CartContext from "../../context/CartContext";
-import "./CartModal.css";
 import CartModalRow from "./CartModalRow";
+import "./CartModal.scss";
 
 const CartModal = ({ openCartModal, handleCartModal }) => {
   const { cart, subTotalForEach, removeAllFromCart, formatearNumero } =

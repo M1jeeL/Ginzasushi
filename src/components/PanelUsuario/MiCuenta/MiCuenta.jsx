@@ -3,14 +3,14 @@ import { useHistory } from "react-router-dom";
 import PanelUsuario from "../PanelUsuario";
 import Imgcab from "../../Imagen cabecera/Imgcab";
 import DatosCuenta from "./DatosCuenta";
-import "./MiCuenta.css";
+import "./MiCuenta.scss";
 import Loader from "../../Loader/Loader";
 
 const MiCuenta = () => {
   const history = useHistory();
   const [usuario, setUsuario] = useState({});
 
-  const url = `http://3.233.87.147:5000/usuario_actual`;
+  const url = process.env.REACT_APP_USUARIOS_API;
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -19,7 +19,7 @@ const MiCuenta = () => {
       return;
     }
 
-    fetch(url, {
+    fetch(`${url}/usuario_actual`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

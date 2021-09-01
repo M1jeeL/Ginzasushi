@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import "./Footer.scss";
 
 export default function Footer() {
   return (
@@ -28,7 +28,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-firma">
-        <p>© Ginzasushi delivery - Desarrollado por mijel</p>
+        <p>© Ginzasushi delivery - Desarrollado por Miguel Loza</p>
       </div>
     </footer>
   );

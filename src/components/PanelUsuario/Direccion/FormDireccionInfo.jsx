@@ -6,6 +6,7 @@ import UserContext from "../../../context/UserContext";
 const DireccionInfo = ({ usuario }) => {
   const { id, comuna, calle, numeracion, depto } = usuario;
   const { obtenerUsuario } = useContext(UserContext);
+  
 
   const inicialState = {
     comuna,

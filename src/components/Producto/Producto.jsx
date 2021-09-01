@@ -1,17 +1,18 @@
-import React, { useContext, useState } from "react";
-import "./Producto.css";
-import { Button } from "reactstrap";
-import CartContext from "../../context/CartContext";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button, Input } from "reactstrap";
+import CartContext from "../../context/CartContext";
+import "./Producto.scss";
 
 export default function Producto({ producto }) {
   const { addToCart } = useContext(CartContext);
-
-  const { nombre, precio, envoltura, ingredientes } = producto;
-
-  const src =
-    "https://images.vexels.com/media/users/3/230800/isolated/preview/6fae7b492e567aae76ab5220a894087c-cute-dibujos-animados-de-sushi.png";
+  const { category, product } = producto;
+  const { nombre, precio, descripcion, image_src } = product;
   const [cantidadProducto, setCantidadProducto] = useState(1);
+  const [envol] = useState(category.envoltura);
+  const [selectEnvol, setSelectEnvol] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
+  const [showMessageError, setShowMessageError] = useState(false);
 
   const addCantidad = () => {
     setCantidadProducto(cantidadProducto + 1);
@@ -25,7 +26,13 @@ export default function Producto({ producto }) {
     }
   };
 
-  const [showMessage, setShowMessage] = useState(false);
+  useEffect(() => {
+      return () => {
+          setShowMessage(false)
+          setShowMessageError(false)
+      }
+  }, [])
+
 
   const mostrarMensaje = () => {
     if (showMessage === false) {
@@ -35,6 +42,20 @@ export default function Producto({ producto }) {
       }, 1500);
       return;
     }
+  };
+
+  const mostrarMensajeError = () => {
+    if (showMessageError === false) {
+      setShowMessageError(true);
+      setTimeout(() => {
+        setShowMessageError(false);
+      }, 1500);
+      return;
+    }
+  };
+
+  const handleChange = (e) => {
+    setSelectEnvol(e.target.value);
   };
 
   const styleBtnProduct = {
@@ -55,7 +76,11 @@ export default function Producto({ producto }) {
         </Link>
         <div className="producto-container">
           <div className="producto-pic-container">
-            <img src={src} alt="sushito ginzasushi" className="producto-pic" />
+            <img
+              src={image_src}
+              alt="sushito ginzasushi"
+              className="producto-pic"
+            />
           </div>
           <div className="info-producto">
             <div className="producto-titulo">
@@ -73,7 +98,25 @@ export default function Producto({ producto }) {
             <div className="producto-envoltura">
               <span className="ing">Envuelto en:</span>
               <br />
-              <span className="envoltura">{envoltura}</span>
+              <Input
+                type="select"
+                name="envoltura"
+                id="envoltura"
+                className="envoltura"
+                value={selectEnvol}
+                required
+                onChange={handleChange}
+              >
+                <option value="" disabled>
+                  Seleccione la envoltura
+                </option>
+                {envol.map((envol, index) => (
+                  <option key={index} value={envol}>
+                    {envol}
+                  </option>
+                ))}
+              </Input>
+              <span className="envoltura">{}</span>
             </div>
             <div className="linea-producto">
               <hr />
@@ -81,7 +124,7 @@ export default function Producto({ producto }) {
             <div className="producto-ingredientes">
               <span className="ing">Ingredientes: </span>
               <br />
-              <span className="ing-desc">{ingredientes}</span>
+              <span className="ing-desc">{descripcion}</span>
             </div>
             <div className="linea-producto">
               <hr />
@@ -103,7 +146,16 @@ export default function Producto({ producto }) {
                 <Button
                   style={styleBtnProduct}
                   onClick={() => {
-                    addToCart(producto, cantidadProducto);
+                    if (selectEnvol === "") {
+                      mostrarMensajeError();
+                      return;
+                    }
+                    addToCart(
+                      product,
+                      cantidadProducto,
+                      selectEnvol,
+                      category.nombre
+                    );
                     mostrarMensaje();
                   }}
                 >
@@ -117,6 +169,9 @@ export default function Producto({ producto }) {
           <span className="message">
             Su producto fue agregado al carrito con &eacute;xito
           </span>
+        )}
+        {showMessageError && (
+          <span className="messageError">Seleccione una envoltura</span>
         )}
       </div>
     </>

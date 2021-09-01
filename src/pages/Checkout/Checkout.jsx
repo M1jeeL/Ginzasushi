@@ -1,45 +1,65 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "reactstrap";
+import { useContext, useEffect, useState } from "react";
 import Imgcab from "../../components/Imagen cabecera/Imgcab";
-import CartContext from "../../context/CartContext";
 import UserContext from "../../context/UserContext";
-import FormDatosUsuario from "../../components/Checkout/FormDatosUsuario/FormDatosUsuario";
-import FormDespachoUsuario from "../../components/Checkout/FormDespachoUsuario/FormDespachoUsuario";
-import "./Checkout.css";
+import CardDatosCheckout from "../../components/Checkout/FormDatosUsuario/CardDatosCheckout";
+import CardDespachoCheckout from "../../components/Checkout/FormDespachoUsuario/CardDespachoCheckout";
+import CardCheckoutAside from "../../components/Checkout/CardCheckoutAside/CardCheckoutAside";
+import "./Checkout.scss";
 
 const Checkout = () => {
-  const { cart, subTotalForEach, formatearNumero, pagarPedido } = useContext(CartContext);
   const { usuario, logged } = useContext(UserContext);
-  const {
-    nombre,
-    apellido,
-    email,
-    celular,
-    calle,
-    comuna,
-    depto,
-    numeracion,
-    id,
-  } = usuario;
-
-  let subTotal = 0;
-  cart.forEach((item) => {
-    subTotal = subTotal + subTotalForEach(item.id);
-  });
-  let despacho = 3000;
-  let total = subTotal + despacho;
-
-  let subTotalShow = formatearNumero(subTotal);
-  let despachoShow = formatearNumero(despacho);
-  let totalShow = formatearNumero(total);
-
-  const styleBtnProduct = {
-    backgroundColor: "#000",
-    color: "#fff",
-    fontWeight: "bold",
-    width: "12rem",
+  const initialDespachoCliente = {
+    id: "",
+    calle: "",
+    comuna: "",
+    numeracion: "",
+    depto: "",
+    tipoEntrega: "Dejar pedido en la puerta",
   };
+  const [formDespachoCliente, setFormDespachoCliente] = useState(
+    initialDespachoCliente
+  );
+  const initialDataCliente = {
+    id: "",
+    nombre: "",
+    apellido: "",
+    email: "",
+    celular: "",
+  };
+  const [formDataCliente, setFormDataCliente] = useState(initialDataCliente);
+//   console.log(formDataCliente);
+  console.log(logged)
+  useEffect(() => {
+    if (Object.entries(usuario).length > 0) {
+      const {
+        nombre,
+        apellido,
+        email,
+        celular,
+        calle,
+        comuna,
+        depto,
+        numeracion,
+        id,
+      } = usuario;
+      setFormDataCliente({
+        id,
+        nombre,
+        apellido,
+        email,
+        celular,
+      });
+
+      setFormDespachoCliente({
+        id,
+        calle,
+        comuna,
+        numeracion,
+        depto,
+        tipoEntrega: "Dejar pedido en la puerta",
+      });
+    }
+  }, [usuario]);
 
   return (
     <>
@@ -48,19 +68,13 @@ const Checkout = () => {
         <div className="left-side-checkout">
           {logged ? (
             <>
-              <FormDatosUsuario
-                nombre={nombre}
-                apellido={apellido}
-                email={email}
-                celular={celular}
-                id={id}
+              <CardDatosCheckout
+                formDataCliente={formDataCliente}
+                setFormDataCliente={setFormDataCliente}
               />
-              <FormDespachoUsuario
-                calle={calle}
-                numeracion={numeracion}
-                depto={depto}
-                comuna={comuna}
-                id={id}
+              <CardDespachoCheckout
+                formDespachoCliente={formDespachoCliente}
+                setFormDespachoCliente={setFormDespachoCliente}
               />
             </>
           ) : (
@@ -69,37 +83,10 @@ const Checkout = () => {
             </>
           )}
         </div>
-        <div className="aside-container-checkout">
-          <div className="aside-info-checkout">
-            <div className="aside-confirmacion-checkout">
-              Confirmaci&oacute;n de pedido
-            </div>
-            <div className="aside-precio-checkout">
-              <div className="row-aside-checkout">
-                <div className="precio-checkout-label">Subtotal</div>
-                <div className="precio-checkout-price">$ {subTotalShow}</div>
-              </div>
-              <div className="row-aside-checkout">
-                <div className="precio-checkout-label">Despacho</div>
-                <div className="precio-checkout-price">$ {despachoShow}</div>
-              </div>
-              <hr />
-              <div className="row-aside-checkout">
-                <div className="precio-checkout-label">
-                  <strong>Total</strong>
-                </div>
-                <div className="precio-checkout-price">$ {totalShow}</div>
-              </div>
-            </div>
-            <div className="btn-pagar-pedido">
-              <Link to="/checkout">
-                <Button style={styleBtnProduct} onClick={() => {
-                    pagarPedido();
-                }}>Pagar mi pedido</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
+        <CardCheckoutAside
+          formDataCliente={formDataCliente}
+          formDespachoCliente={formDespachoCliente}
+        />
       </div>
     </>
   );

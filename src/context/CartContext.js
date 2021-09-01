@@ -1,21 +1,19 @@
 import { createContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
+  const [cart, setCart] = useLocalStorage("cart", [])
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
-  const [firstTime, setFirstTime] = useState(true);
-  const url = "http://3.233.87.147:5002/productos";
+  const [selectProduct, setSelectProduct] = useState(null);
+  const url = process.env.REACT_APP_PRODUCTOS_API;
+
 
   useEffect(() => {
-    if (firstTime) {
-      setCart(JSON.parse(localStorage.getItem("cart")));
-      setFirstTime(false);
-    }
-    localStorage.setItem("cart", JSON.stringify(cart));
-    fetch(url, {
+    
+    fetch(`${url}/productos`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -23,31 +21,25 @@ const CartProvider = ({ children }) => {
     })
       .then((response) => response.json())
       .then((data) => setProducts(data));
+
     return () => {
       return true;
     };
-  }, [cart, firstTime]);
-
-  const [selectProduct, setSelectProduct] = useState(null);
+  }, [url]);
 
   // Add to cart.
-  const addToCart = (product, cantidad) => {
+  const addToCart = (product, cantidad, envoltura, categoria) => {
     // Check if product is already in the cart.
-    let exists = cart.filter((item) => item.id === product.id);
+    const exists = cart.filter((item) => item.id === product.id);
 
-    // If exists update quantity
+    // Si el producto existe en el carrito, actualiza la cantidad.
     if (exists.length > 0) {
-      // Identificar la posición del producto añadido dentro del carrito
-      let aux = cart.findIndex((item) => item.id === product.id);
-      // Crear un carrito auxiliar con los mismos datos del anterior
-      let cartAux = [...cart];
-      // Crear Producto auxiliar
-      let productAux = { ...cartAux[aux] };
-      // Sumamos la cantidad anterior más la que se agrega
+      const aux = cart.findIndex((item) => item.id === product.id);
+      const cartAux = [...cart];
+      const productAux = { ...cartAux[aux] };
+
       productAux.cantidad += cantidad;
-      // Se reemplaza el producto del carrito original por el producto auxiliar para actualizar el valor de la cantidad
       cartAux[aux] = productAux;
-      // Reemplazar carrito anterior por el auxiliar.
       setCart(cartAux);
       return;
     }
@@ -57,9 +49,10 @@ const CartProvider = ({ children }) => {
       id: product.id,
       nombre: product.nombre,
       precio: parseInt(product.precio),
-      categoria: product.categoria,
-      ingredientes: product.ingredientes,
+      categoria: categoria,
+      ingredientes: product.descripcion,
       cantidad: cantidad,
+      envoltura: envoltura,
     };
 
     setCart([...cart, formattedProduct]);
@@ -77,7 +70,7 @@ const CartProvider = ({ children }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Listo!", "Tu producto fue eliminado del carrito", "success");
-        let newCart = cart.filter((producto) => producto.id !== id);
+        const newCart = cart.filter((producto) => producto.id !== id);
         setCart(newCart);
       }
     });
@@ -90,21 +83,21 @@ const CartProvider = ({ children }) => {
   };
 
   const addQuantityForEach = (product) => {
-    let aux = cart.findIndex((item) => item.id === product.id);
-    let cartAux = [...cart];
-    let productAux = { ...cartAux[aux] };
+    const aux = cart.findIndex((item) => item.id === product.id);
+    const cartAux = [...cart];
+    const productAux = { ...cartAux[aux] };
     productAux.cantidad += 1;
     cartAux[aux] = productAux;
     setCart(cartAux);
   };
 
   const removeQuantityForEach = (product) => {
-    let aux = cart.findIndex((item) => item.id === product.id);
+    const aux = cart.findIndex((item) => item.id === product.id);
     if (product.cantidad === 1) {
       return;
     } else {
-      let cartAux = [...cart];
-      let productAux = { ...cartAux[aux] };
+      const cartAux = [...cart];
+      const productAux = { ...cartAux[aux] };
       productAux.cantidad -= 1;
       cartAux[aux] = productAux;
       setCart(cartAux);
@@ -127,12 +120,6 @@ const CartProvider = ({ children }) => {
       }
     });
   };
-
-  const pagarPedido = async () => {
-    console.log(cart)
-    const pedidoIds = cart.filter(item => item.id)
-    console.log(pedidoIds)
-  }
 
   const formatearNumero = (num) => {
     let formattedNum = num;
@@ -162,7 +149,6 @@ const CartProvider = ({ children }) => {
     removeQuantityForEach,
     removeAllFromCart,
     formatearNumero,
-    pagarPedido,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
