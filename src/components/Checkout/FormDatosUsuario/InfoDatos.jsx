@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardCheckout = ({ formDataCliente }) => {
+const InfoDatos = ({ formDataCliente }) => {
   const { nombre, apellido, email, celular } = formDataCliente;
   return (
     <>
@@ -26,4 +26,4 @@ const CardCheckout = ({ formDataCliente }) => {
   );
 };
 
-export default CardCheckout;
+export default InfoDatos;

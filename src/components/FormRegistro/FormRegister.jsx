@@ -10,7 +10,7 @@ import {
   Col,
   Row,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 
 const FormRegister = () => {
@@ -38,7 +38,7 @@ const FormRegister = () => {
 
   const [formRegister, setFormRegister] = useState(initialRegisterForm); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
   const [comunas, setComunas] = useState([]);
-
+  const history = useHistory();
   useEffect(() => {
     fetch("https://apis.digital.gob.cl/dpa/regiones/13/comunas")
       .then((response) => response.json())
@@ -103,7 +103,7 @@ const FormRegister = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       !formRegister.nombre ||
@@ -131,7 +131,8 @@ const FormRegister = () => {
       depto: formRegister.depto,
     };
 
-    registrarUsuario(nuevoUsuario);
+    await registrarUsuario(nuevoUsuario);
+    history.push("/login");
   };
 
   return (

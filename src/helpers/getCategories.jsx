@@ -8,6 +8,7 @@ const getCategories = async () => {
       id: cat.id,
       nombre: cat.nombre,
       envoltura: cat.envoltura,
+      productos: cat.productos
     };
   });
 

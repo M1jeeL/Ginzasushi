@@ -24,9 +24,9 @@ import Feedback from "./pages/Feedback/Feedback";
 const App = () => {
   return (
     <div className="App">
-      <Router>
-        <UserProvider>
-          <CartProvider>
+      <UserProvider>
+        <CartProvider>
+          <Router>
             <BotonWsp />
             <Navbar />
             <Switch>
@@ -45,9 +45,9 @@ const App = () => {
               <Route path="/feedback" component={Feedback} />
             </Switch>
             <Footer />
-          </CartProvider>
-        </UserProvider>
-      </Router>
+          </Router>
+        </CartProvider>
+      </UserProvider>
     </div>
   );
 };

@@ -7,7 +7,8 @@ const FormDespacho = ({
   formDataCliente,
   setFormDataCliente,
   handleFormDataCliente,
-  id
+  id,
+  isLogged,
 }) => {
   const erCelular = /^(\+?56)?(\s?)(0?9)(\s?)[98765432]\d{7}$/;
   const { obtenerUsuario } = useContext(UserContext);
@@ -18,6 +19,7 @@ const FormDespacho = ({
       [e.target.name]: e.target.value,
     });
   };
+
   const validarCelular = (e) => {
     if (e.target.type === "tel") {
       if (erCelular.test(e.target.value)) {
@@ -32,30 +34,35 @@ const FormDespacho = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const datosCliente = {
-      nombre: formDataCliente.nombre,
-      apellido: formDataCliente.apellido,
-      celular: formDataCliente.celular,
-    };
-    const token = localStorage.getItem("token");
-    const url = process.env.REACT_APP_USUARIOS_API;
 
-    fetch(`${url}/usuarios/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(datosCliente),
-    })
-      .then((response) => {
-        response.json();
-        obtenerUsuario(token);
-        handleFormDataCliente();
+    if (isLogged) {
+      const datosCliente = {
+        nombre: formDataCliente.nombre,
+        apellido: formDataCliente.apellido,
+        celular: formDataCliente.celular,
+      };
+      const token = localStorage.getItem("token");
+      const url = process.env.REACT_APP_USUARIOS_API;
+
+      fetch(`${url}/usuarios/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(datosCliente),
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((response) => {
+          response.json();
+          obtenerUsuario(token);
+          handleFormDataCliente();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      handleFormDataCliente();
+    }
   };
   const styleBtnProduct = {
     backgroundColor: "#000",
@@ -97,6 +104,23 @@ const FormDespacho = ({
             />
           </FormGroup>
         </Col>
+        {!isLogged && (
+          <Col lg={12} md={12} sm={12}>
+            <FormGroup>
+              <Label htmlFor="email">Correo</Label>
+              <Input
+                type="text"
+                id="email"
+                name="email"
+                value={formDataCliente.email}
+                required
+                onChange={(e) => {
+                  handleChangeDataCliente(e);
+                }}
+              />
+            </FormGroup>
+          </Col>
+        )}
         <Col lg={12} md={12} sm={12}>
           <FormGroup>
             <Label htmlFor="celular">Celular</Label>

@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import CartContext from "../../../context/CartContext";
+import ItemRowDetalle from "./ItemRowDetalle";
 
 const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
   const urlPedidos = process.env.REACT_APP_PEDIDOS_API;
@@ -76,7 +77,6 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
     };
     const token = localStorage.getItem("token");
 
-    console.log(preference_data);
     try {
       const preference = await (
         await fetch(`${urlPedidos}/pedidos`, {
@@ -88,7 +88,7 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
           body: JSON.stringify(preference_data),
         })
       ).json();
-      console.log(preference);
+
       document.querySelector("#btn-checkout").innerHTML = "";
       const script = document.createElement("script");
       script.src =
@@ -107,6 +107,11 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
         <div className="aside-confirmacion-checkout">
           Confirmaci&oacute;n de pedido
         </div>
+        <div>
+          {cart.map((item) => (
+            <ItemRowDetalle key={item.id} item={item} />
+          ))}
+        </div>
         <div className="aside-precio-checkout">
           <div className="row-aside-checkout">
             <div className="precio-checkout-label">Subtotal</div>
@@ -124,7 +129,7 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
             <div className="precio-checkout-price">$ {totalShow}</div>
           </div>
         </div>
-        <div className="btn-pagar-pedido">
+        <div className="btn-pagar-pedido" id="btn-checkout">
           <Link to="/checkout">
             <Button
               className="btn-confirmar-pedido"
@@ -136,7 +141,6 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
             </Button>
           </Link>
         </div>
-        <div id="btn-checkout"></div>
       </div>
     </div>
   );

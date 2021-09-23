@@ -24,6 +24,7 @@ const CartModalRow = ({ item }) => {
           className="item-img-modal-row"
         />
         <div className="info-modal-row">
+            <p>{item.categoria}</p>
           <p>{item.nombre}</p>
           <span>
             {item.cantidad} x {subTotalShow}

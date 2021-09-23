@@ -1,7 +1,7 @@
 .modal-row {
   display: flex;
   flex-flow: row nowrap;
-  margin: 0 0 0.5rem 0;
+  margin: 1rem 0 2rem 0;
   justify-content: space-around;
   align-items: center;
   max-height: 8rem;
@@ -13,6 +13,9 @@
     flex-flow: column wrap;
     font-weight: bold;
     margin: 0 1rem;
+    p {
+      margin: 0.5rem 0;
+    }
   }
   .cantidad {
     display: flex;
@@ -56,7 +59,7 @@
 
 @media screen and (max-width: 340px) {
   .modal-row {
-    max-height: 5rem;
+    max-height: 8rem;
     .item-img-modal-row {
       max-height: 5rem;
     }

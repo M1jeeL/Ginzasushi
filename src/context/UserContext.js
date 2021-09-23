@@ -1,11 +1,9 @@
 import { createContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const history = useHistory();
   const [usuario, setUsuario] = useState({});
   const [logged, setLogged] = useState(false);
   const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
@@ -25,9 +23,9 @@ const UserProvider = ({ children }) => {
           setUsuario(data);
           setLogged(true);
         })
-        .catch(err => {
-            setLogged(false);
-        })
+        .catch((err) => {
+          setLogged(false);
+        });
     };
     obtenerUsuario(token);
   }, [urlUsuarios]);
@@ -59,7 +57,6 @@ const UserProvider = ({ children }) => {
       const token = await response.text();
       localStorage.setItem("token", token);
       await obtenerUsuario(token);
-      history.push("/mis-pedidos");
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -74,7 +71,6 @@ const UserProvider = ({ children }) => {
     localStorage.removeItem("token");
     setUsuario({});
     setLogged(false);
-    history.push("/");
   };
 
   const registrarUsuario = async (nuevoUsuario) => {
@@ -93,7 +89,6 @@ const UserProvider = ({ children }) => {
             showConfirmButton: false,
             timer: "1500",
           });
-          history.push("/login");
           return;
         }
       })
@@ -111,7 +106,6 @@ const UserProvider = ({ children }) => {
     iniciarSesion,
     cerrarSesion,
     obtenerUsuario,
-    history,
     usuario,
     logged,
   };

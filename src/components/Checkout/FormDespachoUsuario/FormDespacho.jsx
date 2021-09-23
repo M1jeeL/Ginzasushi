@@ -16,6 +16,7 @@ const FormDespacho = ({
   setFormDespachoCliente,
   handleFormDespachoCliente,
   id,
+  isLogged,
 }) => {
   const { obtenerUsuario } = useContext(UserContext);
   const [comunas, setComunas] = useState([]);
@@ -34,32 +35,35 @@ const FormDespacho = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (isLogged) {
+      const dataDespacho = {
+        calle: formDespachoCliente.calle,
+        numeracion: formDespachoCliente.numeracion,
+        depto: formDespachoCliente.depto,
+        comuna: formDespachoCliente.comuna,
+      };
 
-    const dataDespacho = {
-      calle: formDespachoCliente.calle,
-      numeracion: formDespachoCliente.numeracion,
-      depto: formDespachoCliente.depto,
-      comuna: formDespachoCliente.comuna,
-    };
-
-    const token = localStorage.getItem("token");
-    const url = `http://localhost:5000/usuarios/${id}`;
-    fetch(url, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(dataDespacho),
-    })
-      .then((response) => {
-        response.json();
-        obtenerUsuario(token);
-        handleFormDespachoCliente();
+      const token = localStorage.getItem("token");
+      const url = `http://localhost:5000/usuarios/${id}`;
+      fetch(url, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(dataDespacho),
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((response) => {
+          response.json();
+          obtenerUsuario(token);
+          handleFormDespachoCliente();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      handleFormDespachoCliente();
+    }
   };
 
   const styleBtnProduct = {
@@ -82,9 +86,7 @@ const FormDespacho = ({
                 name="calle"
                 value={formDespachoCliente.calle}
                 required
-                onChange={(e) => {
-                  handleChangeDespachoCliente(e);
-                }}
+                onChange={handleChangeDespachoCliente}
               />
             </FormGroup>
           </Col>
@@ -97,9 +99,7 @@ const FormDespacho = ({
                 name="numeracion"
                 value={formDespachoCliente.numeracion}
                 required
-                onChange={(e) => {
-                  handleChangeDespachoCliente(e);
-                }}
+                onChange={handleChangeDespachoCliente}
               />
             </FormGroup>
           </Col>
@@ -111,9 +111,7 @@ const FormDespacho = ({
                 id="depto"
                 name="depto"
                 value={formDespachoCliente.depto}
-                onChange={(e) => {
-                  handleChangeDespachoCliente(e);
-                }}
+                onChange={handleChangeDespachoCliente}
               />
             </FormGroup>
           </Col>
@@ -169,6 +167,20 @@ const FormDespacho = ({
               </div>
             </FormGroup>
           </Col>
+          {!isLogged && (
+            <Col lg={12} md={12} sm={12}>
+              <FormGroup>
+                <Label htmlFor="notas">Instrucciones de entrega</Label>
+                <Input
+                  type="text"
+                  id="notas"
+                  name="notas"
+                  value={formDespachoCliente.notas}
+                  onChange={handleChangeDespachoCliente}
+                />
+              </FormGroup>
+            </Col>
+          )}
           <Button
             className="btn-confirm-save-data-checkout"
             style={styleBtnProduct}

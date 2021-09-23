@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Cards from "../components/Carta/Cards";
 import Imgcab from "../components/Imagen cabecera/Imgcab";
 
 export default function Carta() {
+  const [nombreHead, setNombreHead] = useState("Nuestra Carta");
   return (
     <>
-      <Imgcab nombrehead="Nuestra Carta" />
+      <Imgcab nombrehead={nombreHead} />
       <div className="container">
-        <Cards
-        />
+        <Cards setNombreHead={setNombreHead} />
       </div>
     </>
   );

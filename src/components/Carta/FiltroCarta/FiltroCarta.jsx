@@ -6,24 +6,39 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-const FiltroCarta = ({setCategoria}) => {
+const FiltroCarta = ({ categories, setCategorySelected, setNombreHead }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
+
+  //   console.log(categories);
+
   return (
     <>
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle caret color="warning">Categorias</DropdownToggle>
+        <DropdownToggle caret color="warning">
+          Categorias
+        </DropdownToggle>
         <DropdownMenu container="body">
-          <DropdownItem onClick={() => setCategoria("California Rolls")}>
-          California Rolls
+          <DropdownItem
+            onClick={() => {
+              setCategorySelected(null);
+              setNombreHead("Nuestra Carta");
+            }}
+          >
+            Mostrar todo
           </DropdownItem>
-          <DropdownItem onClick={() => setCategoria("Avocado Rolls")}>Avocado Rolls</DropdownItem>
-          <DropdownItem onClick={() => setCategoria("Samon Rolls")}>Samon Rolls</DropdownItem>
-          <DropdownItem onClick={() => setCategoria("Panko Rolls")}>Panko Rolls</DropdownItem>
-          <DropdownItem onClick={() => setCategoria("Cheese Rolls")}>Cheese Rolls</DropdownItem>
-          <DropdownItem onClick={() => setCategoria("Futomaki Rolls")}>Futomaki Rolls</DropdownItem>
-          <DropdownItem onClick={() => setCategoria("Premium Rolls")}>Premium Rolls</DropdownItem>
+          {categories.map((cat) => (
+            <DropdownItem
+              key={cat.id}
+              onClick={() => {
+                setCategorySelected(cat.id);
+                setNombreHead(cat.nombre);
+              }}
+            >
+              {cat.nombre}
+            </DropdownItem>
+          ))}
         </DropdownMenu>
       </Dropdown>
     </>

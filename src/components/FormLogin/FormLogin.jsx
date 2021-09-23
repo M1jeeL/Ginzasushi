@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { Link } from "react-router-dom";
+import { useForm } from "../../hooks/useForm";
 import UserContext from "../../context/UserContext";
 import "./FormLogin.scss";
 
 const FormLogin = () => {
-  const { iniciarSesion, history } = useContext(UserContext);
+  const { iniciarSesion } = useContext(UserContext);
+  const history = useHistory();
   useEffect(() => {
     localStorage.getItem("token") && history.push("mi-cuenta");
     return () => {
@@ -13,26 +15,20 @@ const FormLogin = () => {
     };
   }, [history]);
 
-  const [formLogin, setFormLogin] = useState({
+  const [formLogin, handleInputChange] = useForm({
     username: "",
     password: "",
   });
 
-  const handleChange = async (e) => {
-    await setFormLogin({
-      ...formLogin,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formLogin.username || !formLogin.password) {
       alert("Datos incompletos");
       return;
     }
 
-    iniciarSesion(formLogin);
+    await iniciarSesion(formLogin);
+    history.push('/mi-cuenta')
   };
 
   return (
@@ -48,7 +44,7 @@ const FormLogin = () => {
             name="username"
             value={formLogin.username}
             required
-            onChange={handleChange}
+            onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup className="form-text-login">
@@ -61,7 +57,7 @@ const FormLogin = () => {
             name="password"
             value={formLogin.password}
             required
-            onChange={handleChange}
+            onChange={handleInputChange}
           />
         </FormGroup>
         <Link to="/forgot-password" className="olvido-password">

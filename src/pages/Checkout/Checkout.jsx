@@ -8,6 +8,7 @@ import "./Checkout.scss";
 
 const Checkout = () => {
   const { usuario, logged } = useContext(UserContext);
+
   const initialDespachoCliente = {
     id: "",
     calle: "",
@@ -15,6 +16,7 @@ const Checkout = () => {
     numeracion: "",
     depto: "",
     tipoEntrega: "Dejar pedido en la puerta",
+    notas: "",
   };
   const [formDespachoCliente, setFormDespachoCliente] = useState(
     initialDespachoCliente
@@ -27,8 +29,8 @@ const Checkout = () => {
     celular: "",
   };
   const [formDataCliente, setFormDataCliente] = useState(initialDataCliente);
-//   console.log(formDataCliente);
-  console.log(logged)
+  //   console.log(formDataCliente);
+  //   console.log(logged)
   useEffect(() => {
     if (Object.entries(usuario).length > 0) {
       const {
@@ -71,15 +73,26 @@ const Checkout = () => {
               <CardDatosCheckout
                 formDataCliente={formDataCliente}
                 setFormDataCliente={setFormDataCliente}
+                isLogged={logged}
               />
               <CardDespachoCheckout
                 formDespachoCliente={formDespachoCliente}
                 setFormDespachoCliente={setFormDespachoCliente}
+                isLogged={logged}
               />
             </>
           ) : (
             <>
-              <h1>ola</h1>
+              <CardDatosCheckout
+                formDataCliente={formDataCliente}
+                setFormDataCliente={setFormDataCliente}
+                isLogged={logged}
+              />
+              <CardDespachoCheckout
+                formDespachoCliente={formDespachoCliente}
+                setFormDespachoCliente={setFormDespachoCliente}
+                isLogged={logged}
+              />
             </>
           )}
         </div>
