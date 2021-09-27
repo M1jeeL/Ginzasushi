@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { Button, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
 import UserContext from "../../../context/UserContext";
 
 const DireccionInfo = ({ usuario }) => {
   const { id, comuna, calle, numeracion, depto } = usuario;
-  const { obtenerUsuario } = useContext(UserContext);
-  
+  const { obtenerUsuario, comunas } = useContext(UserContext);
 
   const inicialState = {
     comuna,
@@ -17,21 +16,10 @@ const DireccionInfo = ({ usuario }) => {
 
   const [usuarioState, setUsuarioState] = useState(inicialState);
   const [editDireccionDespacho, seteditDireccionDespacho] = useState(true);
-  const [comunas, setComunas] = useState([]);
 
   const handleEditDireccionDespacho = () => {
     seteditDireccionDespacho(!editDireccionDespacho);
   };
-
-  useEffect(() => {
-    fetch("https://apis.digital.gob.cl/dpa/regiones/13/comunas")
-      .then((response) => response.json())
-      .then((comunas) => setComunas(comunas));
-
-    return () => {
-      return true;
-    };
-  }, []);
 
   const handleChange = (e) => {
     setUsuarioState({

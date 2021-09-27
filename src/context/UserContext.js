@@ -5,8 +5,15 @@ const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [usuario, setUsuario] = useState({});
+  const [comunas, setComunas] = useState([]);
   const [logged, setLogged] = useState(false);
   const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
+
+  useEffect(() => {
+    fetch("https://apis.digital.gob.cl/dpa/regiones/13/comunas")
+      .then((response) => response.json())
+      .then((comunas) => setComunas(comunas));
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -25,6 +32,7 @@ const UserProvider = ({ children }) => {
         })
         .catch((err) => {
           setLogged(false);
+          localStorage.removeItem("token");
         });
     };
     obtenerUsuario(token);
@@ -108,6 +116,7 @@ const UserProvider = ({ children }) => {
     obtenerUsuario,
     usuario,
     logged,
+    comunas,
   };
 
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;

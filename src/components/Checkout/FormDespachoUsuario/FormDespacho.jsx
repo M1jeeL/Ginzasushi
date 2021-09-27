@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext} from "react";
 import UserContext from "../../../context/UserContext";
 import {
   Button,
@@ -18,13 +18,7 @@ const FormDespacho = ({
   id,
   isLogged,
 }) => {
-  const { obtenerUsuario } = useContext(UserContext);
-  const [comunas, setComunas] = useState([]);
-  useEffect(() => {
-    fetch("https://apis.digital.gob.cl/dpa/regiones/13/comunas")
-      .then((response) => response.json())
-      .then((comunas) => setComunas(comunas));
-  }, []);
+  const { obtenerUsuario, comunas } = useContext(UserContext);
 
   const handleChangeDespachoCliente = (e) => {
     setFormDespachoCliente({

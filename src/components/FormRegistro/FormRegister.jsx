@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./FormRegister.scss";
 import {
   Button,
@@ -14,7 +14,7 @@ import { Link, useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 
 const FormRegister = () => {
-  const { registrarUsuario } = useContext(UserContext);
+  const { registrarUsuario, comunas } = useContext(UserContext);
 
   const erEmail =
     /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -37,17 +37,8 @@ const FormRegister = () => {
   };
 
   const [formRegister, setFormRegister] = useState(initialRegisterForm); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
-  const [comunas, setComunas] = useState([]);
-  const history = useHistory();
-  useEffect(() => {
-    fetch("https://apis.digital.gob.cl/dpa/regiones/13/comunas")
-      .then((response) => response.json())
-      .then((comunas) => setComunas(comunas));
 
-    return () => {
-      return true;
-    };
-  }, []);
+  const history = useHistory();
 
   const handleChange = (e) => {
     //Capturo el cambio de estado en los Input

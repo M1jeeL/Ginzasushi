@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import PanelUsuario from "../PanelUsuario";
 import Imgcab from "../../Imagen cabecera/Imgcab";
 import DatosCuenta from "./DatosCuenta";
 import "./MiCuenta.scss";
 import Loader from "../../Loader/Loader";
+import { useContext } from "react";
+import UserContext from "../../../context/UserContext";
 
 const MiCuenta = () => {
   const history = useHistory();
-  const [usuario, setUsuario] = useState({});
-
-  const url = process.env.REACT_APP_USUARIOS_API;
+  //   const [usuario, setUsuario] = useState({});
+  const { usuario } = useContext(UserContext);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -18,28 +19,7 @@ const MiCuenta = () => {
       history.push("/login");
       return;
     }
-
-    fetch(`${url}/usuario_actual`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((usuario) => {
-        setUsuario(usuario);
-      })
-      .catch((error) => {
-        console.log(error);
-        localStorage.removeItem("token");
-        history.push("/login");
-      });
-
-    return () => {
-      return true;
-    };
-  }, [url, history]);
+  }, [history]);
 
   return (
     <>
