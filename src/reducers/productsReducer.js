@@ -13,7 +13,7 @@ export const productsReducer = (state = initialState, action) => {
     case types.productsAddNew:
       return {
         ...state,
-        products: [action.payload, ...state.products],
+        products: [...state.products, action.payload],
       };
 
     case types.productsActive:

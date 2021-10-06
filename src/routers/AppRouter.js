@@ -15,7 +15,6 @@ import { PublicRoute } from "./PublicRoute";
 import BotonWsp from "../components/BotonWsp/BotonWsp";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
-import CrudApi from "../components/Crud/CrudApi";
 import Direccion from "../components/PanelUsuario/Direccion/Direccion";
 import MiCuenta from "../components/PanelUsuario/MiCuenta/MiCuenta";
 import PedidoInfo from "../components/PanelUsuario/Pedidos/PedidoInfo";
@@ -31,6 +30,7 @@ import Register from "../pages/Register";
 import { PrivateRoute } from "./PrivateRoute";
 import { startLoadingComunas } from "../actions/ui";
 import Loader from "../components/Crud/Loader";
+import CrudApi from "../components/Crud/CrudApi";
 
 const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
 

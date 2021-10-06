@@ -2,11 +2,12 @@ import React from "react";
 import PanelNavRow from "./PanelNavRow";
 import { NavLink } from "react-router-dom";
 import "./PanelUsuario.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/auth";
 
 const PanelUsuario = () => {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -17,6 +18,7 @@ const PanelUsuario = () => {
       <PanelNavRow url="/mi-cuenta" title="Mi cuenta" />
       <PanelNavRow url="/mis-direcciones" title="Mi dirección" />
       <PanelNavRow url="/mis-pedidos" title="Mis pedidos" />
+      {user.isAdmin && <PanelNavRow url="/crud" title="Administrar" />}
       <NavLink exact to="/" className="panel-nav-item" onClick={handleLogout}>
         <span>Salir</span>
       </NavLink>

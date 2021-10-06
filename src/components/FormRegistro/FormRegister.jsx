@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { startRegister } from "../../actions/auth";
-import { useForm } from "react-hook-form";
+import { useForm } from "../../hooks/useForm";
 import { useSelector } from "react-redux";
 import {
   Button,

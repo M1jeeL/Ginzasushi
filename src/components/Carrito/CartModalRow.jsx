@@ -17,7 +17,7 @@ const CartModalRow = ({ item, index }) => {
     <>
       <div className="modal-row">
         <img
-          src="https://images.vexels.com/media/users/3/230800/isolated/preview/6fae7b492e567aae76ab5220a894087c-cute-dibujos-animados-de-sushi.png"
+          src={item.image_src}
           alt={item.nombre}
           className="item-img-modal-row"
         />

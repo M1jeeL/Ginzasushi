@@ -1,9 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Button } from "reactstrap";
+import { startDeleting } from "../../actions/products";
 
 const CrudTableRow = ({ el, setDataToEdit, deleteData, openModal }) => {
-  const { nombre, categoria, precio, id, descripcion} = el;
-
+  const { nombre, categoria, precio, id, descripcion } = el;
+  const dispatch = useDispatch();
   return (
     <tr>
       <td>{nombre}</td>
@@ -22,7 +24,7 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, openModal }) => {
         >
           Editar
         </Button>
-        <Button color="danger" onClick={() => deleteData(id)}>
+        <Button color="danger" onClick={() => dispatch(startDeleting(id))}>
           Eliminar
         </Button>
       </td>

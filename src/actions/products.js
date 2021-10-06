@@ -2,32 +2,56 @@ import Swal from "sweetalert2";
 import { types } from "../types/types";
 import { loadProducts } from "../helpers/loadProducts";
 import { loadCategories } from "../helpers/loadCategories";
-// import { db } from "../firebase/firebase-config";
-// import { collection, addDoc, deleteDoc } from "firebase/firestore";
-// import { writeBatch, doc } from "firebase/firestore";
-// import { fileUpload } from "../helpers/fileUpload";
-// import { fileUpload } from "../components/helpers/fileUpload";
+import { fileUpload } from "../helpers/fileUpload";
 
-// export const startNewProduct = () => {
-//   return async (dispatch) => {
-//     const newProduct = {
-//       nombre: "",
-//       precio: 0,
-//       descripcion: "",
-//       bocados: 0,
-//       categoria: {
-//         nombre: "",
-//         envoltura: [],
-//       },
-//     };
+const url = process.env.REACT_APP_PRODUCTOS_API;
 
-//     const productsRef = collection(db, "products");
+export const startNewProduct = (newProduct, file) => {
+  return async (dispatch) => {
+    if (file) {
+      const fileUrl = await fileUpload(file);
 
-//     const docRef = await addDoc(productsRef, newProduct);
+      newProduct.image_src = fileUrl;
+    }
 
-//     dispatch(addNewProduct(docRef.id, newProduct));
-//   };
-// };
+    const token = localStorage.getItem("token");
+
+    await fetch(`${url}/productos`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // dispatch(addNewProduct(newProduct));
+          return response.json();
+        } else {
+          throw new Error("No esta autorizado para realizar esta acción");
+        }
+      })
+      .then((data) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "El producto fue subido con éxito!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        dispatch(addNewProduct(data));
+      })
+      .catch((err) => alert(err));
+  };
+};
+
+export const addNewProduct = (product) => ({
+  type: types.productsAddNew,
+  payload: {
+    ...product,
+  },
+});
 
 export const activeProduct = (id, product) => ({
   type: types.productsActive,
@@ -36,14 +60,6 @@ export const activeProduct = (id, product) => ({
     ...product,
   },
 });
-
-// export const addNewProduct = (id, product) => ({
-//   type: types.productsAddNew,
-//   payload: {
-//     id,
-//     ...product,
-//   },
-// });
 
 export const startLoadingProducts = () => {
   return async (dispatch) => {
@@ -69,69 +85,95 @@ export const setCategories = (categories) => ({
   payload: categories,
 });
 
-// export const startSaveProduct = (product) => {
-//   return async (dispatch) => {
-//     if (!product.url) {
-//       delete product.url;
-//     }
+export const startUpdatingProduct = (product, file, id) => {
+  return async (dispatch) => {
+    if (file) {
+      const fileUrl = await fileUpload(file);
 
-//     const productToFirestore = { ...product };
-//     delete productToFirestore.id;
+      product.image_src = fileUrl;
+    }
 
-//     const batch = writeBatch(db);
-//     const productRef = doc(db, "products", `${product.id}`);
-//     batch.update(productRef, productToFirestore);
-//     await batch.commit();
+    const token = localStorage.getItem("token");
 
-//     dispatch(refreshProduct(product.id, productToFirestore));
-//     Swal.fire("Saved", product.nombre, "success");
-//   };
-// };
+    await fetch(`${url}/productos/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(product),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("No esta autorizado para realizar esta acción");
+        }
+      })
+      .then((data) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "El producto fue actualizado con éxito!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        dispatch(refreshProduct(data.id, data));
+      })
+      .catch((err) => alert(err));
+  };
+};
 
-// export const refreshProduct = (id, product) => ({
-//   type: types.productsUpdated,
-//   payload: {
-//     id,
-//     product: {
-//       id,
-//       ...product,
-//     },
-//   },
-// });
+export const refreshProduct = (id, product) => ({
+  type: types.productsUpdated,
+  payload: {
+    id,
+    product: {
+      id,
+      ...product,
+    },
+  },
+});
 
-// export const startUploading = (file) => {
-//   return async (dispatch, getState) => {
-//     const { active: activeProduct } = getState().products;
+export const startDeleting = (id) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
 
-//     Swal.fire({
-//       title: "Uploading...",
-//       text: "Please wait...",
-//       allowOutsideClick: false,
-//       onBeforeOpen: () => {
-//         Swal.showLoading();
-//       },
-//     });
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "El producto se eliminará",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`${url}/productos/${id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => {
+            if (response.ok) {
+              Swal.fire("Listo!", "El producto fue eliminado", "success");
+              dispatch(deleteProduct(id));
+            } else {
+              throw new Error("No esta autorizado para realizar esta acción");
+            }
+          })
+          .catch((err) => alert(err));
+      }
+    });
+  };
+};
 
-//     const fileUrl = await fileUpload(file);
-//     activeProduct.url = fileUrl;
-
-//     dispatch(startSaveProduct(activeProduct));
-
-//     Swal.close();
-//   };
-// };
-
-// export const startDeleting = (id) => {
-//   return async (dispatch) => {
-//     await deleteDoc(doc(db, "products", `${id}`));
-//     dispatch(deleteProduct(id));
-//   };
-// };
-
-// export const deleteProduct = (id) => ({
-//   type: types.productsDelete,
-//   payload: id,
-// });
+export const deleteProduct = (id) => ({
+  type: types.productsDelete,
+  payload: id,
+});
 
 export const startAddToCart = (product, cantidad, envoltura, categoria) => {
   return (dispatch, getState) => {
@@ -143,7 +185,6 @@ export const startAddToCart = (product, cantidad, envoltura, categoria) => {
     // Si el producto existe en el carrito, actualiza la cantidad.
     if (exists.length > 0) {
       if (exists[0].envoltura === envoltura) {
-        console.log("olas");
         const aux = cart.findIndex(
           (item) => item.id === product.id && item.envoltura === envoltura
         );
@@ -169,6 +210,7 @@ export const startAddToCart = (product, cantidad, envoltura, categoria) => {
       ingredientes: product.descripcion,
       cantidad: cantidad,
       envoltura: envoltura,
+      image_src: product.image_src,
       subTotal: parseInt(product.precio),
     };
     dispatch(addToCart([...cart, formattedProduct]));

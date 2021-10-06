@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
   Modal,
@@ -9,28 +10,30 @@ import {
   Input,
   Label,
 } from "reactstrap";
+import { startNewProduct, startUpdatingProduct } from "../../actions/products";
 import "./CrudFormModal.css";
 
 const initialFormCrud = {
   nombre: "",
   precio: 0,
   categoria: "",
-  ingredientes: "",
-  envoltura: "",
+  descripcion: "",
   bocados: 0,
   id: 0,
 };
 
 const CrudForm = ({
-  createData,
-  updateData,
   dataToEdit,
   setDataToEdit,
   openProductModal,
+  setOpenProductModal,
   openModal,
 }) => {
-  const [formCrud, setFormCrud] = useState(initialFormCrud);
+  const { categories } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
 
+  const [formCrud, setFormCrud] = useState(initialFormCrud);
+  const [file, setFile] = useState(null);
   const handleChange = (e) => {
     setFormCrud({
       ...formCrud,
@@ -53,8 +56,7 @@ const CrudForm = ({
       !formCrud.nombre ||
       !formCrud.precio ||
       !formCrud.categoria ||
-      !formCrud.ingredientes ||
-      !formCrud.envoltura ||
+      !formCrud.descripcion ||
       !formCrud.bocados
     ) {
       alert("Datos incompletos");
@@ -65,22 +67,26 @@ const CrudForm = ({
       nombre: formCrud.nombre,
       precio: formCrud.precio,
       categoria: formCrud.categoria,
-      ingredientes: formCrud.ingredientes,
-      envoltura: formCrud.envoltura,
-      bocados: formCrud.bocados
-    }
+      descripcion: formCrud.descripcion,
+      bocados: formCrud.bocados,
+    };
 
     if (formCrud.id === 0) {
-      createData(formAEnviar);
+      dispatch(startNewProduct(formAEnviar, file));
     } else {
-      updateData(formAEnviar, formCrud.id);
+      dispatch(startUpdatingProduct(formAEnviar, file, formCrud.id));
     }
+    setOpenProductModal(false);
     handleReset();
   };
 
-  const handleReset = (e) => {
+  const handleReset = () => {
     setFormCrud(initialFormCrud);
     setDataToEdit(null);
+  };
+
+  const handleFile = (e) => {
+    setFile(e.target.files[0]);
   };
 
   const btnCloseForm = {
@@ -123,17 +129,12 @@ const CrudForm = ({
             <option value="" disabled>
               Seleccione una categor&iacute;a
             </option>
-            <option value="California Rolls">California Rolls</option>
-            <option value="Avocado Rolls">Avocado Rolls</option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.nombre}
+              </option>
+            ))}
           </Input>
-          <Label htmlFor="nombre">Envoltura</Label>
-          <Input
-            type="text"
-            name="envoltura"
-            placeholder="Ingrese envoltura"
-            onChange={handleChange}
-            value={formCrud.envoltura}
-          />
           <Label htmlFor="nombre">Cantidad de bocados</Label>
           <Input
             type="text"
@@ -150,14 +151,16 @@ const CrudForm = ({
             onChange={handleChange}
             value={formCrud.precio}
           />
-          <Label htmlFor="ingredientes">Ingredientes</Label>
+          <Label htmlFor="descripcion">Ingredientes</Label>
           <Input
             type="textarea"
-            name="ingredientes"
+            name="descripcion"
             placeholder="Ingrese ingredientes"
             onChange={handleChange}
-            value={formCrud.ingredientes}
+            value={formCrud.descripcion}
           />
+          <Label>Subir im&aacute;gen</Label>
+          <Input type="file" name="image" onChange={handleFile} />
         </FormGroup>
       </ModalBody>
       <ModalFooter>
