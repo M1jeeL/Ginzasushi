@@ -4,16 +4,28 @@ import FormDatos from "./FormDatos";
 
 const CardDatosCheckout = ({
   formDataCliente,
-  setFormDataCliente,
+  handleInputChangeData,
   isLogged,
+  resetData,
+  user,
 }) => {
-  const [activarDataCliente, setActivarDataCliente] = useState(null);
+  const [showDataInfo, setShowDataInfo] = useState(null);
+
   useEffect(() => {
-    setActivarDataCliente(isLogged);
+    setShowDataInfo(isLogged);
   }, [isLogged]);
 
-  const handleFormDataCliente = () => {
-    setActivarDataCliente(!activarDataCliente);
+  const handleShowData = () => {
+    setShowDataInfo(!showDataInfo);
+  };
+
+  const fillFormData = () => {
+    resetData({
+      id: user.id,
+      nombre: user.nombre,
+      apellido: user.apellido,
+      celular: user.celular,
+    });
   };
 
   return (
@@ -21,25 +33,32 @@ const CardDatosCheckout = ({
       <div className="info-container-checkout">
         <div className="title-info-checkout">
           <div>Datos Personales</div>
-          {activarDataCliente && (
+          {showDataInfo && (
             <div
               className="btn-editar-checkout"
               onClick={() => {
-                handleFormDataCliente();
+                if (isLogged) {
+                  fillFormData();
+                }
+                handleShowData();
               }}
             >
               Editar
             </div>
           )}
         </div>
-        {activarDataCliente ? (
-          <InfoDatos formDataCliente={formDataCliente} />
+        {showDataInfo ? (
+          <InfoDatos
+            formDataCliente={formDataCliente}
+            isLogged={isLogged}
+            user={user}
+          />
         ) : (
           <FormDatos
             id={formDataCliente.id}
             formDataCliente={formDataCliente}
-            setFormDataCliente={setFormDataCliente}
-            handleFormDataCliente={handleFormDataCliente}
+            handleInputChangeData={handleInputChangeData}
+            handleShowData={handleShowData}
             isLogged={isLogged}
           />
         )}

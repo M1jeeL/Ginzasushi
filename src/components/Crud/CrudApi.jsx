@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import CrudFormModal from "./CrudFormModal";
 import { Button } from "reactstrap";
 
+let url = process.env.REACT_APP_PRODUCTOS_API;
 export default function Crud() {
   const [db, setDb] = useState(null);
   const [dataToEdit, setDataToEdit] = useState(null);
@@ -11,7 +12,6 @@ export default function Crud() {
   const [loading, setLoading] = useState(false);
   const [openProductModal, setOpenProductModal] = useState(false);
 
-  let url = process.env.REACT_APP_PRODUCTOS_API;
   const token = localStorage.getItem("token");
 
   const openModal = (e) => {
@@ -30,7 +30,7 @@ export default function Crud() {
           setLoading(false)
           setDb(null)
       })
-  }, [url]);
+  }, []);
 
   const cargarProductos = async () => {
     fetch(`${url}/productos`)

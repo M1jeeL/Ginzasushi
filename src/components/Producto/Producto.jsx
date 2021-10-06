@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, Input } from "reactstrap";
-import CartContext from "../../context/CartContext";
+import { startAddToCart } from "../../actions/products";
 import "./Producto.scss";
 
 export default function Producto({ producto }) {
-  const { addToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
   const { category, product } = producto;
   const { nombre, precio, descripcion, image_src } = product;
   const [cantidadProducto, setCantidadProducto] = useState(1);
@@ -27,12 +28,11 @@ export default function Producto({ producto }) {
   };
 
   useEffect(() => {
-      return () => {
-          setShowMessage(false)
-          setShowMessageError(false)
-      }
-  }, [])
-
+    return () => {
+      setShowMessage(false);
+      setShowMessageError(false);
+    };
+  }, []);
 
   const mostrarMensaje = () => {
     if (showMessage === false) {
@@ -69,9 +69,9 @@ export default function Producto({ producto }) {
       <div className="container">
         <Link
           to={"/carta"}
-          className="d-flex justify-content-end align-items-end"
+          className="d-flex justify-content-end align-items-center"
         >
-          <span className="return-to-products">Volver a la carta</span>
+          <span className="return-to-products mx-3">Volver a la carta</span>
           <i className="fas fa-arrow-left fa-3x"></i>
         </Link>
         <div className="producto-container">
@@ -150,11 +150,14 @@ export default function Producto({ producto }) {
                       mostrarMensajeError();
                       return;
                     }
-                    addToCart(
-                      product,
-                      cantidadProducto,
-                      selectEnvol,
-                      category.nombre
+
+                    dispatch(
+                      startAddToCart(
+                        product,
+                        cantidadProducto,
+                        selectEnvol,
+                        category.nombre
+                      )
                     );
                     mostrarMensaje();
                   }}

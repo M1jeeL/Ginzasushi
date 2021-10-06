@@ -1,24 +1,16 @@
-import React, { useContext } from "react";
-import UserContext from "../../../context/UserContext";
-
+import React from "react";
+import { useDispatch } from "react-redux";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import { startUpdateUser } from "../../../actions/auth";
 
 const FormDespacho = ({
   formDataCliente,
-  setFormDataCliente,
-  handleFormDataCliente,
-  id,
+  handleInputChangeData,
+  handleShowData,
   isLogged,
 }) => {
+  const dispatch = useDispatch();
   const erCelular = /^(\+?56)?(\s?)(0?9)(\s?)[98765432]\d{7}$/;
-  const { obtenerUsuario } = useContext(UserContext);
-
-  const handleChangeDataCliente = (e) => {
-    setFormDataCliente({
-      ...formDataCliente,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const validarCelular = (e) => {
     if (e.target.type === "tel") {
@@ -41,27 +33,10 @@ const FormDespacho = ({
         apellido: formDataCliente.apellido,
         celular: formDataCliente.celular,
       };
-      const token = localStorage.getItem("token");
-      const url = process.env.REACT_APP_USUARIOS_API;
-
-      fetch(`${url}/usuarios/${id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(datosCliente),
-      })
-        .then((response) => {
-          response.json();
-          obtenerUsuario(token);
-          handleFormDataCliente();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      dispatch(startUpdateUser(datosCliente));
+      handleShowData();
     } else {
-      handleFormDataCliente();
+      handleShowData();
     }
   };
   const styleBtnProduct = {
@@ -80,12 +55,11 @@ const FormDespacho = ({
             <Input
               type="text"
               id="nombre"
+              autoComplete="off"
               name="nombre"
               value={formDataCliente.nombre}
               required
-              onChange={(e) => {
-                handleChangeDataCliente(e);
-              }}
+              onChange={handleInputChangeData}
             />
           </FormGroup>
         </Col>
@@ -95,12 +69,11 @@ const FormDespacho = ({
             <Input
               type="text"
               id="apellido"
+              autoComplete="off"
               name="apellido"
               value={formDataCliente.apellido}
               required
-              onChange={(e) => {
-                handleChangeDataCliente(e);
-              }}
+              onChange={handleInputChangeData}
             />
           </FormGroup>
         </Col>
@@ -111,12 +84,11 @@ const FormDespacho = ({
               <Input
                 type="text"
                 id="email"
+                autoComplete="off"
                 name="email"
                 value={formDataCliente.email}
                 required
-                onChange={(e) => {
-                  handleChangeDataCliente(e);
-                }}
+                onChange={handleInputChangeData}
               />
             </FormGroup>
           </Col>
@@ -127,17 +99,25 @@ const FormDespacho = ({
             <Input
               type="tel"
               id="celular"
+              autoComplete="off"
               name="celular"
               value={formDataCliente.celular}
               placeholder="ej: 987654321"
               required
               onChange={(e) => {
-                handleChangeDataCliente(e);
+                handleInputChangeData(e);
                 validarCelular(e);
               }}
             />
           </FormGroup>
         </Col>
+        <Button
+          className="btn-confirm-save-data-checkout"
+          style={styleBtnProduct}
+          onClick={handleShowData}
+        >
+          Cancelar
+        </Button>
         <Button
           className="btn-confirm-save-data-checkout"
           style={styleBtnProduct}

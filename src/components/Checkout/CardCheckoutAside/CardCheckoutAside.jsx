@@ -1,27 +1,25 @@
-import React, { useContext } from "react";
-
+// import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
-import CartContext from "../../../context/CartContext";
+import { formatearNumero } from "../../../helpers/formatearNumero";
 import ItemRowDetalle from "./ItemRowDetalle";
 
 const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
   const urlPedidos = process.env.REACT_APP_PEDIDOS_API;
-  const { cart, subTotalForEach, formatearNumero } = useContext(CartContext);
 
-  let subTotal = 0;
+  const { cart, total } = useSelector((state) => state.products);
+//   const dispatch = useDispatch();
 
-  cart.forEach((item) => {
-    subTotal = subTotal + subTotalForEach(item.id);
-  });
+
 
   let despacho = 3000;
 
-  const total = subTotal + despacho;
+  const totalFinal = total + despacho;
 
-  const subTotalShow = formatearNumero(subTotal);
+  const subTotalShow = formatearNumero(total);
   const despachoShow = formatearNumero(despacho);
-  const totalShow = formatearNumero(total);
+  const totalShow = formatearNumero(totalFinal);
 
   const pagarPedido = async () => {
     // console.log(cart)
@@ -108,8 +106,8 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
           Confirmaci&oacute;n de pedido
         </div>
         <div>
-          {cart.map((item) => (
-            <ItemRowDetalle key={item.id} item={item} />
+          {cart.map((item, index) => (
+            <ItemRowDetalle key={index} item={item} />
           ))}
         </div>
         <div className="aside-precio-checkout">

@@ -1,67 +1,32 @@
-import { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useForm } from "../../hooks/useForm";
 import Imgcab from "../../components/Imagen cabecera/Imgcab";
-import UserContext from "../../context/UserContext";
 import CardDatosCheckout from "../../components/Checkout/FormDatosUsuario/CardDatosCheckout";
 import CardDespachoCheckout from "../../components/Checkout/FormDespachoUsuario/CardDespachoCheckout";
 import CardCheckoutAside from "../../components/Checkout/CardCheckoutAside/CardCheckoutAside";
 import "./Checkout.scss";
 
 const Checkout = () => {
-  const { usuario, logged } = useContext(UserContext);
+  const { user, logged } = useSelector((state) => state.auth);
 
-  const initialDespachoCliente = {
-    id: "",
-    calle: "",
-    comuna: "",
-    numeracion: "",
-    depto: "",
-    tipoEntrega: "Dejar pedido en la puerta",
-    notas: "",
-  };
-  const [formDespachoCliente, setFormDespachoCliente] = useState(
-    initialDespachoCliente
-  );
-  const initialDataCliente = {
+  const [formDataCliente, handleInputChangeData, resetData] = useForm({
     id: "",
     nombre: "",
     apellido: "",
     email: "",
     celular: "",
-  };
-  const [formDataCliente, setFormDataCliente] = useState(initialDataCliente);
-  //   console.log(formDataCliente);
-  //   console.log(logged)
-  useEffect(() => {
-    if (Object.entries(usuario).length > 0) {
-      const {
-        nombre,
-        apellido,
-        email,
-        celular,
-        calle,
-        comuna,
-        depto,
-        numeracion,
-        id,
-      } = usuario;
-      setFormDataCliente({
-        id,
-        nombre,
-        apellido,
-        email,
-        celular,
-      });
+  });
 
-      setFormDespachoCliente({
-        id,
-        calle,
-        comuna,
-        numeracion,
-        depto,
-        tipoEntrega: "Dejar pedido en la puerta",
-      });
-    }
-  }, [usuario]);
+  const [formDespachoCliente, handleInputChangeDespacho, resetDespacho] =
+    useForm({
+      id: "",
+      calle: "",
+      comuna: "",
+      numeracion: "",
+      depto: "",
+      tipoEntrega: "Dejar pedido en la puerta",
+      notas: "",
+    });
 
   return (
     <>
@@ -72,25 +37,29 @@ const Checkout = () => {
             <>
               <CardDatosCheckout
                 formDataCliente={formDataCliente}
-                setFormDataCliente={setFormDataCliente}
+                handleInputChangeData={handleInputChangeData}
                 isLogged={logged}
+                resetData={resetData}
+                user={user}
               />
               <CardDespachoCheckout
                 formDespachoCliente={formDespachoCliente}
-                setFormDespachoCliente={setFormDespachoCliente}
+                handleInputChangeDespacho={handleInputChangeDespacho}
                 isLogged={logged}
+                resetDespacho={resetDespacho}
+                user={user}
               />
             </>
           ) : (
             <>
               <CardDatosCheckout
                 formDataCliente={formDataCliente}
-                setFormDataCliente={setFormDataCliente}
+                handleInputChangeData={handleInputChangeData}
                 isLogged={logged}
               />
               <CardDespachoCheckout
                 formDespachoCliente={formDespachoCliente}
-                setFormDespachoCliente={setFormDespachoCliente}
+                handleInputChangeDespacho={handleInputChangeDespacho}
                 isLogged={logged}
               />
             </>

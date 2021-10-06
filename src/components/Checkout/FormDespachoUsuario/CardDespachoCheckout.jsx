@@ -4,18 +4,29 @@ import FormDespacho from "./FormDespacho";
 
 const CardDespachoCheckout = ({
   formDespachoCliente,
-  setFormDespachoCliente,
+  handleInputChangeDespacho,
   isLogged,
+  resetDespacho,
+  user,
 }) => {
-  const [activarDespachoCliente, setActivarDespachoCliente] =
-    useState(isLogged);
-
+  const [showDespachoInfo, setShowDespachoInfo] = useState(null);
   useEffect(() => {
-    setActivarDespachoCliente(isLogged);
+    setShowDespachoInfo(isLogged);
   }, [isLogged]);
 
-  const handleFormDespachoCliente = () => {
-    setActivarDespachoCliente(!activarDespachoCliente);
+  const handleShowDespacho = () => {
+    setShowDespachoInfo(!showDespachoInfo);
+  };
+
+  const fillFormDespacho = () => {
+    resetDespacho({
+      ...formDespachoCliente,
+      id: user.id,
+      calle: user.calle,
+      comuna: user.comuna,
+      numeracion: user.numeracion,
+      depto: user.depto,
+    });
   };
 
   return (
@@ -23,24 +34,32 @@ const CardDespachoCheckout = ({
       <div className="info-container-checkout">
         <div className="title-info-checkout">
           <div>Datos de Despacho</div>
-          {activarDespachoCliente && (
+          {showDespachoInfo && (
             <div
               className="btn-editar-checkout"
               onClick={() => {
-                handleFormDespachoCliente();
+                handleShowDespacho();
+
+                if (isLogged) {
+                  fillFormDespacho();
+                }
               }}
             >
               Editar
             </div>
           )}
         </div>
-        {activarDespachoCliente ? (
-          <InfoDespacho formDespachoCliente={formDespachoCliente} />
+        {showDespachoInfo ? (
+          <InfoDespacho
+            formDespachoCliente={formDespachoCliente}
+            isLogged={isLogged}
+            user={user}
+          />
         ) : (
           <FormDespacho
             formDespachoCliente={formDespachoCliente}
-            setFormDespachoCliente={setFormDespachoCliente}
-            handleFormDespachoCliente={handleFormDespachoCliente}
+            handleInputChangeDespacho={handleInputChangeDespacho}
+            handleShowDespacho={handleShowDespacho}
             id={formDespachoCliente.id}
             isLogged={isLogged}
           />

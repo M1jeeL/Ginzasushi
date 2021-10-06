@@ -1,5 +1,7 @@
-import React, { useState, useContext } from "react";
-import "./FormRegister.scss";
+import { useDispatch } from "react-redux";
+import { startRegister } from "../../actions/auth";
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import {
   Button,
   Form,
@@ -10,18 +12,20 @@ import {
   Col,
   Row,
 } from "reactstrap";
-import { Link, useHistory } from "react-router-dom";
-import UserContext from "../../context/UserContext";
+import { Link } from "react-router-dom";
+import "./FormRegister.scss";
 
 const FormRegister = () => {
-  const { registrarUsuario, comunas } = useContext(UserContext);
+  const dispatch = useDispatch();
+  const { comunas } = useSelector((state) => state.ui);
 
+  // Expresiones regulares
   const erEmail =
     /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const erPassword = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
   const erCelular = /^(\+?56)?(\s?)(0?9)(\s?)[98765432]\d{7}$/;
 
-  const initialRegisterForm = {
+  const [formValues, handleInputChange] = useForm({
     username: "",
     nombre: "",
     apellido: "",
@@ -34,19 +38,7 @@ const FormRegister = () => {
     calle: "",
     numeracion: "",
     depto: "",
-  };
-
-  const [formRegister, setFormRegister] = useState(initialRegisterForm); //Estado de tipo objeto para controlar flujo de datos del formulario de registro
-
-  const history = useHistory();
-
-  const handleChange = (e) => {
-    //Capturo el cambio de estado en los Input
-    setFormRegister({
-      ...formRegister,
-      [e.target.name]: e.target.value,
-    });
-  };
+  });
 
   const validarDatos = (e) => {
     if (e.target.value.length > 0) {
@@ -97,33 +89,32 @@ const FormRegister = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
-      !formRegister.nombre ||
-      !formRegister.apellido ||
-      !erEmail.test(formRegister.email) ||
-      !erPassword.test(formRegister.password) ||
-      !formRegister.celular ||
-      !formRegister.calle ||
-      !formRegister.numeracion
+      !formValues.nombre ||
+      !formValues.apellido ||
+      !erEmail.test(formValues.email) ||
+      !erPassword.test(formValues.password) ||
+      !formValues.celular ||
+      !formValues.calle ||
+      !formValues.numeracion
     ) {
       alert("Datos incompletos");
       return;
     }
 
     const nuevoUsuario = {
-      username: formRegister.username,
-      nombre: formRegister.nombre,
-      apellido: formRegister.apellido,
-      email: formRegister.email,
-      password: formRegister.password,
-      celular: formRegister.celular,
-      calle: formRegister.calle,
-      numeracion: formRegister.numeracion,
-      comuna: formRegister.comuna,
-      depto: formRegister.depto,
+      username: formValues.username,
+      nombre: formValues.nombre,
+      apellido: formValues.apellido,
+      email: formValues.email,
+      password: formValues.password,
+      celular: formValues.celular,
+      calle: formValues.calle,
+      numeracion: formValues.numeracion,
+      comuna: formValues.comuna,
+      depto: formValues.depto,
     };
 
-    await registrarUsuario(nuevoUsuario);
-    history.push("/login");
+    dispatch(startRegister(nuevoUsuario));
   };
 
   return (
@@ -139,10 +130,11 @@ const FormRegister = () => {
               type="text"
               id="username"
               name="username"
-              value={formRegister.username}
+              value={formValues.username}
+              autoComplete="off"
               required
               onChange={(e) => {
-                handleChange(e);
+                handleInputChange(e);
                 validarDatos(e);
               }}
             />
@@ -157,10 +149,11 @@ const FormRegister = () => {
               type="text"
               id="nombre"
               name="nombre"
-              value={formRegister.nombre}
+              autoComplete="off"
+              value={formValues.nombre}
               required
               onChange={(e) => {
-                handleChange(e);
+                handleInputChange(e);
                 validarDatos(e);
               }}
             />
@@ -174,11 +167,12 @@ const FormRegister = () => {
             <Input
               type="text"
               id="apellido"
+              autoComplete="off"
               name="apellido"
-              value={formRegister.apellido}
+              value={formValues.apellido}
               required
               onChange={(e) => {
-                handleChange(e);
+                handleInputChange(e);
                 validarDatos(e);
               }}
             />
@@ -192,11 +186,12 @@ const FormRegister = () => {
             <Input
               type="email"
               id="email"
+              autoComplete="off"
               name="email"
-              value={formRegister.email}
+              value={formValues.email}
               required
               onChange={(e) => {
-                handleChange(e);
+                handleInputChange(e);
                 validarEmail(e);
               }}
             />
@@ -211,10 +206,10 @@ const FormRegister = () => {
               type="password"
               id="password"
               name="password"
-              value={formRegister.password}
+              value={formValues.password}
               required
               onChange={(e) => {
-                handleChange(e);
+                handleInputChange(e);
                 validarPassword(e);
               }}
             />
@@ -233,11 +228,12 @@ const FormRegister = () => {
               type="tel"
               id="celular"
               name="celular"
-              value={formRegister.celular}
+              value={formValues.celular}
               placeholder="ej: 987654321"
+              autoComplete="off"
               required
               onChange={(e) => {
-                handleChange(e);
+                handleInputChange(e);
                 validarCelular(e);
               }}
             />
@@ -256,10 +252,11 @@ const FormRegister = () => {
             <Input
               name="comuna"
               id="comuna"
+              autoComplete="off"
               type="select"
-              value={formRegister.comuna}
+              value={formValues.comuna}
               required
-              onChange={handleChange}
+              onChange={handleInputChange}
             >
               <option value="" disabled>
                 Seleccione su comuna
@@ -280,11 +277,12 @@ const FormRegister = () => {
             <Input
               type="text"
               id="calle"
+              autoComplete="off"
               name="calle"
-              value={formRegister.calle}
+              value={formValues.calle}
               required
               onChange={(e) => {
-                handleChange(e);
+                handleInputChange(e);
                 validarDatos(e);
               }}
             />
@@ -298,11 +296,12 @@ const FormRegister = () => {
             <Input
               type="text"
               id="numeracion"
+              autoComplete="off"
               name="numeracion"
-              value={formRegister.numeracion}
+              value={formValues.numeracion}
               required
               onChange={(e) => {
-                handleChange(e);
+                handleInputChange(e);
                 validarDatos(e);
               }}
             />
@@ -316,9 +315,10 @@ const FormRegister = () => {
             <Input
               type="text"
               id="depto"
+              autoComplete="off"
               name="depto"
-              value={formRegister.depto}
-              onChange={handleChange}
+              value={formValues.depto}
+              onChange={handleInputChange}
             />
           </FormGroup>
         </Col>

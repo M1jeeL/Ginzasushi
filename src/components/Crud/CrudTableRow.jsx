@@ -1,16 +1,8 @@
 import React from "react";
-import {Button} from 'reactstrap'
+import { Button } from "reactstrap";
 
 const CrudTableRow = ({ el, setDataToEdit, deleteData, openModal }) => {
-  let {
-    nombre,
-    categoria,
-    precio,
-    id,
-    ingredientes,
-  } = el;
-
-
+  const { nombre, categoria, precio, id, descripcion} = el;
 
   return (
     <tr>
@@ -18,11 +10,11 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, openModal }) => {
       <td>{categoria}</td>
       <td>{precio}</td>
       <td>{id}</td>
-      <td>{ingredientes}</td>
+      <td>{descripcion}</td>
       <td>
         <Button
-        style={{marginRight:"1rem"}}
-        color="success"
+          style={{ marginRight: "1rem" }}
+          color="success"
           onClick={() => {
             setDataToEdit(el);
             openModal();
@@ -30,7 +22,9 @@ const CrudTableRow = ({ el, setDataToEdit, deleteData, openModal }) => {
         >
           Editar
         </Button>
-        <Button color="danger" onClick={() => deleteData(id)}>Eliminar</Button>
+        <Button color="danger" onClick={() => deleteData(id)}>
+          Eliminar
+        </Button>
       </td>
     </tr>
   );

@@ -1,16 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import Card from "./Card";
-import { Col, Row } from "reactstrap";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import CartContext from "../../context/CartContext";
-import Loader from "../Loader/Loader";
+import { Col, Row } from "reactstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { activeProduct } from "../../actions/products";
 import useFetchCategories from "../../hooks/useFetchCategories";
+import Card from "./Card";
+import Loader from "../Loader/Loader";
 import FiltroCarta from "./FiltroCarta/FiltroCarta";
 import "./Cards.scss";
 
 export default function Cards({ setNombreHead }) {
-  const { products, setSelectProduct } = useContext(CartContext);
-  const { data: categories, loading } = useFetchCategories();
+  const dispatch = useDispatch();
+  const { products, categories } = useSelector((state) => state.products);
+  const { loading } = useFetchCategories();
   const [categorySelected, setCategorySelected] = useState("");
   const [showProducts, setShowProducts] = useState(products);
 
@@ -28,6 +30,7 @@ export default function Cards({ setNombreHead }) {
       setShowProducts(products);
     }
   }, [categorySelected, products]);
+
   return (
     <>
       {loading && showProducts.length > 0 ? (
@@ -50,7 +53,7 @@ export default function Cards({ setNombreHead }) {
                   <Link
                     to={`/productos/${item.id}`}
                     onClick={async () => {
-                      await setSelectProduct(item.id);
+                      dispatch(activeProduct(item.id, item));
                     }}
                     className="card-container"
                   >

@@ -1,16 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { useForm } from "../../../hooks/useForm";
 import { Button, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
-import UserContext from "../../../context/UserContext";
+import { useDispatch } from "react-redux";
+import { startUpdateUser } from "../../../actions/auth";
 
 const DatosCuenta = ({ usuario }) => {
-  const { id, nombre, apellido, email, celular } = usuario;
-  const { obtenerUsuario } = useContext(UserContext);
+  const dispatch = useDispatch();
+  const { nombre, apellido, email, celular } = usuario;
 
-  const inicialState = {
+  const [formValues, handleInputChange] = useForm({
     nombre,
     apellido,
-  };
-  const [usuarioState, setUsuarioState] = useState(inicialState);
+    celular,
+  });
 
   const [editDatosCuenta, setEditDatosCuenta] = useState(true);
 
@@ -18,33 +20,9 @@ const DatosCuenta = ({ usuario }) => {
     setEditDatosCuenta(!editDatosCuenta);
   };
 
-  const handleChange = (e) => {
-    setUsuarioState({
-      ...usuarioState,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    const url = `http://3.233.87.147:5000/usuarios/${id}`;
-
-    fetch(url, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(usuarioState),
-    })
-      .then((response) => {
-        response.json();
-        obtenerUsuario(token);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(startUpdateUser(formValues));
   };
 
   return (
@@ -67,10 +45,11 @@ const DatosCuenta = ({ usuario }) => {
                   type="text"
                   id="nombre"
                   name="nombre"
-                  value={usuarioState.nombre}
+                  value={formValues.nombre}
+                  autoComplete="off"
                   required
                   disabled={editDatosCuenta}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -83,26 +62,28 @@ const DatosCuenta = ({ usuario }) => {
                   type="text"
                   id="apellido"
                   name="apellido"
-                  value={usuarioState.apellido}
+                  value={formValues.apellido}
+                  autoComplete="off"
                   required
                   disabled={editDatosCuenta}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
             <Col lg={12} md={12} sm={12}>
               <FormGroup className="form-title">
                 <Label className="form-text" htmlFor="celular">
-                  Correo
+                  Celular
                 </Label>
                 <Input
                   type="tel"
                   id="celular"
                   name="celular"
-                  value={celular}
+                  value={formValues.celular}
+                  autoComplete="off"
                   required
                   disabled={editDatosCuenta}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -117,7 +98,6 @@ const DatosCuenta = ({ usuario }) => {
                   name="email"
                   value={email}
                   disabled
-                  onChange={handleChange}
                 />
               </FormGroup>
             </Col>

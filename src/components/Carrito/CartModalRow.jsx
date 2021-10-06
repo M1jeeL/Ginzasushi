@@ -1,19 +1,17 @@
-import React, { useContext } from "react";
-import CartContext from "../../context/CartContext";
+import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  startRemoveOneFromCart,
+  startAddQuantityForEach,
+  startRemoveQuantityForEach,
+} from "../../actions/products";
+import { formatearNumero } from "../../helpers/formatearNumero";
 import "./CartModalRow.scss";
 
-const CartModalRow = ({ item }) => {
-  //   console.log(item);
-  const {
-    subTotalForEach,
-    addQuantityForEach,
-    removeQuantityForEach,
-    removeFromCart,
-    formatearNumero,
-  } = useContext(CartContext);
-  const { id } = item;
-  let subTotal = subTotalForEach(id);
-  let subTotalShow = formatearNumero(subTotal);
+const CartModalRow = ({ item, index }) => {
+  const dispatch = useDispatch();
+
+  const subTotalShow = formatearNumero(item.subTotal);
 
   return (
     <>
@@ -24,7 +22,7 @@ const CartModalRow = ({ item }) => {
           className="item-img-modal-row"
         />
         <div className="info-modal-row">
-            <p>{item.categoria}</p>
+          <p>{item.categoria}</p>
           <p>{item.nombre}</p>
           <span>
             {item.cantidad} x {subTotalShow}
@@ -35,21 +33,21 @@ const CartModalRow = ({ item }) => {
           {item.cantidad === 1 ? (
             <button
               className="btn-cantidad-producto"
-              onClick={() => removeFromCart(item.id)}
+              onClick={() => dispatch(startRemoveOneFromCart(index))}
             >
               <i className="fas fa-trash fa-2x"></i>
             </button>
           ) : (
             <button
               className="btn-cantidad-producto"
-              onClick={() => removeQuantityForEach(item)}
+              onClick={() => dispatch(startRemoveQuantityForEach(item))}
             >
               <i className="fas fa-minus-square fa-2x"></i>
             </button>
           )}
           <button
             className="btn-cantidad-producto"
-            onClick={() => addQuantityForEach(item)}
+            onClick={() => dispatch(startAddQuantityForEach(item))}
           >
             <i className="fas fa-plus-square fa-2x"></i>
           </button>

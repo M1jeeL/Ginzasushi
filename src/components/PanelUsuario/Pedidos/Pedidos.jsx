@@ -6,10 +6,10 @@ import PedidosTable from "./PedidosTable";
 import Imgcab from "../../Imagen cabecera/Imgcab";
 import Loader from "../../Loader/Loader";
 import "./Pedidos.scss";
+const url = process.env.REACT_APP_PEDIDOS_API;
 
 const Pedidos = () => {
   const history = useHistory();
-  const url = process.env.REACT_APP_PEDIDOS_API;
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [paginatedPedidos, setPaginatedPedidos] = useState({});
@@ -21,10 +21,6 @@ const Pedidos = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token === null) {
-      history.push("/login");
-      return;
-    }
 
     fetch(`${url}/pedidos`, {
       method: "GET",
@@ -45,7 +41,13 @@ const Pedidos = () => {
         localStorage.removeItem("token");
         history.push("/login");
       });
-  }, [history, url]);
+
+    return () => {
+      setLoading(false);
+      setPedidos([]);
+      setPaginatedPedidos({});
+    };
+  }, [history]);
 
   return (
     <>

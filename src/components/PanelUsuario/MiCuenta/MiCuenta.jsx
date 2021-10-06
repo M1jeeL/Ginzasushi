@@ -1,34 +1,25 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 import PanelUsuario from "../PanelUsuario";
 import Imgcab from "../../Imagen cabecera/Imgcab";
 import DatosCuenta from "./DatosCuenta";
 import "./MiCuenta.scss";
 import Loader from "../../Loader/Loader";
-import { useContext } from "react";
-import UserContext from "../../../context/UserContext";
+import { useSelector } from "react-redux";
 
 const MiCuenta = () => {
-  const history = useHistory();
-  //   const [usuario, setUsuario] = useState({});
-  const { usuario } = useContext(UserContext);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token === null) {
-      history.push("/login");
-      return;
-    }
-  }, [history]);
+  const auth = useSelector((state) => state.auth);
+
+  const { user } = auth; 
 
   return (
     <>
       <Imgcab nombrehead="Mi cuenta" />
-      {Object.entries(usuario).length > 0 ? (
+      {Object.entries(auth).length > 0 ? (
         <div className="container micuenta-container">
           <PanelUsuario />
           <div className="container-datos-mi-cuenta">
-            <DatosCuenta usuario={usuario} />
+            <DatosCuenta usuario={user} />
           </div>
         </div>
       ) : (

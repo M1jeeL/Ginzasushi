@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import CartContext from "../../context/CartContext";
 import { Button, Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 import CartModal from "../Carrito/CartModal";
 import "./Navbar.scss";
 
 export default function Navbar() {
-  const { cart } = useContext(CartContext);
+  const { cart } = useSelector((state) => state.products);
   const [navLinkOpen, setNavLinkOpen] = useState(false);
   const [openCartModal, setCartModal] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -63,7 +63,7 @@ export default function Navbar() {
             <DropdownMenu className="dropdown-menu-icon-user">
               <NavLink
                 exact
-                to="/login"
+                to="/mi-cuenta"
                 className="dropdown-item"
                 onClick={handleDropdown}
               >

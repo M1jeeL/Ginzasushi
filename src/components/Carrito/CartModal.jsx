@@ -1,19 +1,16 @@
-import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { startRemoveAllFromCart } from "../../actions/products";
 import { Modal, ModalHeader, ModalFooter, Button, ModalBody } from "reactstrap";
-import CartContext from "../../context/CartContext";
+import { formatearNumero } from "../../helpers/formatearNumero";
 import CartModalRow from "./CartModalRow";
 import "./CartModal.scss";
 
 const CartModal = ({ openCartModal, handleCartModal }) => {
-  const { cart, subTotalForEach, removeAllFromCart, formatearNumero } =
-    useContext(CartContext);
-  let subTotal = 0;
-  cart.forEach((item) => {
-    subTotal = subTotal + subTotalForEach(item.id);
-  });
+  const dispatch = useDispatch();
+  const { cart, total } = useSelector((state) => state.products);
 
-  let subTotalShow = formatearNumero(subTotal);
+  const totalShow = formatearNumero(total);
 
   const styleBtnProduct = {
     backgroundColor: "#000",
@@ -35,18 +32,18 @@ const CartModal = ({ openCartModal, handleCartModal }) => {
         {cart.length > 0 ? (
           <>
             <ModalBody>
-              {cart.map((item) => (
-                <CartModalRow key={item.id} item={item} />
+              {cart.map((item, index) => (
+                <CartModalRow key={index} item={item} index={index} />
               ))}
             </ModalBody>
             <ModalFooter className="footer-modal-cart">
               <strong className="subtotal-modal-cart">
-                Subtotal: ${subTotalShow}
+                Subtotal: ${totalShow}
               </strong>
               <Button
                 type="button"
                 style={styleBtnProduct}
-                onClick={removeAllFromCart}
+                onClick={() => dispatch(startRemoveAllFromCart())}
               >
                 Vaciar Carrito
               </Button>

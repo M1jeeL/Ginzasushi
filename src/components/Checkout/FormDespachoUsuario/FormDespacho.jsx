@@ -1,5 +1,6 @@
-import React, { useContext} from "react";
-import UserContext from "../../../context/UserContext";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { startUpdateUser } from "../../../actions/auth";
 import {
   Button,
   Col,
@@ -13,19 +14,12 @@ import {
 
 const FormDespacho = ({
   formDespachoCliente,
-  setFormDespachoCliente,
-  handleFormDespachoCliente,
-  id,
+  handleInputChangeDespacho,
+  handleShowDespacho,
   isLogged,
 }) => {
-  const { obtenerUsuario, comunas } = useContext(UserContext);
-
-  const handleChangeDespachoCliente = (e) => {
-    setFormDespachoCliente({
-      ...formDespachoCliente,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const { comunas } = useSelector((state) => state.ui);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,26 +31,10 @@ const FormDespacho = ({
         comuna: formDespachoCliente.comuna,
       };
 
-      const token = localStorage.getItem("token");
-      const url = `http://localhost:5000/usuarios/${id}`;
-      fetch(url, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(dataDespacho),
-      })
-        .then((response) => {
-          response.json();
-          obtenerUsuario(token);
-          handleFormDespachoCliente();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      dispatch(startUpdateUser(dataDespacho));
+      handleShowDespacho();
     } else {
-      handleFormDespachoCliente();
+      handleShowDespacho();
     }
   };
 
@@ -80,7 +58,8 @@ const FormDespacho = ({
                 name="calle"
                 value={formDespachoCliente.calle}
                 required
-                onChange={handleChangeDespachoCliente}
+                autoComplete="off"
+                onChange={handleInputChangeDespacho}
               />
             </FormGroup>
           </Col>
@@ -90,10 +69,11 @@ const FormDespacho = ({
               <Input
                 type="text"
                 id="numeracion"
+                autoComplete="off"
                 name="numeracion"
                 value={formDespachoCliente.numeracion}
                 required
-                onChange={handleChangeDespachoCliente}
+                onChange={handleInputChangeDespacho}
               />
             </FormGroup>
           </Col>
@@ -103,9 +83,10 @@ const FormDespacho = ({
               <Input
                 type="text"
                 id="depto"
+                autoComplete="off"
                 name="depto"
                 value={formDespachoCliente.depto}
-                onChange={handleChangeDespachoCliente}
+                onChange={handleInputChangeDespacho}
               />
             </FormGroup>
           </Col>
@@ -118,7 +99,7 @@ const FormDespacho = ({
                 type="select"
                 value={formDespachoCliente.comuna}
                 required
-                onChange={handleChangeDespachoCliente}
+                onChange={handleInputChangeDespacho}
               >
                 <option value="" disabled>
                   Seleccione su comuna
@@ -145,7 +126,7 @@ const FormDespacho = ({
                     formDespachoCliente.tipoEntrega ===
                     "Dejar pedido en la puerta"
                   }
-                  onChange={handleChangeDespachoCliente}
+                  onChange={handleInputChangeDespacho}
                 />
                 <CustomInput
                   type="radio"
@@ -156,25 +137,32 @@ const FormDespacho = ({
                   checked={
                     formDespachoCliente.tipoEntrega === "Esperar pedido afuera"
                   }
-                  onChange={handleChangeDespachoCliente}
+                  onChange={handleInputChangeDespacho}
                 />
               </div>
             </FormGroup>
           </Col>
-          {!isLogged && (
-            <Col lg={12} md={12} sm={12}>
-              <FormGroup>
-                <Label htmlFor="notas">Instrucciones de entrega</Label>
-                <Input
-                  type="text"
-                  id="notas"
-                  name="notas"
-                  value={formDespachoCliente.notas}
-                  onChange={handleChangeDespachoCliente}
-                />
-              </FormGroup>
-            </Col>
-          )}
+
+          <Col lg={12} md={12} sm={12}>
+            <FormGroup>
+              <Label htmlFor="notas">Instrucciones de entrega</Label>
+              <Input
+                type="textarea"
+                id="notas"
+                autoComplete="off"
+                name="notas"
+                value={formDespachoCliente.notas}
+                onChange={handleInputChangeDespacho}
+              />
+            </FormGroup>
+          </Col>
+          <Button
+            className="btn-confirm-save-data-checkout"
+            style={styleBtnProduct}
+            onClick={handleShowDespacho}
+          >
+            Cancelar
+          </Button>
           <Button
             className="btn-confirm-save-data-checkout"
             style={styleBtnProduct}

@@ -1,38 +1,32 @@
-import React, { useEffect, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useForm } from "../../hooks/useForm";
-import UserContext from "../../context/UserContext";
 import "./FormLogin.scss";
+import { useDispatch } from "react-redux";
+import { startGetToken } from "../../actions/auth";
 
 const FormLogin = () => {
-  const { iniciarSesion } = useContext(UserContext);
-  const history = useHistory();
-  useEffect(() => {
-    localStorage.getItem("token") && history.push("mi-cuenta");
-    return () => {
-      return true;
-    };
-  }, [history]);
+  const dispatch = useDispatch();
 
   const [formLogin, handleInputChange] = useForm({
     username: "",
     password: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
+
     if (!formLogin.username || !formLogin.password) {
       alert("Datos incompletos");
       return;
     }
 
-    await iniciarSesion(formLogin);
-    history.push('/mi-cuenta')
+    dispatch(startGetToken(formLogin));
   };
 
   return (
-    <Form className="container" id="form-login" onSubmit={handleSubmit}>
+    <Form className="container" id="form-login" onSubmit={handleLogin}>
       <div className="login-form-container">
         <FormGroup className="form-text-login">
           <Label className="form-text" htmlFor="username">
@@ -44,6 +38,7 @@ const FormLogin = () => {
             name="username"
             value={formLogin.username}
             required
+            autoComplete="off"
             onChange={handleInputChange}
           />
         </FormGroup>
@@ -63,7 +58,7 @@ const FormLogin = () => {
         <Link to="/forgot-password" className="olvido-password">
           <strong>¿Olvidaste tu contrase&ntilde;a?</strong>
         </Link>
-        <Button type="submit" color="warning" size="lg" onClick={handleSubmit}>
+        <Button type="submit" color="warning" size="lg">
           Ingresar
         </Button>
         <Link to="/register" className="crear-cuenta-login">

@@ -1,27 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import PanelNavRow from "./PanelNavRow";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./PanelUsuario.scss";
-import UserContext from "../../context/UserContext";
+import { useDispatch } from "react-redux";
+import { logout } from "../../actions/auth";
 
 const PanelUsuario = () => {
-  const { cerrarSesion } = useContext(UserContext);
-  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <nav className="panel-nav">
       <PanelNavRow url="/mi-cuenta" title="Mi cuenta" />
       <PanelNavRow url="/mis-direcciones" title="Mi dirección" />
       <PanelNavRow url="/mis-pedidos" title="Mis pedidos" />
-      <NavLink
-        exact
-        to="/"
-        className="panel-nav-item"
-        onClick={async () => {
-          await cerrarSesion();
-          history.push("/");
-        }}
-      >
+      <NavLink exact to="/" className="panel-nav-item" onClick={handleLogout}>
         <span>Salir</span>
       </NavLink>
     </nav>

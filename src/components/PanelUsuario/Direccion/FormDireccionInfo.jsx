@@ -1,52 +1,30 @@
 import React, { useState } from "react";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Button, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
-import UserContext from "../../../context/UserContext";
+import { startUpdateUser } from "../../../actions/auth";
+import { useForm } from "../../../hooks/useForm";
 
 const DireccionInfo = ({ usuario }) => {
-  const { id, comuna, calle, numeracion, depto } = usuario;
-  const { obtenerUsuario, comunas } = useContext(UserContext);
+  const dispatch = useDispatch();
+  const { comunas } = useSelector((state) => state.ui);
+  const { comuna, calle, numeracion, depto } = usuario;
 
-  const inicialState = {
+  const [formValues, handleInputChange] = useForm({
     comuna,
     calle,
     numeracion,
     depto,
-  };
-
-  const [usuarioState, setUsuarioState] = useState(inicialState);
+  });
   const [editDireccionDespacho, seteditDireccionDespacho] = useState(true);
 
   const handleEditDireccionDespacho = () => {
     seteditDireccionDespacho(!editDireccionDespacho);
   };
 
-  const handleChange = (e) => {
-    setUsuarioState({
-      ...usuarioState,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    const url = `http://3.233.87.147:5000/usuarios/${id}`;
-    fetch(url, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(usuarioState),
-    })
-      .then((response) => {
-        response.json();
-        obtenerUsuario(token);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(startUpdateUser(formValues));
   };
 
   return (
@@ -72,10 +50,10 @@ const DireccionInfo = ({ usuario }) => {
                   name="comuna"
                   id="comuna"
                   type="select"
-                  value={usuarioState.comuna}
+                  value={formValues.comuna}
                   required
                   disabled={editDireccionDespacho}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                 >
                   <option value="" disabled>
                     Seleccione su comuna
@@ -97,10 +75,11 @@ const DireccionInfo = ({ usuario }) => {
                   type="text"
                   id="calle"
                   name="calle"
-                  value={usuarioState.calle}
+                  value={formValues.calle}
+                  autoComplete="off"
                   required
                   disabled={editDireccionDespacho}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -113,10 +92,11 @@ const DireccionInfo = ({ usuario }) => {
                   type="text"
                   id="numeracion"
                   name="numeracion"
-                  value={usuarioState.numeracion}
+                  value={formValues.numeracion}
+                  autoComplete="off"
                   required
                   disabled={editDireccionDespacho}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>
@@ -128,10 +108,11 @@ const DireccionInfo = ({ usuario }) => {
                 <Input
                   type="text"
                   id="depto"
+                  autoComplete="off"
                   name="depto"
-                  value={usuarioState.depto}
+                  value={formValues.depto}
                   disabled={editDireccionDespacho}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                 />
               </FormGroup>
             </Col>

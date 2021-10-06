@@ -2,6 +2,7 @@ import "./Card.scss";
 
 function Card({ item }) {
   const { nombre, descripcion, precio, image_src } = item;
+  
   return (
     <>
       <div className="card-info">

@@ -1,34 +1,24 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 import PanelUsuario from "../PanelUsuario";
 import Imgcab from "../../Imagen cabecera/Imgcab";
 import FormDireccionInfo from "./FormDireccionInfo";
 import "./Direccion.scss";
 import Loader from "../../Loader/Loader";
-import { useContext } from "react";
-import UserContext from "../../../context/UserContext";
+import { useSelector } from "react-redux";
 
 const Direccion = () => {
-  const history = useHistory();
-//   const [usuario, setUsuario] = useState({});
-  const { usuario } = useContext(UserContext);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token === null) {
-      history.push("/login");
-      return;
-    }
-  }, [history]);
+  const auth = useSelector((state) => state.auth);
+  const { user } = auth;
+ 
 
   return (
     <>
       <Imgcab nombrehead="Mis direcciones" />
-      {Object.entries(usuario).length > 0 ? (
+      {Object.entries(auth).length > 0 ? (
         <div className="container direccion-container">
           <PanelUsuario />
           <div className="container-datos-direccion">
-            <FormDireccionInfo usuario={usuario} />
+            <FormDireccionInfo usuario={user} />
           </div>
         </div>
       ) : (

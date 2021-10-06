@@ -4,6 +4,14 @@ import {
   Redirect,
   Route,
 } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import {
+  startLoadingCategories,
+  startLoadingProducts,
+} from "../actions/products";
+import { login } from "../actions/auth";
+import { PublicRoute } from "./PublicRoute";
 import BotonWsp from "../components/BotonWsp/BotonWsp";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
@@ -20,8 +28,51 @@ import Inicio from "../pages/Home/Inicio";
 import Login from "../pages/Login";
 import Productos from "../pages/Productos";
 import Register from "../pages/Register";
+import { PrivateRoute } from "./PrivateRoute";
+import { startLoadingComunas } from "../actions/ui";
+import Loader from "../components/Crud/Loader";
+
+const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
 
 export const AppRouter = () => {
+  const dispatch = useDispatch();
+  const { logged } = useSelector((state) => state.auth);
+  const [checking, setChecking] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    fetch(`${urlUsuarios}/usuario_actual`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setChecking(false);
+        dispatch(login(data));
+      })
+      .catch((err) => {
+        setChecking(false);
+        localStorage.removeItem("token");
+      });
+    dispatch(startLoadingCategories());
+    dispatch(startLoadingComunas());
+    dispatch(startLoadingProducts());
+  }, [dispatch]);
+
+  if (checking) {
+    return (
+      <div className="container">
+        <div className="d-flex justify-content-center align-items-center mt-5">
+          <Loader />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Router>
@@ -34,15 +85,50 @@ export const AppRouter = () => {
           <Route path="/checkout" component={Checkout} />
           <Route path="/feedback" component={Feedback} />
           <Route exact path="/contacto" component={Contacto} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
 
-          <Route exact path="/crud" component={CrudApi} />
+          <PublicRoute
+            exact
+            path="/register"
+            component={Register}
+            isAuthenticated={logged}
+          />
+          <PublicRoute
+            exact
+            path="/login"
+            component={Login}
+            isAuthenticated={logged}
+          />
 
-          <Route exact path="/mi-cuenta" component={MiCuenta} />
-          <Route exact path="/mis-pedidos" component={Pedidos} />
-          <Route exact path="/mis-direcciones" component={Direccion} />
-          <Route path="/pedidos/:uuid" component={PedidoInfo} />
+          <PrivateRoute
+            exact
+            path="/crud"
+            component={CrudApi}
+            isAuthenticated={logged}
+          />
+
+          <PrivateRoute
+            exact
+            path="/mi-cuenta"
+            component={MiCuenta}
+            isAuthenticated={logged}
+          />
+          <PrivateRoute
+            exact
+            path="/mis-pedidos"
+            component={Pedidos}
+            isAuthenticated={logged}
+          />
+          <PrivateRoute
+            exact
+            path="/mis-direcciones"
+            component={Direccion}
+            isAuthenticated={logged}
+          />
+          <PrivateRoute
+            path="/pedidos/:uuid"
+            component={PedidoInfo}
+            isAuthenticated={logged}
+          />
           <Redirect to="/" />
         </Switch>
         <Footer />
