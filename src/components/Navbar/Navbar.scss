@@ -76,10 +76,14 @@
 
     .dropdown-item {
       font-size: 600;
-      &:active,
-      &:hover,
-      &:visited {
+      transition: background-color 0.3s ease;
+      &.active {
+        color: #000;
         background-color: #ffb922;
+      }
+      &:hover {
+        background-color: #ffb922;
+        color: #000;
       }
     }
   }

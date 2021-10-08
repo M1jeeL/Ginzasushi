@@ -1,0 +1,38 @@
+.dashboard-navbar {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 90vh;
+  width: 240px;
+  margin: 0;
+
+  .dashboard-navbar-navlinks {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 4rem 0;
+    width: 100%;
+    .dashboard-navbar-navlink-item {
+      display: flex;
+      align-content: center;
+      margin: 0;
+      height: 4rem;
+      transition: background-color 0.3s ease;
+      &:hover,
+      &.active {
+        background-color: #ffb922;
+      }
+      .fas {
+        width: 32px;
+      }
+      i {
+        margin: auto 2rem auto 2.5rem;
+      }
+      p {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: auto 0;
+      }
+    }
+  }
+}

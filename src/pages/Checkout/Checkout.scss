@@ -9,7 +9,6 @@
       display: flex;
       flex-flow: column nowrap;
       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      backdrop-filter: blur(5.5px);
       border-radius: 10px;
       border: 1px solid #00000020;
       padding: 1rem 1.2rem;
@@ -42,7 +41,6 @@
     max-width: 33.3%;
     .aside-info-checkout {
       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      backdrop-filter: blur(5.5px);
       border-radius: 10px;
       border: 1px solid #00000020;
       padding: 1rem 1.2rem;
@@ -69,16 +67,19 @@
         margin: 1rem 0;
         display: flex;
         justify-content: center;
-        .btn-confirmar-pedido{
-            background-color: #000;
-            color: #fff;
-            font-weight: bold;
-            width: 16rem;
+        .btn-confirmar-pedido {
+          background-color: #000;
+          color: #fff;
+          font-weight: bold;
+          width: 16rem;
         }
       }
     }
   }
   .btn-confirm-save-data-checkout {
+    margin: 1rem auto 0 auto;
+  }
+  .btn-cancel-save-data-checkout {
     margin: 0 auto;
   }
   .mercadopago-button {
@@ -94,12 +95,12 @@
   }
 }
 
-@media screen and (max-width: 992px) and (min-width: 767px ) {
-    .btn-pagar-pedido {
-        .btn-confirmar-pedido{
-            width: 100% !important;
-        }
-      }
+@media screen and (max-width: 992px) and (min-width: 767px) {
+  .btn-pagar-pedido {
+    .btn-confirmar-pedido {
+      width: 100% !important;
+    }
+  }
 }
 
 @media screen and (max-width: 766px) {

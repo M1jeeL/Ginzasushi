@@ -112,7 +112,7 @@ const FormDespacho = ({
           </FormGroup>
         </Col>
         <Button
-          className="btn-confirm-save-data-checkout"
+          className="btn-cancel-save-data-checkout"
           style={styleBtnProduct}
           onClick={handleShowData}
         >

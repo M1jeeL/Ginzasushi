@@ -7,6 +7,7 @@ import "./Navbar.scss";
 
 export default function Navbar() {
   const { cart } = useSelector((state) => state.products);
+  const { user } = useSelector((state) => state.auth);
   const [navLinkOpen, setNavLinkOpen] = useState(false);
   const [openCartModal, setCartModal] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -85,6 +86,16 @@ export default function Navbar() {
               >
                 Mis pedidos
               </NavLink>
+              {user?.isAdmin && (
+                <NavLink
+                  exact
+                  to="/dashboard/pedidos"
+                  className="dropdown-item"
+                  onClick={handleDropdown}
+                >
+                  Administrar
+                </NavLink>
+              )}
             </DropdownMenu>
           </Dropdown>
         </li>

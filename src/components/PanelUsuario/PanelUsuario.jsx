@@ -18,7 +18,7 @@ const PanelUsuario = () => {
       <PanelNavRow url="/mi-cuenta" title="Mi cuenta" />
       <PanelNavRow url="/mis-direcciones" title="Mi dirección" />
       <PanelNavRow url="/mis-pedidos" title="Mis pedidos" />
-      {user.isAdmin && <PanelNavRow url="/crud" title="Administrar" />}
+      {user.isAdmin && <PanelNavRow url="/dashboard/productos" title="Administrar" />}
       <NavLink exact to="/" className="panel-nav-item" onClick={handleLogout}>
         <span>Salir</span>
       </NavLink>

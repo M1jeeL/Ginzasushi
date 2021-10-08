@@ -4,7 +4,7 @@
   background-color: #000;
   display: flex;
   flex-flow: column wrap;
-  height: 16rem;
+  height: 18rem;
   justify-content: space-around;
   margin: 0 1rem 0 0;
   max-width: 20%;
@@ -24,7 +24,7 @@
   flex-flow: row wrap;
   height: 3rem;
   width: 100%;
-
+  transition: background-color 0.3s ease;
   span {
     align-self: center;
     color: #fff;

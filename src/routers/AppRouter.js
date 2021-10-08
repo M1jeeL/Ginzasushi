@@ -31,6 +31,10 @@ import { PrivateRoute } from "./PrivateRoute";
 import { startLoadingComunas } from "../actions/ui";
 import Loader from "../components/Crud/Loader";
 import CrudApi from "../components/Crud/CrudApi";
+import { DashboardProducts } from "../components/DashboardProducts/DashboardProducts";
+import { DashboardPedidos } from "../components/DashboardPedidos/DashboardPedidos";
+import { DashboardEstadistica } from "../components/DashboardEstadistica/DashboardEstadistica";
+import { DashboardPersonal } from "../components/DashboardPersonal/DashboardPersonal";
 
 const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
 
@@ -127,6 +131,30 @@ export const AppRouter = () => {
           <PrivateRoute
             path="/pedidos/:uuid"
             component={PedidoInfo}
+            isAuthenticated={logged}
+          />
+          <PrivateRoute
+            exact
+            path="/dashboard/pedidos"
+            component={DashboardPedidos}
+            isAuthenticated={logged}
+          />
+          <PrivateRoute
+            exact
+            path="/dashboard/productos"
+            component={DashboardProducts}
+            isAuthenticated={logged}
+          />
+          <PrivateRoute
+            exact
+            path="/dashboard/estadistica"
+            component={DashboardEstadistica}
+            isAuthenticated={logged}
+          />
+          <PrivateRoute
+            exact
+            path="/dashboard/personal"
+            component={DashboardPersonal}
             isAuthenticated={logged}
           />
           <Redirect to="/" />
