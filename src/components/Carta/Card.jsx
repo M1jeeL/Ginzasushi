@@ -2,7 +2,7 @@ import "./Card.scss";
 
 function Card({ item }) {
   const { nombre, descripcion, precio, image_src } = item;
-  
+
   return (
     <>
       <div className="card-info">
@@ -20,11 +20,7 @@ function Card({ item }) {
         </div>
       </div>
       <div className="producto-pic-container-card">
-        <img
-          src={image_src}
-          alt="ginzasushi sushi barros luco"
-          className="producto-pic-card"
-        />
+        <img src={image_src} alt={nombre} className="producto-pic-card" />
       </div>
     </>
   );

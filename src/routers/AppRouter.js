@@ -43,6 +43,13 @@ export const AppRouter = () => {
   const { logged } = useSelector((state) => state.auth);
   const [checking, setChecking] = useState(true);
 
+  const [hideSidebar, setHideSidebar] = useState(false);
+
+  const handleShowSidebar = () => {
+    console.log("ola");
+    setHideSidebar(!hideSidebar);
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -137,24 +144,32 @@ export const AppRouter = () => {
             exact
             path="/dashboard/pedidos"
             component={DashboardPedidos}
+            hideSidebar={hideSidebar}
+            handleShowSidebar={handleShowSidebar}
             isAuthenticated={logged}
           />
           <PrivateRoute
             exact
             path="/dashboard/productos"
             component={DashboardProducts}
+            handleShowSidebar={handleShowSidebar}
+            hideSidebar={hideSidebar}
             isAuthenticated={logged}
           />
           <PrivateRoute
             exact
             path="/dashboard/estadistica"
             component={DashboardEstadistica}
+            hideSidebar={hideSidebar}
+            handleShowSidebar={handleShowSidebar}
             isAuthenticated={logged}
           />
           <PrivateRoute
             exact
             path="/dashboard/personal"
             component={DashboardPersonal}
+            hideSidebar={hideSidebar}
+            handleShowSidebar={handleShowSidebar}
             isAuthenticated={logged}
           />
           <Redirect to="/" />

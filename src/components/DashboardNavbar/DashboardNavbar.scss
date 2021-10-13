@@ -4,13 +4,13 @@
   display: flex;
   flex-flow: column nowrap;
   height: 90vh;
-  width: 240px;
+  width: 15rem;
   margin: 0;
-
+  transition: 0.3s ease;
   .dashboard-navbar-navlinks {
     display: flex;
     flex-flow: column nowrap;
-    margin: 4rem 0;
+    margin: 2rem 0;
     width: 100%;
     .dashboard-navbar-navlink-item {
       display: flex;
@@ -27,6 +27,7 @@
       }
       i {
         margin: auto 2rem auto 2.5rem;
+        transition: margin 0.3s ease;
       }
       p {
         font-size: 1.2rem;
@@ -34,5 +35,32 @@
         margin: auto 0;
       }
     }
+  }
+
+  &.hide {
+    transition: 0.3s ease;
+    width: 4rem;
+    .dashboard-navbar-navlinks {
+      .dashboard-navbar-navlink-item {
+        i {
+          margin: auto 1rem;
+          transition: margin 0.3s ease;
+        }
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.dashboard-nav-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0.5rem 0 0;
+  .dashboard-navbar-icon {
+    color: #fff;
+    cursor: pointer;
+    margin-right: 1rem;
   }
 }

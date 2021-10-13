@@ -27,4 +27,5 @@ export const types = {
   uiStartLoading: "[UI] startLoading",
   uiFinishLoading: "[UI] finishLoading",
   uiLoadComunas: "[UI] loadComunas",
+  uiShowSidebar: "[UI] showSidebar",
 };

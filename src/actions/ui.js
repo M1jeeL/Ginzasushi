@@ -30,3 +30,7 @@ export const setComunas = (comunas) => ({
   type: types.uiLoadComunas,
   payload: comunas,
 });
+
+export const handleShowSidebar = () => ({
+  type: types.uiShowSidebar,
+});

@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   msgError: null,
   comunas: [],
+  showSidebar: true
 };
 
 export const uiReducer = (state = initialState, action) => {
@@ -33,6 +34,11 @@ export const uiReducer = (state = initialState, action) => {
         ...state,
         comunas: [...action.payload],
       };
+    case types.uiShowSidebar:
+        return {
+            ...state,
+            showSidebar: !state.showSidebar,
+        }
     default:
       return state;
   }

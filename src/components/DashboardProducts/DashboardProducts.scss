@@ -1,3 +1,116 @@
+.dashboard {
+  display: flex;
+}
+
 .container-dashboard-products {
   display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+
+.dashboard-products-header {
+  align-content: center;
+  display: flex;
+  display: row nowrap;
+  justify-content: space-evenly;
+  height: 3rem;
+  margin: 1rem 0;
+  width: 100%;
+  .dashboard-products-header-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: auto 0;
+  }
+  input {
+    margin: auto 0;
+    width: 25rem;
+  }
+  i {
+    margin: auto 0;
+  }
+  .dashboard-categories-btn-add {
+    text-align: center;
+    margin: 0 0 2rem 0;
+    height: 100%;
+    button {
+      background-color: #ffb922;
+      border: none !important;
+      box-shadow: none !important;
+      color: #000 !important;
+      height: 100%;
+      outline: none !important;
+      width: 15rem;
+
+      &:active,
+      &:visited,
+      &:target,
+      &:hover {
+        background-color: darken($color: #ffb922, $amount: 15) !important;
+      }
+    }
+  }
+}
+
+.dashboard-products-body {
+  display: flex;
+  display: row nowrap;
+  width: 100%;
+}
+
+.dashboard-categories-list-container {
+  color: #000;
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 1.5rem auto 0 auto;
+  width: 16rem;
+
+  .dashboard-categories-btn-add {
+    text-align: center;
+    margin: 0 0 2rem 0;
+    button {
+      background-color: #ffb922;
+      border: none !important;
+      box-shadow: none !important;
+      color: #000 !important;
+      outline: none !important;
+      width: 96%;
+
+      &:active,
+      &:visited,
+      &:target,
+      &:hover {
+        background-color: darken($color: #ffb922, $amount: 15) !important;
+      }
+    }
+  }
+
+  .dashboard-categories-list {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    .dashboard-categories-list-item {
+      background-color: #efe7cd;
+      display: flex;
+      align-content: center;
+      border: 1px solid #707070;
+      cursor: pointer;
+      font-size: 1.3rem;
+      padding-top: 0.4rem;
+      padding-left: 3rem;
+      transition: background-color 0.3s ease;
+      height: 3rem;
+      width: 100%;
+
+      &:hover {
+        background-color: darken($color: #efe7cd, $amount: 15);
+        transition: background-color 0.3s ease;
+      }
+    }
+  }
+}
+
+.dashboard-products-list {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0 auto;
 }
