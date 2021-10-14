@@ -30,7 +30,6 @@ import Register from "../pages/Register";
 import { PrivateRoute } from "./PrivateRoute";
 import { startLoadingComunas } from "../actions/ui";
 import Loader from "../components/Crud/Loader";
-import CrudApi from "../components/Crud/CrudApi";
 import { DashboardProducts } from "../components/DashboardProducts/DashboardProducts";
 import { DashboardPedidos } from "../components/DashboardPedidos/DashboardPedidos";
 import { DashboardEstadistica } from "../components/DashboardEstadistica/DashboardEstadistica";
@@ -107,13 +106,6 @@ export const AppRouter = () => {
             exact
             path="/login"
             component={Login}
-            isAuthenticated={logged}
-          />
-
-          <PrivateRoute
-            exact
-            path="/crud"
-            component={CrudApi}
             isAuthenticated={logged}
           />
 

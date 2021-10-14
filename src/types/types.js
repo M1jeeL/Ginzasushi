@@ -21,6 +21,9 @@ export const types = {
   productsDelete: "[Products] Delete note",
 
   categoriesLoad: "[Products] Load Categories",
+  categoriesAddNew: "[Products] New Category",
+  categoriesUpdated: "[Products] Updated Category",
+  categoriesDelete: "[Products] Delete Category",
 
   uiSetError: "[UI] setError",
   uiRemoveError: "[UI] removeError",

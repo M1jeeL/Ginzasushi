@@ -46,10 +46,50 @@ export const startNewProduct = (newProduct, file) => {
   };
 };
 
+export const startNewCategory = (newCategory) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    await fetch(`${url}/categorias`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(newCategory),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // dispatch(addNewProduct(newProduct));
+          return response.json();
+        } else {
+          throw new Error("No esta autorizado para realizar esta acción");
+        }
+      })
+      .then((data) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "La categoría fue subida con éxito!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        dispatch(addNewCategory(data));
+      })
+      .catch((err) => alert(err));
+  };
+};
+
 export const addNewProduct = (product) => ({
   type: types.productsAddNew,
   payload: {
     ...product,
+  },
+});
+
+export const addNewCategory = (category) => ({
+  type: types.categoriesAddNew,
+  payload: {
+    ...category,
   },
 });
 
@@ -121,6 +161,56 @@ export const startUpdatingProduct = (product, file, id) => {
         dispatch(refreshProduct(data.id, data));
       })
       .catch((err) => alert(err));
+  };
+};
+
+export const startToggleStatusProduct = (product, id) => {
+  return async (dispatch) => {
+    const { activo } = product;
+    console.log(!activo);
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: activo ? "El producto se inhabilitará en la carta" : "El producto se habilitará en la carta",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Desactivar",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const token = localStorage.getItem("token");
+
+        await fetch(`${url}/productos/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            activo: !activo,
+          }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error("No esta autorizado para realizar esta acción");
+            }
+          })
+          .then((data) => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "El producto fue actualizado con éxito!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            dispatch(refreshProduct(data.id, data));
+          })
+          .catch((err) => alert(err));
+      }
+    });
   };
 };
 

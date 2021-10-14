@@ -11,7 +11,7 @@ import {
   Label,
 } from "reactstrap";
 import { startNewProduct, startUpdatingProduct } from "../../actions/products";
-import "./CrudFormModal.css";
+import "./DashboardNewProductModal.scss";
 
 const initialFormCrud = {
   nombre: "",
@@ -22,12 +22,12 @@ const initialFormCrud = {
   id: 0,
 };
 
-const CrudForm = ({
-  dataToEdit,
-  setDataToEdit,
+export const DashboardNewProductModal = ({
+  activeProduct,
+  setActiveProduct,
   openProductModal,
   setOpenProductModal,
-  openModal,
+  openModalProduct,
 }) => {
   const { categories } = useSelector((state) => state.products);
   const dispatch = useDispatch();
@@ -42,12 +42,12 @@ const CrudForm = ({
   };
 
   useEffect(() => {
-    if (dataToEdit) {
-      setFormCrud(dataToEdit);
+    if (activeProduct) {
+      setFormCrud(activeProduct);
     } else {
       setFormCrud(initialFormCrud);
     }
-  }, [dataToEdit]);
+  }, [activeProduct]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,11 +82,15 @@ const CrudForm = ({
 
   const handleReset = () => {
     setFormCrud(initialFormCrud);
-    setDataToEdit(null);
+    setActiveProduct(null);
   };
 
   const handleFile = (e) => {
     setFile(e.target.files[0]);
+  };
+
+  const handlePictureClick = () => {
+    document.querySelector("#fileSelector").click();
   };
 
   const btnCloseForm = {
@@ -97,24 +101,29 @@ const CrudForm = ({
   };
 
   return (
-    <Modal isOpen={openProductModal} toggle={openModal}>
+    <Modal isOpen={openProductModal} toggle={openModalProduct}>
       <ModalHeader className="header-crud-form">
         <div className="titulo-form-crud ">
-          {dataToEdit ? "Editar Producto" : "Agregar Producto"}
+          {activeProduct ? "Editar Producto" : "Agregar Producto"}
         </div>
         <div className="btn-cerrar-form-modal">
-          <Button style={btnCloseForm} color="secondary" onClick={openModal}>
+          <Button
+            style={btnCloseForm}
+            color="secondary"
+            onClick={openModalProduct}
+          >
             <i className="far fa-times-circle fa-3x"></i>
           </Button>
         </div>
       </ModalHeader>
       <ModalBody>
-        <FormGroup onSubmit={handleSubmit}>
+        <FormGroup onSubmit={handleSubmit} className="form-modal-product">
           <Label htmlFor="nombre">Nombre Producto</Label>
           <Input
             type="text"
             name="nombre"
             placeholder="Ingrese nombre"
+            autoComplete="off"
             onChange={handleChange}
             value={formCrud.nombre}
           />
@@ -122,6 +131,7 @@ const CrudForm = ({
           <Input
             type="select"
             name="categoria"
+            autoComplete="off"
             value={formCrud.categoria}
             onChange={handleChange}
           >
@@ -139,6 +149,7 @@ const CrudForm = ({
           <Input
             type="text"
             name="bocados"
+            autoComplete="off"
             placeholder="Ingrese bocados"
             onChange={handleChange}
             value={formCrud.bocados}
@@ -147,6 +158,7 @@ const CrudForm = ({
           <Input
             type="number"
             name="precio"
+            autoComplete="off"
             placeholder="Ingrese precio"
             onChange={handleChange}
             value={formCrud.precio}
@@ -155,26 +167,31 @@ const CrudForm = ({
           <Input
             type="textarea"
             name="descripcion"
+            autoComplete="off"
             placeholder="Ingrese ingredientes"
             onChange={handleChange}
             value={formCrud.descripcion}
           />
-          <Label>Subir im&aacute;gen</Label>
-          <Input type="file" name="image" onChange={handleFile} />
+          <Button onClick={handlePictureClick}>Subir im&aacute;gen</Button>
+          <Input
+            id="fileSelector"
+            type="file"
+            name="image"
+            style={{ display: "none" }}
+            onChange={handleFile}
+          />
         </FormGroup>
       </ModalBody>
       <ModalFooter>
         <Button
-          color="primary"
           type="submit"
-          value={dataToEdit ? "Guardar" : "Agregar"}
+          value={activeProduct ? "Guardar" : "Agregar"}
           onClick={handleSubmit}
+          className="dashboard-modal-btn"
         >
-          {dataToEdit ? "Guardar" : "Agregar"}
+          {activeProduct ? "Guardar" : "Agregar"}
         </Button>
       </ModalFooter>
     </Modal>
   );
 };
-
-export default CrudForm;

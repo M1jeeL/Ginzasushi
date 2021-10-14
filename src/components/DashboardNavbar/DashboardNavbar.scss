@@ -7,6 +7,20 @@
   width: 15rem;
   margin: 0;
   transition: 0.3s ease;
+
+  .dashboard-nav-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 0.5rem 0 0;
+
+    .dashboard-navbar-icon {
+      color: #fff;
+      cursor: pointer;
+      margin-right: 1rem;
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
   .dashboard-navbar-navlinks {
     display: flex;
     flex-flow: column nowrap;
@@ -40,6 +54,12 @@
   &.hide {
     transition: 0.3s ease;
     width: 4rem;
+    .dashboard-nav-btn {
+      .dashboard-navbar-icon {
+        transform: rotate(180deg);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
     .dashboard-navbar-navlinks {
       .dashboard-navbar-navlink-item {
         i {
@@ -51,16 +71,5 @@
         }
       }
     }
-  }
-}
-
-.dashboard-nav-btn {
-  display: flex;
-  justify-content: flex-end;
-  margin: 1rem 0.5rem 0 0;
-  .dashboard-navbar-icon {
-    color: #fff;
-    cursor: pointer;
-    margin-right: 1rem;
   }
 }

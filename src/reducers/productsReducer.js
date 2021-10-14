@@ -53,6 +53,12 @@ export const productsReducer = (state = initialState, action) => {
         categories: [...action.payload],
       };
 
+    case types.categoriesAddNew:
+      return {
+        ...state,
+        categories: [...state.categories, action.payload],
+      };
+
     case types.addToCart:
       return {
         ...state,

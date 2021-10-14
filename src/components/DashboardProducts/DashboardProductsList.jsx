@@ -1,7 +1,11 @@
 import React from "react";
 import { DashboardProductCard } from "./DashboardProductCard";
 
-export const DashboardProductsList = ({products, categories, handleActiveProduct}) => {
+export const DashboardProductsList = ({
+  products,
+  categories,
+  handleActiveProduct,
+}) => {
   return (
     <div className="dashboard-products-list">
       {products.map((product, index) => (

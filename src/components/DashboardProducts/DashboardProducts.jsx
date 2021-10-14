@@ -1,20 +1,33 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Button, Input } from "reactstrap";
 import { DashboardNavbar } from "../DashboardNavbar/DashboardNavbar";
 import { DashboardCategoriesList } from "./DashboardCategoriesList";
-import "./DashboardProducts.scss";
 import { DashboardProductsList } from "./DashboardProductsList";
+import { DashboardNewProductModal } from "./DashboardNewProductModal";
+import "./DashboardProducts.scss";
+import { DashboardProductActive } from "./DashboardProductActive";
+import { Redirect } from "react-router-dom";
 
 export const DashboardProducts = () => {
   const { products } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.products);
+  const { user } = useSelector((state) => state.auth);
 
-  //   const [activeProduct, setActiveProduct] = useState({});
+  const [openProductModal, setOpenProductModal] = useState(false);
+  const [activeProduct, setActiveProduct] = useState(null);
 
-  //   const handleActiveProduct = (product) => {
-  //     setActiveProduct(product);
-  //   };
+  const openModalProduct = () => {
+    setOpenProductModal(!openProductModal);
+  };
+
+  const handleActiveProduct = (product) => {
+    setActiveProduct(product);
+  };
+
+  if (user.isAdmin === false) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
@@ -26,18 +39,39 @@ export const DashboardProducts = () => {
             <Input type="text" />
             <i className="fas fa-search fa-2x"></i>
             <div className="dashboard-categories-btn-add">
-              <Button>+ Nuevo Producto</Button>
+              <Button
+                onClick={() => {
+                  openModalProduct();
+                  setActiveProduct(null);
+                }}
+              >
+                + Nuevo Producto
+              </Button>
             </div>
+            <DashboardNewProductModal
+              activeProduct={activeProduct}
+              setActiveProduct={setActiveProduct}
+              openProductModal={openProductModal}
+              setOpenProductModal={setOpenProductModal}
+              openModalProduct={openModalProduct}
+            />
           </div>
           <div className="dashboard-products-body">
             <DashboardCategoriesList categories={categories} />
             <DashboardProductsList
               products={products}
               categories={categories}
-              //   handleActiveProduct={handleActiveProduct}
+              handleActiveProduct={handleActiveProduct}
             />
           </div>
         </div>
+        {activeProduct && (
+          <DashboardProductActive
+            activeProduct={activeProduct}
+            categories={categories}
+            openModalProduct={openModalProduct}
+          />
+        )}
       </div>
     </>
   );

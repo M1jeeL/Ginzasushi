@@ -1,0 +1,47 @@
+.modal-title {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.header-crud-form {
+  background-color: #ffba00;
+}
+
+.titulo-form-crud {
+  width: 408px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.btn-cerrar-form-modal {
+  width: 60px;
+  background-color: #ffba00;
+}
+
+Button .fa-times-circle {
+  color: #000;
+  border: none;
+}
+
+.form-modal-product {
+  button {
+    background-color: #ffb922;
+    border: none !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    height: 100%;
+    margin: 2rem 0 0 0;
+    outline: none !important;
+    width: 10rem;
+
+    &:active,
+    &:visited,
+    &:target,
+    &:hover {
+      background-color: darken($color: #ffb922, $amount: 15) !important;
+    }
+  }
+}
