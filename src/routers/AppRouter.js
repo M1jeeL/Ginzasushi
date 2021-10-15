@@ -12,7 +12,6 @@ import {
 } from "../actions/products";
 import { login } from "../actions/auth";
 import { PublicRoute } from "./PublicRoute";
-import BotonWsp from "../components/BotonWsp/BotonWsp";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import Direccion from "../components/PanelUsuario/Direccion/Direccion";
@@ -86,7 +85,6 @@ export const AppRouter = () => {
   return (
     <div>
       <Router>
-        <BotonWsp />
         <Navbar />
         <Switch>
           <Route exact path="/" component={Inicio} />

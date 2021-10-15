@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import Imgcab from "../../components/Imagen cabecera/Imgcab";
+import BotonWsp from "../../components/BotonWsp/BotonWsp";
 import "./Contacto.scss";
 const Contacto = () => {
   const [contactForm, setContactForm] = useState({
@@ -27,8 +28,10 @@ const Contacto = () => {
 
   return (
     <>
+      <BotonWsp />
+
       <Imgcab nombrehead={"Contactate con nosotros"} />
-      <div className="container container-contact-form">
+      <div className="container container-contact-form animate__animated animate__fadeIn animate__faster">
         <div className="header-contact-form ">
           &iexcl;Te responderemos a la brevedad&#33;
         </div>

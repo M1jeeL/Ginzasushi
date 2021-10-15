@@ -7,7 +7,8 @@
   width: 15rem;
   margin: 0;
   transition: 0.3s ease;
-
+  position: sticky;
+  top: 0;
   .dashboard-nav-btn {
     display: flex;
     justify-content: flex-end;

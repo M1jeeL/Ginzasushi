@@ -7,10 +7,9 @@ import Loader from "../../Loader/Loader";
 import { useSelector } from "react-redux";
 
 const MiCuenta = () => {
-
   const auth = useSelector((state) => state.auth);
 
-  const { user } = auth; 
+  const { user } = auth;
 
   return (
     <>
@@ -18,7 +17,7 @@ const MiCuenta = () => {
       {Object.entries(auth).length > 0 ? (
         <div className="container micuenta-container">
           <PanelUsuario />
-          <div className="container-datos-mi-cuenta">
+          <div className="container-datos-mi-cuenta animate__animated animate__fadeIn animate__faster">
             <DatosCuenta usuario={user} />
           </div>
         </div>

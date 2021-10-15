@@ -9,9 +9,7 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
   const urlPedidos = process.env.REACT_APP_PEDIDOS_API;
 
   const { cart, total } = useSelector((state) => state.products);
-//   const dispatch = useDispatch();
-
-
+  //   const dispatch = useDispatch();
 
   let despacho = 3000;
 
@@ -100,7 +98,7 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
   };
 
   return (
-    <div className="aside-container-checkout">
+    <div className="aside-container-checkout animate__animated animate__faster animate__fadeInRight">
       <div className="aside-info-checkout">
         <div className="aside-confirmacion-checkout">
           Confirmaci&oacute;n de pedido

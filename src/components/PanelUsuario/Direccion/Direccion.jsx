@@ -17,7 +17,7 @@ const Direccion = () => {
       {Object.entries(auth).length > 0 ? (
         <div className="container direccion-container">
           <PanelUsuario />
-          <div className="container-datos-direccion">
+          <div className="container-datos-direccion animate__animated animate__fadeIn animate__faster">
             <FormDireccionInfo usuario={user} />
           </div>
         </div>

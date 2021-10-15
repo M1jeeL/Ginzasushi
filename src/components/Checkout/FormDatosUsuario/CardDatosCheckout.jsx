@@ -30,7 +30,7 @@ const CardDatosCheckout = ({
 
   return (
     <>
-      <div className="info-container-checkout">
+      <div className="info-container-checkout animate__animated animate__fadeInLeft animate__faster">
         <div className="title-info-checkout">
           <div>Datos Personales</div>
           {showDataInfo && (

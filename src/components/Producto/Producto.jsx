@@ -66,7 +66,7 @@ export default function Producto({ producto }) {
 
   return (
     <>
-      <div className="container">
+      <div className="container animate__animated animate__fadeIn animate__faster">
         <Link
           to={"/carta"}
           className="d-flex justify-content-end align-items-center"

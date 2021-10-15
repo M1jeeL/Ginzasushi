@@ -15,7 +15,7 @@ export const DashboardProductActive = ({
   const [category] = categories.filter((item) => item.id === categoria);
 
   return (
-    <div className="dashboard-product-data">
+    <div className="dashboard-product-data animate__animated animate__fadeInRight">
       <div className="dashboard-product-data-title">{nombre}</div>
       <div className="dashboard-product-data-body">
         <div className="dashboard-product-data-body-detail">

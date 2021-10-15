@@ -2,12 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import MapView from "../../components/Map/MapView";
+import BotonWsp from "../../components/BotonWsp/BotonWsp";
 import "./Inicio.scss";
 
 export default function Inicio() {
   return (
     <>
-      <div className="jumbo-home">
+      <BotonWsp />
+
+      <div className="jumbo-home" data-aos="zoom-in">
         <div className="column-link-home">
           <h2>¡Pide ya tu roll favorito!</h2>
           <h1>
@@ -18,7 +21,7 @@ export default function Inicio() {
       <div className="seccion"></div>
       <div className="redes">
         <div className="encuentranos">
-          <div className="box-1-wrap">
+          <div className="box-1-wrap" data-aos="fade-right">
             <h3>Pedidos y Delivery</h3>
             <br />
             <h4>
@@ -33,9 +36,9 @@ export default function Inicio() {
               <Link to="/carta">Ver carta</Link>
             </Button>
           </div>
-          <div className="box-2-wrap"></div>
-          <div className="box-3-wrap"></div>
-          <div className="box-4-wrap">
+          <div className="box-2-wrap" data-aos="fade-left"></div>
+          <div className="box-3-wrap" data-aos="fade-right"></div>
+          <div className="box-4-wrap" data-aos="fade-left">
             <h3>S&iacute;guenos en nuestras redes!</h3>
             <h4>Etiquetanos en tus historias!</h4>
             <div className="social-network">
@@ -67,15 +70,15 @@ export default function Inicio() {
       <div className="map-container">
         <MapView />
         <div className="horarios">
-          <div className="horario-item">
+          <div className="horario-item" data-aos="flip-left">
             <h3>Lunes a Jueves</h3>
             <h4>12:00 a 22:00 hrs</h4>
           </div>
-          <div className="horario-item">
+          <div className="horario-item" data-aos="flip-right">
             <h3>Viernes y S&aacute;bado</h3>
             <h4>12:30 a 23:00 hrs</h4>
           </div>
-          <div className="horario-item">
+          <div className="horario-item" data-aos="flip-left">
             <h3>Domingo</h3>
             <h4>12:00 a 21:00 hrs</h4>
           </div>

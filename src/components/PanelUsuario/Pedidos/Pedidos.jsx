@@ -57,7 +57,7 @@ const Pedidos = () => {
           <Loader />
         </div>
       ) : (
-        <div className="container pedidos-container">
+        <div className="container pedidos-container animate__animated animate__fadeIn animate__faster">
           <PanelUsuario />
           <PedidosTable
             pedidos={pedidos}

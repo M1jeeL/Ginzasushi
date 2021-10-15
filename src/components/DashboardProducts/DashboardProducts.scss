@@ -4,7 +4,6 @@
   justify-content: space-between;
 
   width: 100vw;
-
 }
 
 .container-dashboard-products {
@@ -30,7 +29,7 @@
   }
   input {
     margin: auto 0;
-    width: 14rem;
+    width: 18rem;
   }
   i {
     margin: auto 0;
@@ -143,9 +142,12 @@
 }
 
 .dashboard-product-data {
+  align-self: flex-start;
   display: flex;
   flex-flow: column nowrap;
-  width: 32rem;
+  position: sticky;
+  top: 0;
+  width: 24rem;
   hr {
     margin: 0 auto;
     width: 96%;

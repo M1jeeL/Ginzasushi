@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { Button, Input } from "reactstrap";
 import { DashboardNavbar } from "../DashboardNavbar/DashboardNavbar";
 import { DashboardCategoriesList } from "./DashboardCategoriesList";
 import { DashboardProductsList } from "./DashboardProductsList";
 import { DashboardNewProductModal } from "./DashboardNewProductModal";
-import "./DashboardProducts.scss";
 import { DashboardProductActive } from "./DashboardProductActive";
-import { Redirect } from "react-router-dom";
+import "./DashboardProducts.scss";
 
 export const DashboardProducts = () => {
   const { products } = useSelector((state) => state.products);
@@ -33,7 +33,7 @@ export const DashboardProducts = () => {
     <>
       <div className="dashboard">
         <DashboardNavbar />
-        <div className="container-dashboard-products">
+        <div className="container-dashboard-products animate__animated animate__fadeIn animate__faster">
           <div className="dashboard-products-header">
             <div className="dashboard-products-header-title">Productos</div>
             <Input type="text" />
