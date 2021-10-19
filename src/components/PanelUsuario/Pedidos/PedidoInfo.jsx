@@ -27,7 +27,7 @@ const PedidoInfo = () => {
     };
   }, [url, uuid]);
 
-  console.log(pedido)
+  console.log(pedido);
 
   return (
     <>
@@ -100,71 +100,50 @@ const PedidoInfo = () => {
                   )}
             </div>
 
-            
-              
-                <div className="boxPrincipal">
-                  <div className="boxSuperior">
-                    <div className="titulo">
-                      <h1>Detalles Factura</h1>
-                    </div>
-                    <h3>Nombre: </h3>
-                    <h4>{pedido.estado}</h4>
-                    <h3>Celular: </h3>
-                    <h4>+569 67256867</h4>
-                    <h3>Correo: </h3>
-                    <h4>mail@gmail.com</h4>
-                  </div>
-                  <div className="boxInferior">
-                    <div className="titulo">
-                      <h1>Detalles Envío</h1>
-                    </div>
-
-                    <h3>Recibe: </h3>
-                    <h4>Juan Alverto</h4>
-                    <h3>Dirección: </h3>
-                    <h4>Avenida Apoquindo 543</h4>
-                    <h3>Precio:</h3>
-                    <h4>$2.500</h4>
-                  </div>
+            <div className="boxPrincipal">
+              <div className="boxSuperior">
+                <div className="titulo">
+                  <h1>Detalles Factura</h1>
                 </div>
-              
-
-              <div className="precioTotal">
-                <h1>Total: </h1>
+                <h3>Nombre: </h3>
+                <h4>{pedido.estado}</h4>
+                <h3>Celular: </h3>
+                <h4>+569 67256867</h4>
+                <h3>Correo: </h3>
+                <h4>mail@gmail.com</h4>
               </div>
-            
-          </div>
+              <div className="boxInferior">
+                <div className="titulo">
+                  <h1>Detalles Envío</h1>
+                </div>
 
-          <Table dark striped className="pedidos-table">
-            <thead>
-              <tr>
-                <th>Fecha de ingreso</th>
-                <th>Estado</th>
-                <th>Descripcion</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Fecha de ingreso">{pedido.fechaIngresada}</td>
-                {pedido.estado === "Pendiente" && (
-                  <td data-label="Estado" className="en-camino">
-                    {pedido.estado}
-                  </td>
-                )}
-                {pedido.estado === "Recibida" && (
-                  <td data-label="Estado" className="recibida">
-                    {pedido.estado}
-                  </td>
-                )}
-                {pedido.estado === "Cancelada" && (
-                  <td data-label="Estado" className="cancelada">
-                    {pedido.estado}
-                  </td>
-                )}
-                <td data-label="Productos">{pedido.notas}</td>
-              </tr>
-            </tbody>
-          </Table>
+                <h3>Recibe: </h3>
+                <h4>Juan Alverto</h4>
+                <h3>Dirección: </h3>
+                <h4>Avenida Apoquindo 543</h4>
+                <h3>Precio:</h3>
+                <h4>$2.500</h4>
+              </div>
+            </div>
+
+            <div className="boxTotal">
+              <div className="boxElemento">
+                <h2>SubTotal: </h2>
+                <h1>$ 20.000</h1>
+              </div>
+
+              <div className="boxElemento">
+                <h2>Costo de Envío: </h2>
+                <h1>$ 2.000</h1>
+              </div>
+
+              <div className="boxElemento">
+                <h2 className="destacado">Total: </h2>
+                <h1 className="destacado2">$ 22.000</h1>
+              </div>
+
+            </div>
+          </div>
         </div>
         <div className="pedidoinfo"></div>
       </div>
