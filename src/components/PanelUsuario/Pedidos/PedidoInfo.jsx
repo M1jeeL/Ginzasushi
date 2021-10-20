@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "reactstrap";
 import PanelUsuario from "../PanelUsuario";
 import Imgcab from "../../Imagen cabecera/Imgcab";
 import { useParams } from "react-router-dom";
@@ -8,6 +7,11 @@ const PedidoInfo = () => {
   const { uuid } = useParams();
   const [pedido, setPedido] = useState({});
   const url = process.env.REACT_APP_PEDIDOS_API;
+
+
+
+  
+
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -65,14 +69,14 @@ const PedidoInfo = () => {
           <div className="medio">
             <div className="boxProductos">
               <h1>Productos facturados: </h1>
-
               {!pedido.items
                 ? ""
                 : pedido.items.map(
                     (pedido, index, array) =>
+                    
                       pedido.description !== "Despacho" && (
-                        <>
-                          <div className="boxProducto">
+                        
+                          <div key={index} className="boxProducto">
                             <div className="imgProducto">
                               <div className="img"></div>
                             </div>
@@ -95,7 +99,7 @@ const PedidoInfo = () => {
                               </div>
                             </div>
                           </div>
-                        </>
+                        
                       )
                   )}
             </div>
