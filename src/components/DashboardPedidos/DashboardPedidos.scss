@@ -1,0 +1,59 @@
+.dashboard {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+.dashboard-pedidos-header{
+    align-content: center;
+    display: flex;
+    display: row nowrap;
+    justify-content: space-around;
+    margin: 1rem 0;
+    width: 100%;
+   
+.dashboard-pedidos-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: auto 0;
+    
+  }
+  input {
+    margin: auto 0;
+    width: 18rem;
+  }
+  i {
+    margin: auto 0;
+  }
+}
+.dashboard-pedidos-body {
+    display: flex;
+    flex-flow: row wrap;
+    width: 85%;
+  }
+.dashboar-pedidos-container{
+    display: flex;
+    flex-flow: column nowrap;
+    width: 75rem;
+    flex: 1 0 auto;
+    margin: 1.5rem auto 0 auto;
+    align-items: center;
+  }
+
+.dashboard-pedidos-buttons{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 20rem;
+
+    
+}
+.dashboard-pedidos-search{
+  display: flex;
+  justify-content: space-evenly;
+  width: auto;
+}
+.dashboard-pedidos-icon-search{
+  margin: 5px 0 0 10px;
+}
