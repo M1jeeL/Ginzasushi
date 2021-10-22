@@ -65,7 +65,7 @@ const DashboardPedidosTable = ({
             paginatedPedidos.map((pedidos) => (
               <tr key={pedidos.id}>
               <td data-label="id">{pedidos.id}</td>
-              <td data-label="name">{pedidos.name}</td>
+              <td data-label="name">{pedidos.payer.name}</td>
               <td data-label="Fecha Ingreso">{pedidos.fechaIngresada}</td>
               <td>{pedidos.estado}</td>
               <td>{pedidos.despacho}</td>

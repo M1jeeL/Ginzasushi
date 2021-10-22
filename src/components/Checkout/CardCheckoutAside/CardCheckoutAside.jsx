@@ -9,9 +9,11 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
   const urlPedidos = process.env.REACT_APP_PEDIDOS_API;
 
   const { cart, total } = useSelector((state) => state.products);
-  //   const dispatch = useDispatch();
+  const { user, logged } = useSelector((state) => state.auth);
+  console.log(user);
+  console.log(logged);
 
-  let despacho = 3000;
+  let despacho = 2000;
 
   const totalFinal = total + despacho;
 
@@ -44,32 +46,57 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
       currency_id: "CLP",
     });
 
-    const payer = {
-      name: formDataCliente.nombre,
-      surname: formDataCliente.apellido,
-      email: formDataCliente.email,
-      phone: {
-        area_code: "",
-        number: formDataCliente.celular.toString(),
-      },
-      idenfitication: {
-        type: "",
-        number: "",
-      },
-      shipments: {
-        receiver_address: {
-          street_name: formDespachoCliente.calle,
-          street_number: parseInt(formDespachoCliente.numeracion),
-          zip_code: "",
+    let payer;
+
+    if (logged) {
+      payer = {
+        name: user.nombre,
+        surname: user.apellido,
+        email: user.email,
+        phone: {
+          area_code: "",
+          number: user.celular.toString(),
         },
-      },
-    };
+        idenfitication: {
+          type: "",
+          number: "",
+        },
+        shipments: {
+          receiver_address: {
+            street_name: user.calle,
+            street_number: parseInt(user.numeracion),
+            zip_code: "",
+          },
+        },
+      };
+    } else {
+      payer = {
+        name: formDataCliente.nombre,
+        surname: formDataCliente.apellido,
+        email: formDataCliente.email,
+        phone: {
+          area_code: "",
+          number: formDataCliente.celular.toString(),
+        },
+        idenfitication: {
+          type: "",
+          number: "",
+        },
+        shipments: {
+          receiver_address: {
+            street_name: formDespachoCliente.calle,
+            street_number: parseInt(formDespachoCliente.numeracion),
+            zip_code: "",
+          },
+        },
+      };
+    }
 
     const preference_data = {
       items,
       payer,
       estado: "Pendiente",
-      notas: "kelokee",
+      notas: formDespachoCliente.notas,
     };
     const token = localStorage.getItem("token");
 
