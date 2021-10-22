@@ -172,24 +172,10 @@
   border: 1px solid #00000020;
 }
 .imgProducto {
-  display: flex;
-  width: 35%;
-  min-width: 80px;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.918);
-  text-align: center;
-  justify-content: center;
+  width: 220px;
 }
-.img {
+.pedido-info-pic {
   width: 100%;
-  height: 100%;
-  background-image: url("https://picsum.photos/200");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  justify-content: center;
-  padding-left: 10px;
 }
 .infoProducto {
   width: 65%;
@@ -205,13 +191,6 @@
 }
 .descripcion {
   font-size: 1.5rem;
-}
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: 0px;
 }
 
 .descripcion h4 {
@@ -233,12 +212,10 @@ h5 {
   border-radius: 10px;
   margin-top: 20px;
 
-
   .boxElemento {
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     h1 {
       margin: 0;
       display: inline;
@@ -246,16 +223,16 @@ h5 {
     }
     h2 {
       display: inline;
-      
+
       color: rgb(39, 39, 39);
     }
-    .destacado{
-        color: rgb(255,185,34);
-        font-size: 2.5rem;
+    .destacado {
+      color: rgb(255, 185, 34);
+      font-size: 2.5rem;
     }
-    .destacado2{
-        color: rgb(0, 0, 0);
-        font-size: 3rem;
+    .destacado2 {
+      color: rgb(0, 0, 0);
+      font-size: 3rem;
     }
   }
 }
