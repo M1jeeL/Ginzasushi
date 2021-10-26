@@ -78,8 +78,8 @@ const PedidoInfo = () => {
                           <div className="pedido-productos-detalle-bodyTitle-title">
                             <h2>{pedido.title}</h2>
                           </div>
-                          <div>
-                            <h4 className="pedido-productos-detalle-bodyEnvolture-envolture">
+                          <div className="pedido-productos-detalle-bodyEnvolture-envolture">
+                            <h4>
                               Envoltura: {pedido.envoltura}
                             </h4>
                           </div>
@@ -102,6 +102,8 @@ const PedidoInfo = () => {
               <div className="titulo">
                 <h1>Detalles Factura</h1>
               </div>
+              <h3>Fecha: </h3>
+              <h4>{pedido.fechaIngresada}</h4>
               <h3>Nombre: </h3>
               <h4>{pedido.estado}</h4>
               <h3>Celular: </h3>
