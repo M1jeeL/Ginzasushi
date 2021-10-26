@@ -8,17 +8,7 @@ const PedidoInfo = () => {
   const { uuid } = useParams();
   const [pedido, setPedido] = useState({});
   const url = process.env.REACT_APP_PEDIDOS_API;
-  const [showMessageError, setShowMessageError] = useState(false);
 
-  const mostrarMensajeError = () => {
-    if (showMessageError === false) {
-      setShowMessageError(true);
-      setTimeout(() => {
-        setShowMessageError(false);
-      }, 1500);
-      return;
-    }
-  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -34,7 +24,7 @@ const PedidoInfo = () => {
         setPedido(pedido);
       });
     return () => {
-      setShowMessageError(false);
+      
       return true;
     };
   }, [url, uuid]);
