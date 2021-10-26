@@ -92,77 +92,76 @@
   }
 }
 
-.barraEstado {
+.pedido-estado {
   counter-reset: step;
-}
-.barraEstado li {
-  list-style-type: none;
-  float: left;
-  width: calc((100% - 30px) / 3);
-  position: relative;
-  text-align: center;
-  color: rgb(90, 90, 90);
-}
-.barraEstado li:before {
-  content: counter(step);
-  counter-increment: step;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  border: 2px solid rgb(139, 139, 139);
-  display: block;
-  text-align: center;
-  margin: 0 auto 10px auto;
-  border-radius: 50%;
-  background-color: rgb(255, 255, 255);
-}
+  li {
+    list-style-type: none;
+    float: left;
+    width: calc((100% - 30px) / 3);
+    position: relative;
+    text-align: center;
+    color: rgb(90, 90, 90);
+  }
+  li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 2px solid rgb(139, 139, 139);
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+  }
+  li:after {
+    content: "";
+    position: absolute;
+    background-color: rgb(139, 139, 139);
+    width: 100%;
+    height: 2px;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+  }
 
-.barraEstado li:after {
-  content: "";
-  position: absolute;
-  background-color: rgb(139, 139, 139);
-  width: 100%;
-  height: 2px;
-  top: 15px;
-  left: -50%;
-  z-index: -1;
-}
+  li.activado {
+    color: rgb(255, 153, 0);
+  }
 
-.barraEstado li.activado {
-  color: rgb(255, 153, 0);
-}
+  li.activado:before {
+    border-color: rgb(255, 153, 0);
+  }
 
-.barraEstado li.activado:before {
-  border-color: rgb(255, 153, 0);
-}
+  li:nth-child(1):after {
+    content: none;
+  }
 
-.barraEstado li:nth-child(1):after {
-  content: none;
-}
-
-.barraEstado li.activado + li:after {
-  background-color: rgb(253, 152, 0);
+  li.activado + li:after {
+    background-color: rgb(253, 152, 0);
+  }
 }
 
 /* Producto  */
 
-.boxProductos {
+.pedido-productos {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
-
   box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(5.5px);
   border-radius: 10px;
   border: 1px solid #00000020;
-  margin: 150px 0px 20px 0px;
+  margin: 150px 0 20px 0;
 }
-.boxProductos h1 {
+.pedido-productos h1 {
   text-align: center;
   font-family: "Roboto Slab", serif;
   background-color: #2cae1500;
+  font-size: 1.8rem;
 }
-.boxProducto {
+.pedido-productos-detalle {
   width: 100%;
   background-color: rgba(185, 5, 5, 0);
   display: flex;
@@ -170,8 +169,16 @@
   align-items: stretch;
   padding: 15px;
   border: 1px solid #00000020;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 0px;
+  }
 }
-.imgProducto {
+.pedido-productos-detalle-bodyImage {
   display: flex;
   width: 35%;
   min-width: 80px;
@@ -181,7 +188,7 @@
   text-align: center;
   justify-content: center;
 }
-.img {
+.pedido-productos-detalle-bodyImage-image {
   width: 100%;
   height: 100%;
   background-image: url("https://picsum.photos/200");
@@ -191,36 +198,29 @@
   justify-content: center;
   padding-left: 10px;
 }
-.infoProducto {
+.pedido-productos-detalle-bodyTitle {
   width: 65%;
   background-color: rgba(255, 255, 255, 0.918);
   padding: 15px;
 }
-.tituloProducto {
+.pedido-productos-detalle-bodyTitle-title {
   h2 {
     text-align: center;
+    font-size: 2rem;
     margin: 5px;
     font-family: "Roboto Slab", serif;
   }
 }
-.descripcion {
+.pedido-productos-detalle-bodyEnvolture-envolture {
   font-size: 1.5rem;
-}
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: 0px;
-}
-
-.descripcion h4 {
-  font-size: 40px;
+  h4 {
+    font-size: 40px;
+  }
 }
 
 // /* Total: */
 
-.boxTotal {
+.pedido-facturaTotal {
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
@@ -232,30 +232,31 @@ h5 {
   backdrop-filter: blur(5.5px);
   border-radius: 10px;
   margin-top: 20px;
+  padding: 20px 0 20px 0;
 
-
-  .boxElemento {
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  .pedido-facturaTotal-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
     h1 {
       margin: 0;
       display: inline;
       color: rgb(0, 0, 0);
+      font-size: 2rem;
     }
     h2 {
       display: inline;
-      
+      margin: 0;
       color: rgb(39, 39, 39);
     }
-    .destacado{
-        color: rgb(255,185,34);
-        font-size: 2.5rem;
+    .destacado {
+      color: rgb(255, 185, 34);
+      font-size: 2.5rem;
     }
-    .destacado2{
-        color: rgb(0, 0, 0);
-        font-size: 3rem;
+    .destacado2 {
+      color: rgb(0, 0, 0);
+      font-size: 3rem;
     }
   }
 }
@@ -266,16 +267,16 @@ h5 {
 //   align-self: center;
 //   justify-content: center;
 // }
-.boxPrincipal {
+.pedido-infoCliente {
   align-content: center;
   display: flex;
   justify-content: space-evenly;
-  padding: 15px 0px 15px 0px;
+  padding: 5px 0px 5px 0px;
   flex-wrap: wrap;
 }
 
-.boxInferior,
-.boxSuperior {
+.pedido-infoCliente-envio,
+.pedido-infoCliente-facturante {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   width: 45%;
@@ -294,15 +295,36 @@ h5 {
       font-size: 2.2rem;
       margin: 5px;
       font-family: "Roboto Slab", serif;
+      font-size: 1.8rem;
     }
   }
   h3 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: bold;
   }
   h4 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     padding-bottom: 10px;
+  }
+}
+
+.pedido-repetir {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  align-content: stretch;
+  
+  margin-top: 20px;
+
+  h1{
+      font-size: 1.5rem;
+      text-align: center;
+  }
+
+  button{
+
   }
 }
 // h3{
