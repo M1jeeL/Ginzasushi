@@ -105,6 +105,8 @@ const PedidoInfo = () => {
               <h3>Fecha: </h3>
               <h4>{pedido.fechaIngresada}</h4>
               <h3>Nombre: </h3>
+              <h4>{pedido.fechaIngresada}</h4>
+              <h3>Nombre: </h3>
               <h4>{pedido.estado}</h4>
               <h3>Celular: </h3>
               <h4>+569 67256867</h4>
