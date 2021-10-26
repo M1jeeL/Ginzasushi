@@ -30,6 +30,7 @@ const DatosCuenta = ({ usuario }) => {
       <div className="datos-mi-cuenta">
         <div className="title-panel-user">
           <h4>Mi Perfil</h4>
+          <h4>Mi Perfil</h4>
           <div className="btn-editar-user" onClick={handleEditDatosCuenta}>
             Editar
           </div>
