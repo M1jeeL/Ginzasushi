@@ -94,7 +94,7 @@ const PedidosTable = ({
             ))
           ) : (
             <tr>
-              <td colSpan="4">No haz realizado ning&uacute;n pedido</td>
+              <td colSpan="4"><span className="messageError">No haz realizado ningún pedido</span></td>
             </tr>
           )}
         </tbody>
