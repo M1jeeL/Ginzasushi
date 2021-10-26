@@ -26,7 +26,7 @@ const PedidoInfo = () => {
       });
   }, [url, uuid]);
 
-  const [subTotal, setSubTotal] = useState(0);
+//   const [subTotal, setSubTotal] = useState(0);
   console.log(pedido);
 
   return (
