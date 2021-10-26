@@ -3,7 +3,6 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  height: calc(100vh - 12vh - 140px - 8rem);
 }
 
 .container-datos-mi-cuenta {
@@ -14,11 +13,22 @@
     border-radius: 10px;
     border: 1px solid #00000020;
     padding: 1rem;
+    margin-bottom: 25px;
     h4 {
       font-family: "Roboto Slab", serif;
     }
     .btn-direccion-panel {
       margin: 1rem 0;
+    }
+  }
+  .datos-mi-cuenta-password {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 10px;
+    border: 1px solid #00000020;
+    padding: 1rem;
+    margin-bottom: 25px;
+    h4 {
+      font-family: "Roboto Slab", serif;
     }
   }
 }
@@ -34,6 +44,16 @@
   justify-content: space-between;
   margin-bottom: 0.5rem;
   .btn-editar-user {
+    cursor: pointer;
+    font-weight: bold;
+  }
+}
+
+.title-panel-user-password {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  .btn-editar-user-password {
     cursor: pointer;
     font-weight: bold;
   }
