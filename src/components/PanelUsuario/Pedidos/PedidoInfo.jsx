@@ -3,14 +3,16 @@ import PanelUsuario from "../PanelUsuario";
 import Imgcab from "../../Imagen cabecera/Imgcab";
 import { useParams } from "react-router-dom";
 import { Button } from "reactstrap";
+import moment from "moment";
+import "moment/locale/es";
 
 const PedidoInfo = () => {
   const { uuid } = useParams();
   const [pedido, setPedido] = useState({});
   const url = process.env.REACT_APP_PEDIDOS_API;
 
-
   useEffect(() => {
+    moment.locale("es");
     const token = localStorage.getItem("token");
     fetch(`${url}/pedidos/${uuid}`, {
       method: "GET",
@@ -24,7 +26,6 @@ const PedidoInfo = () => {
         setPedido(pedido);
       });
     return () => {
-      
       return true;
     };
   }, [url, uuid]);
@@ -79,17 +80,18 @@ const PedidoInfo = () => {
                             <h2>{pedido.title}</h2>
                           </div>
                           <div className="pedido-productos-detalle-bodyEnvolture-envolture">
-                            <h4>
-                              Envoltura: {pedido.envoltura}
-                            </h4>
+                            <h3>Envoltura: </h3>
+                            <h4>{pedido.envoltura}</h4>
                           </div>
                           <div>
+                          <h3>Unidades: </h3>
                             <h4 className="unidades">
-                              Unidades: {pedido.quantity}
+                              {pedido.quantity}
                             </h4>
                           </div>
                           <div className="precio">
-                            <h4>Precio: ${pedido.unit_price}</h4>
+                          <h3>Precio: </h3>
+                            <h4>${pedido.unit_price}</h4>
                           </div>
                         </div>
                       </div>
@@ -100,22 +102,20 @@ const PedidoInfo = () => {
           <div className="pedido-infoCliente">
             <div className="pedido-infoCliente-facturante">
               <div className="titulo">
-                <h1>Detalles Factura</h1>
+                <h1>Detalles Factura:</h1>
               </div>
               <h3>Fecha: </h3>
-              <h4>{pedido.fechaIngresada}</h4>
-              <h3>Nombre: </h3>
-              <h4>{pedido.fechaIngresada}</h4>
-              <h3>Nombre: </h3>
-              <h4>{pedido.estado}</h4>
+              <h4>{moment(pedido.fechaIngresada).format("LLL")}</h4>
+              <h3>Nombre de Cliente: </h3>
+              <h4>Juan Alverto</h4>
               <h3>Celular: </h3>
-              <h4>+569 67256867</h4>
+              <h4>+569 67656867</h4>
               <h3>Correo: </h3>
-              <h4>mail@gmail.com</h4>
+              <h4>mail@gmail.commmmmmmmmm</h4>
             </div>
             <div className="pedido-infoCliente-envio">
               <div className="titulo">
-                <h1>Detalles Envío</h1>
+                <h1>Detalles Envío:</h1>
               </div>
               <h3>Recibe: </h3>
               <h4>Juan Alverto</h4>
