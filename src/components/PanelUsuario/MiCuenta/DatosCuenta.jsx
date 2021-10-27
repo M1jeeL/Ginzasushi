@@ -6,13 +6,12 @@ import { startUpdateUser } from "../../../actions/auth";
 
 const DatosCuenta = ({ usuario }) => {
   const dispatch = useDispatch();
-  const { nombre, apellido, email, celular, password } = usuario;
+  const { nombre, apellido, email, celular } = usuario;
 
   const [formValues, handleInputChange] = useForm({
     nombre,
     apellido,
     celular,
-    password,
   });
 
   const [editDatosCuenta, setEditDatosCuenta] = useState(true);
@@ -123,73 +122,7 @@ const DatosCuenta = ({ usuario }) => {
         </Form>
       </div>
 
-      <div className="datos-mi-cuenta-password">
-        <div className="title-panel-user-password">
-          <h4>Editar contraseña</h4>
-          <div className="btn-editar-user-password" onClick={handleEditDatosCuenta}>
-            Editar
-          </div>
-        </div>
-        <Form id="form-editar-datos-cuenta-password" onSubmit={handleSubmit}>
-          <Row form>
-            <Col lg={12} md={12} sm={12}>
-              <FormGroup className="form-title">
-                <Label className="form-text" htmlFor="password">
-                  Contraseña
-                </Label>
-                <Input
-                  type="text"
-                  id="password"
-                  name="password"
-                  value="Ingrese la contraseña"
-                  autoComplete="off"
-                  required
-                  disabled={editDatosCuenta}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-
-            <Col lg={12} md={12} sm={12}>
-              <FormGroup className="form-title">
-                <Label className="form-text" htmlFor="password">
-                  Repetir Contraseña
-                </Label>
-                <Input
-                  type="text"
-                  id="password"
-                  name="password"
-                  value="Ingrese nuevamente la contraseña"
-                  autoComplete="off"
-                  required
-                  disabled={editDatosCuenta}
-                  onChange={handleInputChange}
-                />
-              </FormGroup>
-            </Col>
-            
-            
-            
-          </Row>
-          {editDatosCuenta ? null : (
-            <>
-              <div className="btn-guardar-datos">
-                <Button
-                  type="submit"
-                  color="warning"
-                  size="lg"
-                  onClick={(e) => {
-                    handleSubmit(e);
-                    handleEditDatosCuenta();
-                  }}
-                >
-                  Guardar datos
-                </Button>
-              </div>
-            </>
-          )}
-        </Form>
-      </div>
+      
     </>
   );
 };
