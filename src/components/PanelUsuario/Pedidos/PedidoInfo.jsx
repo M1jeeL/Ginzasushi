@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 
 import { Button } from "reactstrap";
 import moment from "moment";
-import "moment/locale/es";
 import Loader from "../../Loader/Loader";
 
 const PedidoInfo = () => {
@@ -14,7 +13,6 @@ const PedidoInfo = () => {
   const url = process.env.REACT_APP_PEDIDOS_API;
 
   useEffect(() => {
-    moment.locale("es");
     const token = localStorage.getItem("token");
     fetch(`${url}/pedidos/${uuid}`, {
       method: "GET",
@@ -30,7 +28,7 @@ const PedidoInfo = () => {
   }, [url, uuid]);
 
   //   const [subTotal, setSubTotal] = useState(0);
-    console.log(pedido);
+  // console.log(pedido);
 
   return (
     <>
@@ -104,7 +102,11 @@ const PedidoInfo = () => {
                   <h1>Detalles Factura:</h1>
                 </div>
                 <h3>Fecha: </h3>
-                <h4>{moment(pedido.fechaIngresada).format("LLL")}</h4>
+                <h4>
+                  {moment(pedido.fechaIngresada)
+                    .subtract(3, "hours")
+                    .format("LLL")}
+                </h4>
                 <h3>Nombre de Cliente: </h3>
                 <h4>{`${pedido.payer.name} ${pedido.payer.surname}`}</h4>
                 <h3>Celular: </h3>

@@ -170,7 +170,9 @@ export const startToggleStatusProduct = (product, id) => {
     console.log(!activo);
     Swal.fire({
       title: "¿Estás seguro?",
-      text: activo ? "El producto se inhabilitará en la carta" : "El producto se habilitará en la carta",
+      text: activo
+        ? "El producto se inhabilitará en la carta"
+        : "El producto se habilitará en la carta",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
