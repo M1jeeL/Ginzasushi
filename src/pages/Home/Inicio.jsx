@@ -70,15 +70,15 @@ export default function Inicio() {
       <div className="map-container">
         <MapView />
         <div className="horarios">
-          <div className="horario-item" data-aos="flip-left">
+          <div className="horario-item">
             <h3>Lunes a Jueves</h3>
             <h4>12:00 a 22:00 hrs</h4>
           </div>
-          <div className="horario-item" data-aos="flip-right">
+          <div className="horario-item">
             <h3>Viernes y S&aacute;bado</h3>
             <h4>12:30 a 23:00 hrs</h4>
           </div>
-          <div className="horario-item" data-aos="flip-left">
+          <div className="horario-item">
             <h3>Domingo</h3>
             <h4>12:00 a 21:00 hrs</h4>
           </div>

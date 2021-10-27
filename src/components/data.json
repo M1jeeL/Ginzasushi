@@ -513,5 +513,36 @@
           "depto":""
         }
       }
+    ],
+    "pedidos":[
+        {
+            "N": "1",
+            "nombre":"Miguel Loza",
+            "fechaingreso": "21-09-2021",
+            "estado": "Pendiente",
+            "despacho": "Delivery"
+
+        },
+        {
+            "N": "2",
+            "nombre":"Giovanni Arriagada",
+            "fechaingreso": "01-10-2021",
+            "estado": "Cancelado",
+            "despacho": "Local"
+        },
+        {
+            "N": "3",
+            "nombre":"Matias Coloma",
+            "fechaingreso": "10-10-2021",
+            "estado": "En proceso",
+            "despacho": "Local"
+        },
+        {
+            "N": "4",
+            "nombre":"Bastian Rojas",
+            "fechaingreso": "15-10-2021",
+            "estado": "Listo",
+            "despacho": "Delivery"
+        }
     ]
 }

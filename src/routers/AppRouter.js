@@ -33,6 +33,7 @@ import { DashboardProducts } from "../components/DashboardProducts/DashboardProd
 import { DashboardPedidos } from "../components/DashboardPedidos/DashboardPedidos";
 import { DashboardEstadistica } from "../components/DashboardEstadistica/DashboardEstadistica";
 import { DashboardPersonal } from "../components/DashboardPersonal/DashboardPersonal";
+import { startLoadingPedidos } from "../actions/pedidos";
 
 const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
 
@@ -44,7 +45,6 @@ export const AppRouter = () => {
   const [hideSidebar, setHideSidebar] = useState(false);
 
   const handleShowSidebar = () => {
-    console.log("ola");
     setHideSidebar(!hideSidebar);
   };
 
@@ -62,6 +62,7 @@ export const AppRouter = () => {
       .then((data) => {
         setChecking(false);
         dispatch(login(data));
+        dispatch(startLoadingPedidos());
       })
       .catch((err) => {
         setChecking(false);

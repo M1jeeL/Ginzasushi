@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import { types } from "../types/types";
+import { startLoadingPedidos } from "./pedidos";
 import { finishLoading, startLoading } from "./ui";
 
 const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
@@ -18,6 +19,9 @@ export const startLogin = (token) => {
       .then((data) => {
         dispatch(login(data));
         dispatch(finishLoading());
+        if(data.isAdmin){
+            dispatch(startLoadingPedidos())
+        }
       })
       .catch((err) => {
         localStorage.removeItem("token");
@@ -50,7 +54,12 @@ export const startGetToken = (datos) => {
         logout();
       }
     } catch (error) {
-      console.log("ola");
+      Swal.fire({
+        icon: "error",
+        text: "Usuario y/o contraseña incorrecta",
+        showConfirmButton: false,
+        timer: "1500",
+      });
       logout();
     }
   };
