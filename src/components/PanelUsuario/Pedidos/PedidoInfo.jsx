@@ -84,7 +84,7 @@ const PedidoInfo = () => {
                             <h4>{pedido.envoltura}</h4>
                           </div>
                           <div>
-                          <h3>Unidades: </h3>
+                          <h3>Unidades:  </h3>
                             <h4 className="unidades">
                               {pedido.quantity}
                             </h4>
