@@ -193,7 +193,7 @@
 .pedido-productos-detalle-bodyImage-image {
   width: 100%;
   height: 100%;
-  background-image: url("https://picsum.photos/200");
+  max-height: 200px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -225,7 +225,7 @@
 .pedido-infoCliente {
   align-content: center;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 5px 0px 5px 0px;
   flex-wrap: wrap;
 }
@@ -233,13 +233,12 @@
 .pedido-infoCliente-envio,
 .pedido-infoCliente-facturante {
   background-color: rgb(255, 255, 255);
-  padding: 20px;
-  width: 45%;
-
+  width: 48.8%;
   box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(5.5px);
   border-radius: 10px;
   border: 1px solid #00000020;
+  padding: 10px;
 
   .titulo {
     min-height: 20%;
@@ -280,7 +279,7 @@
     backdrop-filter: blur(5.5px);
     border-radius: 10px;
     margin-top: 20px;
-    padding: 20px 0 20px 0;
+    padding: 10px 0 10px 0;
   
     .pedido-facturaTotal-item {
       display: flex;
@@ -291,7 +290,7 @@
         margin: 0;
         display: inline;
         color: rgb(0, 0, 0);
-        font-size: 2rem;
+        font-size: 1.4rem;
         text-overflow: ellipsis;
         white-space: initial;
         overflow-wrap: break-word;
@@ -299,16 +298,16 @@
       h2 {
         display: inline;
         margin: 0;
-        font-size: 2rem;
+        font-size: 1.4rem;
         color: rgb(39, 39, 39);
       }
       .destacado {
-        color: rgb(255, 185, 34);
-        font-size: 2.2rem;
+        color: rgb(39, 39, 39);
+        font-size: 1.4rem;
       }
       .destacado2 {
-        color: rgb(0, 0, 0);
-        font-size: 2.8rem;
+        color: rgb(39, 39, 39);
+        font-size: 1.4rem;
         text-overflow: ellipsis;
         white-space: initial;
         overflow-wrap: break-word;
@@ -338,23 +337,23 @@
 @media (max-width: 767.98px) {
   .pedido-infoCliente-envio {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
   }
   .pedido-infoCliente-facturante {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 25px;
+    padding: 10px;
+    margin-bottom: 30px;
   }
 }
 
 @media (max-width: 575.98px) {
   .pedido-infoCliente-envio {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
   }
   .pedido-infoCliente-facturante {
-    padding: 8px;
+    padding: 10px;
     width: 100%;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 }

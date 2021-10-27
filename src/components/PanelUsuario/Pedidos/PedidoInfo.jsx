@@ -74,8 +74,10 @@ const PedidoInfo = () => {
                       pedido.description !== "Despacho" && (
                         <div key={index} className="pedido-productos-detalle">
                           <div className="pedido-productos-detalle-bodyImage">
-                            <div className="pedido-productos-detalle-bodyImage-image"></div>
+                          <div>
+                            <img src="https://picsum.photos/500" alt="sushi" className="pedido-productos-detalle-bodyImage-image"/>
                           </div>
+                        </div>
                           <div className="pedido-productos-detalle-bodyTitle">
                             <div className="pedido-productos-detalle-bodyTitle-title">
                               <h2>{pedido.title}</h2>
@@ -139,7 +141,7 @@ const PedidoInfo = () => {
 
             <div className="pedido-repetir">
               <h1>¿Te gustaría solicitar nuevamente éste pedido?</h1>
-              <Button color="success">Repetir Pedido</Button>
+              <Button color="warning" outline>Repetir Pedido</Button>
             </div>
           </div>
         ) : (
