@@ -3,7 +3,7 @@ import { DashboardNavbar } from "../DashboardNavbar/DashboardNavbar";
 import { Input } from "reactstrap";
 import "./DashboardPedidos.scss";
 import DashboardPedidosTable from "./DashboardPedidosTable";
-import BotonPedido from "../BotonProps/BotonPedido.jsx";
+
 import { useHistory } from "react-router-dom";
 import _ from "lodash";
 
@@ -22,7 +22,14 @@ export const DashboardPedidos = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
+    fetch(`${url}/pedidos/admin`, {
+
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
     fetch(`${url}/pedidos`, {
+
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -45,8 +52,11 @@ export const DashboardPedidos = () => {
       setPaginatedPedidos({});
     };
   }, [history]);
+
+
   
   console.log(pedidos);
+
   return (
     <div className="dashboard">
       <DashboardNavbar />
@@ -75,9 +85,31 @@ export const DashboardPedidos = () => {
             setMinPageNumberLimit={setMinPageNumberLimit}
           />
         </div>
+
+        <div className="dashboard-pedidos-container-buttons">
+          <div className="dashboard-pedidos-button">
+            <button className="dashboard-pedidos-button-accept ">
+              <i className="fas fa-check"></i>
+              Aceptar
+            </button>
+          </div>
+          <div className="dashboard-pedidos-button">
+            <button className="dashboard-pedidos-button-delete">
+              <i className="fas fa-times"></i>
+              Eliminar
+            </button>
+          </div>
+          <div className="dashboard-pedidos-button">
+            <button className="dashboard-pedidos-button-send">
+              <i className="fas fa-share"></i>
+              Despachar
+            </button>
+          </div>
+
         <div className="dashboard-pedidos-buttons">
           <BotonPedido info="Editar" icono="far fa-edit fa-2x" />
           <BotonPedido info="Eliminar" icono="fas fa-times fa-2x" />
+
         </div>
       </div>
     </div>
