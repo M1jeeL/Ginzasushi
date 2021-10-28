@@ -18,18 +18,10 @@ export const DashboardPedidos = () => {
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const pageSize = 10;
-
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     fetch(`${url}/pedidos/admin`, {
-
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    fetch(`${url}/pedidos`, {
-
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -52,11 +44,6 @@ export const DashboardPedidos = () => {
       setPaginatedPedidos({});
     };
   }, [history]);
-
-
-  
-  console.log(pedidos);
-
   return (
     <div className="dashboard">
       <DashboardNavbar />
@@ -85,7 +72,6 @@ export const DashboardPedidos = () => {
             setMinPageNumberLimit={setMinPageNumberLimit}
           />
         </div>
-
         <div className="dashboard-pedidos-container-buttons">
           <div className="dashboard-pedidos-button dashboard-pedido-button-accept">
             <i className="fas fa-check"></i>
@@ -103,11 +89,6 @@ export const DashboardPedidos = () => {
             <i className="fas fa-clipboard-check"></i>
             <div>Completar</div>
           </div>
-
-        <div className="dashboard-pedidos-buttons">
-          <BotonPedido info="Editar" icono="far fa-edit fa-2x" />
-          <BotonPedido info="Eliminar" icono="fas fa-times fa-2x" />
-
         </div>
       </div>
     </div>
