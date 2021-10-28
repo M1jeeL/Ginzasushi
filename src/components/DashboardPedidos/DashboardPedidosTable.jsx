@@ -4,6 +4,7 @@ import _ from "lodash";
 import { DashboardPedidosModal } from "./DashboardPedidosModal";
 import { useDispatch } from "react-redux";
 import { activePedido } from "../../actions/pedidos";
+import moment from "moment";
 
 const DashboardPedidosTable = ({
   pedidos,
@@ -79,9 +80,9 @@ const DashboardPedidosTable = ({
               >
                 <td data-label="id">{pedido.id}</td>
                 <td data-label="name">{pedido.payer.name}</td>
-                <td data-label="Fecha Ingreso">{pedido.fechaIngresada}</td>
+                <td data-label="Fecha Ingreso">{moment(pedido.fechaIngresada).subtract(3, "hours").format("LLL")}</td>
                 <td>{pedido.estado}</td>
-                <td>{pedido.despacho}</td>
+                <td>Delivery</td>
                 <td>
                   <i
                     className="dashboard-pedidos-icon-select far fa-eye"
