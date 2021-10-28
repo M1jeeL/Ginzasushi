@@ -2,6 +2,8 @@ import React from "react";
 import { Table, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import _ from "lodash";
+import moment from "moment";
+import "moment/locale/es";
 
 const PedidosTable = ({
   pedidos,
@@ -72,7 +74,7 @@ const PedidosTable = ({
           {paginatedPedidos.length > 0 ? (
             paginatedPedidos.map((pedido) => (
               <tr key={pedido.id}>
-                <td data-label="Fecha Ingresada">{pedido.fechaIngresada}</td>
+                <td data-label="Fecha Ingresada">{moment(pedido.fechaIngresada).format("LLL")}</td>
                 {pedido.estado === "Pendiente" && (
                   <td data-label="Estado" className="en-camino">{pedido.estado}</td>
                 )}
