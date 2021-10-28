@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
   Modal,
@@ -10,4 +9,27 @@ import {
   Input,
   Label,
 } from "reactstrap";
+import "./DashboardPedidosModal.scss";
 
+
+export const DashboardPedidosModal = ({
+  openPedidoModal,
+  openModalPedido,
+}) => {
+ 
+
+  return (
+    <Modal isOpen={openPedidoModal} toggle={openModalPedido}>
+      <ModalHeader>
+        
+        
+      </ModalHeader>
+      <ModalBody>
+        
+      </ModalBody>
+      <ModalFooter>
+        
+      </ModalFooter>
+    </Modal>
+  );
+};

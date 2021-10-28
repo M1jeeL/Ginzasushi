@@ -4,7 +4,6 @@ import Imgcab from "../../Imagen cabecera/Imgcab";
 import { useParams } from "react-router-dom";
 import { Button } from "reactstrap";
 import moment from "moment";
-import "moment/locale/es";
 import Loader from "../../Loader/Loader";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
@@ -51,7 +50,6 @@ const PedidoInfo = () => {
   };
 
   useEffect(() => {
-    moment.locale("es");
     const token = localStorage.getItem("token");
     fetch(`${url}/pedidos/${uuid}`, {
       method: "GET",
@@ -146,7 +144,11 @@ const PedidoInfo = () => {
                   <h1>Detalles Factura:</h1>
                 </div>
                 <h3>Fecha: </h3>
-                <h4>{moment(pedido.fechaIngresada).format("LLL")}</h4>
+                <h4>
+                  {moment(pedido.fechaIngresada)
+                    .subtract(3, "hours")
+                    .format("LLL")}
+                </h4>
                 <h3>Nombre de Cliente: </h3>
                 <h4>{`${pedido.payer.name} ${pedido.payer.surname}`}</h4>
                 <h3>Celular: </h3>
