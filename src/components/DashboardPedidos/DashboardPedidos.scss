@@ -44,11 +44,34 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  width: 40rem;
+
 
 .dashboard-pedidos-button{
   display: flex;
   flex-flow: column nowrap;
+  color: white;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 6rem;
+
+  &.dashboard-pedido-button-accept{
+   background-color: #17b627 ;
+  }
+  &.dashboard-pedido-button-delete{
+    background-color:#f33d3d;
+  }
+  &.dashboard-pedido-button-send{
+  background-color:#ebde2e;
+  }
+  &.dashboard-pedido-button-complete{
+  background-color: #f1672a;
+  }
 }
+
+ 
 }
 
 .dashboard-pedidos-search {
@@ -72,6 +95,7 @@
   flex: 1 1;
   padding-bottom: 50px;
 }
+
 
 .nav-pedidos {
   display: flex;
