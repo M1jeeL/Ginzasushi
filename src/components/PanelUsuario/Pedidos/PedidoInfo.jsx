@@ -79,7 +79,7 @@ const PedidoInfo = () => {
                               <h2>{pedido.title}</h2>
                             </div>
                             <div className="pedido-productos-detalle-bodyEnvolture-envolture">
-                              <h3>Envoltura: </h3>
+                              <h3>Envoltura:</h3>
                               <h4>{pedido.envoltura}</h4>
                             </div>
                             <div>
