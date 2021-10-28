@@ -6,7 +6,6 @@ import DashboardPedidosTable from "./DashboardPedidosTable";
 import _ from "lodash";
 import { useSelector } from "react-redux";
 
-
 export const DashboardPedidos = () => {
   const [paginatedPedidos, setPaginatedPedidos] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,7 +13,6 @@ export const DashboardPedidos = () => {
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const pageSize = 10;
-
 
   const { pedidos } = useSelector((state) => state.pedidos);
 

@@ -81,12 +81,12 @@ const PedidosTable = ({
                     {pedido.estado}
                   </td>
                 )}
-                {pedido.estado === "Recibida" && (
+                {pedido.estado === "Completado" && (
                   <td data-label="Estado" className="recibida">
                     {pedido.estado}
                   </td>
                 )}
-                {pedido.estado === "Cancelada" && (
+                {pedido.estado === "Rechazado" && (
                   <td data-label="Estado" className="cancelada">
                     {pedido.estado}
                   </td>
