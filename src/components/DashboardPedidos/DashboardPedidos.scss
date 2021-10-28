@@ -1,23 +1,22 @@
 .dashboard {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    width: 100%;
-  }
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 100%;
+}
 
-.dashboard-pedidos-header{
-    align-content: center;
-    display: flex;
-    display: row nowrap;
-    justify-content: space-around;
-    margin: 1rem 0;
-    width: 100%;
-   
-.dashboard-pedidos-title {
+.dashboard-pedidos-header {
+  align-content: center;
+  display: flex;
+  display: row nowrap;
+  justify-content: space-around;
+  margin: 1rem 0;
+  width: 100%;
+
+  .dashboard-pedidos-title {
     font-size: 1.8rem;
     font-weight: bold;
     margin: auto 0;
-    
   }
   input {
     margin: auto 0;
@@ -28,32 +27,74 @@
   }
 }
 .dashboard-pedidos-body {
-    display: flex;
-    flex-flow: row wrap;
-    width: 85%;
-  }
-.dashboar-pedidos-container{
-    display: flex;
-    flex-flow: column nowrap;
-    width: 75rem;
-    flex: 1 0 auto;
-    margin: 1.5rem auto 0 auto;
-    align-items: center;
-  }
-
-.dashboard-pedidos-buttons{
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    width: 20rem;
-
-    
+  display: flex;
+  flex-flow: row wrap;
+  width: 85%;
 }
-.dashboard-pedidos-search{
+.dashboar-pedidos-container {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 75rem;
+  flex: 1 0 auto;
+  margin: 1.5rem auto 0 auto;
+  align-items: center;
+}
+
+.dashboard-pedidos-container-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+.dashboard-pedidos-button{
+  display: flex;
+  flex-flow: column nowrap;
+}
+}
+
+.dashboard-pedidos-search {
   display: flex;
   justify-content: space-evenly;
   width: auto;
 }
-.dashboard-pedidos-icon-search{
+.dashboard-pedidos-icon-search {
   margin: 5px 0 0 10px;
+}
+
+.pedidos-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-flow: row wrap;
+  min-height: calc(100vh - 12vh - 140px - 8rem);
+}
+
+.table-container-pedidos-dashboard {
+  max-width: 110%;
+  flex: 1 1;
+  padding-bottom: 50px;
+}
+
+.nav-pedidos {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  .page-item {
+    cursor: pointer;
+    .page-link {
+      border: 1px solid black;
+      color: #fff;
+      background-color: #000;
+      font-weight: 600;
+    }
+  }
+  .active {
+    .page-link {
+      color: #fff;
+      background-color: #ffb922;
+      border: 1px solid #000;
+    }
+  }
+}
+
+.dashboard-pedidos-icon-select{
+  cursor: pointer;
 }
