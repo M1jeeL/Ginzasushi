@@ -102,7 +102,7 @@ const PedidoInfo = () => {
             </ul>
 
             <div className="pedido-productos">
-              <h1>Productos facturados: </h1>
+              <h1>Productos facturados:</h1>
               {!pedido.items
                 ? ""
                 : pedido.items.map(
