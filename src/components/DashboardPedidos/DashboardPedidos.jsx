@@ -3,15 +3,11 @@ import { DashboardNavbar } from "../DashboardNavbar/DashboardNavbar";
 import { Input } from "reactstrap";
 import "./DashboardPedidos.scss";
 import DashboardPedidosTable from "./DashboardPedidosTable";
-
-import { useHistory } from "react-router-dom";
 import _ from "lodash";
+import { useSelector } from "react-redux";
 
-const url = process.env.REACT_APP_PEDIDOS_API;
 
 export const DashboardPedidos = () => {
-  const history = useHistory();
-  const [pedidos, setPedidos] = useState([]);
   const [paginatedPedidos, setPaginatedPedidos] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [pageNumberLimit] = useState(5);
@@ -19,43 +15,16 @@ export const DashboardPedidos = () => {
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const pageSize = 10;
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    fetch(`${url}/pedidos/admin`, {
-
+  const { pedidos } = useSelector((state) => state.pedidos);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    fetch(`${url}/pedidos`, {
-
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((pedidos) => {
-        setPedidos(pedidos);
-        setPaginatedPedidos(_(pedidos).slice(0).take(pageSize).value());
-      })
-      .catch((error) => {
-        console.log(error);
-        localStorage.removeItem("token");
-        history.push("/login");
-      });
+    setPaginatedPedidos(_(pedidos).slice(0).take(pageSize).value());
 
     return () => {
-      setPedidos([]);
       setPaginatedPedidos({});
     };
-  }, [history]);
+  }, [pedidos]);
 
-
-  
-  console.log(pedidos);
 
   return (
     <div className="dashboard">
@@ -105,11 +74,6 @@ export const DashboardPedidos = () => {
               Despachar
             </button>
           </div>
-
-        <div className="dashboard-pedidos-buttons">
-          <BotonPedido info="Editar" icono="far fa-edit fa-2x" />
-          <BotonPedido info="Eliminar" icono="fas fa-times fa-2x" />
-
         </div>
       </div>
     </div>
