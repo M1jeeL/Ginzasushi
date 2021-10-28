@@ -10,8 +10,6 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
 
   const { cart, total } = useSelector((state) => state.products);
   const { user, logged } = useSelector((state) => state.auth);
-  console.log(user);
-  console.log(logged);
 
   let despacho = 2000;
 

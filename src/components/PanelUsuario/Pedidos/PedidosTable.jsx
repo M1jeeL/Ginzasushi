@@ -2,6 +2,7 @@ import React from "react";
 import { Table, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import _ from "lodash";
+import moment from "moment";
 
 const PedidosTable = ({
   pedidos,
@@ -37,7 +38,7 @@ const PedidosTable = ({
   };
 
   const handleNextBtn = () => {
-    pagination(currentPage+1);
+    pagination(currentPage + 1);
     setCurrentPage(currentPage + 1);
 
     if (currentPage + 1 > maxPageNumberLimit) {
@@ -47,15 +48,13 @@ const PedidosTable = ({
   };
 
   const handlePrevBtn = () => {
-    pagination(currentPage-1);
+    pagination(currentPage - 1);
     setCurrentPage(currentPage - 1);
     if ((currentPage - 1) % pageNumberLimit === 0) {
       setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
     }
   };
-
-
 
   return (
     <div className="table-container-pedidos">
@@ -72,15 +71,25 @@ const PedidosTable = ({
           {paginatedPedidos.length > 0 ? (
             paginatedPedidos.map((pedido) => (
               <tr key={pedido.id}>
-                <td data-label="Fecha Ingresada">{pedido.fechaIngresada}</td>
+                <td data-label="Fecha Ingresada">
+                  {moment(pedido.fechaIngresada)
+                    .subtract(3, "hours")
+                    .format("LLL")}
+                </td>
                 {pedido.estado === "Pendiente" && (
-                  <td data-label="Estado" className="en-camino">{pedido.estado}</td>
+                  <td data-label="Estado" className="en-camino">
+                    {pedido.estado}
+                  </td>
                 )}
                 {pedido.estado === "Recibida" && (
-                  <td data-label="Estado" className="recibida">{pedido.estado}</td>
+                  <td data-label="Estado" className="recibida">
+                    {pedido.estado}
+                  </td>
                 )}
                 {pedido.estado === "Cancelada" && (
-                  <td data-label="Estado" className="cancelada">{pedido.estado}</td>
+                  <td data-label="Estado" className="cancelada">
+                    {pedido.estado}
+                  </td>
                 )}
                 <td data-label="Descripción">{pedido.notas}</td>
                 <td data-label="Ver más información">
@@ -94,7 +103,11 @@ const PedidosTable = ({
             ))
           ) : (
             <tr>
-              <td colSpan="4">No haz realizado ning&uacute;n pedido</td>
+              <td colSpan="4">
+                <span className="d-flex justify-content-center text-align-center">
+                  No haz realizado ningún pedido
+                </span>
+              </td>
             </tr>
           )}
         </tbody>

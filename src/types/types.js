@@ -26,7 +26,8 @@ export const types = {
   categoriesDelete: "[Products] Delete Category",
 
   pedidosLoad: "[Pedidos] Load Pedidos",
-
+  pedidosUpdated: "[Pedidos] Updated Pedido",
+  pedidosActive: "[Pedidos] Set active pedido",
 
   uiSetError: "[UI] setError",
   uiRemoveError: "[UI] removeError",
