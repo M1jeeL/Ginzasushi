@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Table } from "reactstrap";
 import _ from "lodash";
 import { DashboardPedidosModal } from "./DashboardPedidosModal";
+import { useDispatch } from "react-redux";
+import { activePedido } from "../../actions/pedidos";
 
 const DashboardPedidosTable = ({
   pedidos,
@@ -17,6 +19,7 @@ const DashboardPedidosTable = ({
   setMinPageNumberLimit,
 }) => {
   const pageCount = pedidos ? Math.ceil(pedidos.length / pageSize) : 0;
+  const dispatch = useDispatch();
 
   const pages = _.range(1, pageCount + 1);
 
@@ -67,13 +70,18 @@ const DashboardPedidosTable = ({
         </thead>
         <tbody>
           {paginatedPedidos.length > 0 ? (
-            paginatedPedidos.map((pedidos) => (
-              <tr key={pedidos.id}>
-                <td data-label="id">{pedidos.id}</td>
-                <td data-label="name">{pedidos.payer.name}</td>
-                <td data-label="Fecha Ingreso">{pedidos.fechaIngresada}</td>
-                <td>{pedidos.estado}</td>
-                <td>{pedidos.despacho}</td>
+            paginatedPedidos.map((pedido) => (
+              <tr
+                key={pedido.id}
+                onClick={() => {
+                  dispatch(activePedido(pedido.id, pedido));
+                }}
+              >
+                <td data-label="id">{pedido.id}</td>
+                <td data-label="name">{pedido.payer.name}</td>
+                <td data-label="Fecha Ingreso">{pedido.fechaIngresada}</td>
+                <td>{pedido.estado}</td>
+                <td>{pedido.despacho}</td>
                 <td>
                   <i
                     className="dashboard-pedidos-icon-select far fa-eye"
