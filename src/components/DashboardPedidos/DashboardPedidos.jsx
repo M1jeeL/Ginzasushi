@@ -4,17 +4,21 @@ import { Input } from "reactstrap";
 import "./DashboardPedidos.scss";
 import DashboardPedidosTable from "./DashboardPedidosTable";
 import _ from "lodash";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { aceptarPedido, completarPedido, despacharPedido, rechazarPedido } from "../../actions/pedidos";
 
 
 export const DashboardPedidos = () => {
+
+  const {active} = useSelector(state => state.pedidos)
+  const dispatch = useDispatch()
+
   const [paginatedPedidos, setPaginatedPedidos] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [pageNumberLimit] = useState(5);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const pageSize = 10;
-
 
   const { pedidos } = useSelector((state) => state.pedidos);
 
@@ -54,19 +58,27 @@ export const DashboardPedidos = () => {
           />
         </div>
         <div className="dashboard-pedidos-container-buttons">
-          <div className="dashboard-pedidos-button dashboard-pedido-button-accept">
+          <div className="dashboard-pedidos-button dashboard-pedido-button-accept" onClick={()=>{
+            dispatch(aceptarPedido(active.id))
+          }} >
             <i className="fas fa-check"></i>
             <div>Aceptar</div>
           </div>
-          <div className="dashboard-pedidos-button dashboard-pedido-button-delete">
+          <div className="dashboard-pedidos-button dashboard-pedido-button-delete" onClick={()=>{
+            dispatch(rechazarPedido(active.id))
+          }}>
             <i className="fas fa-times"></i>
-            <div>Eliminar</div>
+            <div>Rechazar</div>
           </div>
-          <div className="dashboard-pedidos-button dashboard-pedido-button-send">
+          <div className="dashboard-pedidos-button dashboard-pedido-button-send" onClick={()=>{
+            dispatch(despacharPedido(active.id))
+          }}>
             <i className="fas fa-share"></i>
             <div>Despachar</div>
           </div>
-          <div className="dashboard-pedidos-button dashboard-pedido-button-complete">
+          <div className="dashboard-pedidos-button dashboard-pedido-button-complete" onClick={()=>{
+            dispatch(completarPedido(active.id))
+          }}>
             <i className="fas fa-clipboard-check"></i>
             <div>Completar</div>
           </div>
