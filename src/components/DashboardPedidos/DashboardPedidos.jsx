@@ -15,16 +15,15 @@ export const DashboardPedidos = () => {
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
   const pageSize = 10;
 
+
   const { pedidos } = useSelector((state) => state.pedidos);
 
   useEffect(() => {
     setPaginatedPedidos(_(pedidos).slice(0).take(pageSize).value());
-
     return () => {
       setPaginatedPedidos({});
     };
   }, [pedidos]);
-
 
   return (
     <div className="dashboard">
@@ -54,25 +53,22 @@ export const DashboardPedidos = () => {
             setMinPageNumberLimit={setMinPageNumberLimit}
           />
         </div>
-
         <div className="dashboard-pedidos-container-buttons">
-          <div className="dashboard-pedidos-button">
-            <button className="dashboard-pedidos-button-accept ">
-              <i className="fas fa-check"></i>
-              Aceptar
-            </button>
+          <div className="dashboard-pedidos-button dashboard-pedido-button-accept">
+            <i className="fas fa-check"></i>
+            <div>Aceptar</div>
           </div>
-          <div className="dashboard-pedidos-button">
-            <button className="dashboard-pedidos-button-delete">
-              <i className="fas fa-times"></i>
-              Eliminar
-            </button>
+          <div className="dashboard-pedidos-button dashboard-pedido-button-delete">
+            <i className="fas fa-times"></i>
+            <div>Eliminar</div>
           </div>
-          <div className="dashboard-pedidos-button">
-            <button className="dashboard-pedidos-button-send">
-              <i className="fas fa-share"></i>
-              Despachar
-            </button>
+          <div className="dashboard-pedidos-button dashboard-pedido-button-send">
+            <i className="fas fa-share"></i>
+            <div>Despachar</div>
+          </div>
+          <div className="dashboard-pedidos-button dashboard-pedido-button-complete">
+            <i className="fas fa-clipboard-check"></i>
+            <div>Completar</div>
           </div>
         </div>
       </div>
