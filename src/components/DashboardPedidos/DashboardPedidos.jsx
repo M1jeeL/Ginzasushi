@@ -20,7 +20,7 @@ export const DashboardPedidos = () => {
 
   useEffect(() => {
     setPaginatedPedidos(_(pedidos).slice(0).take(pageSize).value());
-
+np
     return () => {
       setPaginatedPedidos({});
     };
