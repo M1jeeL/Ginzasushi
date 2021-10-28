@@ -6,7 +6,6 @@ import moment from "moment";
 
 export const DashboardPedidosModal = ({ openPedidoModal, openModalPedido }) => {
   const { active } = useSelector((state) => state.pedidos);
-  console.log(active);
   return (
     <Modal isOpen={openPedidoModal} toggle={openModalPedido}>
       <ModalHeader>
@@ -35,15 +34,9 @@ export const DashboardPedidosModal = ({ openPedidoModal, openModalPedido }) => {
                     <div key={pedido.id}>
                       <div>
                         <div>{pedido.title}</div>
-                        <div>
-                        Envoltura: {pedido.envoltura}
-                        </div>
-                        <div>
-                          Unidades: {pedido.quantity}
-                        </div>
-                        <div>
-                          Precio: ${pedido.unit_price}
-                        </div>
+                        <div>Envoltura: {pedido.envoltura}</div>
+                        <div>Unidades: {pedido.quantity}</div>
+                        <div>Precio: ${pedido.unit_price}</div>
                       </div>
                     </div>
                   )

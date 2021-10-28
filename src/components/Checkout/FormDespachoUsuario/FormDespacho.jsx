@@ -43,6 +43,7 @@ const FormDespacho = ({
     color: "#fff",
     fontWeight: "bold",
     width: "12rem",
+    height: "3rem",
   };
 
   return (
@@ -156,6 +157,8 @@ const FormDespacho = ({
               />
             </FormGroup>
           </Col>
+        </Row>
+        <div className="checkout-card-btn-container">
           <Button
             className="btn-cancel-save-data-checkout"
             style={styleBtnProduct}
@@ -170,7 +173,7 @@ const FormDespacho = ({
           >
             Guardar
           </Button>
-        </Row>
+        </div>
       </Form>
     </>
   );

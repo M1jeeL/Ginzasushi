@@ -46,33 +46,42 @@
   justify-content: space-between;
   width: 40rem;
 
+  .dashboard-pedidos-button {
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    height: 4rem;
+    width: 6rem;
 
-.dashboard-pedidos-button{
-  display: flex;
-  flex-flow: column nowrap;
-  color: white;
-  border-radius: 5px;
-  justify-content: center;
-  align-items: center;
-  height: 4rem;
-  width: 6rem;
-  cursor: pointer;
-
-  &.dashboard-pedido-button-accept{
-   background-color: #17b627 ;
+    &.dashboard-pedido-button-accept {
+      background-color: #15bd26;
+      &:hover {
+        background-color: darken($color: #15bd26, $amount: 10);
+      }
+    }
+    &.dashboard-pedido-button-delete {
+      background-color: #f25551;
+      &:hover {
+        background-color: darken($color: #f25551, $amount: 10);
+      }
+    }
+    &.dashboard-pedido-button-send {
+      background-color: #e1d757;
+      &:hover {
+        background-color: darken($color: #e1d757, $amount: 10);
+      }
+    }
+    &.dashboard-pedido-button-complete {
+      background-color: #f1672a;
+      &:hover {
+        background-color: darken($color: #f1672a, $amount: 10);
+      }
+    }
   }
-  &.dashboard-pedido-button-delete{
-    background-color:#f33d3d;
-  }
-  &.dashboard-pedido-button-send{
-  background-color:#ebde2e;
-  }
-  &.dashboard-pedido-button-complete{
-  background-color: #f1672a;
-  }
-}
-
- 
 }
 
 .dashboard-pedidos-search {
@@ -97,7 +106,6 @@
   padding-bottom: 50px;
 }
 
-
 .nav-pedidos {
   display: flex;
   justify-content: center;
@@ -120,6 +128,18 @@
   }
 }
 
-.dashboard-pedidos-icon-select{
+.dashboard-pedidos-icon-select {
   cursor: pointer;
+}
+
+.dashboard-pedidos-table-row {
+  cursor: pointer;
+}
+
+.dashboard-pedidos-table-checked {
+  margin: 0 auto;
+}
+
+.dashboard-pedidos-table-eye {
+  text-align: center;
 }

@@ -39,7 +39,7 @@ export const aceptarPedido = (id) => {
           showConfirmButton: false,
           timer: 2000,
         });
-        dispatch(refreshPedido(data));
+        dispatch(refreshPedido(data.id, data));
       });
   };
 };
@@ -72,7 +72,7 @@ export const rechazarPedido = (id) => {
           showConfirmButton: false,
           timer: 2000,
         });
-        dispatch(refreshPedido(data));
+        dispatch(refreshPedido(data.id, data));
       });
   };
 };
@@ -105,7 +105,7 @@ export const despacharPedido = (id) => {
           showConfirmButton: false,
           timer: 2000,
         });
-        dispatch(refreshPedido(data));
+        dispatch(refreshPedido(data.id, data));
       });
   };
 };
@@ -131,6 +131,7 @@ export const completarPedido = (id) => {
         }
       })
       .then((data) => {
+        console.log(data);
         Swal.fire({
           position: "center",
           icon: "success",
@@ -138,7 +139,7 @@ export const completarPedido = (id) => {
           showConfirmButton: false,
           timer: 2000,
         });
-        dispatch(refreshPedido(data));
+        dispatch(refreshPedido(data.id, data));
       });
   };
 };
@@ -148,7 +149,6 @@ export const refreshPedido = (id, pedido) => ({
   payload: {
     id,
     pedido: {
-      id,
       ...pedido,
     },
   },

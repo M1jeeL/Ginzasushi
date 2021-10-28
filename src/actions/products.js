@@ -167,7 +167,6 @@ export const startUpdatingProduct = (product, file, id) => {
 export const startToggleStatusProduct = (product, id) => {
   return async (dispatch) => {
     const { activo } = product;
-    console.log(!activo);
     Swal.fire({
       title: "¿Estás seguro?",
       text: activo
@@ -177,7 +176,7 @@ export const startToggleStatusProduct = (product, id) => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Desactivar",
+      confirmButtonText: activo ? "Desactivar" : "Activar",
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -330,7 +329,6 @@ export const startRemoveOneFromCart = (index) => {
       if (result.isConfirmed) {
         const aux = [...cart];
         aux.splice(index, 1);
-        console.log(aux);
         Swal.fire("Listo!", "Tu producto fue eliminado del carrito", "success");
         dispatch(removeOneFromCart([...aux]));
         dispatch(calculateTotal());

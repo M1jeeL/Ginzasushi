@@ -86,8 +86,18 @@ const PedidosTable = ({
                     {pedido.estado}
                   </td>
                 )}
+                {pedido.estado === "Aceptado" && (
+                  <td data-label="Estado" className="en-camino">
+                    {pedido.estado}
+                  </td>
+                )}
                 {pedido.estado === "Rechazado" && (
                   <td data-label="Estado" className="cancelada">
+                    {pedido.estado}
+                  </td>
+                )}
+                {pedido.estado === "En camino" && (
+                  <td data-label="Estado" className="en-camino">
                     {pedido.estado}
                   </td>
                 )}

@@ -1,4 +1,5 @@
 // import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
@@ -18,6 +19,13 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
   const subTotalShow = formatearNumero(total);
   const despachoShow = formatearNumero(despacho);
   const totalShow = formatearNumero(totalFinal);
+  const [vacio, setVacio] = useState(true);
+
+  useEffect(() => {
+    if (cart.length > 0) {
+      setVacio(false);
+    }
+  }, [cart]);
 
   const pagarPedido = async () => {
     // console.log(cart)
@@ -154,6 +162,7 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
           <Link to="/checkout">
             <Button
               className="btn-confirmar-pedido"
+              disabled={vacio}
               onClick={() => {
                 pagarPedido();
               }}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Table } from "reactstrap";
+import { Input, Table } from "reactstrap";
 import _ from "lodash";
 import { DashboardPedidosModal } from "./DashboardPedidosModal";
 import { useDispatch } from "react-redux";
@@ -56,9 +56,11 @@ const DashboardPedidosTable = ({
     setOpenPedidoModal(!openPedidoModal);
   };
 
+  const [checkedInputRadio, setCheckedInputRadio] = useState(0);
+
   return (
     <div className="table-container-pedidos-dashboard">
-      <Table bordered className="pedidos-table">
+      <Table bordered dark hover className="pedidos-table">
         <thead>
           <tr>
             <th>N</th>
@@ -66,7 +68,7 @@ const DashboardPedidosTable = ({
             <th>Fecha de ingreso</th>
             <th>Estado</th>
             <th>Despacho</th>
-            <th>Visualizar</th>
+            <th className="dashboard-pedidos-table-eye">Visualizar</th>
           </tr>
         </thead>
         <tbody>
@@ -74,16 +76,57 @@ const DashboardPedidosTable = ({
             paginatedPedidos.map((pedido) => (
               <tr
                 key={pedido.id}
-                onClick={() => {
+                className="dashboard-pedidos-table-row"
+                onClick={(e) => {
                   dispatch(activePedido(pedido.id, pedido));
+                  setCheckedInputRadio(pedido.id);
                 }}
               >
-                <td data-label="id">{pedido.id}</td>
+                <td data-label="N">
+                  <Input
+                    type="radio"
+                    value={pedido.id}
+                    className="dashboard-pedidos-table-checked"
+                    checked={pedido.id === checkedInputRadio}
+                    key={pedido.id}
+                    onChange={(e) => {
+                      setCheckedInputRadio(e.target.value);
+                    }}
+                  />
+                </td>
                 <td data-label="name">{pedido.payer.name}</td>
-                <td data-label="Fecha Ingreso">{moment(pedido.fechaIngresada).subtract(3, "hours").format("LLL")}</td>
-                <td>{pedido.estado}</td>
+                <td data-label="Fecha Ingreso">
+                  {moment(pedido.fechaIngresada)
+                    .subtract(3, "hours")
+                    .format("LLL")}
+                </td>
+                {pedido.estado === "Pendiente" && (
+                  <td data-label="Estado" className="en-camino">
+                    {pedido.estado}
+                  </td>
+                )}
+                {pedido.estado === "Completado" && (
+                  <td data-label="Estado" className="recibida">
+                    {pedido.estado}
+                  </td>
+                )}
+                {pedido.estado === "Aceptado" && (
+                  <td data-label="Estado" className="en-camino">
+                    {pedido.estado}
+                  </td>
+                )}
+                {pedido.estado === "Rechazado" && (
+                  <td data-label="Estado" className="cancelada">
+                    {pedido.estado}
+                  </td>
+                )}
+                {pedido.estado === "En camino" && (
+                  <td data-label="Estado" className="en-camino">
+                    {pedido.estado}
+                  </td>
+                )}
                 <td>Delivery</td>
-                <td>
+                <td className="dashboard-pedidos-table-eye">
                   <i
                     className="dashboard-pedidos-icon-select far fa-eye"
                     onClick={() => {

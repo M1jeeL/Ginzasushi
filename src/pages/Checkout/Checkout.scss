@@ -72,15 +72,16 @@
           color: #fff;
           font-weight: bold;
           width: 16rem;
+          height: 3rem;
         }
       }
     }
   }
   .btn-confirm-save-data-checkout {
-    margin: 1rem auto 0 auto;
+    margin: 0;
   }
   .btn-cancel-save-data-checkout {
-    margin: 0 auto;
+    margin: 0;
   }
   .mercadopago-button {
     background-color: #000;
@@ -114,4 +115,11 @@
       margin-top: 1.5rem;
     }
   }
+}
+
+.checkout-card-btn-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-content: center;
 }
