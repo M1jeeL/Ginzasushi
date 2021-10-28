@@ -13,7 +13,6 @@ const PedidoInfo = () => {
   const { products } = useSelector((state) => state.products);
   const [pedido, setPedido] = useState({});
   const url = process.env.REACT_APP_PEDIDOS_API;
-
   console.log(products);
   const startRepeatOrder = () => {
     /* let noHayStock = false;
@@ -104,15 +103,18 @@ const PedidoInfo = () => {
               <h1>Productos facturados:</h1>
               {!pedido.items
                 ? ""
-                : pedido.items.map(
-                    (pedido, index) =>
+                : pedido.items.map((pedido, index) => {
+                    const [productSelected] = products.filter(
+                      (item) => Number(item.id) === Number(pedido.id)
+                    );
+                    return (
                       pedido.description !== "Despacho" && (
                         <div key={index} className="pedido-productos-detalle">
                           <div className="pedido-productos-detalle-bodyImage">
                             <div>
                               <img
-                                src="https://picsum.photos/500"
-                                alt="sushi"
+                                src={productSelected.image_src}
+                                alt={pedido.title}
                                 className="pedido-productos-detalle-bodyImage-image"
                               />
                             </div>
@@ -136,7 +138,8 @@ const PedidoInfo = () => {
                           </div>
                         </div>
                       )
-                  )}
+                    );
+                  })}
             </div>
 
             <div className="pedido-infoCliente">
