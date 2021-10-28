@@ -16,6 +16,21 @@ export const pedidosReducer = (state = initialState, action) => {
         pedidos: [...action.payload],
       };
 
+    case types.pedidosUpdated:
+      return {
+        ...state,
+        pedidos: state.pedidos.map((pedido) =>
+          pedido.id === action.payload.id ? action.payload.pedido : pedido
+        ),
+      };
+
+    case types.pedidosActive:
+      return {
+        ...state,
+        active: {
+          ...action.payload,
+        },
+      };
     default:
       return state;
   }

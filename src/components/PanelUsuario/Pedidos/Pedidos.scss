@@ -92,77 +92,72 @@
   }
 }
 
-.barraEstado {
+.pedido-estado {
   counter-reset: step;
-}
-.barraEstado li {
-  list-style-type: none;
-  float: left;
-  width: calc((100% - 30px) / 3);
-  position: relative;
-  text-align: center;
-  color: rgb(90, 90, 90);
-}
-.barraEstado li:before {
-  content: counter(step);
-  counter-increment: step;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  border: 2px solid rgb(139, 139, 139);
-  display: block;
-  text-align: center;
-  margin: 0 auto 10px auto;
-  border-radius: 50%;
-  background-color: rgb(255, 255, 255);
-}
-
-.barraEstado li:after {
-  content: "";
-  position: absolute;
-  background-color: rgb(139, 139, 139);
-  width: 100%;
-  height: 2px;
-  top: 15px;
-  left: -50%;
-  z-index: -1;
-}
-
-.barraEstado li.activado {
-  color: rgb(255, 153, 0);
-}
-
-.barraEstado li.activado:before {
-  border-color: rgb(255, 153, 0);
-}
-
-.barraEstado li:nth-child(1):after {
-  content: none;
-}
-
-.barraEstado li.activado + li:after {
-  background-color: rgb(253, 152, 0);
+  margin-top: 30px;
+  li {
+    list-style-type: none;
+    float: left;
+    width: calc((100%) / 3);
+    position: relative;
+    text-align: center;
+    color: rgb(90, 90, 90);
+  }
+  li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 2px solid rgb(139, 139, 139);
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+  }
+  li:after {
+    content: "";
+    position: absolute;
+    background-color: rgb(139, 139, 139);
+    width: 100%;
+    height: 2px;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+  }
+  li.activado {
+    color: rgb(255, 153, 0);
+  }
+  li.activado:before {
+    border-color: rgb(255, 153, 0);
+  }
+  li:nth-child(1):after {
+    content: none;
+  }
+  li.activado + li:after {
+    background-color: rgb(253, 152, 0);
+  }
 }
 
 /* Producto  */
 
-.boxProductos {
+.pedido-productos {
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
-
   box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(5.5px);
   border-radius: 10px;
   border: 1px solid #00000020;
-  margin: 150px 0px 20px 0px;
+  margin: 150px 0 20px 0;
 }
-.boxProductos h1 {
+.pedido-productos h1 {
   text-align: center;
   font-family: "Roboto Slab", serif;
   background-color: #2cae1500;
+  font-size: 1.8rem;
 }
-.boxProducto {
+.pedido-productos-detalle {
   width: 100%;
   background-color: rgba(185, 5, 5, 0);
   display: flex;
@@ -170,89 +165,73 @@
   align-items: stretch;
   padding: 15px;
   border: 1px solid #00000020;
+
+  h1,
+  h2,
+  h4 {
+    display: inline;
+    margin: 0;
+  }
+
+  h3 {
+    margin: 0;
+    display: inline;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
 }
-.imgProducto {
-  width: 220px;
+.pedido-productos-detalle-bodyImage {
+  display: flex;
+  width: 35%;
+  min-width: 80px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.918);
+  text-align: center;
+  justify-content: center;
 }
-.pedido-info-pic {
+.pedido-productos-detalle-bodyImage-image {
   width: 100%;
+  height: 100%;
+  background-image: url("https://picsum.photos/200");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  padding-left: 10px;
 }
-.infoProducto {
+.pedido-productos-detalle-bodyTitle {
   width: 65%;
   background-color: rgba(255, 255, 255, 0.918);
   padding: 15px;
 }
-.tituloProducto {
+.pedido-productos-detalle-bodyTitle-title {
+  text-align: center;
   h2 {
-    text-align: center;
+    font-size: 1.7rem;
     margin: 5px;
     font-family: "Roboto Slab", serif;
   }
 }
-.descripcion {
+.pedido-productos-detalle-bodyEnvolture-envolture {
   font-size: 1.5rem;
-}
-
-.descripcion h4 {
-  font-size: 40px;
-}
-
-// /* Total: */
-
-.boxTotal {
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  align-content: stretch;
-
-  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(5.5px);
-  border-radius: 10px;
-  margin-top: 20px;
-
-  .boxElemento {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    h1 {
-      margin: 0;
-      display: inline;
-      color: rgb(0, 0, 0);
-    }
-    h2 {
-      display: inline;
-
-      color: rgb(39, 39, 39);
-    }
-    .destacado {
-      color: rgb(255, 185, 34);
-      font-size: 2.5rem;
-    }
-    .destacado2 {
-      color: rgb(0, 0, 0);
-      font-size: 3rem;
-    }
+  h4 {
+    font-size: 1.5rem;
   }
 }
 
+
 // /* Detalles de envio y facturante */
-// .boxDetalles{
-//   display: flex;
-//   align-self: center;
-//   justify-content: center;
-// }
-.boxPrincipal {
+.pedido-infoCliente {
   align-content: center;
   display: flex;
   justify-content: space-evenly;
-  padding: 15px 0px 15px 0px;
+  padding: 5px 0px 5px 0px;
   flex-wrap: wrap;
 }
 
-.boxInferior,
-.boxSuperior {
+.pedido-infoCliente-envio,
+.pedido-infoCliente-facturante {
   background-color: rgb(255, 255, 255);
   padding: 20px;
   width: 45%;
@@ -271,60 +250,111 @@
       font-size: 2.2rem;
       margin: 5px;
       font-family: "Roboto Slab", serif;
+      font-size: 1.8rem;
     }
   }
   h3 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: bold;
   }
   h4 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     padding-bottom: 10px;
+    text-overflow: ellipsis;
+    white-space: initial;
+    overflow-wrap: break-word;
   }
 }
-// h3{
-//   margin: 0px 0px 0px 10px;
-// }
-// h4{
-//   margin: 0px 0px 14px 10px;
-// }
-// .boxSuperior h1 {
-//   text-align: center;
-//   padding: 0px;
-//   font-family: "Roboto Slab", serif;
-// }
-// .boxInferior h1 {
-//   text-align: center;
-//   font-family: "Roboto Slab", serif;
-// }
 
-// .titulo {
-//   height: 110px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   align-content: center;
-// }
+ /* Sección precio total del pedido*/
+
+ .pedido-facturaTotal {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+  
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(5.5px);
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px 0 20px 0;
+  
+    .pedido-facturaTotal-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      h1 {
+        margin: 0;
+        display: inline;
+        color: rgb(0, 0, 0);
+        font-size: 2rem;
+        text-overflow: ellipsis;
+        white-space: initial;
+        overflow-wrap: break-word;
+      }
+      h2 {
+        display: inline;
+        margin: 0;
+        font-size: 2rem;
+        color: rgb(39, 39, 39);
+      }
+      .destacado {
+        color: rgb(255, 185, 34);
+        font-size: 2.2rem;
+      }
+      .destacado2 {
+        color: rgb(0, 0, 0);
+        font-size: 2.8rem;
+        text-overflow: ellipsis;
+        white-space: initial;
+        overflow-wrap: break-word;
+      }
+    }
+  }
+  
+// Seccón de aviso para repetir pedido
+.pedido-repetir {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 20px;
+
+  Button {
+    width: 50%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
 @media (max-width: 767.98px) {
-  .boxSuperior {
+  .pedido-infoCliente-envio {
     width: 100%;
     padding: 8px;
   }
-  .boxInferior {
-    margin-top: 20px;
+  .pedido-infoCliente-facturante {
     width: 100%;
     padding: 8px;
+    margin-bottom: 25px;
   }
 }
 
 @media (max-width: 575.98px) {
-  .boxSuperior {
+  .pedido-infoCliente-envio {
     width: 100%;
     padding: 8px;
   }
-  .boxInferior {
-    margin-top: 20px;
+  .pedido-infoCliente-facturante {
     padding: 8px;
     width: 100%;
+    margin-bottom: 25px;
   }
 }
