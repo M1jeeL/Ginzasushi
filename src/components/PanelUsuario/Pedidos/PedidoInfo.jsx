@@ -13,39 +13,38 @@ const PedidoInfo = () => {
   const { products } = useSelector((state) => state.products);
   const [pedido, setPedido] = useState({});
   const url = process.env.REACT_APP_PEDIDOS_API;
-  console.log(products);
+  let noHayStock = false;
+
   const startRepeatOrder = () => {
-    /* let noHayStock = false;
     pedido.items.forEach((element) => {
-      const [produ] = products.filter((product) => (product.id = element.id));
-      
-      if(produ?.activo === false){
+      // eslint-disable-next-line eqeqeq
+      const [produ] = products.filter((product) => product.id == element.id);
+      if (produ?.activo === false) {
         noHayStock = true;
       }
-      console.log(noHayStock);
     });
-      if (noHayStock === true) {
-        Swal.fire({
-          title:
-            "Lamentablemente uno de los productos no se encuentra disponible",
-          text: "Vuelve a realizar un nuevo pedido",
-          icon: "error",
-        });
-      } else { */
-    Swal.fire({
-      title: "¿Seguro que deseas realizar nuevamente éste pedido?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Confirmar",
-      cancelButtonText: "Cancelar",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire("Confirmado");
-      }
-    });
-    //}
+    if (noHayStock === true) {
+      Swal.fire({
+        title:
+          "Lamentablemente uno de los productos no se encuentra disponible",
+        text: "Vuelve a realizar un nuevo pedido",
+        icon: "error",
+      });
+    } else {
+      Swal.fire({
+        title: "¿Seguro que deseas realizar nuevamente éste pedido?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirmar",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Confirmado");
+        }
+      });
+    }
   };
 
   useEffect(() => {
@@ -77,25 +76,31 @@ const PedidoInfo = () => {
               {pedido.estado === "Pendiente" && (
                 <>
                   <li className="activado">Pendiente</li>
-                  <li className="">En camino</li>
-                  <li className="">Recibido</li>
+                  <li className="">Aceptado</li>
+                  <li className="">Completado</li>
                 </>
               )}
 
-              {pedido.estado === "En camino" && (
+              {pedido.estado === "Aceptado" && (
                 <>
                   <li className="activado">Pendiente</li>
-                  <li className="activado">En camino</li>
-                  <li className="">Recibido</li>
+                  <li className="activado">Aceptado</li>
+                  <li className="">Completado</li>
                 </>
               )}
 
-              {pedido.estado === "Recibida" && (
+              {pedido.estado === "Completado" && (
                 <>
                   <li className="activado">Pendiente</li>
-                  <li className="activado">En camino</li>
-                  <li className="Activado">Recibido</li>
+                  <li className="activado">Aceptado</li>
+                  <li className="activado">Completado</li>
                 </>
+              )}
+
+              {pedido.estado === "Rechazado" && (
+                <div className="avisoRechazado">
+                  <h1>Pedido Rechazado</h1>
+                </div>
               )}
             </ul>
 
