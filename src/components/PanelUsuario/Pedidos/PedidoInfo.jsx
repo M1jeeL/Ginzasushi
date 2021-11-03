@@ -13,39 +13,38 @@ const PedidoInfo = () => {
   const { products } = useSelector((state) => state.products);
   const [pedido, setPedido] = useState({});
   const url = process.env.REACT_APP_PEDIDOS_API;
-  console.log(products);
+  let noHayStock = false;
+
   const startRepeatOrder = () => {
-    /* let noHayStock = false;
     pedido.items.forEach((element) => {
-      const [produ] = products.filter((product) => (product.id = element.id));
-      
-      if(produ?.activo === false){
+      // eslint-disable-next-line eqeqeq
+      const [produ] = products.filter((product) => product.id == element.id);
+      if (produ?.activo === false) {
         noHayStock = true;
       }
-      console.log(noHayStock);
     });
-      if (noHayStock === true) {
-        Swal.fire({
-          title:
-            "Lamentablemente uno de los productos no se encuentra disponible",
-          text: "Vuelve a realizar un nuevo pedido",
-          icon: "error",
-        });
-      } else { */
-    Swal.fire({
-      title: "¿Seguro que deseas realizar nuevamente éste pedido?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Confirmar",
-      cancelButtonText: "Cancelar",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire("Confirmado");
-      }
-    });
-    //}
+    if (noHayStock === true) {
+      Swal.fire({
+        title:
+          "Lamentablemente uno de los productos no se encuentra disponible",
+        text: "Vuelve a realizar un nuevo pedido",
+        icon: "error",
+      });
+    } else {
+      Swal.fire({
+        title: "¿Seguro que deseas realizar nuevamente éste pedido?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirmar",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Confirmado");
+        }
+      });
+    }
   };
 
   useEffect(() => {
@@ -99,11 +98,9 @@ const PedidoInfo = () => {
               )}
 
               {pedido.estado === "Rechazado" && (
-                
-                    <div className="avisoRechazado">
-                        <h1>Pedido Rechazado</h1>
-                    </div>
-                
+                <div className="avisoRechazado">
+                  <h1>Pedido Rechazado</h1>
+                </div>
               )}
             </ul>
 
