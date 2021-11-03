@@ -77,25 +77,33 @@ const PedidoInfo = () => {
               {pedido.estado === "Pendiente" && (
                 <>
                   <li className="activado">Pendiente</li>
-                  <li className="">En camino</li>
-                  <li className="">Recibido</li>
+                  <li className="">Aceptado</li>
+                  <li className="">Completado</li>
                 </>
               )}
 
-              {pedido.estado === "En camino" && (
+              {pedido.estado === "Aceptado" && (
                 <>
                   <li className="activado">Pendiente</li>
-                  <li className="activado">En camino</li>
-                  <li className="">Recibido</li>
+                  <li className="activado">Aceptado</li>
+                  <li className="">Completado</li>
                 </>
               )}
 
-              {pedido.estado === "Recibida" && (
+              {pedido.estado === "Completado" && (
                 <>
                   <li className="activado">Pendiente</li>
-                  <li className="activado">En camino</li>
-                  <li className="Activado">Recibido</li>
+                  <li className="activado">Aceptado</li>
+                  <li className="activado">Completado</li>
                 </>
+              )}
+
+              {pedido.estado === "Rechazado" && (
+                
+                    <div className="avisoRechazado">
+                        <h1>Pedido Rechazado</h1>
+                    </div>
+                
               )}
             </ul>
 
