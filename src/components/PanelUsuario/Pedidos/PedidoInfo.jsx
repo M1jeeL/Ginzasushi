@@ -5,47 +5,15 @@ import { useParams } from "react-router-dom";
 import { Button } from "reactstrap";
 import moment from "moment";
 import Loader from "../../Loader/Loader";
-import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
+import { startRepeatOrder } from "../../../actions/pedidos";
+import { useDispatch, useSelector } from "react-redux";
 
 const PedidoInfo = () => {
   const { uuid } = useParams();
   const { products } = useSelector((state) => state.products);
   const [pedido, setPedido] = useState({});
+  const dispatch = useDispatch();
   const url = process.env.REACT_APP_PEDIDOS_API;
-  let noHayStock = false;
-
-  const startRepeatOrder = () => {
-    pedido.items.forEach((element) => {
-      // eslint-disable-next-line eqeqeq
-      const [produ] = products.filter((product) => product.id == element.id);
-      if (produ?.activo === false) {
-        noHayStock = true;
-      }
-    });
-    if (noHayStock === true) {
-      Swal.fire({
-        title:
-          "Lamentablemente uno de los productos no se encuentra disponible",
-        text: "Vuelve a realizar un nuevo pedido",
-        icon: "error",
-      });
-    } else {
-      Swal.fire({
-        title: "¿Seguro que deseas realizar nuevamente éste pedido?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Confirmar",
-        cancelButtonText: "Cancelar",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire("Confirmado");
-        }
-      });
-    }
-  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -195,7 +163,7 @@ const PedidoInfo = () => {
               <Button
                 color="warning"
                 outline
-                onClick={() => startRepeatOrder()}
+                onClick={() => dispatch(startRepeatOrder(pedido))}
               >
                 Repetir Pedido
               </Button>
