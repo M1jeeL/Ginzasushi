@@ -5,15 +5,22 @@ import { useParams } from "react-router-dom";
 import { Button } from "reactstrap";
 import moment from "moment";
 import Loader from "../../Loader/Loader";
-import { startRepeatOrder } from "../../../actions/pedidos";
+import {
+  startActivePedido,
+  startRepeatOrder,
+} from "../../../actions/pedidosUser";
 import { useDispatch, useSelector } from "react-redux";
+import { formatearNumero } from "../../../helpers/formatearNumero";
+const url = process.env.REACT_APP_PEDIDOS_API;
 
 const PedidoInfo = () => {
   const { uuid } = useParams();
   const { products } = useSelector((state) => state.products);
   const [pedido, setPedido] = useState({});
   const dispatch = useDispatch();
-  const url = process.env.REACT_APP_PEDIDOS_API;
+  const { subTotal, despacho, total } = useSelector(
+    (state) => state.pedidosUser
+  );
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -26,12 +33,10 @@ const PedidoInfo = () => {
     })
       .then((response) => response.json())
       .then((pedido) => {
+        dispatch(startActivePedido(pedido));
         setPedido(pedido);
       });
-  }, [url, uuid]);
-
-  //   const [subTotal, setSubTotal] = useState(0);
-  // console.log(pedido);
+  }, [dispatch, uuid]);
 
   return (
     <>
@@ -40,37 +45,39 @@ const PedidoInfo = () => {
         <PanelUsuario />
         {Object.entries(pedido).length > 0 ? (
           <div className="table-container-pedidos">
-            <ul className="pedido-estado">
-              {pedido.estado === "Pendiente" && (
-                <>
-                  <li className="activado">Pendiente</li>
-                  <li className="">Aceptado</li>
-                  <li className="">Completado</li>
-                </>
-              )}
+            {pedido.estado === "Pendiente" && (
+              <>
+                <ul className="pedido-estado">
+                  <li className="pedido-estado-item activado">Pendiente</li>
+                  <li className="pedido-estado-item ">Aceptado</li>
+                  <li className="pedido-estado-item ">Completado</li>
+                </ul>
+              </>
+            )}
 
-              {pedido.estado === "Aceptado" && (
-                <>
-                  <li className="activado">Pendiente</li>
-                  <li className="activado">Aceptado</li>
-                  <li className="">Completado</li>
-                </>
-              )}
+            {pedido.estado === "Aceptado" && (
+              <>
+                <ul className="pedido-estado">
+                  <li className="pedido-estado-item activado">Pendiente</li>
+                  <li className="pedido-estado-item activado">Aceptado</li>
+                  <li className="pedido-estado-item ">Completado</li>
+                </ul>
+              </>
+            )}
 
-              {pedido.estado === "Completado" && (
-                <>
-                  <li className="activado">Pendiente</li>
-                  <li className="activado">Aceptado</li>
-                  <li className="activado">Completado</li>
-                </>
-              )}
+            {pedido.estado === "Completado" && (
+              <>
+                <ul className="pedido-estado">
+                  <li className="pedido-estado-item activado">Pendiente</li>
+                  <li className="pedido-estado-item activado">Aceptado</li>
+                  <li className="pedido-estado-item activado">Completado</li>
+                </ul>
+              </>
+            )}
 
-              {pedido.estado === "Rechazado" && (
-                <div className="avisoRechazado">
-                  <h1>Pedido Rechazado</h1>
-                </div>
-              )}
-            </ul>
+            {pedido.estado === "Rechazado" && (
+              <div className="avisoRechazado">Pedido Rechazado</div>
+            )}
 
             <div className="pedido-productos">
               <h1>Productos facturados:</h1>
@@ -106,7 +113,7 @@ const PedidoInfo = () => {
                             </div>
                             <div className="precio">
                               <h3>Precio: </h3>
-                              <h4>${pedido.unit_price}</h4>
+                              <h4>${formatearNumero(pedido.unit_price)}</h4>
                             </div>
                           </div>
                         </div>
@@ -142,19 +149,19 @@ const PedidoInfo = () => {
                 <h3>Dirección: </h3>
                 <h4>{`${pedido.payer.shipments.receiver_address.street_name} ${pedido.payer.shipments.receiver_address.street_number}`}</h4>
                 <h3>Precio:</h3>
-                <h4>$2.500</h4>
+                <h4>${formatearNumero(despacho)}</h4>
               </div>
             </div>
 
             <div className="pedido-facturaTotal">
               <div className="pedido-facturaTotal-item">
                 <h2>SubTotal: </h2>
-                <h1>$ 20.000</h1>
+                <h1>$ {formatearNumero(subTotal)}</h1>
               </div>
 
               <div className="pedido-facturaTotal-item">
                 <h2 className="destacado">Total: </h2>
-                <h1 className="destacado2">$ 22.000</h1>
+                <h1 className="destacado2">$ {formatearNumero(total)}</h1>
               </div>
             </div>
 
@@ -162,7 +169,6 @@ const PedidoInfo = () => {
               <h1>¿Te gustaría solicitar nuevamente éste pedido?</h1>
               <Button
                 color="warning"
-                outline
                 onClick={() => dispatch(startRepeatOrder(pedido))}
               >
                 Repetir Pedido

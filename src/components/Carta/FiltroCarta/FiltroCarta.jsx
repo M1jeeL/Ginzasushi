@@ -6,7 +6,12 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-const FiltroCarta = ({ categories, setCategorySelected, setNombreHead }) => {
+const FiltroCarta = ({
+  categories,
+  setCategorySelected,
+  setNombreHead,
+  mostrarTodo,
+}) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
@@ -22,7 +27,7 @@ const FiltroCarta = ({ categories, setCategorySelected, setNombreHead }) => {
         <DropdownMenu container="body">
           <DropdownItem
             onClick={() => {
-              setCategorySelected(null);
+              mostrarTodo();
               setNombreHead("Nuestra Carta");
             }}
           >

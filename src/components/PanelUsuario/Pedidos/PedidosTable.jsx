@@ -3,6 +3,8 @@ import { Table, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+import { startActivePedido } from "../../../actions/pedidosUser";
 
 const PedidosTable = ({
   pedidos,
@@ -17,6 +19,7 @@ const PedidosTable = ({
   setMaxPageNumberLimit,
   setMinPageNumberLimit,
 }) => {
+  const dispatch = useDispatch();
   const pageCount = pedidos ? Math.ceil(pedidos.length / pageSize) : 0;
 
   const pages = _.range(1, pageCount + 1);
@@ -104,7 +107,13 @@ const PedidosTable = ({
                 <td data-label="Descripción">{pedido.notas}</td>
                 <td data-label="Ver más información">
                   <Link to={`/pedidos/${pedido.uuid}`}>
-                    <Button style={btnNonStyle} className="ver-info-pedido">
+                    <Button
+                      style={btnNonStyle}
+                      className="ver-info-pedido"
+                      onClick={() => {
+                        dispatch(startActivePedido(pedido.id));
+                      }}
+                    >
                       <i className="fas fa-eye"></i>
                     </Button>
                   </Link>

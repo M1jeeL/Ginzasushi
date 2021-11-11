@@ -34,6 +34,7 @@ import { DashboardPedidos } from "../components/DashboardPedidos/DashboardPedido
 import { DashboardEstadistica } from "../components/DashboardEstadistica/DashboardEstadistica";
 import { DashboardPersonal } from "../components/DashboardPersonal/DashboardPersonal";
 import { startLoadingPedidos } from "../actions/pedidos";
+import { startLoadingPedidosUser } from "../actions/pedidosUser";
 
 const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
 
@@ -62,7 +63,13 @@ export const AppRouter = () => {
       .then((data) => {
         setChecking(false);
         dispatch(login(data));
-        dispatch(startLoadingPedidos());
+
+        if (data.isAdmin) {
+          dispatch(startLoadingPedidos());
+          dispatch(startLoadingPedidosUser());
+        } else {
+          dispatch(startLoadingPedidosUser());
+        }
       })
       .catch((err) => {
         setChecking(false);

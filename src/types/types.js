@@ -28,6 +28,15 @@ export const types = {
   pedidosLoad: "[Pedidos] Load Pedidos",
   pedidosUpdated: "[Pedidos] Updated Pedido",
   pedidosActive: "[Pedidos] Set active pedido",
+  pedidosSetSubTotalDespacho: "[Pedidos] Set subTotal delivery",
+  pedidosSetSubTotalProducts: "[Pedidos] Set subTotal products",
+  pedidosSetTotalPedido: "[Pedidos] Set total price",
+
+  pedidosUserLoad: "[PedidosUser] Load Pedidos",
+  pedidosUserActive: "[PedidosUser] Set active pedido",
+  pedidosUserSetSubTotalDespacho: "[PedidosUser] Set subTotal delivery",
+  pedidosUserSetSubTotalProducts: "[PedidosUser] Set subTotal products",
+  pedidosUserSetTotalPedido: "[PedidosUser] Set total price",
 
   uiSetError: "[UI] setError",
   uiRemoveError: "[UI] removeError",

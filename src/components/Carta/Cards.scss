@@ -1,4 +1,8 @@
-.filter-container{
-    display: flex;
-    margin: 1rem 0;
+.filter-container {
+  display: flex;
+  margin: 1rem 0;
+}
+
+.container-carta {
+  min-height: calc(100vh - 12vh - 140px - 8rem);
 }

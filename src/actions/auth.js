@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import { types } from "../types/types";
 import { startLoadingPedidos } from "./pedidos";
+import { startLoadingPedidosUser } from "./pedidosUser";
 import { finishLoading, startLoading } from "./ui";
 
 const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
@@ -19,8 +20,11 @@ export const startLogin = (token) => {
       .then((data) => {
         dispatch(login(data));
         dispatch(finishLoading());
-        if(data.isAdmin){
-            dispatch(startLoadingPedidos())
+        if (data.isAdmin) {
+          dispatch(startLoadingPedidos());
+          dispatch(startLoadingPedidosUser());
+        } else {
+          dispatch(startLoadingPedidosUser());
         }
       })
       .catch((err) => {

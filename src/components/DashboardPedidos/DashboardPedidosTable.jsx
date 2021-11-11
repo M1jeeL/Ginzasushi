@@ -3,7 +3,7 @@ import { Input, Table } from "reactstrap";
 import _ from "lodash";
 import { DashboardPedidosModal } from "./DashboardPedidosModal";
 import { useDispatch } from "react-redux";
-import { activePedido } from "../../actions/pedidos";
+import { startActivePedido } from "../../actions/pedidos";
 import moment from "moment";
 
 const DashboardPedidosTable = ({
@@ -77,9 +77,9 @@ const DashboardPedidosTable = ({
               <tr
                 key={pedido.id}
                 className="dashboard-pedidos-table-row"
-                onClick={(e) => {
-                  dispatch(activePedido(pedido.id, pedido));
+                onClick={() => {
                   setCheckedInputRadio(pedido.id);
+                  dispatch(startActivePedido(pedido.id));
                 }}
               >
                 <td data-label="N">

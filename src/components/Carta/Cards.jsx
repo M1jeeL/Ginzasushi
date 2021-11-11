@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,14 +13,21 @@ export default function Cards({ setNombreHead }) {
   const [categorySelected, setCategorySelected] = useState("");
   const [showProducts, setShowProducts] = useState(products);
 
-  useEffect(() => {
-    setShowProducts(products);
+  const mostrarTodo = useCallback(() => {
+    setShowProducts(products.filter((item) => item.activo === true));
   }, [products]);
+
+  useEffect(() => {
+    mostrarTodo();
+  }, [products, mostrarTodo]);
 
   useEffect(() => {
     if (categorySelected !== "") {
       setShowProducts(
-        products.filter((product) => product.categoria === categorySelected)
+        products.filter(
+          (product) =>
+            product.categoria === categorySelected && product.activo === true
+        )
       );
     }
     if (categorySelected === null) {
@@ -36,6 +43,7 @@ export default function Cards({ setNombreHead }) {
             categories={categories}
             setCategorySelected={setCategorySelected}
             setNombreHead={setNombreHead}
+            mostrarTodo={mostrarTodo}
           />
         </div>
         <Row>

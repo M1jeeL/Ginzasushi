@@ -5,7 +5,7 @@ import "./DashboardPedidosModal.scss";
 import moment from "moment";
 
 export const DashboardPedidosModal = ({ openPedidoModal, openModalPedido }) => {
-  const { active } = useSelector((state) => state.pedidos);
+  const { active } = useSelector((state) => state.pedidosAdmin);
   return (
     <Modal isOpen={openPedidoModal} toggle={openModalPedido}>
       <ModalHeader>

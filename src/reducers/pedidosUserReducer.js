@@ -8,23 +8,15 @@ const initialState = {
   total: 0,
 };
 
-export const pedidosReducer = (state = initialState, action) => {
+export const pedidosUserReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.pedidosLoad:
+    case types.pedidosUserLoad:
       return {
         ...state,
         pedidos: [...action.payload],
       };
 
-    case types.pedidosUpdated:
-      return {
-        ...state,
-        pedidos: state.pedidos.map((pedido) =>
-          pedido.id === action.payload.id ? action.payload.pedido : pedido
-        ),
-      };
-
-    case types.pedidosActive:
+    case types.pedidosUserActive:
       return {
         ...state,
         active: {
@@ -32,21 +24,24 @@ export const pedidosReducer = (state = initialState, action) => {
         },
       };
 
-    case types.setSubTotalDespacho:
+    case types.pedidosUserSetSubTotalDespacho:
       return {
         ...state,
         despacho: action.payload,
       };
-    case types.setSubTotalProducts:
+
+    case types.pedidosUserSetSubTotalProducts:
       return {
         ...state,
         subTotal: action.payload,
       };
-    case types.setTotalPedido:
+
+    case types.pedidosUserSetTotalPedido:
       return {
         ...state,
         total: action.payload,
       };
+
     default:
       return state;
   }
