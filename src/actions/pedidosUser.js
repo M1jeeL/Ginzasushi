@@ -1,3 +1,4 @@
+import { clamp } from "lodash";
 import Swal from "sweetalert2";
 import { loadPedidosUser } from "../helpers/loadPedidosUser";
 import { types } from "../types/types";
@@ -67,7 +68,7 @@ export const startRepeatOrder = (pedido) => {
     let noHayStock = false;
     const { products } = getState().products;
     const titleProduct = []; //Almacena los nombres de los productos no disponibles
-    const mensaje = ""
+    var mensaje = "";
 
     pedido.items.forEach((element) => {
       // eslint-disable-next-line eqeqeq
@@ -79,12 +80,21 @@ export const startRepeatOrder = (pedido) => {
       }
     });
 
-    
+    if (titleProduct.length === 2) {
+      mensaje = "Los siguientes productos no se encuentran disponibles: " + titleProduct.join(" y ");
+      console.log(mensaje);
+    }
+    else if(titleProduct.length === 1){
+        mensaje = "El siguiente producto no se encuentra disponible: " + titleProduct.join("");
+    }
+    else{
+        mensaje = "Los siguientes productos no se encuentran disponibles: " + titleProduct.join(", ");
+    }
+
     if (noHayStock === true) {
       Swal.fire({
-        title:
-          "Lamentablemente ahora no podrás repetir éste pedido",
-        text: "Los siguientes productos no se encuentran disponibles: " + titleProduct.join(', '),
+        title: "Lamentablemente ahora no podrás repetir éste pedido",
+        text: mensaje,
         icon: "error",
       });
     } else {
