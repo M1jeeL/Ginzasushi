@@ -111,7 +111,7 @@ const PedidosTable = ({
                       style={btnNonStyle}
                       className="ver-info-pedido"
                       onClick={() => {
-                        dispatch(startActivePedido(pedido.id));
+                        dispatch(startActivePedido(pedido));
                       }}
                     >
                       <i className="fas fa-eye"></i>

@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: row wrap;
   padding: 2rem 0;
+  min-height: calc(100vh - 12vh - 140px - 8rem);
   .left-side-checkout {
     max-width: 66.6%;
     flex: 1 1;

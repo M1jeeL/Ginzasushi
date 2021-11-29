@@ -28,7 +28,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-firma">
-        <p>© Ginzasushi delivery - Desarrollado por Miguel Loza</p>
+        <p>© Ginzasushi Delivery - Desarrollado por Miguel Loza</p>
       </div>
     </footer>
   );

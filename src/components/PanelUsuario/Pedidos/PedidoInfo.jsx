@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import PanelUsuario from "../PanelUsuario";
-import Imgcab from "../../Imagen cabecera/Imgcab";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Button } from "reactstrap";
-import moment from "moment";
-import Loader from "../../Loader/Loader";
 import {
   startActivePedido,
   startRepeatOrder,
 } from "../../../actions/pedidosUser";
-import { useDispatch, useSelector } from "react-redux";
 import { formatearNumero } from "../../../helpers/formatearNumero";
+import moment from "moment";
+import Loader from "../../Loader/Loader";
+import PanelUsuario from "../PanelUsuario";
+import Imgcab from "../../Imagen cabecera/Imgcab";
 const url = process.env.REACT_APP_PEDIDOS_API;
 
 const PedidoInfo = () => {
@@ -33,10 +33,10 @@ const PedidoInfo = () => {
     })
       .then((response) => response.json())
       .then((pedido) => {
-        dispatch(startActivePedido(pedido));
         setPedido(pedido);
+        dispatch(startActivePedido(pedido));
       });
-  }, [dispatch, uuid]);
+  }, [dispatch, uuid, pedido]);
 
   return (
     <>

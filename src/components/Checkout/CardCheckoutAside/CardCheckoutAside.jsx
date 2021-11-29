@@ -1,7 +1,6 @@
 // import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import { formatearNumero } from "../../../helpers/formatearNumero";
 import ItemRowDetalle from "./ItemRowDetalle";
@@ -159,7 +158,6 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
           </div>
         </div>
         <div className="btn-pagar-pedido" id="btn-checkout">
-          <Link to="/checkout">
             <Button
               className="btn-confirmar-pedido"
               disabled={vacio}
@@ -169,7 +167,6 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
             >
               Confirmar mi pedido
             </Button>
-          </Link>
         </div>
       </div>
     </div>
