@@ -66,19 +66,25 @@ export const startRepeatOrder = (pedido) => {
   return (dispatch, getState) => {
     let noHayStock = false;
     const { products } = getState().products;
+    const titleProduct = []; //Almacena los nombres de los productos no disponibles
+    const mensaje = ""
+
     pedido.items.forEach((element) => {
       // eslint-disable-next-line eqeqeq
       const [produ] = products.filter((product) => product.id == element.id);
 
       if (produ?.activo === false) {
         noHayStock = true;
+        titleProduct.push(element.title);
       }
     });
+
+    
     if (noHayStock === true) {
       Swal.fire({
         title:
-          "Lamentablemente uno de los productos no se encuentra disponible",
-        text: "Vuelve a realizar un nuevo pedido",
+          "Lamentablemente ahora no podrás repetir éste pedido",
+        text: "Los siguientes productos no se encuentran disponibles: " + titleProduct.join(', '),
         icon: "error",
       });
     } else {
