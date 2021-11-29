@@ -81,17 +81,23 @@ export const startRepeatOrder = (pedido) => {
     });
 
     if (titleProduct.length === 2) {
-      mensaje = "Los siguientes productos no se encuentran disponibles: " + titleProduct.join(" y ");
+      mensaje =
+        "Los siguientes productos no se encuentran disponibles: " +
+        titleProduct.join(" y ");
       console.log(mensaje);
-    }
-    else if(titleProduct.length === 1){
-        mensaje = "El siguiente producto no se encuentra disponible: " + titleProduct.join("");
-    }
-    else{
-        for(let i = 0; i < (titleProduct.length)-1; i++){
-            mensaje = mensaje + titleProduct[i] + ", ";
-        }
-        mensaje = "Los siguientes productos no se encuentran disponibles: "+ mensaje.substring(0 , mensaje.length - 2) + " y " + titleProduct[(titleProduct.length - 1)];
+    } else if (titleProduct.length === 1) {
+      mensaje =
+        "El siguiente producto no se encuentra disponible: " +
+        titleProduct.join("");
+    } else {
+      for (let i = 0; i < titleProduct.length - 1; i++) {
+        mensaje = mensaje + titleProduct[i] + ", ";
+      }
+      mensaje =
+        "Los siguientes productos no se encuentran disponibles: " +
+        mensaje.substring(0, mensaje.length - 2) +
+        " y " +
+        titleProduct[titleProduct.length - 1];
     }
 
     if (noHayStock === true) {
@@ -99,6 +105,16 @@ export const startRepeatOrder = (pedido) => {
         title: "Lamentablemente ahora no podrás repetir éste pedido",
         text: mensaje,
         icon: "error",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Seguir comprando",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          var URLactual = window.location.host;
+          window.location = "http://"+URLactual+"/carta";
+        }
       });
     } else {
       Swal.fire({
