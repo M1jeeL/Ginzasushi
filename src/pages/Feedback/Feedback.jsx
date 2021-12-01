@@ -11,7 +11,7 @@ const Feedback = () => {
   const status = new URLSearchParams(search).get("status");
   const external_reference = new URLSearchParams(search).get(
     "external_reference"
-  ); 
+  );
   const merchant_order_id = new URLSearchParams(search).get(
     "merchant_order_id"
   );
@@ -20,8 +20,6 @@ const Feedback = () => {
   console.log(status);
   console.log(external_reference);
   console.log(merchant_order_id);
-
-  
 
   if (status === "approved") {
     return (
@@ -34,14 +32,14 @@ const Feedback = () => {
     return (
       <>
         <Imgcab nombrehead="Error" />
-        <Rejected />
+        <Rejected status={status} />
       </>
     );
   } else {
     return (
       <>
         <Imgcab nombrehead="Error" />
-        <Rejected />
+        <Rejected status={status} />
       </>
     );
   }

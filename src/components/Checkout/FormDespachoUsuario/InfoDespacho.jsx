@@ -18,7 +18,7 @@ const InfoDespacho = ({ formDespachoCliente, isLogged, user }) => {
         {isLogged ? (
           <div className="data-row-checkout">
             Direcci&oacute;n: {user.calle} {user.numeracion}, {user.comuna}
-            {user.depto.trim() === "" ? "" : `, ${depto}`}
+            {user.depto.trim() === "" ? "" : `, ${user.depto}`}
           </div>
         ) : (
           <div className="data-row-checkout">

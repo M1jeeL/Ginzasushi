@@ -1,6 +1,5 @@
 #form-login {
-  margin-top: 6.92rem;
-  margin-bottom: 6.92rem;
+ 
 }
 
 .login-form-container {
@@ -10,6 +9,8 @@
   margin: auto;
   flex-flow: column wrap;
   align-items: center;
+  margin: 4rem 0;
+  min-height: calc(100vh - 12vh - 140px - 17rem);
   Button {
     margin: 0.5em 0;
     width: 10em;
