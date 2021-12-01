@@ -5,6 +5,7 @@ export const DashboardPersonal = () => {
   return (
     <div>
       <DashboardNavbar />
+      <h1>xd</h1>
     </div>
   );
 };
