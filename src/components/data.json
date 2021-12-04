@@ -514,6 +514,33 @@
         }
       }
     ],
+    "empleados":[
+      {
+        "id":"1",
+        "nombre":"basti rojas",
+        "cargo":"cocinero",
+        "usuario":"basti",
+        "celular":"123",
+        "mail":"basti@gmail.com"
+      },
+      {
+        "id":"2",
+        "nombre":"miguel loza",
+        "cargo":"masterchef",
+        "usuario":"miguel",
+        "celular":"1234",
+        "mail":"miguel@gmail.com"
+      },
+      {
+        "id":"3",
+        "nombre":"matias coloma",
+        "cargo":"recepcion",
+        "usuario":"matias",
+        "celular":"12345",
+        "mail":"matias@gmail.com"
+      }
+    ],
+
     "pedidos":[
         {
             "N": "1",

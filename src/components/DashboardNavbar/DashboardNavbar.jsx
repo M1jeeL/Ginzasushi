@@ -47,7 +47,7 @@ export const DashboardNavbar = () => {
         </li>
         <li>
           <NavLink
-            to="/dashboard/personal"
+            to="/dashboard/empleados"
             className="dashboard-navbar-navlink-item"
           >
             <i className="fas fa-users fa-2x"></i>
