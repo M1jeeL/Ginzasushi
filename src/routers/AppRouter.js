@@ -32,7 +32,7 @@ import Loader from "../components/Crud/Loader";
 import { DashboardProducts } from "../components/DashboardProducts/DashboardProducts";
 import { DashboardPedidos } from "../components/DashboardPedidos/DashboardPedidos";
 import { DashboardEstadistica } from "../components/DashboardEstadistica/DashboardEstadistica";
-import { DashboardPersonal } from "../components/DashboardPersonal/DashboardPersonal";
+import { DashboardEmpleados } from "../components/DashboardEmpleados/DashboardEmpleados";
 import { startLoadingPedidos } from "../actions/pedidos";
 import { startLoadingPedidosUser } from "../actions/pedidosUser";
 
@@ -164,8 +164,8 @@ export const AppRouter = () => {
           />
           <PrivateRoute
             exact
-            path="/dashboard/personal"
-            component={DashboardPersonal}
+            path="/dashboard/empleados"
+            component={DashboardEmpleados}
             hideSidebar={hideSidebar}
             handleShowSidebar={handleShowSidebar}
             isAuthenticated={logged}
