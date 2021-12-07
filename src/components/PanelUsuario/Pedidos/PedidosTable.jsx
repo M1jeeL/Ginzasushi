@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import _ from "lodash";
 import moment from "moment";
 import { useDispatch } from "react-redux";
-import { startActivePedido } from "../../../actions/pedidosUser";
+import { activePedido } from "../../../actions/pedidosUser";
 
 const PedidosTable = ({
   pedidos,
@@ -66,18 +66,16 @@ const PedidosTable = ({
           <tr>
             <th>Fecha de ingreso</th>
             <th>Estado</th>
-            <th>Descripcion</th>
+            <th>Total</th>
             <th>Ver pedido</th>
           </tr>
         </thead>
         <tbody>
           {paginatedPedidos.length > 0 ? (
             paginatedPedidos.map((pedido) => (
-              <tr key={pedido.id}>
+              <tr key={pedido._id}>
                 <td data-label="Fecha Ingresada">
-                  {moment(pedido.fechaIngresada)
-                    .subtract(3, "hours")
-                    .format("LLL")}
+                  {moment(pedido.createdAt).format("LLL")}
                 </td>
                 {pedido.estado === "Pendiente" && (
                   <td data-label="Estado" className="en-camino">
@@ -104,14 +102,14 @@ const PedidosTable = ({
                     {pedido.estado}
                   </td>
                 )}
-                <td data-label="Descripción">{pedido.notas}</td>
+                <td data-label="total">$ {pedido.precio_total}</td>
                 <td data-label="Ver más información">
                   <Link to={`/pedidos/${pedido.uuid}`}>
                     <Button
                       style={btnNonStyle}
                       className="ver-info-pedido"
                       onClick={() => {
-                        dispatch(startActivePedido(pedido));
+                        dispatch(activePedido(pedido));
                       }}
                     >
                       <i className="fas fa-eye"></i>

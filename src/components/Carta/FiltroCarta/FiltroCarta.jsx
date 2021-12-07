@@ -37,7 +37,7 @@ const FiltroCarta = ({
             <DropdownItem
               key={cat.id}
               onClick={() => {
-                setCategorySelected(cat.id);
+                setCategorySelected(cat._id);
                 setNombreHead(cat.nombre);
               }}
             >

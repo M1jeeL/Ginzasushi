@@ -2,29 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Button } from "reactstrap";
-import {
-  startActivePedido,
-  startRepeatOrder,
-} from "../../../actions/pedidosUser";
+import { activePedido, startRepeatOrder } from "../../../actions/pedidosUser";
 import { formatearNumero } from "../../../helpers/formatearNumero";
 import moment from "moment";
 import Loader from "../../Loader/Loader";
 import PanelUsuario from "../PanelUsuario";
 import Imgcab from "../../Imagen cabecera/Imgcab";
-const url = process.env.REACT_APP_PEDIDOS_API;
+const url = process.env.REACT_APP_API;
 
 const PedidoInfo = () => {
   const { uuid } = useParams();
   const { products } = useSelector((state) => state.products);
   const [pedido, setPedido] = useState({});
   const dispatch = useDispatch();
-  const { subTotal, despacho, total } = useSelector(
-    (state) => state.pedidosUser
-  );
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch(`${url}/pedidos/${uuid}`, {
+    fetch(`${url}/orders/${uuid}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -34,9 +28,9 @@ const PedidoInfo = () => {
       .then((response) => response.json())
       .then((pedido) => {
         setPedido(pedido);
-        dispatch(startActivePedido(pedido));
+        dispatch(activePedido(pedido));
       });
-  }, [dispatch, uuid, pedido]);
+  }, [dispatch, uuid]);
 
   return (
     <>
@@ -83,37 +77,41 @@ const PedidoInfo = () => {
               <h1>Productos facturados:</h1>
               {!pedido.items
                 ? ""
-                : pedido.items.map((pedido, index) => {
+                : pedido.items.map((productInPedido, index) => {
                     const [productSelected] = products.filter(
-                      (item) => Number(item.id) === Number(pedido.id)
+                      (item) => item._id === productInPedido.id
                     );
                     return (
-                      pedido.description !== "Despacho" && (
+                      productInPedido.description !== "Despacho" && (
                         <div key={index} className="pedido-productos-detalle">
                           <div className="pedido-productos-detalle-bodyImage">
                             <div>
                               <img
                                 src={productSelected.image_src}
-                                alt={pedido.title}
+                                alt={productInPedido.title}
                                 className="pedido-productos-detalle-bodyImage-image"
                               />
                             </div>
                           </div>
                           <div className="pedido-productos-detalle-bodyTitle">
                             <div className="pedido-productos-detalle-bodyTitle-title">
-                              <h2>{pedido.title}</h2>
+                              <h2>{productInPedido.title}</h2>
                             </div>
                             <div className="pedido-productos-detalle-bodyEnvolture-envolture">
                               <h3>Envoltura: </h3>
-                              <h4>{pedido.envoltura}</h4>
+                              <h4>{productInPedido.envoltura}</h4>
                             </div>
                             <div>
                               <h3>Unidades: </h3>
-                              <h4 className="unidades">{pedido.quantity}</h4>
+                              <h4 className="unidades">
+                                {productInPedido.quantity}
+                              </h4>
                             </div>
                             <div className="precio">
                               <h3>Precio: </h3>
-                              <h4>${formatearNumero(pedido.unit_price)}</h4>
+                              <h4>
+                                ${formatearNumero(productInPedido.unit_price)}
+                              </h4>
                             </div>
                           </div>
                         </div>
@@ -128,11 +126,7 @@ const PedidoInfo = () => {
                   <h1>Detalles Factura:</h1>
                 </div>
                 <h3>Fecha: </h3>
-                <h4>
-                  {moment(pedido.fechaIngresada)
-                    .subtract(3, "hours")
-                    .format("LLL")}
-                </h4>
+                <h4>{moment(pedido.createdAt).format("LLL")}</h4>
                 <h3>Nombre de Cliente: </h3>
                 <h4>{`${pedido.payer.name} ${pedido.payer.surname}`}</h4>
                 <h3>Celular: </h3>
@@ -149,19 +143,21 @@ const PedidoInfo = () => {
                 <h3>Dirección: </h3>
                 <h4>{`${pedido.payer.shipments.receiver_address.street_name} ${pedido.payer.shipments.receiver_address.street_number}`}</h4>
                 <h3>Precio:</h3>
-                <h4>${formatearNumero(despacho)}</h4>
+                <h4>${formatearNumero(pedido.precio_despacho)}</h4>
               </div>
             </div>
 
             <div className="pedido-facturaTotal">
               <div className="pedido-facturaTotal-item">
                 <h2>SubTotal: </h2>
-                <h1>$ {formatearNumero(subTotal)}</h1>
+                <h1>$ {formatearNumero(pedido.precio_subtotal)}</h1>
               </div>
 
               <div className="pedido-facturaTotal-item">
                 <h2 className="destacado">Total: </h2>
-                <h1 className="destacado2">$ {formatearNumero(total)}</h1>
+                <h1 className="destacado2">
+                  $ {formatearNumero(pedido.precio_total)}
+                </h1>
               </div>
             </div>
 

@@ -1,0 +1,14 @@
+.products-search-container {
+  align-content: center;
+  display: flex;
+  justify-content: space-between;
+  margin: auto 0;
+
+  .products-search-input {
+    margin: 0 1rem;
+  }
+
+  .fa-search {
+    margin: auto 0;
+  }
+}

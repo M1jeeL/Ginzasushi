@@ -1,7 +1,7 @@
-const url = process.env.REACT_APP_PRODUCTOS_API;
+const url = process.env.REACT_APP_API;
 
 export const loadCategories = async () => {
-  const res = await fetch(`${url}/categorias`, {
+  const res = await fetch(`${url}/categories`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

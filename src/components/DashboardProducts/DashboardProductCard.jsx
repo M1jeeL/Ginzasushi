@@ -1,10 +1,8 @@
 import React from "react";
 import "./DashboardProductCard.scss";
 
-export const DashboardProductCard = ({ product, categories, index }) => {
-  const { nombre, image_src, categoria, precio, activo } = product;
-
-  const [category] = categories.filter((item) => item.id === categoria);
+export const DashboardProductCard = ({ product, index }) => {
+  const { nombre, image_src, precio, activo } = product;
 
   return (
     <div className="dashboard-container-card">
@@ -19,7 +17,7 @@ export const DashboardProductCard = ({ product, categories, index }) => {
 
       <div className="dashboard-container-info">
         <div className="dashboard-info-category">
-          <span>{category?.nombre}</span>
+          <span>{product.categoria.nombre}</span>
         </div>
 
         <div className="dashboard-subinfo">

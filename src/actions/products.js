@@ -4,7 +4,7 @@ import { loadProducts } from "../helpers/loadProducts";
 import { loadCategories } from "../helpers/loadCategories";
 import { fileUpload } from "../helpers/fileUpload";
 
-const url = process.env.REACT_APP_PRODUCTOS_API;
+const url = process.env.REACT_APP_API;
 
 export const startNewProduct = (newProduct, file) => {
   return async (dispatch) => {
@@ -16,7 +16,7 @@ export const startNewProduct = (newProduct, file) => {
 
     const token = localStorage.getItem("token");
 
-    await fetch(`${url}/productos`, {
+    await fetch(`${url}/products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const startNewProduct = (newProduct, file) => {
 export const startNewCategory = (newCategory) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    await fetch(`${url}/categorias`, {
+    await fetch(`${url}/categories`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -125,7 +125,7 @@ export const setCategories = (categories) => ({
   payload: categories,
 });
 
-export const startUpdatingProduct = (product, file, id) => {
+export const startUpdatingProduct = (product, file, _id) => {
   return async (dispatch) => {
     if (file) {
       const fileUrl = await fileUpload(file);
@@ -135,22 +135,18 @@ export const startUpdatingProduct = (product, file, id) => {
 
     const token = localStorage.getItem("token");
 
-    await fetch(`${url}/productos/${id}`, {
-      method: "PATCH",
+    const response = await fetch(`${url}/products/${_id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(product),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("No esta autorizado para realizar esta acción");
-        }
-      })
-      .then((data) => {
+    });
+    if (response.ok) {
+      const data = await response.json();
+
+      if (data.modifiedCount) {
         Swal.fire({
           position: "center",
           icon: "success",
@@ -158,9 +154,21 @@ export const startUpdatingProduct = (product, file, id) => {
           showConfirmButton: false,
           timer: 1500,
         });
-        dispatch(refreshProduct(data.id, data));
-      })
-      .catch((err) => alert(err));
+        const productRefresh = await fetch(`${url}/products/${_id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const productData = await productRefresh.json();
+
+        dispatch(refreshProduct(_id, productData));
+      }
+    } else {
+      throw new Error("No esta autorizado para realizar esta acción");
+    }
   };
 };
 
@@ -182,8 +190,8 @@ export const startToggleStatusProduct = (product, id) => {
       if (result.isConfirmed) {
         const token = localStorage.getItem("token");
 
-        await fetch(`${url}/productos/${id}`, {
-          method: "PATCH",
+        const response = await fetch(`${url}/products/${id}`, {
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -191,15 +199,12 @@ export const startToggleStatusProduct = (product, id) => {
           body: JSON.stringify({
             activo: !activo,
           }),
-        })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error("No esta autorizado para realizar esta acción");
-            }
-          })
-          .then((data) => {
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+
+          if (data.modifiedCount) {
             Swal.fire({
               position: "center",
               icon: "success",
@@ -207,22 +212,31 @@ export const startToggleStatusProduct = (product, id) => {
               showConfirmButton: false,
               timer: 1500,
             });
-            dispatch(refreshProduct(data.id, data));
-          })
-          .catch((err) => alert(err));
+            const productRefresh = await fetch(`${url}/products/${id}`, {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            });
+
+            const productData = await productRefresh.json();
+
+            dispatch(refreshProduct(id, productData));
+          }
+        } else {
+          throw new Error("No esta autorizado para realizar esta acción");
+        }
       }
     });
   };
 };
 
-export const refreshProduct = (id, product) => ({
+export const refreshProduct = (_id, product) => ({
   type: types.productsUpdated,
   payload: {
-    id,
-    product: {
-      id,
-      ...product,
-    },
+    _id,
+    product,
   },
 });
 
@@ -241,7 +255,7 @@ export const startDeleting = (id) => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`${url}/productos/${id}`, {
+        fetch(`${url}/products/${id}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -270,20 +284,19 @@ export const startAddToCart = (product, cantidad, envoltura, categoria) => {
   return (dispatch, getState) => {
     const { cart } = getState().products;
     const exists = cart.filter(
-      (item) => item.id === product.id && item.envoltura === envoltura
+      (item) => item.id === product._id && item.envoltura === envoltura
     );
 
     // Si el producto existe en el carrito, actualiza la cantidad.
     if (exists.length > 0) {
       if (exists[0].envoltura === envoltura) {
         const aux = cart.findIndex(
-          (item) => item.id === product.id && item.envoltura === envoltura
+          (item) => item.id === product._id && item.envoltura === envoltura
         );
         const cartAux = [...cart];
         const productAux = { ...cartAux[aux] };
 
         productAux.cantidad += cantidad;
-        productAux.subTotal = productAux.cantidad * productAux.precio;
         cartAux[aux] = productAux;
 
         dispatch(addToCart(cartAux));
@@ -294,7 +307,7 @@ export const startAddToCart = (product, cantidad, envoltura, categoria) => {
 
     // Si el producto no está en el carrito, agregarlo.
     const formattedProduct = {
-      id: product.id,
+      id: product._id,
       nombre: product.nombre,
       precio: parseInt(product.precio),
       categoria: categoria,

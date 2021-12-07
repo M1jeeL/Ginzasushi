@@ -5,14 +5,9 @@ import {
   startToggleStatusProduct,
 } from "../../actions/products";
 
-export const DashboardProductActive = ({
-  activeProduct,
-  categories,
-  openModalProduct,
-}) => {
+export const DashboardProductActive = ({ activeProduct, openModalProduct }) => {
   const dispatch = useDispatch();
-  const { nombre, id, categoria, descripcion, precio } = activeProduct;
-  const [category] = categories.filter((item) => item.id === categoria);
+  const { nombre, _id, descripcion, precio } = activeProduct;
 
   return (
     <div className="dashboard-product-data animate__animated animate__fadeInRight">
@@ -22,9 +17,9 @@ export const DashboardProductActive = ({
           Detalles del producto:
         </div>
         <hr />
-        <div className="dashboard-product-data-body-id">ID: {id}</div>
+        <div className="dashboard-product-data-body-id">Id: {_id}</div>
         <div className="dashboard-product-data-body-category">
-          Categoria: {category?.nombre}
+          Categoria: {activeProduct.categoria.nombre}
         </div>
         <div className="dashboard-product-data-body-price">
           Precio: ${precio}
@@ -48,7 +43,7 @@ export const DashboardProductActive = ({
         <div
           className="dashboard-product-data-footer-icon trash"
           onClick={() => {
-            dispatch(startDeleting(id));
+            dispatch(startDeleting(_id));
           }}
         >
           <i className="fas fa-trash"></i>
@@ -56,7 +51,7 @@ export const DashboardProductActive = ({
         <div
           className="dashboard-product-data-footer-icon off"
           onClick={() => {
-            dispatch(startToggleStatusProduct(activeProduct, id));
+            dispatch(startToggleStatusProduct(activeProduct, _id));
           }}
         >
           <i className="fas fa-power-off"></i>

@@ -1,41 +1,139 @@
 import React from "react";
-//import { useSelector } from "react-redux";
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Label,
+  Input,
+  Button,
+  Form,
+} from "reactstrap";
+import { startRegisterEmployee } from "../../actions/employees";
+import { useForm } from "../../hooks/useForm";
+import { useDispatch } from "react-redux";
 import "./DashboardEmpleadosModal.scss";
 
-export const DashboardEmpleadosModalAgregar = ({ openEmpleadoModalAgregar, openModalEmpleadoAgregar }) => {
+const initialFormState = {
+  nombre: "",
+  apellido: "",
+  email: "",
+  celular: "",
+  cargo: "",
+  username: "",
+  password: "",
+  comuna: "",
+  calle: "",
+  depto: "",
+  numeracion: "",
+  roles: ["admin", "moderator"],
+};
+
+export const DashboardEmpleadosModalAgregar = ({
+  openEmpleadoModalAgregar,
+  openModalEmpleadoAgregar,
+}) => {
+  const dispatch = useDispatch();
+  const [formValues, handleInputChange, resetForm] = useForm(initialFormState);
+
+  const { nombre, apellido, email, cargo, celular, username, password } =
+    formValues;
+
+  const btnCloseForm = {
+    outline: "none",
+    backgroundColor: "#ffba00",
+    border: "none",
+    boxShadow: "none",
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(startRegisterEmployee(formValues));
+    openModalEmpleadoAgregar();
+    resetForm();
+  };
   return (
     <Modal isOpen={openEmpleadoModalAgregar} toggle={openModalEmpleadoAgregar}>
-      <ModalHeader>
-        <div>Datos Nuevo Empleado</div>
+      <ModalHeader className="header-crud-form">
+        <div className="titulo-form-crud ">Registrar nuevo empleado</div>
+        <div className="btn-cerrar-form-modal">
+          <Button
+            style={btnCloseForm}
+            color="secondary"
+            onClick={openModalEmpleadoAgregar}
+          >
+            <i className="far fa-times-circle fa-3x"></i>
+          </Button>
+        </div>
       </ModalHeader>
       <ModalBody>
-        <form>
-          <div class="form-group">
-            <label for="exampleInputName1">Nombre</label>
-            <input type="name" class="form-control" id="exampleInputName1" placeholder="Nombre"/>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputCargo1">Cargo</label>
-            <input type="cargo" class="form-control" id="exampleInputCargo1" placeholder="Cargo"/>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputUsuario1">Usuario</label>
-            <input type="usuario" class="form-control" id="exampleInputUsuario1" placeholder="Usuario"/>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputCelular1">Celular</label>
-            <input type="celular" class="form-control" id="exampleInputCelular1" placeholder="Celular"/>
-          </div>         <div class="form-group">
-            <label for="exampleInputMail1">Mail</label>
-            <input type="mail" class="form-control" id="exampleInputMail1" placeholder="Mail"/>
-          </div>
-        </form>
+        <Form onSubmit={handleSubmit} className="form-modal-product">
+          <Label htmlFor="nombre">Nombre</Label>
+          <Input
+            type="text"
+            name="nombre"
+            value={nombre}
+            onChange={handleInputChange}
+          />
+
+          <Label htmlFor="apellido">Apellido</Label>
+          <Input
+            type="text"
+            name="apellido"
+            value={apellido}
+            onChange={handleInputChange}
+          />
+
+          <Label htmlFor="username">Nombre de usuario</Label>
+          <Input
+            type="text"
+            name="username"
+            value={username}
+            onChange={handleInputChange}
+          />
+
+          <Label htmlFor="password">Contrase&ntilde;a</Label>
+          <Input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleInputChange}
+          />
+
+          <Label htmlFor="cargo">Cargo</Label>
+          <Input
+            type="text"
+            name="cargo"
+            value={cargo}
+            onChange={handleInputChange}
+          />
+
+          <Label htmlFor="celular">Celular</Label>
+          <Input
+            type="text"
+            name="celular"
+            value={celular}
+            onChange={handleInputChange}
+          />
+
+          <Label htmlFor="email">Email</Label>
+          <Input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleInputChange}
+          />
+        </Form>
       </ModalBody>
       <ModalFooter>
-        <div>
-          <button type="button" class="btn btn-success">Agregar</button>
-        </div>
+        <Button
+          type="submit"
+          value="Agregar"
+          onClick={handleSubmit}
+          className="dashboard-modal-btn"
+        >
+          Agregar
+        </Button>
       </ModalFooter>
     </Modal>
   );

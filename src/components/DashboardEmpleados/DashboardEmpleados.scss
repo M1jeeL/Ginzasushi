@@ -125,3 +125,18 @@
 .dashboard-empleados-table-eye {
   text-align: center;
 }
+
+.employee-search-container {
+  align-content: center;
+  display: flex;
+  justify-content: space-between;
+  margin: auto 0;
+
+  .employee-search-input {
+    margin: 0 1rem;
+  }
+
+  .fa-search {
+    margin: auto 0;
+  }
+}

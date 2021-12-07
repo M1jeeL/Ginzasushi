@@ -11,18 +11,13 @@ const Productos = () => {
   const [producto, setProducto] = useState({});
 
   useEffect(() => {
-    if (products.length > 0 && categories.length > 0) {
-      let [product] = products.filter((item) => item.id === Number(id));
-      let [category] = categories.filter((cat) => product.categoria === cat.id);
-      setProducto({
-        product,
-        category,
-      });
+    if (products.length > 0) {
+      let [product] = products.filter((item) => item._id === id);
+      setProducto(product);
       setLoading(false);
     }
   }, [categories, id, products]);
 
-  //   console.log(producto);
 
   return (
     <>

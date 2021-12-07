@@ -20,7 +20,7 @@ export const pedidosReducer = (state = initialState, action) => {
       return {
         ...state,
         pedidos: state.pedidos.map((pedido) =>
-          pedido.id === action.payload.id ? action.payload.pedido : pedido
+          pedido._id === action.payload.id ? action.payload.pedido : pedido
         ),
       };
 

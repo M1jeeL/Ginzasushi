@@ -17,6 +17,16 @@ export default function Navbar() {
   const resetNavLink = () => setNavLinkOpen(false);
   const handleDropdown = () => setDropdownOpen(!dropdownOpen);
 
+  let isAdmin = false;
+
+  if (Object.keys(user).length > 0) {
+    user.roles.forEach((rol) => {
+      if (rol.name === "admin") {
+        isAdmin = true;
+      }
+    });
+  }
+
   const btnNonStyle = {
     outline: "none",
     background: "none",
@@ -86,7 +96,7 @@ export default function Navbar() {
               >
                 Mis pedidos
               </NavLink>
-              {user?.isAdmin && (
+              {isAdmin && (
                 <NavLink
                   exact
                   to="/dashboard/pedidos"

@@ -2,15 +2,15 @@ import React from "react";
 import { DashboardProductCard } from "./DashboardProductCard";
 
 export const DashboardProductsList = ({
-  products,
+  showProducts,
   categories,
   handleActiveProduct,
 }) => {
   return (
     <div className="dashboard-products-list">
-      {products.map((product, index) => (
+      {showProducts.map((product, index) => (
         <div
-          key={product.id}
+          key={product._id}
           onClick={() => {
             handleActiveProduct(product);
           }}

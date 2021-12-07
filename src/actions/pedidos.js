@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import { loadPedidos } from "../helpers/loadPedidos";
 import { types } from "../types/types";
 
-const urlPedidos = process.env.REACT_APP_PEDIDOS_API;
+const url = process.env.REACT_APP_API;
 
 export const startLoadingPedidos = () => {
   return async (dispatch) => {
@@ -11,27 +11,25 @@ export const startLoadingPedidos = () => {
   };
 };
 
-export const aceptarPedido = (id) => {
+export const aceptarPedido = (uuid) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    fetch(`${urlPedidos}/pedidos/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        estado: "Aceptado",
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("No esta autorizado para realizar esta acción");
-        }
-      })
-      .then((data) => {
+
+    try {
+      const response = await fetch(`${url}/orders/${uuid}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          estado: "Aceptado",
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
         Swal.fire({
           position: "center",
           icon: "success",
@@ -39,65 +37,96 @@ export const aceptarPedido = (id) => {
           showConfirmButton: false,
           timer: 2000,
         });
-        dispatch(refreshPedido(data.id, data));
-      });
+
+        if (data.modifiedCount === 1) {
+          const res = await fetch(`${url}/orders/${uuid}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          const pedidoUpdated = await res.json();
+
+          dispatch(refreshPedido(pedidoUpdated._id, pedidoUpdated));
+        }
+      } else {
+        throw new Error("No esta autorizado para realizar esta acción");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
-export const rechazarPedido = (id) => {
+export const rechazarPedido = (uuid) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    fetch(`${urlPedidos}/pedidos/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        estado: "Rechazado",
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("No esta autorizado para realizar esta acción");
-        }
-      })
-      .then((data) => {
+
+    try {
+      const response = await fetch(`${url}/orders/${uuid}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          estado: "Rechazado",
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "El pedido fue rechazado con éxito!",
+          title: "El pedido fue cancelado con éxito!",
           showConfirmButton: false,
           timer: 2000,
         });
-        dispatch(refreshPedido(data.id, data));
-      });
+
+        if (data.modifiedCount === 1) {
+          const res = await fetch(`${url}/orders/${uuid}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          const pedidoUpdated = await res.json();
+          dispatch(refreshPedido(pedidoUpdated._id, pedidoUpdated));
+        }
+      } else {
+        throw new Error("No esta autorizado para realizar esta acción");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
-export const despacharPedido = (id) => {
+export const despacharPedido = (uuid) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    fetch(`${urlPedidos}/pedidos/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        estado: "En camino",
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("No esta autorizado para realizar esta acción");
-        }
-      })
-      .then((data) => {
+
+    try {
+      const response = await fetch(`${url}/orders/${uuid}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          estado: "En camino",
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
         Swal.fire({
           position: "center",
           icon: "success",
@@ -105,33 +134,47 @@ export const despacharPedido = (id) => {
           showConfirmButton: false,
           timer: 2000,
         });
-        dispatch(refreshPedido(data.id, data));
-      });
+
+        if (data.modifiedCount === 1) {
+          const res = await fetch(`${url}/orders/${uuid}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          const pedidoUpdated = await res.json();
+          dispatch(refreshPedido(pedidoUpdated._id, pedidoUpdated));
+        }
+      } else {
+        throw new Error("No esta autorizado para realizar esta acción");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
-export const completarPedido = (id) => {
+export const completarPedido = (uuid) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    fetch(`${urlPedidos}/pedidos/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        estado: "Completado",
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("No esta autorizado para realizar esta acción");
-        }
-      })
-      .then((data) => {
-        console.log(data);
+
+    try {
+      const response = await fetch(`${url}/orders/${uuid}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          estado: "Completado",
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
         Swal.fire({
           position: "center",
           icon: "success",
@@ -139,8 +182,25 @@ export const completarPedido = (id) => {
           showConfirmButton: false,
           timer: 2000,
         });
-        dispatch(refreshPedido(data.id, data));
-      });
+
+        if (data.modifiedCount === 1) {
+          const res = await fetch(`${url}/orders/${uuid}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          const pedidoUpdated = await res.json();
+          dispatch(refreshPedido(pedidoUpdated._id, pedidoUpdated));
+        }
+      } else {
+        throw new Error("No esta autorizado para realizar esta acción");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
 
@@ -159,30 +219,11 @@ export const startActivePedido = (id) => {
     const { pedidos } = getState().pedidosAdmin;
 
     // Obtiene el pedido activo
-    const [pedidoActive] = pedidos.filter((item) => item.id === id);
+    const [pedidoActive] = pedidos.filter((item) => item._id === id);
 
-    // Separa el item de despacho para obtener el valor de envio
-    const [itemDespacho] = pedidoActive.items.filter(
-      (item) => item.description === "Despacho"
-    );
-    const subTotalDespacho = itemDespacho.unit_price;
-
-    // Separa los items de productos para obtener el subTotal de los productos
-    const itemsProductos = pedidoActive.items.filter(
-      (item) => item.description !== "Despacho"
-    );
-
-    let subTotalProducts = 0;
-
-    itemsProductos.forEach((item) => {
-      subTotalProducts += item.unit_price * item.quantity;
-    });
-
-    const total = subTotalDespacho + subTotalProducts;
-
-    dispatch(setSubTotalDespacho(subTotalDespacho));
-    dispatch(setSubTotalProducts(subTotalProducts));
-    dispatch(setTotalPedido(total));
+    dispatch(setSubTotalDespacho(pedidoActive.precio_despacho));
+    dispatch(setSubTotalProducts(pedidoActive.precio_subtotal));
+    dispatch(setTotalPedido(pedidoActive.precio_total));
     dispatch(activePedido(pedidoActive));
   };
 };

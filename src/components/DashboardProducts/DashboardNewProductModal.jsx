@@ -19,7 +19,7 @@ const initialFormCrud = {
   categoria: "",
   descripcion: "",
   bocados: 0,
-  id: 0,
+  _id: 0,
 };
 
 export const DashboardNewProductModal = ({
@@ -31,7 +31,6 @@ export const DashboardNewProductModal = ({
 }) => {
   const { categories } = useSelector((state) => state.products);
   const dispatch = useDispatch();
-
   const [formCrud, setFormCrud] = useState(initialFormCrud);
   const [file, setFile] = useState(null);
   const handleChange = (e) => {
@@ -63,18 +62,21 @@ export const DashboardNewProductModal = ({
       return;
     }
 
+    const [categorySelected] = categories.filter(
+      (category) => category._id === formCrud.categoria
+    );
     const formAEnviar = {
       nombre: formCrud.nombre,
       precio: formCrud.precio,
-      categoria: formCrud.categoria,
+      categoria: categorySelected,
       descripcion: formCrud.descripcion,
       bocados: formCrud.bocados,
     };
 
-    if (formCrud.id === 0) {
+    if (formCrud._id === 0) {
       dispatch(startNewProduct(formAEnviar, file));
     } else {
-      dispatch(startUpdatingProduct(formAEnviar, file, formCrud.id));
+      dispatch(startUpdatingProduct(formAEnviar, file, formCrud._id));
     }
     setOpenProductModal(false);
     handleReset();
@@ -139,8 +141,8 @@ export const DashboardNewProductModal = ({
             <option value="" disabled>
               Seleccione una categor&iacute;a
             </option>
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>
+            {categories?.map((cat) => (
+              <option key={cat._id} value={cat._id}>
                 {cat.nombre}
               </option>
             ))}

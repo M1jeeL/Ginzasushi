@@ -31,7 +31,7 @@ const InfoDespacho = ({ formDespachoCliente, isLogged, user }) => {
         <div className="logo-row-checkout">
           <i className="fas fa-file-alt"></i>
         </div>
-        <div className="data-row-checkout">Indicaciones: {notas}</div>
+        <div className="data-row-checkout">Notas: {notas}</div>
       </div>
     </>
   );

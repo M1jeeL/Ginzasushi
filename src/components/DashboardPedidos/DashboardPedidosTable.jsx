@@ -75,30 +75,30 @@ const DashboardPedidosTable = ({
           {paginatedPedidos.length > 0 ? (
             paginatedPedidos.map((pedido) => (
               <tr
-                key={pedido.id}
+                key={pedido._id}
                 className="dashboard-pedidos-table-row"
                 onClick={() => {
-                  setCheckedInputRadio(pedido.id);
-                  dispatch(startActivePedido(pedido.id));
+                  setCheckedInputRadio(pedido._id);
+                  dispatch(startActivePedido(pedido._id));
                 }}
               >
                 <td data-label="N">
                   <Input
                     type="radio"
-                    value={pedido.id}
+                    value={pedido._id}
                     className="dashboard-pedidos-table-checked"
-                    checked={pedido.id === checkedInputRadio}
-                    key={pedido.id}
+                    checked={pedido._id === checkedInputRadio}
+                    key={pedido._id}
                     onChange={(e) => {
                       setCheckedInputRadio(e.target.value);
                     }}
                   />
                 </td>
-                <td data-label="name">{pedido.payer.name}</td>
+                <td data-label="name">
+                  {pedido.payer.name} {pedido.payer.surname}
+                </td>
                 <td data-label="Fecha Ingreso">
-                  {moment(pedido.fechaIngresada)
-                    .subtract(3, "hours")
-                    .format("LLL")}
+                  {moment(pedido.createdAt).format("LLL")}
                 </td>
                 {pedido.estado === "Pendiente" && (
                   <td data-label="Estado" className="en-camino">
@@ -138,7 +138,11 @@ const DashboardPedidosTable = ({
             ))
           ) : (
             <tr>
-              <td colSpan="6">Sin datos</td>
+              <td colSpan="6">
+                <span className="d-flex justify-content-center text-align-center">
+                  No hay ning&uacute;n pedido realizado con ese nombre
+                </span>
+              </td>
             </tr>
           )}
         </tbody>

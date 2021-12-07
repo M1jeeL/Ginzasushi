@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { DashboardNavbar } from "../DashboardNavbar/DashboardNavbar";
-import { Input } from "reactstrap";
 import "./DashboardEmpleados.scss";
 import DashboardEmpleadosTable from "./DashboardEmpleadosTable";
 import _ from "lodash";
-//import { useSelector } from "react-redux";
-import data from '../data.json'
+import { useSelector } from "react-redux";
+import { DashboardEmpleadosSearch } from "./DashboardEmpleadosSearch";
 
 export const DashboardEmpleados = () => {
-  //const { empleados } = useSelector((state) => state.empleadosAdmin);
-  const empleados = data.empleados
+  const { employees } = useSelector((state) => state.employees);
   const [paginatedEmpleados, setPaginatedEmpleados] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [pageNumberLimit] = useState(5);
@@ -18,28 +16,30 @@ export const DashboardEmpleados = () => {
   const pageSize = 10;
 
   useEffect(() => {
-    setPaginatedEmpleados(_(empleados).slice(0).take(pageSize).value());
+    setPaginatedEmpleados(_(employees).slice(0).take(pageSize).value());
     return () => {
       setPaginatedEmpleados({});
     };
-  }, [empleados]);
+  }, [employees]);
 
   return (
     <div className="dashboard">
       <DashboardNavbar />
       <div className="dashboar-empleados-container">
         <div className="dashboard-empleados-header">
-          <div className="dashboard-empleados-title">Recepcion de empleados</div>
+          <div className="dashboard-empleados-title">
+            Recepcion de empleados
+          </div>
           <div className="dashboard-empleados-search">
-            <Input type="text" />
-            <div className="dashboard-empleados-icon-search">
-              <i className="fas fa-search fa-2x"></i>
-            </div>
+            <DashboardEmpleadosSearch
+              employees={employees}
+              setPaginatedEmpleados={setPaginatedEmpleados}
+            />
           </div>
         </div>
         <div className="dashboard-empleados-body">
           <DashboardEmpleadosTable
-            empleados={empleados}
+            empleados={employees}
             currentPage={currentPage}
             pageSize={pageSize}
             paginatedEmpleados={paginatedEmpleados}

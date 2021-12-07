@@ -10,7 +10,7 @@ import {
   startLoadingCategories,
   startLoadingProducts,
 } from "../actions/products";
-import { login } from "../actions/auth";
+import { login, logout } from "../actions/auth";
 import { PublicRoute } from "./PublicRoute";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
@@ -35,8 +35,9 @@ import { DashboardEstadistica } from "../components/DashboardEstadistica/Dashboa
 import { DashboardEmpleados } from "../components/DashboardEmpleados/DashboardEmpleados";
 import { startLoadingPedidos } from "../actions/pedidos";
 import { startLoadingPedidosUser } from "../actions/pedidosUser";
+import { startLoadingEmployees } from "../actions/employees";
 
-const urlUsuarios = process.env.REACT_APP_USUARIOS_API;
+const url = process.env.REACT_APP_API;
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
@@ -52,32 +53,52 @@ export const AppRouter = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch(`${urlUsuarios}/usuario_actual`, {
+    fetch(`${url}/users/usuario_actual`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((response) => response.json())
-      .then((data) => {
-        setChecking(false);
-        dispatch(login(data));
-
-        if (data.isAdmin) {
-          dispatch(startLoadingPedidos());
-          dispatch(startLoadingPedidosUser());
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
         } else {
-          dispatch(startLoadingPedidosUser());
+          return response.json();
         }
+      })
+      .then((data) => {
+        if (data.message) {
+          dispatch(logout());
+        } else {
+          dispatch(login(data));
+          let isAdmin = false;
+
+          data.roles.forEach((rol) => {
+            if (rol.name === "admin") {
+              isAdmin = true;
+            }
+          });
+
+          if (isAdmin) {
+            dispatch(startLoadingPedidos());
+            dispatch(startLoadingEmployees());
+            dispatch(startLoadingPedidosUser());
+          } else {
+            dispatch(startLoadingPedidosUser());
+          }
+        }
+        setChecking(false);
       })
       .catch((err) => {
         setChecking(false);
+        dispatch(logout());
         localStorage.removeItem("token");
       });
-    dispatch(startLoadingCategories());
+
     dispatch(startLoadingComunas());
     dispatch(startLoadingProducts());
+    dispatch(startLoadingCategories());
   }, [dispatch]);
 
   if (checking) {

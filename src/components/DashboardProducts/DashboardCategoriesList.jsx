@@ -21,7 +21,7 @@ export const DashboardCategoriesList = ({ categories }) => {
       </div>
       <div className="dashboard-categories-list">
         {categories.map((item) => (
-          <div key={item.id} className="dashboard-categories-list-item">
+          <div key={item._id} className="dashboard-categories-list-item">
             {item.nombre}
           </div>
         ))}

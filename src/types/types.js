@@ -44,4 +44,7 @@ export const types = {
   uiFinishLoading: "[UI] finishLoading",
   uiLoadComunas: "[UI] loadComunas",
   uiShowSidebar: "[UI] showSidebar",
+
+  employesLoad: "[Employes] Load Employes",
+  employeeActive: "[Employes] Set active employe",
 };

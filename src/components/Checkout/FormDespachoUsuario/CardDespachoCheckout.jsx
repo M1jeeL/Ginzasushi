@@ -9,7 +9,7 @@ const CardDespachoCheckout = ({
   resetDespacho,
   user,
 }) => {
-  const [showDespachoInfo, setShowDespachoInfo] = useState(null);
+  const [showDespachoInfo, setShowDespachoInfo] = useState(false);
   useEffect(() => {
     setShowDespachoInfo(isLogged);
   }, [isLogged]);

@@ -5,9 +5,9 @@ import { Button } from "reactstrap";
 import { formatearNumero } from "../../../helpers/formatearNumero";
 import ItemRowDetalle from "./ItemRowDetalle";
 
-const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
-  const urlPedidos = process.env.REACT_APP_PEDIDOS_API;
+const url = process.env.REACT_APP_API;
 
+const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
   const { cart, total } = useSelector((state) => state.products);
   const { user, logged } = useSelector((state) => state.auth);
 
@@ -27,28 +27,19 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
   }, [cart]);
 
   const pagarPedido = async () => {
-    // console.log(cart)
     const items = cart.map((itemCart) => {
-      //   console.log(itemCart)
+      //   console.log(itemCart);
       const item = {
         title: itemCart.nombre,
         quantity: itemCart.cantidad,
         unit_price: itemCart.precio,
         description: itemCart.nombre,
         envoltura: itemCart.envoltura,
-        id: itemCart.id.toString(),
+        id: itemCart.id,
         currency_id: "CLP",
         category_id: itemCart.categoria.toString(),
       };
       return item;
-    });
-
-    items.push({
-      title: "Despacho",
-      description: "Despacho",
-      quantity: 1,
-      unit_price: despacho,
-      currency_id: "CLP",
     });
 
     let payer;
@@ -102,31 +93,29 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
       payer,
       estado: "Pendiente",
       notas: formDespachoCliente.notas,
+      precio_despacho: despacho,
+      tipo_orden: formDespachoCliente.tipoOrden,
     };
     const token = localStorage.getItem("token");
 
-    try {
-      const preference = await (
-        await fetch(`${urlPedidos}/pedidos`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(preference_data),
-        })
-      ).json();
+    const preference = await (
+      await fetch(`${url}/orders`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(preference_data),
+      })
+    ).json();
 
-      document.querySelector("#btn-checkout").innerHTML = "";
-      const script = document.createElement("script");
-      script.src =
-        "https://www.mercadopago.cl/integrations/v1/web-payment-checkout.js";
-      script.type = "text/javascript";
-      script.dataset.preferenceId = preference.id;
-      document.querySelector("#btn-checkout").appendChild(script);
-    } catch (error) {
-      console.log(error);
-    }
+    document.querySelector("#btn-checkout").innerHTML = "";
+    const script = document.createElement("script");
+    script.src =
+      "https://www.mercadopago.cl/integrations/v1/web-payment-checkout.js";
+    script.type = "text/javascript";
+    script.dataset.preferenceId = preference.id;
+    document.querySelector("#btn-checkout").appendChild(script);
   };
 
   return (
@@ -158,15 +147,15 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
           </div>
         </div>
         <div className="btn-pagar-pedido" id="btn-checkout">
-            <Button
-              className="btn-confirmar-pedido"
-              disabled={vacio}
-              onClick={() => {
-                pagarPedido();
-              }}
-            >
-              Confirmar mi pedido
-            </Button>
+          <Button
+            className="btn-confirmar-pedido"
+            disabled={vacio}
+            onClick={() => {
+              pagarPedido();
+            }}
+          >
+            Confirmar mi pedido
+          </Button>
         </div>
       </div>
     </div>

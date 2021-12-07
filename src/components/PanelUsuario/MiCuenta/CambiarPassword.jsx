@@ -9,11 +9,14 @@ import {
   Label,
   Row,
 } from "reactstrap";
+import { useDispatch } from "react-redux";
 import { useForm } from "../../../hooks/useForm";
+import { startUpdatePassword } from "../../../actions/auth";
 
 export const CambiarPassword = () => {
+  const dispatch = useDispatch();
   const erPassword = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-  const [formValues, handleInputChange] = useForm({
+  const [formValues, handleInputChange, resetForm] = useForm({
     passwordActual: "",
     newPassword: "",
     repeatNewPassword: "",
@@ -25,8 +28,19 @@ export const CambiarPassword = () => {
   };
 
   const handleSubmit = (e) => {
+    const dataToChange = {
+      password: formValues.passwordActual,
+      newPassword: formValues.newPassword,
+    };
+
     e.preventDefault();
-    // dispatch(startUpdateUser(formValues));
+    dispatch(startUpdatePassword(dataToChange));
+    resetForm();
+
+    const inputNewPassword = document.querySelector("#newPassword");
+    inputNewPassword.classList.remove("is-valid");
+    const inputRepeatNewPassword = document.querySelector("#repeatNewPassword");
+    inputRepeatNewPassword.classList.remove("is-valid");
   };
 
   const validarPassword = (e) => {

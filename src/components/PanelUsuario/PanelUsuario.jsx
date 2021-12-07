@@ -9,6 +9,16 @@ const PanelUsuario = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
+  let isAdmin = false;
+
+  if (Object.keys(user).length > 0) {
+    user.roles.forEach((rol) => {
+      if (rol.name === "admin") {
+        isAdmin = true;
+      }
+    });
+  }
+
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -18,7 +28,9 @@ const PanelUsuario = () => {
       <PanelNavRow url="/mi-cuenta" title="Mi cuenta" />
       <PanelNavRow url="/mis-direcciones" title="Mi dirección" />
       <PanelNavRow url="/mis-pedidos" title="Mis pedidos" />
-      {user.isAdmin && <PanelNavRow url="/dashboard/productos" title="Administrar" />}
+      {isAdmin && (
+        <PanelNavRow url="/dashboard/productos" title="Administrar" />
+      )}
       <NavLink exact to="/" className="panel-nav-item" onClick={handleLogout}>
         <span>Salir</span>
       </NavLink>

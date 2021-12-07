@@ -7,10 +7,9 @@ import "./Producto.scss";
 
 export default function Producto({ producto }) {
   const dispatch = useDispatch();
-  const { category, product } = producto;
-  const { nombre, precio, descripcion, image_src } = product;
+  const { nombre, precio, descripcion, image_src } = producto;
   const [cantidadProducto, setCantidadProducto] = useState(1);
-  const [envol] = useState(category.envoltura);
+  const [envol] = useState(producto.categoria.envoltura);
   const [selectEnvol, setSelectEnvol] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [showMessageError, setShowMessageError] = useState(false);
@@ -153,10 +152,10 @@ export default function Producto({ producto }) {
 
                     dispatch(
                       startAddToCart(
-                        product,
+                        producto,
                         cantidadProducto,
                         selectEnvol,
-                        category.nombre
+                        producto.categoria.nombre
                       )
                     );
                     mostrarMensaje();

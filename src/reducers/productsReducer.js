@@ -2,7 +2,6 @@ import { types } from "../types/types";
 
 const initialState = {
   products: [],
-  categories: [],
   active: null,
   cart: [],
   total: 0,
@@ -34,7 +33,7 @@ export const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         products: state.products.map((product) =>
-          product.id === action.payload.id ? action.payload.product : product
+          product._id === action.payload._id ? action.payload.product : product
         ),
       };
 

@@ -23,11 +23,10 @@ const Pedidos = () => {
       setPaginatedPedidos({});
     };
   }, [pedidos]);
-
   return (
     <>
       <Imgcab nombrehead="Pedidos" />
-      {Object.entries(pedidos).length ? (
+      {pedidos ? (
         <div className="container pedidos-container animate__animated animate__fadeIn animate__faster">
           <PanelUsuario />
           <PedidosTable

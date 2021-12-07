@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Table } from "reactstrap";
+import { Input, Table } from "reactstrap";
 import _ from "lodash";
-import { DashboardEmpleadosModal} from "./DashboardEmpleadosModal";
-import { DashboardEmpleadosModalAgregar} from "./DashboardEmpleadosModalAgregar";
+import { DashboardEmpleadosModal } from "./DashboardEmpleadosModal";
+import { DashboardEmpleadosModalAgregar } from "./DashboardEmpleadosModalAgregar";
+import { useDispatch } from "react-redux";
+import { startActiveEmployee } from "../../actions/employees";
 
 const DashboardEmpleadosTable = ({
   empleados,
@@ -18,13 +20,16 @@ const DashboardEmpleadosTable = ({
   setMinPageNumberLimit,
 }) => {
   const pageCount = empleados ? Math.ceil(empleados.length / pageSize) : 0;
-
   const pages = _.range(1, pageCount + 1);
+  const [checkedInputRadio, setCheckedInputRadio] = useState(0);
 
   const pagination = (pageNo) => {
     setCurrentPage(pageNo);
     const startIndex = (pageNo - 1) * pageSize;
-    const paginatedEmpleado = _(empleados).slice(startIndex).take(pageSize).value();
+    const paginatedEmpleado = _(empleados)
+      .slice(startIndex)
+      .take(pageSize)
+      .value();
     setPaginatedEmpleados(paginatedEmpleado);
   };
 
@@ -48,18 +53,17 @@ const DashboardEmpleadosTable = ({
   };
 
   const [openEmpleadoModal, setOpenEmpleadoModal] = useState(false);
-
+  const dispatch = useDispatch();
   const openModalEmpleado = () => {
     setOpenEmpleadoModal(!openEmpleadoModal);
   };
 
-  const [openEmpleadoModalAgregar, setOpenEmpleadoModalAgregar] = useState(false);
+  const [openEmpleadoModalAgregar, setOpenEmpleadoModalAgregar] =
+    useState(false);
 
   const openModalEmpleadoAgregar = () => {
     setOpenEmpleadoModalAgregar(!openEmpleadoModalAgregar);
   };
-
-  const [, setCheckedInputRadio] = useState(0);
 
   return (
     <div className="table-container-empleados-dashboard">
@@ -68,21 +72,39 @@ const DashboardEmpleadosTable = ({
           <tr>
             <th>N</th>
             <th>Nombre</th>
+            <th>Celular</th>
+            <th>Email</th>
             <th className="dashboard-empleados-table-eye">Editar</th>
           </tr>
         </thead>
         <tbody>
           {paginatedEmpleados.length > 0 ? (
-            paginatedEmpleados.map((empleado) => (
+            paginatedEmpleados.map((empleado, index) => (
               <tr
-                key={empleado.id}
+                key={empleado._id}
                 className="dashboard-empleados-table-row"
                 onClick={() => {
-                  setCheckedInputRadio(empleado.id);
+                  setCheckedInputRadio(empleado._id);
+                  dispatch(startActiveEmployee(empleado._id));
                 }}
               >
-                <td data-label="N">{empleado.id}</td>
-                <td data-label="name">{empleado.nombre}</td>
+                <td data-label="N">
+                  <Input
+                    type="radio"
+                    value={empleado._id}
+                    className="dashboard-pedidos-table-checked"
+                    checked={empleado._id === checkedInputRadio}
+                    key={empleado._id}
+                    onChange={(e) => {
+                      setCheckedInputRadio(e.target.value);
+                    }}
+                  />
+                </td>
+                <td data-label="name">
+                  {empleado.nombre} {empleado.apellido}
+                </td>
+                <td data-label="celular">{empleado.celular}</td>
+                <td data-label="email">{empleado.email}</td>
                 <td className="dashboard-empleados-table-eye">
                   <i
                     className="dashboard-empleados-icon-select far fa-eye"
@@ -95,7 +117,11 @@ const DashboardEmpleadosTable = ({
             ))
           ) : (
             <tr>
-              <td colSpan="6">Sin datos</td>
+              <td colSpan="5">
+                <span className="d-flex justify-content-center text-align-center">
+                  No hay ningún empleado registrado con este nombre
+                </span>
+              </td>
             </tr>
           )}
         </tbody>
@@ -152,13 +178,19 @@ const DashboardEmpleadosTable = ({
         </ul>
       </nav>
       <div>
-       <div class="row">
-        <div class="col text-center">
-         <button type="button" class="btn btn-success" onClick={openModalEmpleadoAgregar}>Agregar</button>
+        <div className="row">
+          <div className="col text-center">
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={openModalEmpleadoAgregar}
+            >
+              Agregar
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 
