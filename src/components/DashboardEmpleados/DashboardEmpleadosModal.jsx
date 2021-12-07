@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, Button } from "reactstrap";
 import "./DashboardEmpleadosModal.scss";
 
 export const DashboardEmpleadosModal = ({
@@ -8,76 +8,50 @@ export const DashboardEmpleadosModal = ({
   openModalEmpleado,
 }) => {
   const { active } = useSelector((state) => state.employees);
-
   
-
+  const btnCloseForm = {
+    outline: "none",
+    backgroundColor: "#ffba00",
+    border: "none",
+    boxShadow: "none",
+  };
 
   return (
     <Modal isOpen={openEmpleadoModal} toggle={openModalEmpleado}>
-      <ModalHeader>
-        <div>Datos</div>
+      <ModalHeader className="header-crud-form">
+        <div className="titulo-form-crud ">Datos Empleado</div>
+        <div className="btn-cerrar-form-modal">
+          <Button
+            style={btnCloseForm}
+            color="secondary"
+            onClick={openModalEmpleado}
+          >
+            <i className="far fa-times-circle fa-3x"></i>
+          </Button>
+        </div>
       </ModalHeader>
       <ModalBody>
         <form>
-          <div className="form-group">
-            <label htmlFor="exampleInputName1">Nombre</label>
-            <input
-              type="name"
-              className="form-control"
-              id="exampleInputName1"
-              placeholder={active?.nombre}
-            />
+          <div className="modal-body">
+            <h5 htmlFor="exampleInputName1">Nombre: {active?.nombre}</h5>
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputCargo1">Cargo</label>
-            <input
-              type="cargo"
-              className="form-control"
-              id="exampleInputCargo1"
-              placeholder={active?.cargo}
-            />
+          <div className="modal-body">
+            <h5 htmlFor="exampleInputName1">Apellido: {active?.apellido}</h5>
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputUsuario1">Usuario</label>
-            <input
-              type="usuario"
-              className="form-control"
-              id="exampleInputUsuario1"
-              placeholder={active?.usuario}
-            />
+          <div className="modal-body">
+            <h5 htmlFor="exampleInputCargo1">Cargo: {active?.cargo}</h5>
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputCelular1">Celular</label>
-            <input
-              type="celular"
-              className="form-control"
-              id="exampleInputCelular1"
-              placeholder={active?.celular}
-            />
-          </div>{" "}
-          <div className="form-group">
-            <label htmlFor="exampleInputMail1">Mail</label>
-            <input
-              type="mail"
-              className="form-control"
-              id="exampleInputMail1"
-              placeholder={active?.mail}
-            />
+          <div className="modal-body">
+            <h5 htmlFor="exampleInputUsuario1">Usuario: {active?.username}</h5>
+          </div>
+          <div className="modal-body">
+            <h5 htmlFor="exampleInputCelular1">Celular: {active?.celular}</h5>
+          </div>
+          <div className="modal-body">
+            <h5 htmlFor="exampleInputMail1">Mail: {active?.email}</h5>
           </div>
         </form>
       </ModalBody>
-      <ModalFooter>
-        <div>
-          <button type="button" className="btn btn-info">
-            Editar
-          </button>
-        </div>
-        <div>
-          <button type="button" className="btn btn-danger">
-            Eliminar
-          </button>
-        </div>
-      </ModalFooter>
     </Modal>
   );
 };

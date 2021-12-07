@@ -5,6 +5,7 @@ import DashboardEmpleadosTable from "./DashboardEmpleadosTable";
 import _ from "lodash";
 import { useSelector } from "react-redux";
 import { DashboardEmpleadosSearch } from "./DashboardEmpleadosSearch";
+import { DashboardEmpleadosModalAgregar } from "./DashboardEmpleadosModalAgregar";
 
 export const DashboardEmpleados = () => {
   const { employees } = useSelector((state) => state.employees);
@@ -22,6 +23,13 @@ export const DashboardEmpleados = () => {
     };
   }, [employees]);
 
+  const [openEmpleadoModalAgregar, setOpenEmpleadoModalAgregar] =
+  useState(false);
+
+const openModalEmpleadoAgregar = () => {
+  setOpenEmpleadoModalAgregar(!openEmpleadoModalAgregar);
+};
+
   return (
     <div className="dashboard">
       <DashboardNavbar />
@@ -35,7 +43,12 @@ export const DashboardEmpleados = () => {
               employees={employees}
               setPaginatedEmpleados={setPaginatedEmpleados}
             />
+            <DashboardEmpleadosModalAgregar
+              openEmpleadoModalAgregar={openEmpleadoModalAgregar}
+              openModalEmpleadoAgregar={openModalEmpleadoAgregar}
+        />
           </div>
+          
         </div>
         <div className="dashboard-empleados-body">
           <DashboardEmpleadosTable
@@ -52,6 +65,26 @@ export const DashboardEmpleados = () => {
             setMinPageNumberLimit={setMinPageNumberLimit}
           />
         </div>
+        <div>
+        <div className="dashboard-empleados-container-buttons">
+            <button
+              type="button"
+              className="dashboard-empleados-button dashboard-empleado-button-add"
+              onClick={openModalEmpleadoAgregar}
+            >
+              <i class="fas fa-plus"></i>
+              Agregar
+            </button>
+            <button type="button" className="dashboard-empleados-button dashboard-empleado-button-edit">
+            <i class="fas fa-user-edit"></i>
+                Editar
+            </button>
+            <button type="button" className="dashboard-empleados-button dashboard-empleado-button-delete">
+            <i class="fas fa-user-slash"></i>
+                Eliminar
+            </button>
+        </div>
+      </div>
       </div>
     </div>
   );
