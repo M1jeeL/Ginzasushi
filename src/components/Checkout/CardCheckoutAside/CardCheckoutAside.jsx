@@ -130,6 +130,7 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
           ))}
         </div>
         <div className="aside-precio-checkout">
+          <hr />
           <div className="row-aside-checkout">
             <div className="precio-checkout-label">Subtotal</div>
             <div className="precio-checkout-price">$ {subTotalShow}</div>
