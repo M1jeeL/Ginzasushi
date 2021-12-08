@@ -4,6 +4,7 @@ import {
   startDeleting,
   startToggleStatusProduct,
 } from "../../actions/products";
+import { formatearNumero } from "../../helpers/formatearNumero";
 
 export const DashboardProductActive = ({ activeProduct, openModalProduct }) => {
   const dispatch = useDispatch();
@@ -17,12 +18,17 @@ export const DashboardProductActive = ({ activeProduct, openModalProduct }) => {
           Detalles del producto:
         </div>
         <hr />
-        <div className="dashboard-product-data-body-id">Id: {_id}</div>
+        <div className="dashboard-product-data-body-id">
+          <span className="font-weight-bold">Id: </span>
+          <span>{_id}</span>
+        </div>
         <div className="dashboard-product-data-body-category">
-          Categoria: {activeProduct.categoria.nombre}
+          <span className="font-weight-bold">Categoria: </span>
+          <span>{activeProduct.categoria.nombre}</span>
         </div>
         <div className="dashboard-product-data-body-price">
-          Precio: ${precio}
+          <span className="font-weight-bold">Precio: </span>
+          <span>${formatearNumero(precio)}</span>
         </div>
         <hr />
         <div className="dashboard-product-data-body-ingredientes">

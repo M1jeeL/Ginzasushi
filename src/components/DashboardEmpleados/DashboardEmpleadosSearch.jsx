@@ -23,7 +23,8 @@ export const DashboardEmpleadosSearch = ({
       return employees.filter(
         (employee) =>
           employee.nombre.toLowerCase().includes(name) ||
-          employee.apellido.toLowerCase().includes(name)
+          employee.apellido.toLowerCase().includes(name) ||
+          employee.email.toLowerCase().includes(name)
       );
     },
     [employees]

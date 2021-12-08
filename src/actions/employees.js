@@ -23,6 +23,8 @@ export const startRegisterEmployee = (employee) => {
       body: JSON.stringify(employee),
     });
 
+    console.log( response);
+
     if (response.ok) {
       Swal.fire({
         position: "center",

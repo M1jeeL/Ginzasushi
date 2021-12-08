@@ -51,6 +51,9 @@ export const AppRouter = () => {
   };
 
   useEffect(() => {
+    dispatch(startLoadingComunas());
+    dispatch(startLoadingProducts());
+    dispatch(startLoadingCategories());
     const token = localStorage.getItem("token");
 
     fetch(`${url}/users/usuario_actual`, {
@@ -95,10 +98,6 @@ export const AppRouter = () => {
         dispatch(logout());
         localStorage.removeItem("token");
       });
-
-    dispatch(startLoadingComunas());
-    dispatch(startLoadingProducts());
-    dispatch(startLoadingCategories());
   }, [dispatch]);
 
   if (checking) {

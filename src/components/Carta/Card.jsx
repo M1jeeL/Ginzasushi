@@ -1,3 +1,4 @@
+import { formatearNumero } from "../../helpers/formatearNumero";
 import "./Card.scss";
 
 function Card({ item }) {
@@ -15,7 +16,7 @@ function Card({ item }) {
 
         <div className="card-precio">
           <footer>
-            <span>$ {precio}</span>
+            <span>$ {formatearNumero(precio)}</span>
           </footer>
         </div>
       </div>

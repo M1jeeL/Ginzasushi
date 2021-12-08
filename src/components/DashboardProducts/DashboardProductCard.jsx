@@ -1,4 +1,5 @@
 import React from "react";
+import { formatearNumero } from "../../helpers/formatearNumero";
 import "./DashboardProductCard.scss";
 
 export const DashboardProductCard = ({ product, index }) => {
@@ -22,7 +23,7 @@ export const DashboardProductCard = ({ product, index }) => {
 
         <div className="dashboard-subinfo">
           <div className="dashboard-info-price">
-            <span>$ {precio}</span>
+            <span>$ {formatearNumero(precio)}</span>
           </div>
 
           <div

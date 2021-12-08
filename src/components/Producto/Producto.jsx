@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, Input } from "reactstrap";
 import { startAddToCart } from "../../actions/products";
+import { formatearNumero } from "../../helpers/formatearNumero";
 import "./Producto.scss";
 
 export default function Producto({ producto }) {
@@ -89,7 +90,7 @@ export default function Producto({ producto }) {
               <hr />
             </div>
             <div className="producto-precio">
-              <span>$ {precio}</span>
+              <span>$ {formatearNumero(precio)}</span>
             </div>
             <div className="linea-producto">
               <hr />
