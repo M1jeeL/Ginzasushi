@@ -57,10 +57,22 @@
     height: 4rem;
     width: 6rem;
 
-    &.dashboard-empleado-button-accept {
+    &.dashboard-empleado-button-add {
       background-color: #15bd26;
       &:hover {
         background-color: darken($color: #15bd26, $amount: 10);
+      }
+    }
+    &.dashboard-empleado-button-edit {
+      background-color: #f1672a;
+      &:hover {
+        background-color: darken($color: #f1672a, $amount: 10);
+      }
+    }
+    &.dashboard-empleado-button-delete {
+      background-color: #f25551;
+      &:hover {
+        background-color: darken($color: #f25551, $amount: 10);
       }
     }
   }

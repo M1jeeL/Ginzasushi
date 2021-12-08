@@ -177,19 +177,6 @@ const DashboardEmpleadosTable = ({
           </li>
         </ul>
       </nav>
-      <div>
-        <div className="row">
-          <div className="col text-center">
-            <button
-              type="button"
-              className="btn btn-success"
-              onClick={openModalEmpleadoAgregar}
-            >
-              Agregar
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
