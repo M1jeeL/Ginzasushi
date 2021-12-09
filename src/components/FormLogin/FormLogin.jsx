@@ -55,7 +55,7 @@ const FormLogin = () => {
             onChange={handleInputChange}
           />
         </FormGroup>
-        <Link to="/forgot-password" className="olvido-password">
+        <Link to="/recovery-password" className="olvido-password">
           <strong>¿Olvidaste tu contrase&ntilde;a?</strong>
         </Link>
         <Button type="submit" color="warning" size="lg">

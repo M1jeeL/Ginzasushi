@@ -1,33 +1,75 @@
 import React from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import "./Changepassword.scss"
+import "./Changepassword.scss";
+import Imgcab from "../Imagen cabecera/Imgcab";
+import { useParams } from "react-router";
+import { useForm } from "../../hooks/useForm";
+import { useDispatch } from "react-redux";
+import { startChangePasswordFromRecovery } from "../../actions/auth";
+import Swal from "sweetalert2";
 
+const ChangePassword = () => {
+  const { token } = useParams();
+  const dispatch = useDispatch();
 
-const ChangePasswordForm = () => {
+  const [formValues, handleInputChange] = useForm({
+    password: "",
+    repeatPassword: "",
+  });
+
+  const { password, repeatPassword } = formValues;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password === "" || repeatPassword === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Ups...",
+        text: "Por favor, rellena todos los campos",
+      });
+    } else if (password !== repeatPassword) {
+      console.log("Las contraseñas no coinciden");
+      Swal.fire({
+        icon: "error",
+        title: "Ups...",
+        text: "Las contraseñas no coinciden",
+      });
+    } else {
+      dispatch(startChangePasswordFromRecovery(password, token));
+    }
+  };
 
   return (
-    <div className="changepassword-container-main">
-    <Form className="changepassword-form">
-      <div className="changepassword-form-container">
-        <FormGroup className="form-text-changepassword">
-          <Label className="changepassword-text">
-            Nueva Contraseña
-          </Label>
-          <Input
-          />
-          <Label className="changepassword-text">
-            Confirmar Contraseña
-          </Label>
-          <Input
-          />
-        </FormGroup>
-        <Button type="submit" color="warning" size="lg">
-          Enviar
-        </Button>
-        
+    <>
+      <Imgcab nombrehead="Recuperar contraseña" />
+      <div className="changepassword-container-main">
+        <Form className="changepassword-form" onSubmit={handleSubmit}>
+          <div className="changepassword-form-container">
+            <FormGroup className="form-text-changepassword">
+              <Label className="changepassword-text">Nueva Contraseña</Label>
+              <Input
+                type="password"
+                name="password"
+                value={password}
+                onChange={handleInputChange}
+              />
+              <Label className="changepassword-text">
+                Confirmar Contraseña
+              </Label>
+              <Input
+                type="password"
+                name="repeatPassword"
+                value={repeatPassword}
+                onChange={handleInputChange}
+              />
+            </FormGroup>
+            <Button type="submit" color="warning" size="lg">
+              Enviar
+            </Button>
+          </div>
+        </Form>
       </div>
-    </Form>
-    </div>
+    </>
   );
 };
-export default ChangePasswordForm ;
+export default ChangePassword;

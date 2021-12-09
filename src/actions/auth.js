@@ -194,3 +194,63 @@ export const login = (user) => ({
 export const logout = () => ({
   type: types.logout,
 });
+
+export const startRecoveryPassword = (email) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(`${url}/users/recovery_password/${email}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.ok) {
+        Swal.fire({
+          icon: "success",
+          text: `Se ha enviado un correo a ${email} con instrucciones para recuperar su contraseña, si no le llego revise su bandeja de correo no deseado o posiblemente no se encuentra registrados en el sistema`,
+          showConfirmButton: true,
+          timer: "4500",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          text: "El email ingresado no se encuentra registrado",
+          showConfirmButton: false,
+          timer: "3500",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const startChangePasswordFromRecovery = (password, token) => {
+  return async (dispatch) => {
+    const res = await fetch(`${url}/users/recovery_password/reset`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ password }),
+    });
+
+    if (res.ok) {
+      Swal.fire({
+        icon: "success",
+        text: "Su contraseña fue cambiada exitosamente!",
+        showConfirmButton: false,
+        timer: "2500",
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        text: "El token ingresado no es válido o expiró",
+        showConfirmButton: false,
+        timer: "2500",
+      });
+    }
+  };
+};

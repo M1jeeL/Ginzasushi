@@ -36,6 +36,8 @@ import { DashboardEmpleados } from "../components/DashboardEmpleados/DashboardEm
 import { startLoadingPedidos } from "../actions/pedidos";
 import { startLoadingPedidosUser } from "../actions/pedidosUser";
 import { startLoadingEmployees } from "../actions/employees";
+import RecoveryPassword from "../components/RecoveryPassword/RecoveryPassword";
+import ChangePassword from "../components/RecoveryPassword/ChangePassword";
 
 const url = process.env.REACT_APP_API;
 
@@ -132,6 +134,18 @@ export const AppRouter = () => {
             exact
             path="/login"
             component={Login}
+            isAuthenticated={logged}
+          />
+          <PublicRoute
+            exact
+            path="/recovery-password"
+            component={RecoveryPassword}
+            isAuthenticated={logged}
+          />
+          <PublicRoute
+            exact
+            path="/recovery-password/:id/:token"
+            component={ChangePassword}
             isAuthenticated={logged}
           />
 
