@@ -65,10 +65,11 @@ export const DashboardNewProductModal = ({
     const [categorySelected] = categories.filter(
       (category) => category._id === formCrud.categoria
     );
+
     const formAEnviar = {
       nombre: formCrud.nombre,
       precio: formCrud.precio,
-      categoria: categorySelected,
+      categoria: categorySelected.nombre,
       descripcion: formCrud.descripcion,
       bocados: formCrud.bocados,
     };

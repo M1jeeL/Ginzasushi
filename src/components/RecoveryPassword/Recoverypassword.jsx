@@ -40,6 +40,7 @@ const RecoveryPassword = () => {
                     value={email}
                     name="email"
                     type="email"
+                    autoComplete="off"
                     onChange={handleInputChange}
                   />
                 </div>

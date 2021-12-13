@@ -42,6 +42,14 @@ const CardCheckoutAside = ({ formDataCliente, formDespachoCliente }) => {
       return item;
     });
 
+    items.push({
+      title: "Despacho",
+      description: "Despacho",
+      quantity: 1,
+      unit_price: despacho,
+      currency_id: "CLP",
+    });
+
     let payer;
 
     if (logged) {

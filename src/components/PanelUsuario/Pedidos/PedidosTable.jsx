@@ -5,6 +5,7 @@ import _ from "lodash";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { activePedido } from "../../../actions/pedidosUser";
+import { formatearNumero } from "../../../helpers/formatearNumero";
 
 const PedidosTable = ({
   pedidos,
@@ -102,7 +103,9 @@ const PedidosTable = ({
                     {pedido.estado}
                   </td>
                 )}
-                <td data-label="total">$ {pedido.precio_total}</td>
+                <td data-label="total">
+                  $ {formatearNumero(pedido.precio_total)}
+                </td>
                 <td data-label="Ver más información">
                   <Link to={`/pedidos/${pedido.uuid}`}>
                     <Button

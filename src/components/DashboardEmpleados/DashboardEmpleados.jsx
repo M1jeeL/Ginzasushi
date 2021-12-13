@@ -24,11 +24,11 @@ export const DashboardEmpleados = () => {
   }, [employees]);
 
   const [openEmpleadoModalAgregar, setOpenEmpleadoModalAgregar] =
-  useState(false);
+    useState(false);
 
-const openModalEmpleadoAgregar = () => {
-  setOpenEmpleadoModalAgregar(!openEmpleadoModalAgregar);
-};
+  const openModalEmpleadoAgregar = () => {
+    setOpenEmpleadoModalAgregar(!openEmpleadoModalAgregar);
+  };
 
   return (
     <div className="dashboard">
@@ -46,9 +46,8 @@ const openModalEmpleadoAgregar = () => {
             <DashboardEmpleadosModalAgregar
               openEmpleadoModalAgregar={openEmpleadoModalAgregar}
               openModalEmpleadoAgregar={openModalEmpleadoAgregar}
-        />
+            />
           </div>
-          
         </div>
         <div className="dashboard-empleados-body">
           <DashboardEmpleadosTable
@@ -65,26 +64,36 @@ const openModalEmpleadoAgregar = () => {
             setMinPageNumberLimit={setMinPageNumberLimit}
           />
         </div>
-        <div>
-        <div className="dashboard-empleados-container-buttons">
-            <button
-              type="button"
-              className="dashboard-empleados-button dashboard-empleado-button-add"
-              onClick={openModalEmpleadoAgregar}
-            >
-              <i class="fas fa-plus"></i>
-              Agregar
-            </button>
-            <button type="button" className="dashboard-empleados-button dashboard-empleado-button-edit">
+
+        <div className="dashboard-pedidos-container-buttons">
+          <div
+            className="dashboard-pedidos-button dashboard-pedido-button-accept"
+            onClick={() => {
+              openModalEmpleadoAgregar();
+            }}
+          >
+            <i class="fas fa-plus"></i>
+            <div>Agregar</div>
+          </div>
+          <div
+            className="dashboard-pedidos-button dashboard-pedido-button-send"
+            onClick={() => {
+              //   dispatch(despacharPedido(active.uuid));
+            }}
+          >
             <i class="fas fa-user-edit"></i>
-                Editar
-            </button>
-            <button type="button" className="dashboard-empleados-button dashboard-empleado-button-delete">
+            <div>Editar</div>
+          </div>
+          <div
+            className="dashboard-pedidos-button dashboard-pedido-button-delete"
+            onClick={() => {
+              //   dispatch(rechazarPedido(active.uuid));
+            }}
+          >
             <i class="fas fa-user-slash"></i>
-                Eliminar
-            </button>
+            <div>Eliminar</div>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

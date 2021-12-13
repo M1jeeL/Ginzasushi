@@ -36,7 +36,7 @@ export const DashboardNavbar = () => {
             <p className="dashboard-navbar-name">Productos</p>
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             to="/dashboard/estadistica"
             className="dashboard-navbar-navlink-item"
@@ -44,7 +44,7 @@ export const DashboardNavbar = () => {
             <i className="fas fa-chart-bar fa-2x"></i>
             <p className="dashboard-navbar-name">Estad&iacute;stica</p>
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink
             to="/dashboard/empleados"
